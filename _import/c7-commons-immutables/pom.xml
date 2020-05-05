@@ -29,23 +29,11 @@
     <jetbrains-annotations.version>16.0.1</jetbrains-annotations.version>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <!-- CAMUNDA -->
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>
+      <version>${camunda.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -61,6 +49,20 @@
       <artifactId>annotations</artifactId>
       <version>${jetbrains-annotations.version}</version>
       <scope>provided</scope>
+    </dependency>
+
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.assert</groupId>
+      <artifactId>camunda-bpm-assert</artifactId>
+      <version>5.0.0</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
