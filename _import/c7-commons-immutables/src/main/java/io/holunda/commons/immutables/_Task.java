@@ -27,11 +27,22 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   String getDescription();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param description the description, unused
+   */
   @Override
+  @Deprecated
   default void setDescription(String description) {
     throw UNMODIFIABLE;
   }
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param priority the priority, unused
+   */
   @Override
   default void setPriority(int priority) {
     throw UNMODIFIABLE;
@@ -41,6 +52,11 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   String getOwner();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param owner the owner, unused
+   */
   @Override
   default void setOwner(String owner) {
     throw UNMODIFIABLE;
@@ -50,6 +66,11 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   String getAssignee();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param assignee the assignee, unused
+   */
   @Override
   default void setAssignee(String assignee) {
     throw UNMODIFIABLE;
@@ -58,6 +79,11 @@ public interface _Task extends Task, WithTenantId {
   @Override
   DelegationState getDelegationState();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param delegationState the delegationState, unused
+   */
   @Override
   default void setDelegationState(DelegationState delegationState) {
     throw UNMODIFIABLE;
@@ -78,6 +104,11 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   String getCaseInstanceId();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param caseInstanceId the caseInstanceId, unused
+   */
   @Override
   default void setCaseInstanceId(String caseInstanceId) {
     throw UNMODIFIABLE;
@@ -101,6 +132,11 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   Date getDueDate();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param dueDate the dueDate, unused
+   */
   @Override
   default void setDueDate(Date dueDate) {
     throw UNMODIFIABLE;
@@ -110,16 +146,31 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   Date getFollowUpDate();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param followUpDate the followUpDate, unused
+   */
   @Override
   default void setFollowUpDate(Date followUpDate) {
     throw UNMODIFIABLE;
   }
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param userId the userId, unused
+   */
   @Override
   default void delegate(String userId) {
     throw UNMODIFIABLE;
   }
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param parentTaskId the parentTaskId, unused
+   */
   @Override
   default void setParentTaskId(String parentTaskId) {
     throw UNMODIFIABLE;
@@ -136,6 +187,11 @@ public interface _Task extends Task, WithTenantId {
   @Nullable
   String getFormKey();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param tenantId the tenantId, unused
+   */
   @Override
   default void setTenantId(String tenantId) {
     throw UNMODIFIABLE;
