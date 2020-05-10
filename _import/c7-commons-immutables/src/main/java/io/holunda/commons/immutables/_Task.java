@@ -2,6 +2,8 @@ package io.holunda.commons.immutables;
 
 import static io.holunda.commons.immutables.CamundaImmutables.Facets.UNMODIFIABLE;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables.CamundaImmutables.Facets.WithTenantId;
 import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CamundaPojoStyle;
 import java.util.Date;
@@ -12,12 +14,19 @@ import org.jetbrains.annotations.Nullable;
 
 @Value.Immutable(prehash = true)
 @CamundaPojoStyle
+@JsonDeserialize(as = ImmutableTask.class)
+@JsonSerialize(as = ImmutableTask.class)
 public interface _Task extends Task, WithTenantId {
 
   @Override
   @Nullable
   String getName();
 
+  /**
+   * @deprecated throws {@link UnsupportedOperationException}
+   * @throws UnsupportedOperationException
+   * @param name the name, unused
+   */
   @Override
   default void setName(String name) {
     throw UNMODIFIABLE;

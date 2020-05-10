@@ -1,5 +1,7 @@
 package io.holunda.commons.immutables;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables.CamundaImmutables.Facets.WithBusinessKey;
 import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CamundaPojoStyle;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
@@ -10,6 +12,8 @@ import org.jetbrains.annotations.Nullable;
 
 @Value.Immutable(prehash = true)
 @CamundaPojoStyle
+@JsonDeserialize(as = ImmutableProcessInstance.class)
+@JsonSerialize(as = ImmutableProcessInstance.class)
 public interface _ProcessInstance extends ProcessInstanceWithVariables, _Execution, WithBusinessKey {
 
   @Override

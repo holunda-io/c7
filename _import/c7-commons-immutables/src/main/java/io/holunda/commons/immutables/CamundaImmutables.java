@@ -50,7 +50,10 @@ public final class CamundaImmutables {
       // Make generated public, leave underscored as package private
       visibility = ImplementationVisibility.PUBLIC,
       // Seems unnecessary to have builder or superfluous copy method
-      defaults = @Value.Immutable(builder = true, copy = true))
+      defaults = @Value.Immutable(
+        builder = true, copy = true
+      )
+    )
     public @interface CamundaPojoStyle {
       // empty
     }
@@ -73,6 +76,7 @@ public final class CamundaImmutables {
       @Nullable
       String getBusinessKey();
     }
+
   }
 
   private CamundaImmutables() {
