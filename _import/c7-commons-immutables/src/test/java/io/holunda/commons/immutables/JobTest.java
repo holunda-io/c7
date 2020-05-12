@@ -4,17 +4,19 @@ import static io.holunda.commons.immutables.CamundaImmutablesTest.uuid;
 import static io.holunda.commons.immutables.JacksonHelper.jsonMapper;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import io.holunda.commons.immutables.CamundaImmutablesTest.BasicImmutableTest;
 import io.holunda.commons.immutables.JacksonHelper.JsonMapper;
 import org.junit.Test;
 
-public class JobTest {
+public class JobTest implements BasicImmutableTest {
 
   private final JsonMapper<ImmutableJob> mapper = jsonMapper(ImmutableJob.class);
 
 
   @Test
+  @Override
   public void create_minimal_dto() {
+
     ImmutableJob job = ImmutableJob.builder()
       .id(uuid())
       .processInstanceId(uuid())
@@ -25,9 +27,12 @@ public class JobTest {
       .jobDefinitionId(uuid())
       .priority(50)
       .build();
+
+    assertThat(job.getId()).isNotBlank();
   }
 
   @Test
+  @Override
   public void convert_json() {
     ImmutableJob job = ImmutableJob.builder()
       .id(uuid())

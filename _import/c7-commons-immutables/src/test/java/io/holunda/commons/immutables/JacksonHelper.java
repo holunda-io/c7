@@ -33,7 +33,7 @@ public class JacksonHelper {
 
     public String toJson(T value) {
       try {
-        return om.writeValueAsString(value);
+        return om.writerWithDefaultPrettyPrinter().writeValueAsString(value);
       } catch (JsonProcessingException e) {
         throw new RuntimeException(e);
       }

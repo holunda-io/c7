@@ -1,207 +1,188 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutables.Facets.UNMODIFIABLE;
+import static io.holunda.commons.immutables.CamundaImmutables.NOW;
+import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.holunda.commons.immutables.CamundaImmutables.Facets.WithTenantId;
 import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CamundaPojoStyle;
 import java.util.Date;
 import org.camunda.bpm.engine.task.DelegationState;
 import org.camunda.bpm.engine.task.Task;
 import org.immutables.value.Value;
+import org.immutables.value.Value.Default;
 import org.jetbrains.annotations.Nullable;
 
-@Value.Immutable(prehash = true)
+@Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableTask.class)
 @JsonSerialize(as = ImmutableTask.class)
-public interface _Task extends Task, WithTenantId {
+public interface _Task extends Task, _TaskWithoutSetters {
 
-  @Override
   @Nullable
+  @Override
   String getName();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param name the name, unused
-   */
-  @Override
-  default void setName(String name) {
-    throw UNMODIFIABLE;
-  }
-
-  @Override
   @Nullable
+  @Override
   String getDescription();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param description the description, unused
-   */
-  @Override
-  @Deprecated
-  default void setDescription(String description) {
-    throw UNMODIFIABLE;
-  }
-
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param priority the priority, unused
-   */
-  @Override
-  default void setPriority(int priority) {
-    throw UNMODIFIABLE;
-  }
-
-  @Override
   @Nullable
+  @Override
   String getOwner();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param owner the owner, unused
-   */
-  @Override
-  default void setOwner(String owner) {
-    throw UNMODIFIABLE;
-  }
-
-  @Override
   @Nullable
+  @Override
   String getAssignee();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param assignee the assignee, unused
-   */
-  @Override
-  default void setAssignee(String assignee) {
-    throw UNMODIFIABLE;
-  }
-
+  @Nullable
   @Override
   DelegationState getDelegationState();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param delegationState the delegationState, unused
-   */
-  @Override
-  default void setDelegationState(DelegationState delegationState) {
-    throw UNMODIFIABLE;
-  }
-
-  @Override
   @Nullable
+  @Override
   String getProcessInstanceId();
 
   @Override
   String getExecutionId();
 
-  @Override
   @Nullable
+  @Override
   String getProcessDefinitionId();
 
-  @Override
   @Nullable
+  @Override
   String getCaseInstanceId();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param caseInstanceId the caseInstanceId, unused
-   */
-  @Override
-  default void setCaseInstanceId(String caseInstanceId) {
-    throw UNMODIFIABLE;
-  }
-
-  @Override
   @Nullable
+  @Override
   String getCaseExecutionId();
 
-  @Override
   @Nullable
+  @Override
   String getCaseDefinitionId();
 
+  @Default
   @Override
-  Date getCreateTime();
+  default Date getCreateTime() {
+    return NOW.get();
+  }
 
   @Override
   String getTaskDefinitionKey();
 
-  @Override
   @Nullable
+  @Override
   Date getDueDate();
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param dueDate the dueDate, unused
-   */
-  @Override
-  default void setDueDate(Date dueDate) {
-    throw UNMODIFIABLE;
-  }
-
-  @Override
   @Nullable
+  @Override
   Date getFollowUpDate();
 
   /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param followUpDate the followUpDate, unused
-   */
-  @Override
-  default void setFollowUpDate(Date followUpDate) {
-    throw UNMODIFIABLE;
-  }
-
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
    * @param userId the userId, unused
+   * @deprecated throws {@link UnsupportedOperationException}
    */
   @Override
   default void delegate(String userId) {
     throw UNMODIFIABLE;
   }
 
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param parentTaskId the parentTaskId, unused
-   */
+
+  @Default
   @Override
+  default int getPriority() {
+    return PRIORITY_NORMAL;
+  }
+
+  @Nullable
+  @Override
+  String getParentTaskId();
+
+  @Default
+  @Override
+  default boolean isSuspended() {
+    return false;
+  }
+
+  @Nullable
+  @Override
+  String getFormKey();
+
+  @Nullable
+  @Override
+  String getTenantId();
+
+}
+
+/**
+ * Throwing {@link UnsupportedOperationException} for all setters to keep
+ * the {@link _Task} clean.
+ */
+interface _TaskWithoutSetters extends Task {
+
+  @Override
+  @Deprecated
+  default void setName(String name) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setDescription(String description) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setPriority(int priority) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setOwner(String owner) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setAssignee(String assignee) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setDelegationState(DelegationState delegationState) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setCaseInstanceId(String caseInstanceId) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setDueDate(Date dueDate) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
+  default void setFollowUpDate(Date followUpDate) {
+    throw UNMODIFIABLE;
+  }
+
+  @Override
+  @Deprecated
   default void setParentTaskId(String parentTaskId) {
     throw UNMODIFIABLE;
   }
 
   @Override
-  @Nullable
-  String getParentTaskId();
-
-  @Override
-  boolean isSuspended();
-
-  @Override
-  @Nullable
-  String getFormKey();
-
-  /**
-   * @deprecated throws {@link UnsupportedOperationException}
-   * @throws UnsupportedOperationException
-   * @param tenantId the tenantId, unused
-   */
-  @Override
+  @Deprecated
   default void setTenantId(String tenantId) {
     throw UNMODIFIABLE;
   }

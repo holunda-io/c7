@@ -1,6 +1,9 @@
 package io.holunda.commons.immutables;
 
+import java.util.Date;
+import java.util.function.Supplier;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.impl.calendar.DateTimeUtil;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Job;
@@ -9,9 +12,10 @@ import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.task.Task;
 import org.immutables.value.Value;
 import org.immutables.value.Value.Style.ImplementationVisibility;
-import org.jetbrains.annotations.Nullable;
 
 public final class CamundaImmutables {
+  static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
+  static final Supplier<Date> NOW = () -> DateTimeUtil.now().toDate();
 
   public static ImmutableBatch batch(Batch batch) {
     return ImmutableBatch.builder().from(batch).build();
@@ -51,32 +55,12 @@ public final class CamundaImmutables {
       visibility = ImplementationVisibility.PUBLIC,
       // Seems unnecessary to have builder or superfluous copy method
       defaults = @Value.Immutable(
-        builder = true, copy = true
+        builder = true, copy = true, prehash = true
       )
     )
     public @interface CamundaPojoStyle {
       // empty
     }
-
-  }
-
-  enum Facets {
-    ;
-
-    static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
-
-    interface WithTenantId {
-
-      @Nullable
-      String getTenantId();
-    }
-
-    interface WithBusinessKey {
-
-      @Nullable
-      String getBusinessKey();
-    }
-
   }
 
   private CamundaImmutables() {

@@ -10,7 +10,7 @@ import org.immutables.value.Value;
 import org.immutables.value.Value.Default;
 import org.jetbrains.annotations.Nullable;
 
-@Value.Immutable(prehash = true)
+@Value.Immutable
 @JsonDeserialize(as = ImmutableJob.class)
 @JsonSerialize(as = ImmutableJob.class)
 @CamundaPojoStyle
