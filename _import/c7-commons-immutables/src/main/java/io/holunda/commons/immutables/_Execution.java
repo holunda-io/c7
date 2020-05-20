@@ -17,4 +17,13 @@ public interface _Execution extends Execution {
   @Override
   String getTenantId();
 
+  @Override
+  default boolean isSuspended() {
+    return false;
+  }
+
+  @Override
+  default boolean isEnded() {
+    return false;
+  }
 }

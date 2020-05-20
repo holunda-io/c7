@@ -9,6 +9,7 @@ import org.camunda.bpm.engine.impl.event.EventType;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
+import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.runtime.TransitionInstance;
@@ -744,6 +745,33 @@ public enum _Fixtures {
     @Override
     public void setTenantId(String tenantId) {
       throw CamundaImmutables.UNMODIFIABLE;
+    }
+  };
+
+  public static final Execution EXECUTION = new Execution() {
+    @Override
+    public String getId() {
+      return EXECUTION_ID;
+    }
+
+    @Override
+    public boolean isSuspended() {
+      return true;
+    }
+
+    @Override
+    public boolean isEnded() {
+      return true;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
     }
   };
 }
