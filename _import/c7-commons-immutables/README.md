@@ -1,6 +1,6 @@
 # camunda-immutables
 
-![Java CI with Maven](https://github.com/jangalinski/camunda-commons-immutables/workflows/Java%20CI%20with%20Maven/badge.svg)
+![Java CI with Maven](https://github.com/holunda-io/camunda-commons-immutables/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 Immutable implementations of camunda api interfaces.
 
@@ -14,6 +14,7 @@ Immutable implementations of camunda api interfaces.
 * EventSubscription
 * Execution
 * IdentityLink
+* Incident
 * Job
 * ProcessElementInstance
 * ProcessInstance
