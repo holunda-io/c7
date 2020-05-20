@@ -14,8 +14,10 @@ import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.runtime.TransitionInstance;
 import org.camunda.bpm.engine.task.Attachment;
 import org.camunda.bpm.engine.task.Comment;
+import org.camunda.bpm.engine.task.DelegationState;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.IdentityLinkType;
+import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 
@@ -41,6 +43,7 @@ public enum _Fixtures {
   public static final String PROCESS_DEFINITION_ID = PROCESS_DEFINITION_KEY + ":1:1";
   public static final String PROCESS_INSTANCE_ID = uuid();
   public static final String TASK_ID = uuid();
+  public static final String TASK_DEFINITION_KEY = "theTask";
   public static final String TENANT_ID = "tenant-a";
   public static final String USER_ID = "user-x";
 
@@ -574,6 +577,173 @@ public enum _Fixtures {
     @Override
     public Date getRemovalTime() {
       return DATE_TOMORROW;
+    }
+  };
+
+  public static final Task TASK = new Task() {
+    @Override
+    public String getId() {
+      return TASK_ID;
+    }
+
+    @Override
+    public String getName() {
+      return "the task";
+    }
+
+    @Override
+    public void setName(String name) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getDescription() {
+      return "the description";
+    }
+
+    @Override
+    public void setDescription(String description) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public int getPriority() {
+      return PRIORITY_MAXIMUM;
+    }
+
+    @Override
+    public void setPriority(int priority) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getOwner() {
+      return USER_ID;
+    }
+
+    @Override
+    public void setOwner(String owner) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getAssignee() {
+      return USER_ID;
+    }
+
+    @Override
+    public void setAssignee(String assignee) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public DelegationState getDelegationState() {
+      return DelegationState.PENDING;
+    }
+
+    @Override
+    public void setDelegationState(DelegationState delegationState) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
+    }
+
+    @Override
+    public String getExecutionId() {
+      return EXECUTION_ID;
+    }
+
+    @Override
+    public String getProcessDefinitionId() {
+      return PROCESS_DEFINITION_ID;
+    }
+
+    @Override
+    public String getCaseInstanceId() {
+      return CASE_INSTANCE_ID;
+    }
+
+    @Override
+    public void setCaseInstanceId(String caseInstanceId) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getCaseExecutionId() {
+      return CASE_EXECUTION.getId();
+    }
+
+    @Override
+    public String getCaseDefinitionId() {
+      return CASE_DEFINITION_ID;
+    }
+
+    @Override
+    public Date getCreateTime() {
+      return DATE_NOW;
+    }
+
+    @Override
+    public String getTaskDefinitionKey() {
+      return TASK_DEFINITION_KEY;
+    }
+
+    @Override
+    public Date getDueDate() {
+      return DATE_TOMORROW;
+    }
+
+    @Override
+    public void setDueDate(Date dueDate) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public Date getFollowUpDate() {
+      return DATE_TOMORROW;
+    }
+
+    @Override
+    public void setFollowUpDate(Date followUpDate) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public void delegate(String userId) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public void setParentTaskId(String parentTaskId) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getParentTaskId() {
+      return null;
+    }
+
+    @Override
+    public boolean isSuspended() {
+      return true;
+    }
+
+    @Override
+    public String getFormKey() {
+      return "form/key";
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public void setTenantId(String tenantId) {
+      throw CamundaImmutables.UNMODIFIABLE;
     }
   };
 }
