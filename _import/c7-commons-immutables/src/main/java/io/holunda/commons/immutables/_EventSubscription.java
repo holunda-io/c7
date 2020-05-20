@@ -20,7 +20,6 @@ public interface _EventSubscription extends EventSubscription {
   @Override
   String getTenantId();
 
-  @Value.Default
   @Override
   default Date getCreated() {
     return NOW.get();

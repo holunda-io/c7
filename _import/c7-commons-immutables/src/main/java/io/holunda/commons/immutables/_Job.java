@@ -17,19 +17,16 @@ import org.jetbrains.annotations.Nullable;
 public interface _Job extends Job {
 
 
-  @Default
   @Override
   default int getRetries() {
     return JobEntity.DEFAULT_RETRIES;
   }
 
-  @Default
   @Override
   default Date getCreateTime() {
     return new Date();
   }
 
-  @Default
   @Override
   default boolean isSuspended() {
     return false;

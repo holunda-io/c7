@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 @JsonSerialize(as = ImmutableProcessInstance.class)
 public interface _ProcessInstance extends ProcessInstanceWithVariables, Execution {
 
-  @Default
   @Override
   default String getProcessInstanceId() {
     return getId();
@@ -29,7 +28,6 @@ public interface _ProcessInstance extends ProcessInstanceWithVariables, Executio
   String getRootProcessInstanceId();
 
   @Override
-  @Default
   @JsonSerialize(as = VariableMapImpl.class)
   @JsonDeserialize(as = VariableMapImpl.class)
   default VariableMap getVariables() {
@@ -48,13 +46,11 @@ public interface _ProcessInstance extends ProcessInstanceWithVariables, Executio
   @Override
   String getTenantId();
 
-  @Default
   @Override
   default boolean isSuspended() {
     return false;
   }
 
-  @Default
   @Override
   default boolean isEnded() {
     return false;

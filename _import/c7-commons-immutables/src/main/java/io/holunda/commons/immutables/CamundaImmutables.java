@@ -51,6 +51,7 @@ public final class CamundaImmutables {
     @Value.Style(
       // Detect names starting with underscore
       typeAbstract = "_*",
+      defaultAsDefault = true,
       // Make generated public, leave underscored as package private
       visibility = ImplementationVisibility.PUBLIC,
       // Seems unnecessary to have builder or superfluous copy method

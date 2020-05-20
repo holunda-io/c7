@@ -62,7 +62,6 @@ public interface _Task extends Task, _TaskWithoutSetters {
   @Override
   String getCaseDefinitionId();
 
-  @Default
   @Override
   default Date getCreateTime() {
     return NOW.get();

@@ -21,7 +21,6 @@ public interface _Batch extends Batch {
   @Override
   String getTenantId();
 
-  @Value.Default
   @Override
   default boolean isSuspended() {
     return false;
