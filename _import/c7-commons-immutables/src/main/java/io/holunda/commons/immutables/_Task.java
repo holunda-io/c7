@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableTask.class)
 @JsonSerialize(as = ImmutableTask.class)
-interface _Task extends Task, _TaskWithoutSetters, CurrentTimestamp {
+interface _Task extends _TaskWithoutSetters, CurrentTimestamp {
 
   @Nullable
   @Override
