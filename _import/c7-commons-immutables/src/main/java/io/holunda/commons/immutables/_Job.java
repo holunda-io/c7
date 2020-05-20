@@ -3,6 +3,7 @@ package io.holunda.commons.immutables;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CamundaPojoStyle;
+import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CurrentTimestamp;
 import java.util.Date;
 import org.camunda.bpm.engine.impl.persistence.entity.JobEntity;
 import org.camunda.bpm.engine.runtime.Job;
@@ -14,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 @JsonDeserialize(as = ImmutableJob.class)
 @JsonSerialize(as = ImmutableJob.class)
 @CamundaPojoStyle
-public interface _Job extends Job {
+public interface _Job extends Job, CurrentTimestamp {
 
 
   @Override
@@ -24,7 +25,7 @@ public interface _Job extends Job {
 
   @Override
   default Date getCreateTime() {
-    return new Date();
+    return getNow().get();
   }
 
   @Override

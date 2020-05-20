@@ -1,23 +1,22 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutables.NOW;
 import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CamundaPojoStyle;
+import io.holunda.commons.immutables.CamundaImmutables.ImmutablesConfiguration.CurrentTimestamp;
 import java.util.Date;
 import org.camunda.bpm.engine.task.DelegationState;
 import org.camunda.bpm.engine.task.Task;
 import org.immutables.value.Value;
-import org.immutables.value.Value.Default;
 import org.jetbrains.annotations.Nullable;
 
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableTask.class)
 @JsonSerialize(as = ImmutableTask.class)
-public interface _Task extends Task, _TaskWithoutSetters {
+public interface _Task extends Task, _TaskWithoutSetters, CurrentTimestamp {
 
   @Nullable
   @Override
@@ -64,7 +63,7 @@ public interface _Task extends Task, _TaskWithoutSetters {
 
   @Override
   default Date getCreateTime() {
-    return NOW.get();
+    return getNow().get();
   }
 
   @Override
@@ -87,8 +86,6 @@ public interface _Task extends Task, _TaskWithoutSetters {
     throw UNMODIFIABLE;
   }
 
-
-  @Default
   @Override
   default int getPriority() {
     return PRIORITY_NORMAL;
@@ -98,7 +95,6 @@ public interface _Task extends Task, _TaskWithoutSetters {
   @Override
   String getParentTaskId();
 
-  @Default
   @Override
   default boolean isSuspended() {
     return false;

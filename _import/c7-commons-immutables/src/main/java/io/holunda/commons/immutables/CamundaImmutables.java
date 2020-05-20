@@ -9,16 +9,28 @@ import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
+import org.camunda.bpm.engine.task.Attachment;
+import org.camunda.bpm.engine.task.Comment;
+import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.Task;
 import org.immutables.value.Value;
 import org.immutables.value.Value.Style.ImplementationVisibility;
+import org.jetbrains.annotations.NotNull;
 
 public final class CamundaImmutables {
   static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
-  static final Supplier<Date> NOW = () -> DateTimeUtil.now().toDate();
+  static Supplier<Date> NOW_SUPPLIER = () -> DateTimeUtil.now().toDate();
+
+  public static ImmutableAttachment attachment(Attachment attachment) {
+    return ImmutableAttachment.builder().from(attachment).build();
+  }
 
   public static ImmutableBatch batch(Batch batch) {
     return ImmutableBatch.builder().from(batch).build();
+  }
+
+  public static ImmutableComment comment(Comment comment) {
+    return ImmutableComment.builder().from(comment).build();
   }
 
   public static ImmutableEventSubscription eventSubscription(final EventSubscription eventSubscription) {
@@ -27,6 +39,10 @@ public final class CamundaImmutables {
 
   public static ImmutableExecution execution(final Execution execution) {
     return ImmutableExecution.builder().from(execution).build();
+  }
+
+  public static ImmutableIdentityLink identityLink(final IdentityLink identityLink) {
+    return ImmutableIdentityLink.builder().from(identityLink).build();
   }
 
   public static ImmutableJob job(final Job job) {
@@ -61,6 +77,15 @@ public final class CamundaImmutables {
     )
     public @interface CamundaPojoStyle {
       // empty
+    }
+
+    public interface CurrentTimestamp {
+
+      @NotNull
+      default Supplier<Date> getNow() {
+        return NOW_SUPPLIER;
+      }
+
     }
   }
 
