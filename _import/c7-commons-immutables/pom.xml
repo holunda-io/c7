@@ -341,9 +341,9 @@
         </executions>
         <configuration>
           <targetDir>${assertj.generated.dir}</targetDir>
-          <classes>
-            <param>io.holunda.commons.immutables.ImmutableBatch</param>
-          </classes>
+          <packages>
+            <param>io.holunda.commons.immutables</param>
+          </packages>
         </configuration>
         <dependencies>
           <dependency>
