@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableUser.class)
 @JsonSerialize(as = ImmutableUser.class)
-interface _User extends User, _UserWithoutSetters {
+interface _User extends _UserWithoutSetters {
 
   @Override
   @Nullable
