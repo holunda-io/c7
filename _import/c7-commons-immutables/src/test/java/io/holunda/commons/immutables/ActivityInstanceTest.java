@@ -16,7 +16,6 @@ public class ActivityInstanceTest extends _BasicImmutableTest<ImmutableActivityI
     super(ImmutableActivityInstance.class);
   }
 
-
   @Override
   public void factory_method() {
     ImmutableActivityInstance dto = createDto();
