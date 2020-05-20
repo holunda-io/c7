@@ -2,7 +2,6 @@ package io.holunda.commons.immutables;
 
 import java.util.Date;
 import java.util.UUID;
-import javax.activation.MimeType;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
@@ -11,10 +10,13 @@ import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Job;
+import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.runtime.TransitionInstance;
 import org.camunda.bpm.engine.task.Attachment;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.IdentityLinkType;
+import org.camunda.bpm.engine.variable.VariableMap;
+import org.camunda.bpm.engine.variable.Variables;
 
 public enum _Fixtures {
   ;
@@ -22,6 +24,7 @@ public enum _Fixtures {
   public static final String ACTIVITY_ID = "activityId";
   public static final String ACTIVITY_NAME = "Activity Name";
   public static final String BATCH_TYPE = "batchType";
+  public static final String BUSINESS_KEY = uuid();
   public static final String CASE_DEFINITION_KEY = "theCase";
   public static final String CASE_DEFINITION_ID = CASE_DEFINITION_KEY + ":1:1";
   public static final String CASE_INSTANCE_ID = uuid();
@@ -476,5 +479,58 @@ public enum _Fixtures {
     }
   };
 
+  public static final ProcessInstanceWithVariables PROCESS_INSTANCE = new ProcessInstanceWithVariables() {
+
+    String id = uuid();
+    @Override
+    public VariableMap getVariables() {
+      return Variables.putValue("foo","bar");
+    }
+
+    @Override
+    public String getProcessDefinitionId() {
+      return PROCESS_DEFINITION_ID;
+    }
+
+    @Override
+    public String getBusinessKey() {
+      return BUSINESS_KEY;
+    }
+
+    @Override
+    public String getRootProcessInstanceId() {
+      return null;
+    }
+
+    @Override
+    public String getCaseInstanceId() {
+      return CASE_INSTANCE_ID;
+    }
+
+    @Override
+    public boolean isSuspended() {
+      return true;
+    }
+
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public boolean isEnded() {
+      return true;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+  };
 
 }
