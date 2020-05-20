@@ -9,6 +9,7 @@ import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
+import org.camunda.bpm.engine.runtime.Incident;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessElementInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
@@ -55,6 +56,10 @@ public final class CamundaImmutables {
 
   public static ImmutableIdentityLink identityLink(final IdentityLink identityLink) {
     return ImmutableIdentityLink.builder().from(identityLink).build();
+  }
+
+  public static ImmutableIncident incident(final Incident incident) {
+    return ImmutableIncident.builder().from(incident).build();
   }
 
   public static ImmutableJob job(final Job job) {

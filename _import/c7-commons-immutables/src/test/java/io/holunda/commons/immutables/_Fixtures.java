@@ -10,6 +10,7 @@ import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
+import org.camunda.bpm.engine.runtime.Incident;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessElementInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
@@ -796,6 +797,82 @@ public enum _Fixtures {
     @Override
     public String getProcessInstanceId() {
       return PROCESS_INSTANCE_ID;
+    }
+  };
+
+  public static final Incident INCIDENT = new Incident() {
+    String id = uuid();
+    String rootId = uuid();
+    String causeId = uuid();
+
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public Date getIncidentTimestamp() {
+      return DATE_NOW;
+    }
+
+    @Override
+    public String getIncidentType() {
+      return Incident.FAILED_JOB_HANDLER_TYPE;
+    }
+
+    @Override
+    public String getIncidentMessage() {
+      return "the message";
+    }
+
+    @Override
+    public String getExecutionId() {
+      return EXECUTION_ID;
+    }
+
+    @Override
+    public String getActivityId() {
+      return ACTIVITY_ID;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
+    }
+
+    @Override
+    public String getProcessDefinitionId() {
+      return PROCESS_DEFINITION_ID;
+    }
+
+    @Override
+    public String getCauseIncidentId() {
+      return causeId;
+    }
+
+    @Override
+    public String getRootCauseIncidentId() {
+      return rootId;
+    }
+
+    @Override
+    public String getConfiguration() {
+      return "the-configuration";
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public String getJobDefinitionId() {
+      return "job-definition";
+    }
+
+    @Override
+    public String getHistoryConfiguration() {
+      return "historic-configuration";
     }
   };
 }
