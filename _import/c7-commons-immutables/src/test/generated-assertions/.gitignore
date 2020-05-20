@@ -1,2 +1,5 @@
-*
+#
+# All generated files are ignored, but the folder itself is checked in.
+#
 !.gitignore
+*
