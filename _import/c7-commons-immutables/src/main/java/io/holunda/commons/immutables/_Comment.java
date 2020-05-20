@@ -25,17 +25,14 @@ public interface _Comment extends Comment, CurrentTimestamp {
   }
 
   @Override
-  @Nullable
   String getTaskId();
 
   @Override
-  @Nullable
   String getProcessInstanceId();
 
   @Override
-  default String getRootProcessInstanceId() {
-    return getProcessInstanceId();
-  }
+  @Nullable
+  String getRootProcessInstanceId();
 
   @Override
   @Nullable

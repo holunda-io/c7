@@ -13,6 +13,7 @@ import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.runtime.TransitionInstance;
 import org.camunda.bpm.engine.task.Attachment;
+import org.camunda.bpm.engine.task.Comment;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.IdentityLinkType;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -533,4 +534,46 @@ public enum _Fixtures {
     }
   };
 
+  public static final Comment COMMENT = new Comment() {
+    String id = uuid();
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public String getUserId() {
+      return USER_ID;
+    }
+
+    @Override
+    public Date getTime() {
+      return DATE_NOW;
+    }
+
+    @Override
+    public String getTaskId() {
+      return TASK_ID;
+    }
+
+    @Override
+    public String getRootProcessInstanceId() {
+      return null;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
+    }
+
+    @Override
+    public String getFullMessage() {
+      return "the message";
+    }
+
+    @Override
+    public Date getRemovalTime() {
+      return DATE_TOMORROW;
+    }
+  };
 }
