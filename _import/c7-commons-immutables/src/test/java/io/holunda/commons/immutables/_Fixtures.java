@@ -11,6 +11,7 @@ import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Job;
+import org.camunda.bpm.engine.runtime.ProcessElementInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.runtime.TransitionInstance;
 import org.camunda.bpm.engine.task.Attachment;
@@ -772,6 +773,29 @@ public enum _Fixtures {
     @Override
     public String getTenantId() {
       return TENANT_ID;
+    }
+  };
+
+  public static final ProcessElementInstance PROCESS_ELEMENT_INSTANCE = new ProcessElementInstance() {
+    String id = uuid();
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public String getParentActivityInstanceId() {
+      return ACTIVITY_INSTANCE.getId();
+    }
+
+    @Override
+    public String getProcessDefinitionId() {
+      return PROCESS_DEFINITION_ID;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
     }
   };
 }
