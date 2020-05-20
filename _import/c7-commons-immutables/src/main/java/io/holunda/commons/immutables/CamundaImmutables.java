@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.function.Supplier;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.identity.Group;
+import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.calendar.DateTimeUtil;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
@@ -56,6 +58,10 @@ public final class CamundaImmutables {
     return ImmutableExecution.builder().from(execution).build();
   }
 
+  public static ImmutableGroup group(final Group group) {
+    return ImmutableGroup.builder().from(group).build();
+  }
+
   public static ImmutableIdentityLink identityLink(final IdentityLink identityLink) {
     return ImmutableIdentityLink.builder().from(identityLink).build();
   }
@@ -82,6 +88,10 @@ public final class CamundaImmutables {
 
   public static ImmutableTask task(final Task task) {
     return ImmutableTask.builder().from(task).build();
+  }
+
+  public static ImmutableTenant tenant(final Tenant tenant) {
+    return ImmutableTenant.builder().from(tenant).build();
   }
 
   public static ImmutableUser user(final User user) {

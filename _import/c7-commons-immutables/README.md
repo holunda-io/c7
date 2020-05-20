@@ -15,7 +15,10 @@ Immutable implementations of camunda api interfaces.
 * Execution
 * IdentityLink
 * Incident
+* Group
 * Job
 * ProcessElementInstance
 * ProcessInstance
 * Task
+* Tenant
+* User

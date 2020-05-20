@@ -7,6 +7,8 @@ import java.util.UUID;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.identity.Group;
+import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.event.EventType;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
@@ -937,4 +939,57 @@ public enum _Fixtures {
     }
   };
 
+  public static final Group GROUP = new Group() {
+    @Override
+    public String getId() {
+      return GROUP_ID;
+    }
+
+    @Override
+    public void setId(String id) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public String getName() {
+      return "Name of the Group";
+    }
+
+    @Override
+    public void setName(String name) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public String getType() {
+      return "some type";
+    }
+
+    @Override
+    public void setType(String string) {
+      throw UNMODIFIABLE;
+    }
+  };
+
+  public static final Tenant TENANT = new Tenant() {
+    @Override
+    public String getId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public void setId(String id) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public String getName() {
+      return "tenant name";
+    }
+
+    @Override
+    public void setName(String name) {
+      throw UNMODIFIABLE;
+    }
+  };
 }
