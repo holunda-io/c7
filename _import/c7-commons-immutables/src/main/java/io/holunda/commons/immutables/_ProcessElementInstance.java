@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableProcessElementInstance.class)
 @JsonSerialize(as = ImmutableProcessElementInstance.class)
-public interface _ProcessElementInstance extends ProcessElementInstance {
+interface _ProcessElementInstance extends ProcessElementInstance {
 
   @Override
   @Nullable

@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableIncident.class)
 @JsonSerialize(as = ImmutableIncident.class)
-public interface _Incident extends Incident, CurrentTimestamp {
+interface _Incident extends Incident, CurrentTimestamp {
 
   @Override
   default Date getIncidentTimestamp() {

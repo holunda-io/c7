@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableExecution.class)
 @JsonSerialize(as = ImmutableExecution.class)
-public interface _Execution extends Execution {
+interface _Execution extends Execution {
 
   @Nullable
   @Override

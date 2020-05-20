@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableProcessInstance.class)
 @JsonSerialize(as = ImmutableProcessInstance.class)
-public interface _ProcessInstance extends ProcessInstanceWithVariables, Execution {
+interface _ProcessInstance extends ProcessInstanceWithVariables, Execution {
 
   @Override
   default String getProcessInstanceId() {

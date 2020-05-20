@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableBatch.class)
 @JsonSerialize(as = ImmutableBatch.class)
-public interface _Batch extends Batch {
+interface _Batch extends Batch {
 
   @Override
   @Nullable

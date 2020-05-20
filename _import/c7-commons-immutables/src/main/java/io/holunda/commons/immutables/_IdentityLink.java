@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableIdentityLink.class)
 @JsonSerialize(as = ImmutableIdentityLink.class)
-public interface _IdentityLink extends IdentityLink {
+interface _IdentityLink extends IdentityLink {
 
   /**
    * If the identity link involves a user, then this will be a non-null id of a user. That userId can be used to query for user information

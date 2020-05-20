@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 @JsonDeserialize(as = ImmutableJob.class)
 @JsonSerialize(as = ImmutableJob.class)
 @CamundaPojoStyle
-public interface _Job extends Job, CurrentTimestamp {
+interface _Job extends Job, CurrentTimestamp {
 
 
   @Override

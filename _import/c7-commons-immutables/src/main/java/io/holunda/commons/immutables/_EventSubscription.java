@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableEventSubscription.class)
 @JsonSerialize(as = ImmutableEventSubscription.class)
-public interface _EventSubscription extends EventSubscription, CurrentTimestamp {
+interface _EventSubscription extends EventSubscription, CurrentTimestamp {
 
   @Nullable
   @Override

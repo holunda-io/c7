@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableAttachment.class)
 @JsonSerialize(as = ImmutableAttachment.class)
-public interface _Attachment  extends Attachment, CurrentTimestamp {
+interface _Attachment  extends Attachment, CurrentTimestamp {
 
   @Override
   @Nullable
