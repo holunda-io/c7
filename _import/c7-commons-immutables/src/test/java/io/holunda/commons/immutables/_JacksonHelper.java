@@ -11,7 +11,6 @@ public class _JacksonHelper {
     return new JsonMapper<>(OBJECT_MAPPER,type);
   }
 
-
   public static class JsonMapper<T> {
 
     private final ObjectMapper om;
@@ -21,7 +20,6 @@ public class _JacksonHelper {
       this.om = om;
       this.type = type;
     }
-
 
     public T fromJson(String json) {
       try {
