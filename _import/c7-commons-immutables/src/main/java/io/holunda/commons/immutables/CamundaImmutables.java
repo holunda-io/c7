@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.function.Supplier;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.calendar.DateTimeUtil;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
@@ -23,6 +24,7 @@ import org.immutables.value.Value.Style.ImplementationVisibility;
 import org.jetbrains.annotations.NotNull;
 
 public final class CamundaImmutables {
+
   static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
   static Supplier<Date> NOW_SUPPLIER = () -> DateTimeUtil.now().toDate();
 
@@ -80,6 +82,10 @@ public final class CamundaImmutables {
 
   public static ImmutableTask task(final Task task) {
     return ImmutableTask.builder().from(task).build();
+  }
+
+  public static ImmutableUser user(final User user) {
+    return ImmutableUser.builder().from(user).build();
   }
 
   enum ImmutablesConfiguration {

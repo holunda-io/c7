@@ -1,10 +1,13 @@
 package io.holunda.commons.immutables;
 
+import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
+
 import java.util.Date;
 import java.util.UUID;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.event.EventType;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
@@ -55,74 +58,75 @@ public enum _Fixtures {
   }
 
   public static final Batch BATCH = new Batch() {
-      final String id = uuid();
-      final String seedJobDefinitionId = uuid();
-      final String monitorJobDefinitionId = uuid();
-      final String batchJobDefinitionId = uuid();
+    final String id = uuid();
+    final String seedJobDefinitionId = uuid();
+    final String monitorJobDefinitionId = uuid();
+    final String batchJobDefinitionId = uuid();
 
-      @Override
-      public String getId() {
-        return id;
-      }
+    @Override
+    public String getId() {
+      return id;
+    }
 
-      @Override
-      public String getType() {
-        return BATCH_TYPE;
-      }
+    @Override
+    public String getType() {
+      return BATCH_TYPE;
+    }
 
-      @Override
-      public int getTotalJobs() {
-        return 10;
-      }
+    @Override
+    public int getTotalJobs() {
+      return 10;
+    }
 
-      @Override
-      public int getJobsCreated() {
-        return 10;
-      }
+    @Override
+    public int getJobsCreated() {
+      return 10;
+    }
 
-      @Override
-      public int getBatchJobsPerSeed() {
-        return 10;
-      }
+    @Override
+    public int getBatchJobsPerSeed() {
+      return 10;
+    }
 
-      @Override
-      public int getInvocationsPerBatchJob() {
-        return 10;
-      }
+    @Override
+    public int getInvocationsPerBatchJob() {
+      return 10;
+    }
 
-      @Override
-      public String getSeedJobDefinitionId() {
-        return seedJobDefinitionId;
-      }
+    @Override
+    public String getSeedJobDefinitionId() {
+      return seedJobDefinitionId;
+    }
 
-      @Override
-      public String getMonitorJobDefinitionId() {
-        return monitorJobDefinitionId;
-      }
+    @Override
+    public String getMonitorJobDefinitionId() {
+      return monitorJobDefinitionId;
+    }
 
-      @Override
-      public String getBatchJobDefinitionId() {
-        return batchJobDefinitionId;
-      }
+    @Override
+    public String getBatchJobDefinitionId() {
+      return batchJobDefinitionId;
+    }
 
-      @Override
-      public String getTenantId() {
-        return TENANT_ID;
-      }
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
 
-      @Override
-      public String getCreateUserId() {
-        return USER_ID;
-      }
+    @Override
+    public String getCreateUserId() {
+      return USER_ID;
+    }
 
-      @Override
-      public boolean isSuspended() {
-        return true;
-      }
-    };
+    @Override
+    public boolean isSuspended() {
+      return true;
+    }
+  };
 
   public static final IdentityLink IDENTITY_LINK = new IdentityLink() {
     final String id = uuid();
+
     @Override
     public String getId() {
       return id;
@@ -234,6 +238,7 @@ public enum _Fixtures {
 
   public static final EventSubscription EVENT_SUBSCRIPTION = new EventSubscription() {
     String id = uuid();
+
     @Override
     public String getId() {
       return id;
@@ -346,6 +351,7 @@ public enum _Fixtures {
 
   public static final Attachment ATTACHMENT = new Attachment() {
     String id = uuid();
+
     @Override
     public String getId() {
       return id;
@@ -358,7 +364,7 @@ public enum _Fixtures {
 
     @Override
     public void setName(String name) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -368,7 +374,7 @@ public enum _Fixtures {
 
     @Override
     public void setDescription(String description) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -489,9 +495,10 @@ public enum _Fixtures {
   public static final ProcessInstanceWithVariables PROCESS_INSTANCE = new ProcessInstanceWithVariables() {
 
     String id = uuid();
+
     @Override
     public VariableMap getVariables() {
-      return Variables.putValue("foo","bar");
+      return Variables.putValue("foo", "bar");
     }
 
     @Override
@@ -542,6 +549,7 @@ public enum _Fixtures {
 
   public static final Comment COMMENT = new Comment() {
     String id = uuid();
+
     @Override
     public String getId() {
       return id;
@@ -596,7 +604,7 @@ public enum _Fixtures {
 
     @Override
     public void setName(String name) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -606,7 +614,7 @@ public enum _Fixtures {
 
     @Override
     public void setDescription(String description) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -616,7 +624,7 @@ public enum _Fixtures {
 
     @Override
     public void setPriority(int priority) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -626,7 +634,7 @@ public enum _Fixtures {
 
     @Override
     public void setOwner(String owner) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -636,7 +644,7 @@ public enum _Fixtures {
 
     @Override
     public void setAssignee(String assignee) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -646,7 +654,7 @@ public enum _Fixtures {
 
     @Override
     public void setDelegationState(DelegationState delegationState) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -671,7 +679,7 @@ public enum _Fixtures {
 
     @Override
     public void setCaseInstanceId(String caseInstanceId) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -701,7 +709,7 @@ public enum _Fixtures {
 
     @Override
     public void setDueDate(Date dueDate) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -711,17 +719,17 @@ public enum _Fixtures {
 
     @Override
     public void setFollowUpDate(Date followUpDate) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
     public void delegate(String userId) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
     public void setParentTaskId(String parentTaskId) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
 
     @Override
@@ -746,7 +754,7 @@ public enum _Fixtures {
 
     @Override
     public void setTenantId(String tenantId) {
-      throw CamundaImmutables.UNMODIFIABLE;
+      throw UNMODIFIABLE;
     }
   };
 
@@ -779,6 +787,7 @@ public enum _Fixtures {
 
   public static final ProcessElementInstance PROCESS_ELEMENT_INSTANCE = new ProcessElementInstance() {
     String id = uuid();
+
     @Override
     public String getId() {
       return id;
@@ -875,4 +884,57 @@ public enum _Fixtures {
       return "historic-configuration";
     }
   };
+
+  public static final User USER = new User() {
+    @Override
+    public String getId() {
+      return USER_ID;
+    }
+
+    @Override
+    public void setId(String id) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public String getFirstName() {
+      return "Dagobert";
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public String getLastName() {
+      return "Duck";
+    }
+
+    @Override
+    public void setEmail(String email) {
+      throw UNMODIFIABLE;
+    }
+
+    @Override
+    public String getEmail() {
+      return "dagobert@duck.eh";
+    }
+
+    @Override
+    public String getPassword() {
+      return "password";
+    }
+
+    @Override
+    public void setPassword(String password) {
+      throw UNMODIFIABLE;
+    }
+  };
+
 }
