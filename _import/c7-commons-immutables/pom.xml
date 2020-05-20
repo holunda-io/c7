@@ -6,7 +6,7 @@
   <artifactId>camunda-commons-immutables</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <url>https://github.com/jangalinski/camunda-commons-immutables/</url>
+  <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -417,16 +417,16 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:jangalinski/camunda-commons-immutables.git</connection>
-    <url>scm:git:git@github.com:jangalinski/camunda-commons-immutables.git</url>
-    <developerConnection>scm:git:git@github.com:jangalinski/camunda-commons-immutables.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</connection>
+    <url>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
     <site>
       <id>README</id>
-      <url>https://github.com/jangalinski/camunda-commons-immutables</url>
+      <url>https://github.com/holunda-io/camunda-commons-immutables</url>
     </site>
     <snapshotRepository>
       <id>ossrh</id>
