@@ -28,6 +28,7 @@ public class ProcessInstanceTest extends  _BasicImmutableTest<ImmutableProcessIn
     assertThat(dto).hasCaseInstanceId(CASE_INSTANCE_ID);
     assertThat(dto).isSuspended();
     assertThat(dto).isEnded();
+    org.assertj.core.api.Assertions.assertThat(dto.getVariables().get("foo")).isEqualTo("bar");
   }
 
   @Override
