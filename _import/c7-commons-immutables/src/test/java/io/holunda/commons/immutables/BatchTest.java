@@ -3,30 +3,28 @@ package io.holunda.commons.immutables;
 import static io.holunda.commons.immutables.Assertions.assertThat;
 import static io.holunda.commons.immutables._Fixtures.uuid;
 
-import org.junit.Ignore;
-
-@Ignore
 public class BatchTest extends _BasicImmutableTest<ImmutableBatch> {
 
   public BatchTest() {
     super(ImmutableBatch.class);
   }
 
-
   @Override
   public void factory_method() {
     ImmutableBatch dto = createDto();
 
-    assertThat(dto).isSuspended();
-    assertThat(dto).hasCreateUserId(_Fixtures.BATCH.getCreateUserId());
     assertThat(dto).hasId(_Fixtures.BATCH.getId());
-    assertThat(dto).hasBatchJobDefinitionId(_Fixtures.BATCH.getBatchJobDefinitionId());
+    assertThat(dto).hasType(_Fixtures.BATCH.getType());
+    assertThat(dto).hasTotalJobs(_Fixtures.BATCH.getTotalJobs());
+    assertThat(dto).hasJobsCreated(_Fixtures.BATCH.getJobsCreated());
     assertThat(dto).hasBatchJobsPerSeed(_Fixtures.BATCH.getBatchJobsPerSeed());
     assertThat(dto).hasInvocationsPerBatchJob(_Fixtures.BATCH.getInvocationsPerBatchJob());
-    assertThat(dto).hasJobsCreated(_Fixtures.BATCH.getJobsCreated());
-    assertThat(dto).hasTotalJobs(_Fixtures.BATCH.getTotalJobs());
+    assertThat(dto).hasSeedJobDefinitionId(_Fixtures.BATCH.getSeedJobDefinitionId());
     assertThat(dto).hasMonitorJobDefinitionId(_Fixtures.BATCH.getMonitorJobDefinitionId());
-
+    assertThat(dto).hasBatchJobDefinitionId(_Fixtures.BATCH.getBatchJobDefinitionId());
+    assertThat(dto).hasTenantId(_Fixtures.BATCH.getTenantId());
+    assertThat(dto).hasCreateUserId(_Fixtures.BATCH.getCreateUserId());
+    assertThat(dto).isSuspended();
   }
 
   @Override
