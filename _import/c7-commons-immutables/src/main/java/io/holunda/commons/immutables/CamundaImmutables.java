@@ -1,12 +1,16 @@
 package io.holunda.commons.immutables;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.function.Supplier;
 import org.camunda.bpm.engine.batch.Batch;
 import org.camunda.bpm.engine.impl.calendar.DateTimeUtil;
+import org.camunda.bpm.engine.runtime.ActivityInstance;
+import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Job;
+import org.camunda.bpm.engine.runtime.ProcessElementInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.task.Attachment;
@@ -21,12 +25,20 @@ public final class CamundaImmutables {
   static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
   static Supplier<Date> NOW_SUPPLIER = () -> DateTimeUtil.now().toDate();
 
+  public static ImmutableActivityInstance activityInstance(final ActivityInstance activityInstance) {
+    return ImmutableActivityInstance.builder().from(activityInstance).build();
+  }
+
   public static ImmutableAttachment attachment(Attachment attachment) {
     return ImmutableAttachment.builder().from(attachment).build();
   }
 
   public static ImmutableBatch batch(Batch batch) {
     return ImmutableBatch.builder().from(batch).build();
+  }
+
+  public static ImmutableCaseExecution caseExecution(final CaseExecution caseExecution) {
+    return ImmutableCaseExecution.builder().from(caseExecution).build();
   }
 
   public static ImmutableComment comment(Comment comment) {
@@ -47,6 +59,10 @@ public final class CamundaImmutables {
 
   public static ImmutableJob job(final Job job) {
     return ImmutableJob.builder().from(job).build();
+  }
+
+  public static ImmutableProcessElementInstance processElementInstance(final ProcessElementInstance processElementInstance) {
+    return ImmutableProcessElementInstance.builder().from(processElementInstance).build();
   }
 
   public static ImmutableProcessInstance processInstance(final ProcessInstanceWithVariables processInstance) {
@@ -82,6 +98,7 @@ public final class CamundaImmutables {
     public interface CurrentTimestamp {
 
       @NotNull
+      @JsonIgnore
       default Supplier<Date> getNow() {
         return NOW_SUPPLIER;
       }
