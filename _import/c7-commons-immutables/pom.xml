@@ -28,6 +28,9 @@
     <immutables.version>2.8.2</immutables.version>
     <jetbrains-annotations.version>16.0.1</jetbrains-annotations.version>
     <jackson.version>2.10.3</jackson.version>
+    <assertj.version>3.15.0</assertj.version>
+
+    <assertj.generated.dir>src/test/generated-assertions</assertj.generated.dir>
   </properties>
 
   <dependencies>
@@ -68,7 +71,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.15.0</version>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -324,6 +327,50 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+        <version>2.2.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate-assertions</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <targetDir>${assertj.generated.dir}</targetDir>
+          <classes>
+            <param>io.holunda.commons.immutables.ImmutableBatch</param>
+          </classes>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${assertj.generated.dir}</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

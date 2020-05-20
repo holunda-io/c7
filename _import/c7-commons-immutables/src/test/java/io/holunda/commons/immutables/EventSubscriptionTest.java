@@ -1,17 +1,18 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutablesTest.uuid;
-import static io.holunda.commons.immutables.JacksonHelper.jsonMapper;
+import static io.holunda.commons.immutables._Fixtures.uuid;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.holunda.commons.immutables.CamundaImmutablesTest.BasicImmutableTest;
-import io.holunda.commons.immutables.JacksonHelper.JsonMapper;
 import java.util.Date;
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class EventSubscriptionTest implements BasicImmutableTest {
+@Ignore
+public class EventSubscriptionTest extends _BasicImmutableTest<ImmutableEventSubscription> {
 
-  private final JsonMapper<ImmutableEventSubscription> mapper = jsonMapper(ImmutableEventSubscription.class);
+  public EventSubscriptionTest() {
+    super(ImmutableEventSubscription.class);
+  }
 
   @Test
   @Override
@@ -41,5 +42,10 @@ public class EventSubscriptionTest implements BasicImmutableTest {
 
     String json = mapper.toJson(dto);
     assertThat(mapper.fromJson(json)).isEqualTo(dto);
+  }
+
+  @Override
+  ImmutableEventSubscription createDto() {
+    return CamundaImmutables.eventSubscription(null);
   }
 }

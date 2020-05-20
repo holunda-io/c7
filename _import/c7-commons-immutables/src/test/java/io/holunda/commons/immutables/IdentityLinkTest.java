@@ -1,18 +1,22 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutablesTest.uuid;
-import static io.holunda.commons.immutables.JacksonHelper.jsonMapper;
-import static org.assertj.core.api.Assertions.assertThat;
+import static io.holunda.commons.immutables._Fixtures.uuid;
 
-import io.holunda.commons.immutables.CamundaImmutablesTest.BasicImmutableTest;
-import io.holunda.commons.immutables.JacksonHelper.JsonMapper;
-import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.IdentityLinkType;
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class IdentityLinkTest implements BasicImmutableTest {
+@Ignore
+public class IdentityLinkTest extends _BasicImmutableTest<ImmutableIdentityLink> {
 
-  private final JsonMapper<ImmutableIdentityLink> mapper = jsonMapper(ImmutableIdentityLink.class);
+  public IdentityLinkTest() {
+    super(ImmutableIdentityLink.class);
+  }
+
+  @Override
+  public void factory_method() {
+    super.factory_method();
+  }
 
   @Test
   @Override
@@ -24,21 +28,8 @@ public class IdentityLinkTest implements BasicImmutableTest {
       .build();
   }
 
-  @Test
   @Override
-  public void convert_json() {
-    ImmutableIdentityLink dto = ImmutableIdentityLink.builder()
-      .id(uuid())
-      .type(IdentityLinkType.ASSIGNEE)
-      .taskId(uuid())
-      .groupId("group")
-      .tenantId("tenant")
-      .processDefId("defId")
-      .userId("user")
-      .build();
-
-    String json = mapper.toJson(dto);
-
-    assertThat(mapper.fromJson(json)).isEqualTo(dto);
+  ImmutableIdentityLink createDto() {
+    return CamundaImmutables.identityLink(null);
   }
 }

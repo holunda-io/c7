@@ -1,16 +1,17 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutablesTest.uuid;
-import static io.holunda.commons.immutables.JacksonHelper.jsonMapper;
+import static io.holunda.commons.immutables._Fixtures.uuid;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.holunda.commons.immutables.CamundaImmutablesTest.BasicImmutableTest;
-import io.holunda.commons.immutables.JacksonHelper.JsonMapper;
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class JobTest implements BasicImmutableTest {
+@Ignore
+public class JobTest extends _BasicImmutableTest<ImmutableJob> {
 
-  private final JsonMapper<ImmutableJob> mapper = jsonMapper(ImmutableJob.class);
+  public JobTest() {
+    super(ImmutableJob.class);
+  }
 
 
   @Test
@@ -31,22 +32,8 @@ public class JobTest implements BasicImmutableTest {
     assertThat(job.getId()).isNotBlank();
   }
 
-  @Test
   @Override
-  public void convert_json() {
-    ImmutableJob job = ImmutableJob.builder()
-      .id(uuid())
-      .processInstanceId(uuid())
-      .processDefinitionId(uuid())
-      .processDefinitionKey("process")
-      .executionId(uuid())
-      .deploymentId(uuid())
-      .jobDefinitionId(uuid())
-      .priority(50)
-      .build();
-
-    String json = mapper.toJson(job);
-
-    assertThat(mapper.fromJson(json)).isEqualTo(job);
+  ImmutableJob createDto() {
+    return CamundaImmutables.job(null);
   }
 }

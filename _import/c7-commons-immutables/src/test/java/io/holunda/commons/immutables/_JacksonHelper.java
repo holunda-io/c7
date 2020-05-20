@@ -3,7 +3,7 @@ package io.holunda.commons.immutables;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JacksonHelper {
+public class _JacksonHelper {
 
   public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 

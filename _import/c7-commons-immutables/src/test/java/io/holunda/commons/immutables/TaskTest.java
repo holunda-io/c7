@@ -1,16 +1,16 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutablesTest.uuid;
-import static io.holunda.commons.immutables.JacksonHelper.jsonMapper;
-import static org.assertj.core.api.Assertions.assertThat;
+import static io.holunda.commons.immutables._Fixtures.uuid;
 
-import io.holunda.commons.immutables.CamundaImmutablesTest.BasicImmutableTest;
-import io.holunda.commons.immutables.JacksonHelper.JsonMapper;
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class TaskTest implements BasicImmutableTest {
+@Ignore
+public class TaskTest extends _BasicImmutableTest<ImmutableTask> {
 
-  private final JsonMapper<ImmutableTask> mapper = jsonMapper(ImmutableTask.class);
+  public TaskTest() {
+    super(ImmutableTask.class);
+  }
 
   @Test
   @Override
@@ -22,18 +22,8 @@ public class TaskTest implements BasicImmutableTest {
       .build();
   }
 
-  @Test
   @Override
-  public void convert_json() {
-    ImmutableTask dto = ImmutableTask.builder()
-      .id(uuid())
-      .name("The Task")
-      .description("the description")
-      .executionId(uuid())
-      .taskDefinitionKey("task")
-      .build();
-
-    String json = mapper.toJson(dto);
-    assertThat(mapper.fromJson(json)).isEqualTo(dto);
+  ImmutableTask createDto() {
+    return CamundaImmutables.task(null);
   }
 }

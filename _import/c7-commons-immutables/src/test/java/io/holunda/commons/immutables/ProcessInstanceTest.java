@@ -1,20 +1,21 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutablesTest.uuid;
-import static io.holunda.commons.immutables.JacksonHelper.jsonMapper;
+import static io.holunda.commons.immutables._Fixtures.uuid;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.holunda.commons.immutables.CamundaImmutablesTest.BasicImmutableTest;
-import io.holunda.commons.immutables.JacksonHelper.JsonMapper;
 import java.util.UUID;
-import org.junit.Test;
+import org.junit.Ignore;
 
-public class ProcessInstanceTest implements BasicImmutableTest {
+@Ignore
+public class ProcessInstanceTest extends  _BasicImmutableTest<ImmutableProcessInstance> {
 
   private static final String ID = UUID.randomUUID().toString();
-  private final JsonMapper<ImmutableProcessInstance> mapper = jsonMapper(ImmutableProcessInstance.class);
 
-  @Test
+  public ProcessInstanceTest() {
+    super(ImmutableProcessInstance.class);
+  }
+
+
   @Override
   public void create_minimal_dto() {
 
@@ -27,16 +28,9 @@ public class ProcessInstanceTest implements BasicImmutableTest {
 
   }
 
-  @Test
+
   @Override
-  public void convert_json() {
-    ImmutableProcessInstance dto = ImmutableProcessInstance.builder()
-      .id(ID)
-      .processDefinitionId(uuid())
-      .build();
-
-    String json = mapper.toJson(dto);
-
-    assertThat(mapper.fromJson(json)).isEqualTo(dto);
+  ImmutableProcessInstance createDto() {
+    return CamundaImmutables.processInstance(null);
   }
 }
