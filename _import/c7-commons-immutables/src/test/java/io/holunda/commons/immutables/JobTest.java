@@ -8,9 +8,6 @@ import static io.holunda.commons.immutables._Fixtures.TENANT_ID;
 import static io.holunda.commons.immutables._Fixtures.uuid;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Date;
-import org.junit.Test;
-
 public class JobTest extends _BasicImmutableTest<ImmutableJob> {
 
   public JobTest() {
