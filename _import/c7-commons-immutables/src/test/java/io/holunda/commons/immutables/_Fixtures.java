@@ -2,14 +2,17 @@ package io.holunda.commons.immutables;
 
 import java.util.Date;
 import java.util.UUID;
+import javax.activation.MimeType;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
 import org.camunda.bpm.engine.impl.event.EventType;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
+import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.TransitionInstance;
+import org.camunda.bpm.engine.task.Attachment;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.IdentityLinkType;
 
@@ -19,6 +22,9 @@ public enum _Fixtures {
   public static final String ACTIVITY_ID = "activityId";
   public static final String ACTIVITY_NAME = "Activity Name";
   public static final String BATCH_TYPE = "batchType";
+  public static final String CASE_DEFINITION_KEY = "theCase";
+  public static final String CASE_DEFINITION_ID = CASE_DEFINITION_KEY + ":1:1";
+  public static final String CASE_INSTANCE_ID = uuid();
   public static final Date DATE_NOW = DateUtil.now();
   public static final Date DATE_TOMORROW = DateUtil.tomorrow();
 
@@ -325,6 +331,148 @@ public enum _Fixtures {
     @Override
     public String getProcessInstanceId() {
       return PROCESS_INSTANCE_ID;
+    }
+  };
+
+  public static final Attachment ATTACHMENT = new Attachment() {
+    String id = uuid();
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public String getName() {
+      return "name";
+    }
+
+    @Override
+    public void setName(String name) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getDescription() {
+      return "description";
+    }
+
+    @Override
+    public void setDescription(String description) {
+      throw CamundaImmutables.UNMODIFIABLE;
+    }
+
+    @Override
+    public String getType() {
+      return "application/json";
+    }
+
+    @Override
+    public String getTaskId() {
+      return TASK_ID;
+    }
+
+    @Override
+    public String getProcessInstanceId() {
+      return PROCESS_INSTANCE_ID;
+    }
+
+    @Override
+    public String getUrl() {
+      return "http://localhost";
+    }
+
+    @Override
+    public Date getCreateTime() {
+      return DATE_NOW;
+    }
+
+    @Override
+    public String getRootProcessInstanceId() {
+      return null;
+    }
+
+    @Override
+    public Date getRemovalTime() {
+      return DATE_TOMORROW;
+    }
+  };
+
+  public static final CaseExecution CASE_EXECUTION = new CaseExecution() {
+    String id = uuid();
+
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public String getCaseInstanceId() {
+      return CASE_INSTANCE_ID;
+    }
+
+    @Override
+    public String getCaseDefinitionId() {
+      return CASE_DEFINITION_ID;
+    }
+
+    @Override
+    public String getActivityId() {
+      return ACTIVITY_ID;
+    }
+
+    @Override
+    public String getActivityName() {
+      return ACTIVITY_NAME;
+    }
+
+    @Override
+    public String getActivityType() {
+      return ActivityTypes.TASK_USER_TASK;
+    }
+
+    @Override
+    public String getActivityDescription() {
+      return "the description";
+    }
+
+    @Override
+    public String getParentId() {
+      return null;
+    }
+
+    @Override
+    public boolean isRequired() {
+      return true;
+    }
+
+    @Override
+    public boolean isAvailable() {
+      return true;
+    }
+
+    @Override
+    public boolean isActive() {
+      return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+      return true;
+    }
+
+    @Override
+    public boolean isDisabled() {
+      return true;
+    }
+
+    @Override
+    public boolean isTerminated() {
+      return true;
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
     }
   };
 }

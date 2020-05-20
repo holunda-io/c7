@@ -34,7 +34,6 @@ public interface _Attachment  extends Attachment, CurrentTimestamp {
   String getTaskId();
 
   @Override
-  @Nullable
   String getProcessInstanceId();
 
   @Override
@@ -47,6 +46,7 @@ public interface _Attachment  extends Attachment, CurrentTimestamp {
   }
 
   @Override
+  @Nullable
   default String getRootProcessInstanceId() {
     return getProcessInstanceId();
   }
