@@ -5,6 +5,8 @@
   <groupId>io.holunda.commons</groupId>
   <artifactId>camunda-commons-immutables</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+  <description>Collection of Camunda Immutables</description>
 
   <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
 
@@ -138,32 +140,6 @@
               </path>
             </annotationProcessorPaths>
           </configuration>
-          <executions>
-            <!-- Replacing default-compile as it is treated specially by maven -->
-            <execution>
-              <id>default-compile</id>
-              <phase>none</phase>
-            </execution>
-            <!-- Replacing default-testCompile as it is treated specially by maven -->
-            <execution>
-              <id>default-testCompile</id>
-              <phase>none</phase>
-            </execution>
-            <execution>
-              <id>java-compile</id>
-              <phase>compile</phase>
-              <goals>
-                <goal>compile</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>java-test-compile</id>
-              <phase>test-compile</phase>
-              <goals>
-                <goal>testCompile</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
 
         <plugin>
@@ -312,6 +288,50 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.assertj</groupId>
+          <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+          <version>2.2.0</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>generate-assertions</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <targetDir>${assertj.generated.dir}</targetDir>
+            <packages>
+              <param>io.holunda.commons.immutables</param>
+            </packages>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.assertj</groupId>
+              <artifactId>assertj-core</artifactId>
+              <version>${assertj.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.9.1</version>
+          <executions>
+            <execution>
+              <id>add-source</id>
+              <phase>generate-test-sources</phase>
+              <goals>
+                <goal>add-test-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>${assertj.generated.dir}</source>
+                </sources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -331,46 +351,10 @@
       <plugin>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
-        <version>2.2.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>generate-assertions</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <targetDir>${assertj.generated.dir}</targetDir>
-          <packages>
-            <param>io.holunda.commons.immutables</param>
-          </packages>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.9.1</version>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${assertj.generated.dir}</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
@@ -444,6 +428,15 @@
       <name>Jan Galinski</name>
       <roles>
         <role>Product Owner</role>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+    <developer>
+      <id>zambrovski</id>
+      <name>Simon Zambrovski</name>
+      <roles>
         <role>Developer</role>
       </roles>
       <organization>Holisticon AG</organization>
