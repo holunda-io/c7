@@ -2,11 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.holunda.lib</groupId>
-  <artifactId>camunda-immutables</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>io.holunda.commons</groupId>
+  <artifactId>camunda-commons-immutables</artifactId>
+  <version>0.0.1</version>
+  <name>${project.artifactId}</name>
+  <description>Collection of Camunda Immutables</description>
 
-  <url>https://github.com/jangalinski/camunda-imutables/</url>
+  <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,27 +20,73 @@
     <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
     <!-- disable javadoc linter for JDK8 to not fail on incomplete javadoc -->
     <additionalparam>-Xdoclint:none</additionalparam>
-    <!-- Skip instrumentalization by default -->
-    <jacoco.skip>true</jacoco.skip>
     <!-- holunda GPG key -->
     <gpg.keyname>86F8C6FC</gpg.keyname>
 
     <!-- dependencies -->
     <camunda.version>7.12.0</camunda.version>
+    <immutables.version>2.8.2</immutables.version>
+    <jetbrains-annotations.version>16.0.1</jetbrains-annotations.version>
+    <jackson.version>2.10.3</jackson.version>
+    <assertj.version>3.15.0</assertj.version>
+
+    <assertj.generated.dir>src/test/generated-assertions</assertj.generated.dir>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <!-- CAMUNDA -->
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>${camunda.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.immutables</groupId>
+      <artifactId>value</artifactId>
+      <version>${immutables.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>${jetbrains-annotations.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.assert</groupId>
+      <artifactId>camunda-bpm-assert</artifactId>
+      <version>5.0.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>3.3.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
@@ -64,12 +112,6 @@
                 <goal>prepare-agent</goal>
               </goals>
             </execution>
-            <execution>
-              <id>pre-integration-test</id>
-              <goals>
-                <goal>prepare-agent-integration</goal>
-              </goals>
-            </execution>
           </executions>
         </plugin>
 
@@ -82,33 +124,14 @@
             <encoding>${project.build.sourceEncoding}</encoding>
             <source>${maven.compiler.source}</source>
             <target>${maven.compiler.target}</target>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.immutables</groupId>
+                <artifactId>value</artifactId>
+                <version>${immutables.version}</version>
+              </path>
+            </annotationProcessorPaths>
           </configuration>
-          <executions>
-            <!-- Replacing default-compile as it is treated specially by maven -->
-            <execution>
-              <id>default-compile</id>
-              <phase>none</phase>
-            </execution>
-            <!-- Replacing default-testCompile as it is treated specially by maven -->
-            <execution>
-              <id>default-testCompile</id>
-              <phase>none</phase>
-            </execution>
-            <execution>
-              <id>java-compile</id>
-              <phase>compile</phase>
-              <goals>
-                <goal>compile</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>java-test-compile</id>
-              <phase>test-compile</phase>
-              <goals>
-                <goal>testCompile</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
 
         <plugin>
@@ -118,6 +141,21 @@
           <version>3.1.0</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+
+
+        <!-- Unit Tests -->
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.20.1</version>
+          <configuration>
+            <useSystemClassLoader>false</useSystemClassLoader>
+            <shutdown>kill</shutdown>
+            <runOrder>random</runOrder>
+            <!-- Sets the VM argument line used when unit tests are run. -->
+            <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
+            <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener -Xmx1024m -XX:MaxPermSize=256m</argLine>
           </configuration>
         </plugin>
 
@@ -257,6 +295,50 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.assertj</groupId>
+          <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+          <version>2.2.0</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>generate-assertions</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <targetDir>${assertj.generated.dir}</targetDir>
+            <packages>
+              <param>io.holunda.commons.immutables</param>
+            </packages>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.assertj</groupId>
+              <artifactId>assertj-core</artifactId>
+              <version>${assertj.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.9.1</version>
+          <executions>
+            <execution>
+              <id>add-source</id>
+              <phase>generate-test-sources</phase>
+              <goals>
+                <goal>add-test-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>${assertj.generated.dir}</source>
+                </sources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -272,6 +354,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -318,16 +408,16 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:jangalinski/camunda-immutables.git</connection>
-    <url>scm:git:git@github.com:jangalinski/camunda-immuntables.git</url>
-    <developerConnection>scm:git:git@github.com:jangalinski/camunda-immutables.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</connection>
+    <url>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
     <site>
       <id>README</id>
-      <url>https://github.com/jangalinski/camunda-immutables</url>
+      <url>https://github.com/holunda-io/camunda-commons-immutables</url>
     </site>
     <snapshotRepository>
       <id>ossrh</id>
@@ -345,6 +435,15 @@
       <name>Jan Galinski</name>
       <roles>
         <role>Product Owner</role>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+    <developer>
+      <id>zambrovski</id>
+      <name>Simon Zambrovski</name>
+      <roles>
         <role>Developer</role>
       </roles>
       <organization>Holisticon AG</organization>
