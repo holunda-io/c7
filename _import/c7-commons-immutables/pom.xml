@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.commons</groupId>
   <artifactId>camunda-commons-immutables</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <name>${project.artifactId}</name>
   <description>Collection of Camunda Immutables</description>
 
@@ -20,8 +20,6 @@
     <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
     <!-- disable javadoc linter for JDK8 to not fail on incomplete javadoc -->
     <additionalparam>-Xdoclint:none</additionalparam>
-    <!-- holunda GPG key -->
-    <gpg.keyname>86F8C6FC</gpg.keyname>
 
     <!-- dependencies -->
     <camunda.version>7.12.0</camunda.version>
@@ -84,6 +82,12 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <version>3.3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>jsr250-api</artifactId>
+      <version>1.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
