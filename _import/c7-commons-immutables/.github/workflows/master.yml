@@ -50,7 +50,7 @@ jobs:
         servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
 
     - name: Deploy a new version to central
-      run: ./mvnw clean deploy -B -DskipTests -Prelease -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
+      run: ./mvnw clean deploy -B -DskipTests -Prelease -Dgpg.keyname=${{secrets.GPG_KEYNAME}} -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.2
