@@ -47,4 +47,8 @@ interface _Incident extends Incident, CurrentTimestamp {
   @Override
   @Nullable
   String getHistoryConfiguration();
+
+  @Override
+  @Nullable
+  String getFailedActivityId();
 }

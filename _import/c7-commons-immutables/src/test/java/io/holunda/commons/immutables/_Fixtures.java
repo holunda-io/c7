@@ -208,6 +208,11 @@ public enum _Fixtures {
     }
 
     @Override
+    public String getFailedActivityId() {
+      return "failedActivityId";
+    }
+
+    @Override
     public String getDeploymentId() {
       return DEPLOYMENT_ID;
     }
@@ -328,6 +333,11 @@ public enum _Fixtures {
     @Override
     public String[] getIncidentIds() {
       return new String[0];
+    }
+
+    @Override
+    public Incident[] getIncidents() {
+      return new Incident[0];
     }
 
     @Override
@@ -844,6 +854,11 @@ public enum _Fixtures {
     @Override
     public String getActivityId() {
       return ACTIVITY_ID;
+    }
+
+    @Override
+    public String getFailedActivityId() {
+      return "failedActivityId";
     }
 
     @Override

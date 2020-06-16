@@ -45,4 +45,8 @@ interface _Job extends Job, CurrentTimestamp {
   @Override
   @Nullable
   String getTenantId();
+
+  @Override
+  @Nullable
+  String getFailedActivityId();
 }
