@@ -29,5 +29,6 @@ Immutable implementations of camunda api interfaces.
 To release run:
 
 `./mvnw gitflow:release-start`
+
 `./mvnw gitflow:release-finish`
 
