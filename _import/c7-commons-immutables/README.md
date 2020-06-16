@@ -23,3 +23,11 @@ Immutable implementations of camunda api interfaces.
 * Task
 * Tenant
 * User
+
+## Development
+
+To release run:
+
+`./mvnw gitflow:release-start`
+`./mvnw gitflow:release-finish`
+
