@@ -1,6 +1,22 @@
 package io.holunda.commons.immutables;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.holunda.commons.immutables.batch.ImmutableBatch;
+import io.holunda.commons.immutables.identity.ImmutableGroup;
+import io.holunda.commons.immutables.identity.ImmutableTenant;
+import io.holunda.commons.immutables.identity.ImmutableUser;
+import io.holunda.commons.immutables.runtime.ImmutableActivityInstance;
+import io.holunda.commons.immutables.runtime.ImmutableCaseExecution;
+import io.holunda.commons.immutables.runtime.ImmutableEventSubscription;
+import io.holunda.commons.immutables.runtime.ImmutableExecution;
+import io.holunda.commons.immutables.runtime.ImmutableIncident;
+import io.holunda.commons.immutables.runtime.ImmutableJob;
+import io.holunda.commons.immutables.runtime.ImmutableProcessElementInstance;
+import io.holunda.commons.immutables.runtime.ImmutableProcessInstance;
+import io.holunda.commons.immutables.task.ImmutableAttachment;
+import io.holunda.commons.immutables.task.ImmutableComment;
+import io.holunda.commons.immutables.task.ImmutableIdentityLink;
+import io.holunda.commons.immutables.task.ImmutableTask;
 import org.camunda.bpm.engine.batch.Batch;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
@@ -19,8 +35,6 @@ import org.camunda.bpm.engine.task.Attachment;
 import org.camunda.bpm.engine.task.Comment;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.Task;
-import org.immutables.value.Value;
-import org.immutables.value.Value.Style.ImplementationVisibility;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
@@ -28,7 +42,7 @@ import java.util.function.Supplier;
 
 public final class CamundaImmutables {
 
-  static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
+  public static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
   static Supplier<Date> nowSupplier = () -> DateTimeUtil.now().toDate();
 
   public static ImmutableActivityInstance activityInstance(final ActivityInstance activityInstance) {
@@ -99,36 +113,16 @@ public final class CamundaImmutables {
     return ImmutableUser.builder().from(user).build();
   }
 
-  enum ImmutablesConfiguration {
-    ;
-
-    @Value.Style(
-      // Detect names starting with underscore
-      typeAbstract = "_*",
-      defaultAsDefault = true,
-      // Make generated public, leave underscored as package private
-      visibility = ImplementationVisibility.PUBLIC,
-      // Seems unnecessary to have builder or superfluous copy method
-      defaults = @Value.Immutable(
-        builder = true, copy = true, prehash = true
-      )
-    )
-    public @interface CamundaPojoStyle {
-      // empty
-    }
-
-    public interface CurrentTimestamp {
-
-      @NotNull
-      @JsonIgnore
-      default Supplier<Date> getNow() {
-        return nowSupplier;
-      }
-
-    }
-  }
-
   private CamundaImmutables() {
     // do not instantiate
+  }
+
+  public interface CurrentTimestamp {
+
+    @NotNull
+    @JsonIgnore
+    default Supplier<Date> getNow() {
+      return nowSupplier;
+    }
   }
 }

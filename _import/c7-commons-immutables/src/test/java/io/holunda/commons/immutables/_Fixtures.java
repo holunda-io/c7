@@ -1,9 +1,5 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
-
-import java.util.Date;
-import java.util.UUID;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
@@ -28,6 +24,11 @@ import org.camunda.bpm.engine.task.IdentityLinkType;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
+
+import java.util.Date;
+import java.util.UUID;
+
+import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
 public enum _Fixtures {
   ;
