@@ -9,6 +9,7 @@ import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.event.EventType;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
+import org.camunda.bpm.engine.runtime.CaseInstance;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Incident;
@@ -427,7 +428,7 @@ public enum _Fixtures {
   };
 
   public static final CaseExecution CASE_EXECUTION = new CaseExecution() {
-    String id = uuid();
+    final String id = uuid();
 
     @Override
     public String getId() {
@@ -502,6 +503,96 @@ public enum _Fixtures {
     @Override
     public String getTenantId() {
       return TENANT_ID;
+    }
+  };
+
+  public static final CaseInstance CASE_INSTANCE = new CaseInstance() {
+
+    final String id = uuid();
+
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public String getCaseInstanceId() {
+      return CASE_INSTANCE_ID;
+    }
+
+    @Override
+    public String getCaseDefinitionId() {
+      return CASE_DEFINITION_ID;
+    }
+
+    @Override
+    public String getActivityId() {
+      return ACTIVITY_ID;
+    }
+
+    @Override
+    public String getActivityName() {
+      return ACTIVITY_NAME;
+    }
+
+    @Override
+    public String getActivityType() {
+      return ActivityTypes.TASK_USER_TASK;
+    }
+
+    @Override
+    public String getActivityDescription() {
+      return "the description";
+    }
+
+    @Override
+    public String getParentId() {
+      return null;
+    }
+
+    @Override
+    public boolean isRequired() {
+      return true;
+    }
+
+    @Override
+    public boolean isAvailable() {
+      return true;
+    }
+
+    @Override
+    public boolean isActive() {
+      return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+      return true;
+    }
+
+    @Override
+    public boolean isDisabled() {
+      return true;
+    }
+
+    @Override
+    public boolean isTerminated() {
+      return true;
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public String getBusinessKey() {
+      return BUSINESS_KEY;
+    }
+
+    @Override
+    public boolean isCompleted() {
+      return true;
     }
   };
 

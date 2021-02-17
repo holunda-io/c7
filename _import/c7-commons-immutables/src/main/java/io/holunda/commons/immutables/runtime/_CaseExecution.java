@@ -15,6 +15,9 @@ import org.jetbrains.annotations.Nullable;
 interface _CaseExecution extends CaseExecution {
 
   @Override
+  String getId();
+
+  @Override
   @Nullable
   String getCaseInstanceId();
 

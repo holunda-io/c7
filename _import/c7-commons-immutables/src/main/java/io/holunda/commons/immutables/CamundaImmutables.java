@@ -7,6 +7,7 @@ import io.holunda.commons.immutables.identity.ImmutableTenant;
 import io.holunda.commons.immutables.identity.ImmutableUser;
 import io.holunda.commons.immutables.runtime.ImmutableActivityInstance;
 import io.holunda.commons.immutables.runtime.ImmutableCaseExecution;
+import io.holunda.commons.immutables.runtime.ImmutableCaseInstance;
 import io.holunda.commons.immutables.runtime.ImmutableEventSubscription;
 import io.holunda.commons.immutables.runtime.ImmutableExecution;
 import io.holunda.commons.immutables.runtime.ImmutableIncident;
@@ -24,6 +25,7 @@ import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.calendar.DateTimeUtil;
 import org.camunda.bpm.engine.runtime.ActivityInstance;
 import org.camunda.bpm.engine.runtime.CaseExecution;
+import org.camunda.bpm.engine.runtime.CaseInstance;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.Incident;
@@ -59,6 +61,10 @@ public final class CamundaImmutables {
 
   public static ImmutableCaseExecution caseExecution(final CaseExecution caseExecution) {
     return ImmutableCaseExecution.builder().from(caseExecution).build();
+  }
+
+  public static ImmutableCaseInstance caseInstance(final CaseInstance caseInstance) {
+    return ImmutableCaseInstance.builder().from(caseInstance).build();
   }
 
   public static ImmutableComment comment(Comment comment) {

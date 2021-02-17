@@ -16,9 +16,9 @@
 
 ## package org.camunda.bpm.engine.runtime;
 
-* ActivityInstance
+* **ActivityInstance**
 * ActivityInstantiationBuilder
-* CaseExecution
+* **CaseExecution**
 * CaseExecutionCommandBuilder
 * CaseExecutionQuery
 * CaseInstance
