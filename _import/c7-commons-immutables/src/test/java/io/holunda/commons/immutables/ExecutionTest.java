@@ -6,6 +6,7 @@ import static io.holunda.commons.immutables._Fixtures.EXECUTION_ID;
 import static io.holunda.commons.immutables._Fixtures.PROCESS_INSTANCE_ID;
 import static io.holunda.commons.immutables._Fixtures.TENANT_ID;
 
+@SuppressWarnings({"java:S2699"})
 public class ExecutionTest extends _BasicImmutableTest<ImmutableExecution>{
 
   public ExecutionTest() {

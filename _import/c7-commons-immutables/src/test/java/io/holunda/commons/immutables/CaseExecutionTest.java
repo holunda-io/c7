@@ -10,6 +10,7 @@ import static io.holunda.commons.immutables._Fixtures.uuid;
 
 import org.camunda.bpm.engine.ActivityTypes;
 
+@SuppressWarnings({"java:S2699"})
 public class CaseExecutionTest extends _BasicImmutableTest<ImmutableCaseExecution> {
 
   public CaseExecutionTest() {

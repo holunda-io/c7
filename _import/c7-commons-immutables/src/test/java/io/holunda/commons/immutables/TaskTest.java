@@ -18,6 +18,7 @@ import static io.holunda.commons.immutables._Fixtures.uuid;
 import org.camunda.bpm.engine.task.DelegationState;
 import org.camunda.bpm.engine.task.Task;
 
+@SuppressWarnings({"java:S2699"})
 public class TaskTest extends _BasicImmutableTest<ImmutableTask> {
 
   public TaskTest() {

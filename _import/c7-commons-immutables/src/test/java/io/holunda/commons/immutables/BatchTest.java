@@ -3,6 +3,7 @@ package io.holunda.commons.immutables;
 import static io.holunda.commons.immutables.Assertions.assertThat;
 import static io.holunda.commons.immutables._Fixtures.uuid;
 
+@SuppressWarnings({"java:S2699"})
 public class BatchTest extends _BasicImmutableTest<ImmutableBatch> {
 
   public BatchTest() {

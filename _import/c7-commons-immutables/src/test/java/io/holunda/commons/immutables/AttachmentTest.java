@@ -8,6 +8,7 @@ import static io.holunda.commons.immutables._Fixtures.PROCESS_INSTANCE_ID;
 import static io.holunda.commons.immutables._Fixtures.TASK_ID;
 import static io.holunda.commons.immutables._Fixtures.uuid;
 
+@SuppressWarnings({"java:S2699"})
 public class AttachmentTest extends _BasicImmutableTest<ImmutableAttachment>{
 
   public AttachmentTest() {

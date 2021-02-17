@@ -9,13 +9,13 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
 import org.immutables.value.Value;
-import org.immutables.value.Value.Default;
 import org.jetbrains.annotations.Nullable;
 
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableProcessInstance.class)
 @JsonSerialize(as = ImmutableProcessInstance.class)
+@SuppressWarnings("java:S114")
 interface _ProcessInstance extends ProcessInstanceWithVariables, Execution {
 
   @Override

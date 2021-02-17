@@ -4,6 +4,7 @@ import static io.holunda.commons.immutables.Assertions.assertThat;
 import static io.holunda.commons.immutables._Fixtures.GROUP;
 import static io.holunda.commons.immutables._Fixtures.GROUP_ID;
 
+@SuppressWarnings({"java:S2699"})
 public class GroupTest extends _BasicImmutableTest<ImmutableGroup>{
 
   public GroupTest() {

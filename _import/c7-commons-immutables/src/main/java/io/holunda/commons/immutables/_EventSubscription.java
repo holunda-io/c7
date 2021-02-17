@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableEventSubscription.class)
 @JsonSerialize(as = ImmutableEventSubscription.class)
+@SuppressWarnings("java:S114")
 interface _EventSubscription extends EventSubscription, CurrentTimestamp {
 
   @Nullable

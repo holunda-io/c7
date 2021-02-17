@@ -1,8 +1,6 @@
 package io.holunda.commons.immutables;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.Date;
-import java.util.function.Supplier;
 import org.camunda.bpm.engine.batch.Batch;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
@@ -25,10 +23,13 @@ import org.immutables.value.Value;
 import org.immutables.value.Value.Style.ImplementationVisibility;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
+import java.util.function.Supplier;
+
 public final class CamundaImmutables {
 
   static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
-  static Supplier<Date> NOW_SUPPLIER = () -> DateTimeUtil.now().toDate();
+  static Supplier<Date> nowSupplier = () -> DateTimeUtil.now().toDate();
 
   public static ImmutableActivityInstance activityInstance(final ActivityInstance activityInstance) {
     return ImmutableActivityInstance.builder().from(activityInstance).build();
@@ -121,7 +122,7 @@ public final class CamundaImmutables {
       @NotNull
       @JsonIgnore
       default Supplier<Date> getNow() {
-        return NOW_SUPPLIER;
+        return nowSupplier;
       }
 
     }

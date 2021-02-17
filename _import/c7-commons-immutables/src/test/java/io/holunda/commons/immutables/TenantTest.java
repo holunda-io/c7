@@ -4,6 +4,7 @@ import static io.holunda.commons.immutables.Assertions.assertThat;
 import static io.holunda.commons.immutables._Fixtures.TENANT;
 import static io.holunda.commons.immutables._Fixtures.TENANT_ID;
 
+@SuppressWarnings({"java:S2699"})
 public class TenantTest extends _BasicImmutableTest<ImmutableTenant>{
 
   public TenantTest() {

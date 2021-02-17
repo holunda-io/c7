@@ -10,6 +10,7 @@ import static io.holunda.commons.immutables._Fixtures.uuid;
 
 import org.camunda.bpm.engine.task.IdentityLinkType;
 
+@SuppressWarnings({"java:S2699"})
 public class IdentityLinkTest extends _BasicImmutableTest<ImmutableIdentityLink> {
 
   public IdentityLinkTest() {

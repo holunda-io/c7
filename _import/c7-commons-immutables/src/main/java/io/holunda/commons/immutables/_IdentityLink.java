@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableIdentityLink.class)
 @JsonSerialize(as = ImmutableIdentityLink.class)
+@SuppressWarnings("java:S114")
 interface _IdentityLink extends IdentityLink {
 
   /**

@@ -4,6 +4,7 @@ import static io.holunda.commons.immutables.Assertions.assertThat;
 import static io.holunda.commons.immutables._Fixtures.USER;
 import static io.holunda.commons.immutables._Fixtures.USER_ID;
 
+@SuppressWarnings({"java:S2699"})
 public class UserTest extends _BasicImmutableTest<ImmutableUser>{
 
   public UserTest() {

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableExecution.class)
 @JsonSerialize(as = ImmutableExecution.class)
+@SuppressWarnings("java:S114")
 interface _Execution extends Execution {
 
   @Nullable

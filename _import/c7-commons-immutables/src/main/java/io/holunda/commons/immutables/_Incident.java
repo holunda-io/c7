@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableIncident.class)
 @JsonSerialize(as = ImmutableIncident.class)
+@SuppressWarnings("java:S114")
 interface _Incident extends Incident, CurrentTimestamp {
 
   @Override

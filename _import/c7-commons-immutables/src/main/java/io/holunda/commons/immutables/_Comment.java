@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonSerialize(as = ImmutableComment.class)
 @JsonDeserialize(as = ImmutableComment.class)
+@SuppressWarnings("java:S114")
 interface _Comment extends Comment, CurrentTimestamp {
 
   @Override

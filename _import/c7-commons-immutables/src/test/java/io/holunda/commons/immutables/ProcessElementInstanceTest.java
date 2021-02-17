@@ -6,6 +6,7 @@ import static io.holunda.commons.immutables._Fixtures.PROCESS_ELEMENT_INSTANCE;
 import static io.holunda.commons.immutables._Fixtures.PROCESS_INSTANCE_ID;
 import static io.holunda.commons.immutables._Fixtures.uuid;
 
+@SuppressWarnings({"java:S2699"})
 public class ProcessElementInstanceTest extends _BasicImmutableTest<ImmutableProcessElementInstance>{
 
   public ProcessElementInstanceTest() {

@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableActivityInstance.class)
 @JsonSerialize(as = ImmutableActivityInstance.class)
+@SuppressWarnings("java:S114")
 interface _ActivityInstance extends ActivityInstance {
 
   @Override

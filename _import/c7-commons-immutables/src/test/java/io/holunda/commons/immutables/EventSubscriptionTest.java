@@ -14,6 +14,7 @@ import java.util.Date;
 import org.camunda.bpm.engine.impl.event.EventType;
 import org.junit.Test;
 
+@SuppressWarnings({"java:S2699"})
 public class EventSubscriptionTest extends _BasicImmutableTest<ImmutableEventSubscription> {
 
   public EventSubscriptionTest() {

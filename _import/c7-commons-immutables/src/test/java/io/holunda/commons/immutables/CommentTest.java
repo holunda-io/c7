@@ -9,6 +9,7 @@ import static io.holunda.commons.immutables._Fixtures.TASK_ID;
 import static io.holunda.commons.immutables._Fixtures.USER_ID;
 import static io.holunda.commons.immutables._Fixtures.uuid;
 
+@SuppressWarnings({"java:S2699"})
 public class CommentTest extends _BasicImmutableTest<ImmutableComment>{
 
   public CommentTest() {

@@ -1,11 +1,12 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables._JacksonHelper.jsonMapper;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.holunda.commons.immutables._JacksonHelper.JsonMapper;
 import org.junit.Test;
 
+import static io.holunda.commons.immutables._JacksonHelper.jsonMapper;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SuppressWarnings({"java:S2699"})
 public abstract class _BasicImmutableTest<T> {
 
   protected final JsonMapper<T> mapper;
@@ -13,8 +14,7 @@ public abstract class _BasicImmutableTest<T> {
   protected _BasicImmutableTest(Class<T> type) {
     this.mapper = jsonMapper(type);
   }
-
-
+  
   @Test
   public void factory_method() {
     throw new UnsupportedOperationException("not implemented");

@@ -12,6 +12,7 @@ import static io.holunda.commons.immutables._Fixtures.uuid;
 
 import org.camunda.bpm.engine.runtime.Incident;
 
+@SuppressWarnings({"java:S2699"})
 public class IncidentTest extends _BasicImmutableTest<ImmutableIncident>{
 
   public IncidentTest() {
