@@ -27,8 +27,8 @@ public abstract class _BasicImmutableTest<T> {
 
   @Test
   public void convert_json() {
-    T dto = createDto();
-    String json = mapper.toJson(dto);
+    final T dto = createDto();
+    final var json = mapper.toJson(dto);
 
     assertThat(mapper.fromJson(json)).isEqualTo(dto);
   }

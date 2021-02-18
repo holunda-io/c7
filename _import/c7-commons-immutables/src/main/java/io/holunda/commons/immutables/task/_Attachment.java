@@ -20,6 +20,9 @@ import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 interface _Attachment extends _AttachmentWithoutSetters, CurrentTimestamp {
 
   @Override
+  String getId();
+
+  @Override
   @Nullable
   String getName();
 

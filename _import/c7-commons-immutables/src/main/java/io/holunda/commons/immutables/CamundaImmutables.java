@@ -5,15 +5,8 @@ import io.holunda.commons.immutables.batch.ImmutableBatch;
 import io.holunda.commons.immutables.identity.ImmutableGroup;
 import io.holunda.commons.immutables.identity.ImmutableTenant;
 import io.holunda.commons.immutables.identity.ImmutableUser;
-import io.holunda.commons.immutables.runtime.ImmutableActivityInstance;
-import io.holunda.commons.immutables.runtime.ImmutableCaseExecution;
-import io.holunda.commons.immutables.runtime.ImmutableCaseInstance;
-import io.holunda.commons.immutables.runtime.ImmutableEventSubscription;
-import io.holunda.commons.immutables.runtime.ImmutableExecution;
-import io.holunda.commons.immutables.runtime.ImmutableIncident;
-import io.holunda.commons.immutables.runtime.ImmutableJob;
-import io.holunda.commons.immutables.runtime.ImmutableProcessElementInstance;
-import io.holunda.commons.immutables.runtime.ImmutableProcessInstance;
+import io.holunda.commons.immutables.repository.ImmutableCaseDefinition;
+import io.holunda.commons.immutables.runtime.*;
 import io.holunda.commons.immutables.task.ImmutableAttachment;
 import io.holunda.commons.immutables.task.ImmutableComment;
 import io.holunda.commons.immutables.task.ImmutableIdentityLink;
@@ -23,16 +16,8 @@ import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.calendar.DateTimeUtil;
-import org.camunda.bpm.engine.runtime.ActivityInstance;
-import org.camunda.bpm.engine.runtime.CaseExecution;
-import org.camunda.bpm.engine.runtime.CaseInstance;
-import org.camunda.bpm.engine.runtime.EventSubscription;
-import org.camunda.bpm.engine.runtime.Execution;
-import org.camunda.bpm.engine.runtime.Incident;
-import org.camunda.bpm.engine.runtime.Job;
-import org.camunda.bpm.engine.runtime.ProcessElementInstance;
-import org.camunda.bpm.engine.runtime.ProcessInstance;
-import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
+import org.camunda.bpm.engine.repository.CaseDefinition;
+import org.camunda.bpm.engine.runtime.*;
 import org.camunda.bpm.engine.task.Attachment;
 import org.camunda.bpm.engine.task.Comment;
 import org.camunda.bpm.engine.task.IdentityLink;
@@ -57,6 +42,10 @@ public final class CamundaImmutables {
 
   public static ImmutableBatch batch(Batch batch) {
     return ImmutableBatch.builder().from(batch).build();
+  }
+
+  public static ImmutableCaseDefinition caseDefinition(CaseDefinition caseDefinition) {
+    return ImmutableCaseDefinition.builder().from(caseDefinition).build();
   }
 
   public static ImmutableCaseExecution caseExecution(final CaseExecution caseExecution) {
@@ -122,6 +111,7 @@ public final class CamundaImmutables {
   private CamundaImmutables() {
     // do not instantiate
   }
+
 
   public interface CurrentTimestamp {
 

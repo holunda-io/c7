@@ -18,6 +18,24 @@ import java.util.Date;
 interface _Incident extends Incident, CurrentTimestamp {
 
   @Override
+  String getId();
+
+  @Override
+  String getIncidentType();
+
+  @Override
+  String getExecutionId();
+
+  @Override
+  String getProcessInstanceId();
+
+  @Override
+  String getProcessDefinitionId();
+
+  @Override
+  String getJobDefinitionId();
+
+  @Override
   default Date getIncidentTimestamp() {
     return getNow().get();
   }

@@ -39,4 +39,18 @@ interface _IdentityLink extends IdentityLink {
   @Nullable
   @Override
   String getTenantId();
+
+  @Override
+  String getId();
+
+  /**
+   * Has to match one of the constants provided by {@link org.camunda.bpm.engine.task.IdentityLinkType}.
+   *
+   * @return type
+   */
+  @Override
+  String getType();
+
+  @Override
+  String getTaskId();
 }

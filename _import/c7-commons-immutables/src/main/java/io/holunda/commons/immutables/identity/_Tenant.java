@@ -14,7 +14,11 @@ import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 @JsonSerialize(as = ImmutableTenant.class)
 @SuppressWarnings({"java:S114"})
 interface _Tenant extends _TenantWithoutSetters {
+  @Override
+  String getId();
 
+  @Override
+  String getName();
 }
 
 /**

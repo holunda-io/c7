@@ -18,6 +18,29 @@ import java.util.Date;
 @SuppressWarnings("java:S114")
 interface _Job extends Job, CurrentTimestamp {
 
+  @Override
+  String getId();
+
+  @Override
+  String getProcessInstanceId();
+
+  @Override
+  String getProcessDefinitionId();
+
+  @Override
+  String getProcessDefinitionKey();
+
+  @Override
+  String getExecutionId();
+
+  @Override
+  String getDeploymentId();
+
+  @Override
+  String getJobDefinitionId();
+
+  @Override
+  long getPriority();
 
   @Override
   default int getRetries() {

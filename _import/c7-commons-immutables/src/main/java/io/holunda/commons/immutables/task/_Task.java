@@ -20,6 +20,9 @@ import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 @SuppressWarnings({"java:S114", "java:S1133"})
 interface _Task extends _TaskWithoutSetters, CurrentTimestamp {
 
+  @Override
+  String getId();
+
   @Nullable
   @Override
   String getName();
@@ -117,7 +120,7 @@ interface _Task extends _TaskWithoutSetters, CurrentTimestamp {
  * Throwing {@link UnsupportedOperationException} for all setters to keep
  * the {@link _Task} clean.
  */
-@SuppressWarnings({"java:S114","java:S1133"})
+@SuppressWarnings({"java:S114", "java:S1133"})
 interface _TaskWithoutSetters extends Task {
 
   /**

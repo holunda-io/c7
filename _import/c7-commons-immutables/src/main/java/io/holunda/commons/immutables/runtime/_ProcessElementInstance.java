@@ -15,6 +15,15 @@ import org.jetbrains.annotations.Nullable;
 interface _ProcessElementInstance extends ProcessElementInstance {
 
   @Override
+  String getId();
+
+  @Override
+  String getProcessDefinitionId();
+
+  @Override
+  String getProcessInstanceId();
+
+  @Override
   @Nullable
   String getParentActivityInstanceId();
 

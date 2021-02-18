@@ -7,22 +7,9 @@ import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.event.EventType;
-import org.camunda.bpm.engine.runtime.ActivityInstance;
-import org.camunda.bpm.engine.runtime.CaseExecution;
-import org.camunda.bpm.engine.runtime.CaseInstance;
-import org.camunda.bpm.engine.runtime.EventSubscription;
-import org.camunda.bpm.engine.runtime.Execution;
-import org.camunda.bpm.engine.runtime.Incident;
-import org.camunda.bpm.engine.runtime.Job;
-import org.camunda.bpm.engine.runtime.ProcessElementInstance;
-import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
-import org.camunda.bpm.engine.runtime.TransitionInstance;
-import org.camunda.bpm.engine.task.Attachment;
-import org.camunda.bpm.engine.task.Comment;
-import org.camunda.bpm.engine.task.DelegationState;
-import org.camunda.bpm.engine.task.IdentityLink;
-import org.camunda.bpm.engine.task.IdentityLinkType;
-import org.camunda.bpm.engine.task.Task;
+import org.camunda.bpm.engine.repository.CaseDefinition;
+import org.camunda.bpm.engine.runtime.*;
+import org.camunda.bpm.engine.task.*;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 
@@ -598,7 +585,7 @@ public enum _Fixtures {
 
   public static final ProcessInstanceWithVariables PROCESS_INSTANCE = new ProcessInstanceWithVariables() {
 
-    String id = uuid();
+    final String id = uuid();
 
     @Override
     public VariableMap getVariables() {
@@ -652,7 +639,7 @@ public enum _Fixtures {
   };
 
   public static final Comment COMMENT = new Comment() {
-    String id = uuid();
+    final String id = uuid();
 
     @Override
     public String getId() {
@@ -914,9 +901,9 @@ public enum _Fixtures {
   };
 
   public static final Incident INCIDENT = new Incident() {
-    String id = uuid();
-    String rootId = uuid();
-    String causeId = uuid();
+    final String id = uuid();
+    final String rootId = uuid();
+    final String causeId = uuid();
 
     @Override
     public String getId() {
@@ -1097,6 +1084,58 @@ public enum _Fixtures {
     @Override
     public void setName(String name) {
       throw UNMODIFIABLE;
+    }
+  };
+
+  public static final CaseDefinition CASE_DEFINITION = new CaseDefinition() {
+    @Override
+    public String getId() {
+      return CASE_DEFINITION_ID;
+    }
+
+    @Override
+    public String getCategory() {
+      return "category";
+    }
+
+    @Override
+    public String getName() {
+      return "CaseDefinition";
+    }
+
+    @Override
+    public String getKey() {
+      return CASE_DEFINITION_KEY;
+    }
+
+    @Override
+    public int getVersion() {
+      return 1;
+    }
+
+    @Override
+    public String getResourceName() {
+      return CASE_DEFINITION_KEY + ".cmmn";
+    }
+
+    @Override
+    public String getDeploymentId() {
+      return DEPLOYMENT_ID;
+    }
+
+    @Override
+    public String getDiagramResourceName() {
+      return "file/" + getResourceName();
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public Integer getHistoryTimeToLive() {
+      return 19;
     }
   };
 }

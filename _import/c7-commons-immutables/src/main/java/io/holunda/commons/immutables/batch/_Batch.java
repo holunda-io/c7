@@ -15,6 +15,33 @@ import org.jetbrains.annotations.Nullable;
 interface _Batch extends Batch {
 
   @Override
+  String getId();
+
+  @Override
+  String getType();
+
+  @Override
+  int getTotalJobs();
+
+  @Override
+  int getJobsCreated();
+
+  @Override
+  int getBatchJobsPerSeed();
+
+  @Override
+  int getInvocationsPerBatchJob();
+
+  @Override
+  String getSeedJobDefinitionId();
+
+  @Override
+  String getMonitorJobDefinitionId();
+
+  @Override
+  String getBatchJobDefinitionId();
+
+  @Override
   @Nullable
   String getCreateUserId();
 

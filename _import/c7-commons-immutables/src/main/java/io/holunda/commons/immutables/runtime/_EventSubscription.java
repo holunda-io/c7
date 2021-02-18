@@ -17,6 +17,24 @@ import java.util.Date;
 @SuppressWarnings("java:S114")
 interface _EventSubscription extends EventSubscription, CurrentTimestamp {
 
+  @Override
+  String getId();
+
+  @Override
+  String getEventType();
+
+  @Override
+  String getEventName();
+
+  @Override
+  String getExecutionId();
+
+  @Override
+  String getProcessInstanceId();
+
+  @Override
+  String getActivityId();
+
   @Nullable
   @Override
   String getTenantId();

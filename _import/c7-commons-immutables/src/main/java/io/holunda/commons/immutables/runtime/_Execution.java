@@ -14,6 +14,12 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("java:S114")
 interface _Execution extends Execution {
 
+  @Override
+  String getId();
+
+  @Override
+  String getProcessInstanceId();
+
   @Nullable
   @Override
   String getTenantId();

@@ -17,6 +17,9 @@ import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 interface _User extends _UserWithoutSetters {
 
   @Override
+  String getId();
+
+  @Override
   @Nullable
   String getFirstName();
 

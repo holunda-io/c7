@@ -14,15 +14,11 @@ import org.jetbrains.annotations.Nullable;
 @JsonDeserialize(as = ImmutableActivityInstance.class)
 @JsonSerialize(as = ImmutableActivityInstance.class)
 @SuppressWarnings("java:S114")
-interface _ActivityInstance extends ActivityInstance {
+interface _ActivityInstance extends _ProcessElementInstance, ActivityInstance {
 
   @Override
   @Nullable
   String getActivityName();
-
-  @Override
-  @Nullable
-  String getParentActivityInstanceId();
 
   @Override
   default ActivityInstance[] getChildActivityInstances() {
@@ -48,7 +44,6 @@ interface _ActivityInstance extends ActivityInstance {
   default Incident[] getIncidents() {
     return new Incident[0];
   }
-
 
   @Override
   default ActivityInstance[] getActivityInstances(String activityId) {

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 @JsonDeserialize(as = ImmutableProcessInstance.class)
 @JsonSerialize(as = ImmutableProcessInstance.class)
 @SuppressWarnings("java:S114")
-interface _ProcessInstance extends ProcessInstanceWithVariables, Execution {
+interface _ProcessInstance extends _Execution, ProcessInstanceWithVariables, Execution {
 
   @Override
   default String getProcessInstanceId() {

@@ -18,6 +18,9 @@ import java.util.Date;
 interface _Comment extends Comment, CurrentTimestamp {
 
   @Override
+  String getId();
+
+  @Override
   @Nullable
   String getUserId();
 
