@@ -3,10 +3,14 @@ package io.holunda.commons.immutables.repository;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables._config.CamundaPojoStyle;
+import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.repository.ResourceDefinition;
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#resourceDefinition(ResourceDefinition)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableResourceDefinition.class)

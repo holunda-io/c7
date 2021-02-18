@@ -16,7 +16,8 @@ import org.immutables.value.Value;
   // Seems unnecessary to have builder or superfluous copy method
   defaults = @Value.Immutable(
     builder = true, copy = true, prehash = true
-  )
+  ),
+  jdkOnly = true
 )
 public @interface CamundaPojoStyle {
   // empty

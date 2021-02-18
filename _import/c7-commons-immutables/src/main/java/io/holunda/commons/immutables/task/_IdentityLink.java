@@ -3,12 +3,16 @@ package io.holunda.commons.immutables.task;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables._config.CamundaPojoStyle;
+import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.GroupQuery;
 import org.camunda.bpm.engine.identity.UserQuery;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#identityLink(IdentityLink)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableIdentityLink.class)
@@ -53,4 +57,11 @@ interface _IdentityLink extends IdentityLink {
 
   @Override
   String getTaskId();
+
+  @Value.Check
+  default void validate() {
+    if (!IdentityLinkTypeEnum.TYPES.contains(getType())) {
+      throw new IllegalArgumentException(String.format("type has to be on of %s, was '%s'", IdentityLinkTypeEnum.TYPES, getType()));
+    }
+  }
 }

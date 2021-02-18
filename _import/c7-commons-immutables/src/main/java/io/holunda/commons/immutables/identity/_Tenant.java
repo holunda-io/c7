@@ -3,11 +3,15 @@ package io.holunda.commons.immutables.identity;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables._config.CamundaPojoStyle;
+import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.immutables.value.Value;
 
 import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#tenant(Tenant)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableTenant.class)

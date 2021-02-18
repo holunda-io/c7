@@ -8,6 +8,9 @@ import org.immutables.value.Value;
 
 import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#group(Group)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableGroup.class)

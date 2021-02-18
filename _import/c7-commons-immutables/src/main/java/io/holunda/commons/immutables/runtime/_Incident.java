@@ -2,20 +2,24 @@ package io.holunda.commons.immutables.runtime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.holunda.commons.immutables.CamundaImmutables.CurrentTimestamp;
 import io.holunda.commons.immutables._config.CamundaPojoStyle;
+import org.camunda.bpm.engine.identity.Group;
+import org.camunda.bpm.engine.impl.util.ClockUtil;
 import org.camunda.bpm.engine.runtime.Incident;
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Date;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#incident(Incident)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableIncident.class)
 @JsonSerialize(as = ImmutableIncident.class)
 @SuppressWarnings("java:S114")
-interface _Incident extends Incident, CurrentTimestamp {
+interface _Incident extends Incident {
 
   @Override
   String getId();
@@ -37,7 +41,7 @@ interface _Incident extends Incident, CurrentTimestamp {
 
   @Override
   default Date getIncidentTimestamp() {
-    return getNow().get();
+    return ClockUtil.getCurrentTime();
   }
 
   @Override

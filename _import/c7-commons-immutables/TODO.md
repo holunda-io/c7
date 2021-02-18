@@ -40,25 +40,25 @@
 * MessageCorrelationResultType
 * MessageCorrelationResultWithVariables
 * ModificationBuilder
-* NativeExecutionQuery
-* NativeProcessInstanceQuery
+* _NativeExecutionQuery_
+* _NativeProcessInstanceQuery_
 * ProcessElementInstance
-* ProcessInstance
-* ProcessInstanceModificationBuilder
-* ProcessInstanceModificationInstantiationBuilder
-* ProcessInstanceQuery
-* ProcessInstanceWithVariables
-* ProcessInstantiationBuilder
-* RestartProcessInstanceBuilder
-* SignalEventReceivedBuilder
+* **ProcessInstance**
+* _ProcessInstanceModificationBuilder_
+* _ProcessInstanceModificationInstantiationBuilder_
+* _ProcessInstanceQuery_
+* **ProcessInstanceWithVariables**
+* _ProcessInstantiationBuilder_
+* _RestartProcessInstanceBuilder_
+* _SignalEventReceivedBuilder_
 * TransitionInstance
 * UpdateProcessInstancesRequest
 * UpdateProcessInstancesSuspensionStateBuilder
 * UpdateProcessInstanceSuspensionStateBuilder
 * UpdateProcessInstanceSuspensionStateSelectBuilder
 * UpdateProcessInstanceSuspensionStateTenantBuilder
-* VariableInstance
-* VariableInstanceQuery
+* **VariableInstance**
+* _VariableInstanceQuery_
 * WhitelistingDeserializationTypeValidator
 
 ## package org.camunda.bpm.engine.delegate;
@@ -86,13 +86,13 @@
 
 ## package org.camunda.bpm.engine.externaltask;
 
-* ExternalTask
-* ExternalTaskQuery
-* ExternalTaskQueryBuilder
-* ExternalTaskQueryTopicBuilder
-* LockedExternalTask
-* UpdateExternalTaskRetriesBuilder
-* UpdateExternalTaskRetriesSelectBuilder
+* **ExternalTask**
+* _ExternalTaskQuery_
+* _ExternalTaskQueryBuilder_
+* _ExternalTaskQueryTopicBuilder_
+* **LockedExternalTask**
+* _UpdateExternalTaskRetriesBuilder_
+* _UpdateExternalTaskRetriesSelectBuilder_
 
 ## package org.camunda.bpm.engine.filter;
 
@@ -180,17 +180,17 @@
 
 ## package org.camunda.bpm.engine.identity;
 
-* Group
-* GroupQuery
-* NativeUserQuery
-* PasswordPolicy
-* PasswordPolicyResult
-* PasswordPolicyRule
-* Picture
-* Tenant
-* TenantQuery
-* User
-* UserQuery
+* **Group**
+* _GroupQuery_
+* NativeUserQuery (?)
+* PasswordPolicy (?)
+* PasswordPolicyResult (?)
+* PasswordPolicyRule (?)
+* Picture (?)
+* **Tenant**
+* _TenantQuery_
+* **User**
+* _UserQuery_
 
 ## package org.camunda.bpm.engine.management;
 
@@ -199,8 +199,8 @@
 * DeploymentStatistics
 * DeploymentStatisticsQuery
 * IncidentStatistics
-* JobDefinition
-* JobDefinitionQuery
+* **JobDefinition**
+* _JobDefinitionQuery_
 * MetricIntervalValue
 * Metrics
 * MetricsQuery
@@ -221,21 +221,21 @@
 ## package org.camunda.bpm.engine.repository;
 
 * CandidateDeployment
-* CaseDefinition
+* **CaseDefinition**
 * _CaseDefinitionQuery_
-* DecisionDefinition
+* **DecisionDefinition**
 * _DecisionDefinitionQuery_
-* DecisionRequirementsDefinition
+* **DecisionRequirementsDefinition**
 * _DecisionRequirementsDefinitionQuery_
-* DeleteProcessDefinitionsBuilder
-* DeleteProcessDefinitionsSelectBuilder
-* DeleteProcessDefinitionsTenantBuilder
-* Deployment
-* DeploymentBuilder
-* DeploymentHandler
-* DeploymentHandlerFactory
+* _DeleteProcessDefinitionsBuilder_
+* _DeleteProcessDefinitionsSelectBuilder_
+* _DeleteProcessDefinitionsTenantBuilder_
+* **Deployment**
+* _DeploymentBuilder_
+* _DeploymentHandler_
+* _DeploymentHandlerFactory_
 * _DeploymentQuery_
-* DeploymentWithDefinitions
+* **DeploymentWithDefinitions**
 * DiagramEdge
 * DiagramEdgeWaypoint
 * DiagramElement
@@ -243,24 +243,24 @@
 * DiagramNode
 * ProcessApplicationDeployment
 * ProcessApplicationDeploymentBuilder
-* ProcessDefinition
-* ProcessDefinitionQuery
-* Resource
-* ResourceDefinition
-* ResourceType
-* ResourceTypes
+* **ProcessDefinition**
+* _ProcessDefinitionQuery_
+* **Resource**
+* **ResourceDefinition**
+* ~~ResourceType~~
+* ~~ResourceTypes~~
 * ResumePreviousBy
-* UpdateProcessDefinitionSuspensionStateBuilder
-* UpdateProcessDefinitionSuspensionStateSelectBuilder
-* UpdateProcessDefinitionSuspensionStateTenantBuilder
+* _UpdateProcessDefinitionSuspensionStateBuilder_
+* _UpdateProcessDefinitionSuspensionStateSelectBuilder_
+* _UpdateProcessDefinitionSuspensionStateTenantBuilder_
 
 ## package org.camunda.bpm.engine.task;
 
 * **Attachment**
-* Comment
+* **Comment**
 * ~~Event~~
 * **IdentityLink**
-* IdentityLinkType
+* **IdentityLinkType**
 * _NativeTaskQuery_
 * **Task**
 * TaskCountByCandidateGroupResult (?)

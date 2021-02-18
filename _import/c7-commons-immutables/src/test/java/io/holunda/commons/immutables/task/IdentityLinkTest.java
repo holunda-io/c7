@@ -1,9 +1,10 @@
 package io.holunda.commons.immutables.task;
 
-import io.holunda.commons.immutables.Assertions;
 import io.holunda.commons.immutables.CamundaImmutables;
 import io.holunda.commons.immutables._BasicImmutableTest;
+import org.assertj.core.api.Assertions;
 import org.camunda.bpm.engine.task.IdentityLinkType;
+import org.junit.Test;
 
 import static io.holunda.commons.immutables._Fixtures.GROUP_ID;
 import static io.holunda.commons.immutables._Fixtures.IDENTITY_LINK;
@@ -24,13 +25,13 @@ public class IdentityLinkTest extends _BasicImmutableTest<ImmutableIdentityLink>
   public void factory_method() {
     final ImmutableIdentityLink dto = createDto();
 
-    Assertions.assertThat(dto).hasId(IDENTITY_LINK.getId());
-    Assertions.assertThat(dto).hasType(IdentityLinkType.ASSIGNEE);
-    Assertions.assertThat(dto).hasUserId(USER_ID);
-    Assertions.assertThat(dto).hasGroupId(GROUP_ID);
-    Assertions.assertThat(dto).hasTaskId(TASK_ID);
-    Assertions.assertThat(dto).hasProcessDefId(PROCESS_DEFINITION_ID);
-    Assertions.assertThat(dto).hasTenantId(TENANT_ID);
+    ImmutableIdentityLinkAssert.assertThat(dto).hasId(IDENTITY_LINK.getId());
+    ImmutableIdentityLinkAssert.assertThat(dto).hasType(IdentityLinkType.ASSIGNEE);
+    ImmutableIdentityLinkAssert.assertThat(dto).hasUserId(USER_ID);
+    ImmutableIdentityLinkAssert.assertThat(dto).hasGroupId(GROUP_ID);
+    ImmutableIdentityLinkAssert.assertThat(dto).hasTaskId(TASK_ID);
+    ImmutableIdentityLinkAssert.assertThat(dto).hasProcessDefId(PROCESS_DEFINITION_ID);
+    ImmutableIdentityLinkAssert.assertThat(dto).hasTenantId(TENANT_ID);
   }
 
 
@@ -41,6 +42,12 @@ public class IdentityLinkTest extends _BasicImmutableTest<ImmutableIdentityLink>
       .type(IdentityLinkType.ASSIGNEE)
       .taskId(uuid())
       .build();
+  }
+
+  @Test
+  public void allowed_type() {
+    Assertions.assertThatThrownBy(() -> createDto().withType("foo"))
+      .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Override

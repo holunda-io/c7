@@ -7,6 +7,9 @@ import org.camunda.bpm.engine.batch.Batch;
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#batch(Batch)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableBatch.class)

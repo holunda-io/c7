@@ -2,8 +2,9 @@ package io.holunda.commons.immutables.task;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.holunda.commons.immutables.CamundaImmutables.CurrentTimestamp;
 import io.holunda.commons.immutables._config.CamundaPojoStyle;
+import org.camunda.bpm.engine.identity.Group;
+import org.camunda.bpm.engine.impl.util.ClockUtil;
 import org.camunda.bpm.engine.task.Attachment;
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
@@ -12,12 +13,15 @@ import java.util.Date;
 
 import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#attachment(Attachment)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableAttachment.class)
 @JsonSerialize(as = ImmutableAttachment.class)
 @SuppressWarnings("java:S114")
-interface _Attachment extends _AttachmentWithoutSetters, CurrentTimestamp {
+interface _Attachment extends _AttachmentWithoutSetters {
 
   @Override
   String getId();
@@ -47,7 +51,7 @@ interface _Attachment extends _AttachmentWithoutSetters, CurrentTimestamp {
 
   @Override
   default Date getCreateTime() {
-    return getNow().get();
+    return ClockUtil.getCurrentTime();
   }
 
   @Override

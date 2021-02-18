@@ -6,6 +6,9 @@ import io.holunda.commons.immutables._config.CamundaPojoStyle;
 import org.camunda.bpm.engine.repository.CaseDefinition;
 import org.immutables.value.Value;
 
+/**
+ * @see io.holunda.commons.immutables.CamundaImmutables#caseDefinition(CaseDefinition)
+ */
 @Value.Immutable
 @CamundaPojoStyle
 @JsonDeserialize(as = ImmutableCaseDefinition.class)
