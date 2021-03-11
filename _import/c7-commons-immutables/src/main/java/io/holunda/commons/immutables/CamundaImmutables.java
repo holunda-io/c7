@@ -28,6 +28,7 @@ import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.Task;
 
 public final class CamundaImmutables {
+  public static final long VERSION = 7140L;
 
   public static final UnsupportedOperationException UNMODIFIABLE = new UnsupportedOperationException("field is unmodifiable");
 

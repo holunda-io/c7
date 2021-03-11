@@ -25,6 +25,10 @@ interface _ExternalTask extends ExternalTask {
   String getId();
 
   @Override
+  @Nullable
+  String getBusinessKey();
+
+  @Override
   String getTopicName();
 
   @Override
@@ -87,7 +91,4 @@ interface _ExternalTask extends ExternalTask {
     return Collections.emptyMap();
   }
 
-  @Override
-  @Nullable
-  String getBusinessKey();
 }

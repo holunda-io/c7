@@ -1,5 +1,7 @@
 package io.holunda.commons.immutables._config;
 
+import io.holunda.commons.immutables.CamundaImmutables;
+import org.immutables.serial.Serial;
 import org.immutables.value.Value;
 
 /**
@@ -19,6 +21,8 @@ import org.immutables.value.Value;
   ),
   jdkOnly = true
 )
+@Serial.Version(CamundaImmutables.VERSION)
+@Serial.Structural
 public @interface CamundaPojoStyle {
   // empty
 }
