@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/holunda-io/camunda-bpm-api/workflows/default/badge.svg)](https://github.com/holunda-io/camunda-bpm-api/actions)
+[![Build Status](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-api)
 
 ## Camunda BPM Engine API
