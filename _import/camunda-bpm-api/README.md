@@ -8,7 +8,7 @@
 ## What is this?
 
 Sometimes for building libraries it is useful to have the API only, without the implementation. This library extracts the official Java Camunda Engine API 
-from Camunda JAR and packages it as a small JAR. It is by **NO MEANS** a replacement, but just a bunch of classes which may be required on the classpath, if 
+from Camunda JAR and packages it as a small JAR. By doing so, we had to provide very few own classes, to cut the track to implementation. It is by **NO MEANS** a replacement, but just a bunch of classes which may be required on the classpath, if 
 you use a library referencing Camunda BPM classes (but not using them).
 
 ## Quick Introduction
