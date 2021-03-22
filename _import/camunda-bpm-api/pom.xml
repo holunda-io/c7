@@ -1,0 +1,447 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.holunda</groupId>
+  <artifactId>camunda-bpm-api</artifactId>
+  <version>7.14-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+  <description>Camunda BPM Engine API</description>
+  <url>https://github.com/holunda-io/camunda-bpm-api/</url>
+  <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>11</java.version>
+    <version.java>${java.version}</version.java>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+    <camunda-engine.version>7.14.0</camunda-engine.version>
+  </properties>
+
+  <dependencyManagement>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.commons</groupId>
+      <artifactId>camunda-commons-typed-values</artifactId>
+      <version>${camunda-engine.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.model</groupId>
+      <artifactId>camunda-bpmn-model</artifactId>
+      <version>${camunda-engine.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.model</groupId>
+      <artifactId>camunda-cmmn-model</artifactId>
+      <version>${camunda-engine.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.model</groupId>
+      <artifactId>camunda-dmn-model</artifactId>
+      <version>${camunda-engine.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <defaultGoal>clean package</defaultGoal>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <!-- cleaning -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+
+        <plugin>
+          <!-- Java compiler -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.1.1</version>
+          <executions>
+            <!--
+            <execution>
+              <id>everything-sources</id>
+              <goals>
+                <goal>unpack</goal>
+              </goals>
+              <configuration>
+                <artifactItems>
+                  <artifactItem>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine</artifactId>
+                    <version>${camunda-engine.version}</version>
+                    <type>jar</type>
+                    <classifier>sources</classifier>
+                    <overWrite>false</overWrite>
+                    <outputDirectory>${project.build.directory}/generated-sources/api/src/main/other</outputDirectory>
+
+                    <includes>org/camunda/bpm/**/*.java</includes>
+                  </artifactItem>
+                </artifactItems>
+                <overWriteReleases>true</overWriteReleases>
+                <overWriteSnapshots>true</overWriteSnapshots>
+              </configuration>
+            </execution>
+            -->
+            <execution>
+              <id>unpack-engine-sources</id>
+              <goals>
+                <goal>unpack</goal>
+              </goals>
+              <configuration>
+                <artifactItems>
+                  <artifactItem>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine</artifactId>
+                    <version>${camunda-engine.version}</version>
+                    <type>jar</type>
+                    <classifier>sources</classifier>
+                    <overWrite>false</overWrite>
+                    <outputDirectory>${project.build.directory}/generated-sources/engine/src/main/java</outputDirectory>
+
+                    <excludes>
+                      org/camunda/bpm/engine/ParseException.java,
+                      org/camunda/bpm/engine/BpmnParseException.java,
+                      org/camunda/bpm/engine/impl/juel/TreeBuilderException.java,
+                    </excludes>
+
+                    <includes>
+                      org/camunda/bpm/ProcessApplicationService.java,
+                      org/camunda/bpm/application/InvocationContext.java,
+                      org/camunda/bpm/application/ProcessApplication.java,
+                      org/camunda/bpm/application/ProcessApplicationDeploymentInfo.java,
+                      org/camunda/bpm/application/ProcessApplicationInfo.java,
+                      org/camunda/bpm/application/ProcessApplicationInterface.java,
+                      org/camunda/bpm/application/ProcessApplicationReference.java,
+                      org/camunda/bpm/application/ProcessApplicationRegistration.java,
+                      org/camunda/bpm/application/**/*Exception.java,
+
+                      org/camunda/bpm/engine/*Service.java,
+                      org/camunda/bpm/engine/**/*Exception.java,
+
+                      org/camunda/bpm/engine/EntityTypes.java,
+                      org/camunda/bpm/engine/ProcessEngineServices.java,
+                      org/camunda/bpm/engine/ProcessEngine.java,
+
+                      org/camunda/bpm/engine/authorization/**/*.java,
+                      org/camunda/bpm/engine/batch/**/*.java,
+                      org/camunda/bpm/engine/delegate/**/*.java,
+                      org/camunda/bpm/engine/dmn/**/*.java,
+                      org/camunda/bpm/engine/exception/**/*.java,
+                      org/camunda/bpm/engine/externaltask/**/*.java,
+                      org/camunda/bpm/engine/filter/**/*.java,
+                      org/camunda/bpm/engine/form/**/*.java,
+                      org/camunda/bpm/engine/history/**/*.java,
+                      org/camunda/bpm/engine/identity/**/*.java,
+                      org/camunda/bpm/engine/management/**/*.java,
+                      org/camunda/bpm/engine/migration/**/*.java,
+                      org/camunda/bpm/engine/query/**/*.java,
+                      org/camunda/bpm/engine/repository/**/*.java,
+                      org/camunda/bpm/engine/runtime/**/*.java,
+                      org/camunda/bpm/engine/task/**/*.java,
+
+                      org/camunda/bpm/engine/impl/bpmn/parser/Error.java,
+                      org/camunda/bpm/engine/impl/core/variable/mapping/value/ParameterValueProvider.java,
+                      org/camunda/bpm/engine/impl/identity/Account.java,
+                      org/camunda/bpm/engine/impl/identity/Authentication.java,
+
+                    </includes>
+
+                  </artifactItem>
+                </artifactItems>
+              </configuration>
+            </execution>
+            <execution>
+              <id>unpack-dmn-engine-sources</id>
+              <goals>
+                <goal>unpack</goal>
+              </goals>
+              <configuration>
+                <artifactItems>
+                  <artifactItem>
+                    <groupId>org.camunda.bpm.dmn</groupId>
+                    <artifactId>camunda-engine-dmn</artifactId>
+                    <version>${camunda-engine.version}</version>
+                    <type>jar</type>
+                    <classifier>sources</classifier>
+                    <overWrite>false</overWrite>
+                    <outputDirectory>${project.build.directory}/generated-sources/dmn-engine/src/main/java</outputDirectory>
+                    <includes>
+                      org/camunda/bpm/dmn/engine/*.java,
+                      org/camunda/bpm/dmn/engine/delegate/*.java,
+                      org/camunda/bpm/dmn/engine/spi/DmnEngineMetricCollector.java,
+                    </includes>
+                    <excludes>
+
+                    </excludes>
+                  </artifactItem>
+                </artifactItems>
+              </configuration>
+            </execution>
+
+          </executions>
+        </plugin>
+
+        <!-- Source from kotlin -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+            <execution>
+              <phase>generate-sources</phase>
+              <goals>
+                <goal>add-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>${project.build.directory}/generated-sources/engine/src/main/java</source>
+                  <source>${project.build.directory}/generated-sources/dmn-engine/src/main/java</source>
+                </sources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- resources -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+
+        <!-- Javadoc -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+
+        <!-- Sources -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.2.1</version>
+        </plugin>
+
+        <!-- gitflow -->
+        <plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <version>1.14.0</version>
+          <configuration>
+            <gitFlowConfig>
+              <productionBranch>master</productionBranch>
+              <developmentBranch>develop</developmentBranch>
+              <featureBranchPrefix>feature/</featureBranchPrefix>
+              <releaseBranchPrefix>release/</releaseBranchPrefix>
+              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+              <supportBranchPrefix>support/</supportBranchPrefix>
+              <origin>origin</origin>
+            </gitFlowConfig>
+            <useSnapshotInHotfix>true</useSnapshotInHotfix>
+            <useSnapshotInRelease>true</useSnapshotInRelease>
+            <keepBranch>false</keepBranch>
+            <pushRemote>true</pushRemote>
+          </configuration>
+        </plugin>
+
+        <!-- To sign the artifacts -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+          <configuration>
+            <keyname>${gpg.keyname}</keyname>
+            <gpgArguments>
+              <arg>--batch</arg>
+              <arg>--yes</arg>
+              <arg>--pinentry-mode</arg>
+              <arg>loopback</arg>
+            </gpgArguments>
+          </configuration>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Deploy -->
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.6.8</version>
+          <executions>
+            <execution>
+              <id>default-deploy</id>
+              <phase>deploy</phase>
+              <goals>
+                <goal>deploy</goal>
+              </goals>
+              <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                <keepStagingRepositoryOnCloseRuleFailure>true
+                </keepStagingRepositoryOnCloseRuleFailure><!-- go to oss.nexus.org and inspect the failure -->
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Install -->
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+
+        <!-- Enforce -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.0.0-M3</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>3.6.2</version>
+                  </requireMavenVersion>
+                  <requireJavaVersion>
+                    <version>11</version>
+                  </requireJavaVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+  </build>
+
+  <profiles>
+    <!--
+      Profile creating all artifacts: JARs, POMs, Sources, JavaDoc and all signatures.
+    -->
+    <profile>
+      <id>release</id>
+      <activation>
+        <property>
+          <name>release</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:holunda-io/camunda-bpm-api.git</connection>
+    <url>scm:git:git@github.com:holunda-io/camunda-bpm-api.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/camunda-bpm-api.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <site>
+      <id>README</id>
+      <url>https://github.com/holunda-io/camunda-bpm-api</url>
+    </site>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <name>Simon Zambrovski</name>
+      <roles>
+        <role>Product Owner</role>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+  </developers>
+
+</project>
