@@ -26,19 +26,26 @@ public enum _Fixtures {
   public static final String BATCH_TYPE = "batchType";
   public static final String BUSINESS_KEY = uuid();
   public static final String CASE_DEFINITION_KEY = "theCase";
+  public static final String CASE_DEFINITION_NAME = "The Case";
   public static final String CASE_DEFINITION_ID = CASE_DEFINITION_KEY + ":1:1";
+  public static final String CASE_EXECUTION_ID = uuid();
   public static final String CASE_INSTANCE_ID = uuid();
   public static final Date DATE_NOW = DateUtil.now();
   public static final Date DATE_TOMORROW = DateUtil.tomorrow();
 
+
   public static final String DEPLOYMENT_ID = uuid();
+  public static final String ID = uuid();
   public static final String EXECUTION_ID = uuid();
   public static final String GROUP_ID = "group-y";
   public static final String JOB_ID = uuid();
   public static final String JOB_DEFINITION_ID = uuid();
   public static final String PROCESS_DEFINITION_KEY = "theProcess";
+  public static final String PROCESS_DEFINITION_NAME = "The Process";
+  public static final int PROCESS_DEFINITION_VERSION = 1;
   public static final String PROCESS_DEFINITION_ID = PROCESS_DEFINITION_KEY + ":1:1";
   public static final String PROCESS_INSTANCE_ID = uuid();
+  public static final String ROOT_PROCESS_INSTANCE_ID = uuid();
   public static final String TASK_ID = uuid();
   public static final String TASK_DEFINITION_KEY = "theTask";
   public static final String TENANT_ID = "tenant-a";
@@ -415,7 +422,7 @@ public enum _Fixtures {
   };
 
   public static final CaseExecution CASE_EXECUTION = new CaseExecution() {
-    final String id = uuid();
+    final String id = CASE_EXECUTION_ID;
 
     @Override
     public String getId() {
@@ -495,7 +502,7 @@ public enum _Fixtures {
 
   public static final CaseInstance CASE_INSTANCE = new CaseInstance() {
 
-    final String id = uuid();
+    final String id = CASE_INSTANCE_ID;
 
     @Override
     public String getId() {
@@ -978,6 +985,11 @@ public enum _Fixtures {
     @Override
     public String getHistoryConfiguration() {
       return "historic-configuration";
+    }
+
+    @Override
+    public String getAnnotation() {
+      return "annotation";
     }
   };
 

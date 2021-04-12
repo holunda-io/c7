@@ -75,4 +75,8 @@ interface _Incident extends Incident {
   @Override
   @Nullable
   String getFailedActivityId();
+
+  @Override
+  @Nullable
+  String getAnnotation();
 }

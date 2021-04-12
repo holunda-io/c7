@@ -3,6 +3,7 @@ package io.holunda.commons.immutables;
 import io.holunda.commons.immutables.batch.ImmutableBatch;
 import io.holunda.commons.immutables.externaltask.ImmutableExternalTask;
 import io.holunda.commons.immutables.externaltask.ImmutableLockedExternalTask;
+import io.holunda.commons.immutables.history.ImmutableHistoricDecisionEvaluationEvent;
 import io.holunda.commons.immutables.identity.ImmutableGroup;
 import io.holunda.commons.immutables.identity.ImmutableTenant;
 import io.holunda.commons.immutables.identity.ImmutableUser;
@@ -19,6 +20,7 @@ import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
+import org.camunda.bpm.engine.impl.history.event.HistoricDecisionEvaluationEvent;
 import org.camunda.bpm.engine.management.JobDefinition;
 import org.camunda.bpm.engine.repository.*;
 import org.camunda.bpm.engine.runtime.*;
@@ -90,6 +92,11 @@ public final class CamundaImmutables {
 
   public static ImmutableGroup group(final Group group) {
     return ImmutableGroup.builder().from(group).build();
+  }
+
+  public static ImmutableHistoricDecisionEvaluationEvent historicDecisionEvaluationEvent(final HistoricDecisionEvaluationEvent event) {
+    return ImmutableHistoricDecisionEvaluationEvent.builder().from(event)
+      .build();
   }
 
   public static ImmutableIdentityLink identityLink(final IdentityLink identityLink) {
