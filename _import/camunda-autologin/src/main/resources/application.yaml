@@ -1,0 +1,49 @@
+server:
+  port: 8082
+  max-http-header-size: 16KB
+
+spring:
+  application:
+    name: sso-process-engine-example
+  h2:
+    console:
+      enabled: true
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    open-in-view: true # disable JPA warning
+  jersey:
+    # set Camunda's rest path to /rest (i.e. cement the default, a reference of which is hardcoded in SecurityConfiguration)
+    application-path: "/rest"
+  groovy:
+    template:
+      check-template-location: false # disable groovy template warning
+
+camunda:
+  bpm:
+    default-serialization-format: application/json
+    history-level: full
+    webapp:
+      index-redirect-enabled: false
+    # Set to / to comply with older configuration
+      application-path: "/"
+    id-generator: strong
+    database:
+      schema-update: true
+    generic-properties.properties:
+      telemetry-reporter-activate: false
+    admin-user:
+      id: admin
+      email: admin@localhost
+      first-name: Adminus
+      last-name: Administratus
+      password: admin
+
+logging:
+  level:
+    # To log REST controllers
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: TRACE
+    # To log web access
+    org.springframework.web: TRACE
