@@ -18,7 +18,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <camunda-engine.version>7.14.0</camunda-engine.version>
+    <camunda-engine.version>7.15.0</camunda-engine.version>
   </properties>
 
   <dependencyManagement>
