@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>camunda-bpm-api</artifactId>
-    <groupId>io.holunda</groupId>
+    <groupId>io.holunda.camunda-api</groupId>
+    <artifactId>camunda-api-parent</artifactId>
     <version>7.14-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -13,14 +13,6 @@
   <name>${project.artifactId}</name>
 
   <dependencies>
-    <dependency>
-      <groupId>org.camunda.bpm.model</groupId>
-      <artifactId>camunda-bpmn-model</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm.model</groupId>
-      <artifactId>camunda-cmmn-model</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.camunda.bpm.model</groupId>
       <artifactId>camunda-dmn-model</artifactId>

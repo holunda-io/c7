@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.holunda</groupId>
-  <artifactId>camunda-bpm-api</artifactId>
+  <groupId>io.holunda.camunda-api</groupId>
+  <artifactId>camunda-api-parent</artifactId>
   <version>7.14-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Engine API</description>
@@ -25,6 +25,14 @@
     <module>dmn-engine</module>
     <module>process-engine</module>
   </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.14.0</version>
+    </dependency>
+  </dependencies>
 
   <dependencyManagement>
     <dependencies>
@@ -50,7 +58,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
 
   <build>
     <defaultGoal>clean package</defaultGoal>

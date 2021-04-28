@@ -11,6 +11,14 @@ Sometimes for building libraries it is useful to have the API only, without the 
 from Camunda JAR and packages it as a small JAR. By doing so, we had to provide very few own classes, to cut the track to implementation. It is by **NO MEANS** a replacement, but just a bunch of classes which may be required on the classpath, if 
 you use a library referencing Camunda BPM classes (but not using them).
 
+Short facts:
+
+| Original Library         | Size (mean)  | Dependencies  | API only | Size (mean) | Dependencies |
+| ------------------------ | -----------: | -----------: | -------- | ------------: | --: |
+| camunda-engine           |    4,7 mb    |    20        | camunda-bpm-engine-api |   225 kb| 7 |
+| camunda-engine-dmn       |    144 kb    |     6        | camunda-dmn-engine-api |    14 kb| 3 |
+
+
 ## Quick Introduction
 
 ### Setup
@@ -19,21 +27,45 @@ If you just want to start using the library, put the following dependency into y
 ```xml
 <dependency>
   <groupId>io.holunda</groupId>
-  <artifactId>camunda-bpm-api</artifactId>
+  <artifactId>camunda-bpm-engine-api</artifactId>
   <version>7.14</version>
 </dependency>
 ```
 
+If you are interested in using the DMN engine API only, put the following dependency into your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>io.holunda</groupId>
+    <artifactId>camunda-dmn-engine-api</artifactId>
+    <version>7.14</version>
+</dependency>
+```
+
+
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ```kotlin
-implementation("io.holunda:camunda-bpm-api:7.14")
+implementation("io.holunda:camunda-bpm-engine-api:7.14")
 ```
+
+and for DMN only:
+
+```kotlin
+implementation("io.holunda:camunda-dmn-engine-api:7.14")
+```
+
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ```groovy
-implementation 'io.holunda:camunda-bpm-api:7.14'
+implementation 'io.holunda:camunda-bpm-engine-api:7.14'
+```
+
+and for DMN only:
+
+```groovy
+implementation 'io.holunda:camunda-bpm-engine-api:7.14'
 ```
 
 Please note that the version of this library is tightly-coupled to the version of original Camunda API.  
