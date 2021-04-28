@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>camunda-bpm-api</artifactId>
+    <groupId>io.holunda</groupId>
+    <version>7.14-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>camunda-process-engine-api</artifactId>
+  <name>${project.artifactId}</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>camunda-dmn-engine-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.commons</groupId>
+      <artifactId>camunda-commons-typed-values</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack-engine-sources</id>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.camunda.bpm</groupId>
+                  <artifactId>camunda-engine</artifactId>
+                  <version>${camunda-engine.version}</version>
+                  <type>jar</type>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}/generated-sources/engine/src/main/java</outputDirectory>
+
+                  <excludes>
+                    org/camunda/bpm/engine/ParseException.java,
+                    org/camunda/bpm/engine/BpmnParseException.java,
+                    org/camunda/bpm/engine/impl/juel/TreeBuilderException.java,
+                  </excludes>
+
+                  <includes>
+                    org/camunda/bpm/ProcessApplicationService.java,
+                    org/camunda/bpm/application/InvocationContext.java,
+                    org/camunda/bpm/application/ProcessApplication.java,
+                    org/camunda/bpm/application/ProcessApplicationDeploymentInfo.java,
+                    org/camunda/bpm/application/ProcessApplicationInfo.java,
+                    org/camunda/bpm/application/ProcessApplicationInterface.java,
+                    org/camunda/bpm/application/ProcessApplicationReference.java,
+                    org/camunda/bpm/application/ProcessApplicationRegistration.java,
+                    org/camunda/bpm/application/**/*Exception.java,
+
+                    org/camunda/bpm/engine/*Service.java,
+                    org/camunda/bpm/engine/**/*Exception.java,
+
+                    org/camunda/bpm/engine/EntityTypes.java,
+                    org/camunda/bpm/engine/ProcessEngineServices.java,
+                    org/camunda/bpm/engine/ProcessEngine.java,
+
+                    org/camunda/bpm/engine/authorization/**/*.java,
+                    org/camunda/bpm/engine/batch/**/*.java,
+                    org/camunda/bpm/engine/delegate/**/*.java,
+                    org/camunda/bpm/engine/dmn/**/*.java,
+                    org/camunda/bpm/engine/exception/**/*.java,
+                    org/camunda/bpm/engine/externaltask/**/*.java,
+                    org/camunda/bpm/engine/filter/**/*.java,
+                    org/camunda/bpm/engine/form/**/*.java,
+                    org/camunda/bpm/engine/history/**/*.java,
+                    org/camunda/bpm/engine/identity/**/*.java,
+                    org/camunda/bpm/engine/management/**/*.java,
+                    org/camunda/bpm/engine/migration/**/*.java,
+                    org/camunda/bpm/engine/query/**/*.java,
+                    org/camunda/bpm/engine/repository/**/*.java,
+                    org/camunda/bpm/engine/runtime/**/*.java,
+                    org/camunda/bpm/engine/task/**/*.java,
+
+                    org/camunda/bpm/engine/impl/bpmn/parser/Error.java,
+                    org/camunda/bpm/engine/impl/core/variable/mapping/value/ParameterValueProvider.java,
+                    org/camunda/bpm/engine/impl/identity/Account.java,
+                    org/camunda/bpm/engine/impl/identity/Authentication.java,
+                  </includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Additional source folders -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/generated-sources/engine/src/main/java</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>

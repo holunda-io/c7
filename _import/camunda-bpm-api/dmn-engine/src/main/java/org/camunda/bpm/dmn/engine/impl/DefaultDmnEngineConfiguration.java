@@ -5,7 +5,6 @@ import org.camunda.bpm.dmn.engine.DmnEngineConfiguration;
 import org.camunda.bpm.dmn.engine.delegate.DmnDecisionEvaluationListener;
 import org.camunda.bpm.dmn.engine.delegate.DmnDecisionTableEvaluationListener;
 import org.camunda.bpm.dmn.engine.spi.DmnEngineMetricCollector;
-import org.camunda.bpm.engine.impl.__NotImplemented;
 
 import java.util.List;
 
