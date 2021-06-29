@@ -146,6 +146,15 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.3.0</version>
+          <executions>
+            <execution>
+              <id>generate-javadoc</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>javadoc</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
 
         <!-- Sources -->
@@ -153,6 +162,15 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
           <version>3.2.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
 
         <!-- gitflow -->
