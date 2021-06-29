@@ -225,8 +225,9 @@
                 <serverId>ossrh</serverId>
                 <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                 <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                <!-- go to oss.nexus.org and inspect the failure -->
                 <keepStagingRepositoryOnCloseRuleFailure>true
-                </keepStagingRepositoryOnCloseRuleFailure><!-- go to oss.nexus.org and inspect the failure -->
+                </keepStagingRepositoryOnCloseRuleFailure>
               </configuration>
             </execution>
           </executions>
@@ -289,6 +290,10 @@
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
           </plugin>
           <plugin>
@@ -307,7 +312,7 @@
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
 
