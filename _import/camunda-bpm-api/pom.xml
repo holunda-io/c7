@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-api-parent</artifactId>
-  <version>7.15</version>
+  <version>7.16-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Engine API</description>
   <url>https://github.com/holunda-io/camunda-bpm-api/</url>
