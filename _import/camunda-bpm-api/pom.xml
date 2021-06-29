@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-api-parent</artifactId>
-  <version>7.14</version>
+  <version>7.15</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Engine API</description>
   <url>https://github.com/holunda-io/camunda-bpm-api/</url>
@@ -18,7 +18,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <camunda-engine.version>7.14.0</camunda-engine.version>
+    <camunda-engine.version>7.15.0</camunda-engine.version>
   </properties>
 
   <modules>
@@ -30,7 +30,7 @@
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>
-      <version>7.14.0</version>
+      <version>7.15.0</version>
     </dependency>
   </dependencies>
 
