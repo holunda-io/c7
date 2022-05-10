@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-api-parent</artifactId>
-  <version>7.15.0</version>
+  <version>7.16.0</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Engine API</description>
   <url>https://github.com/holunda-io/camunda-bpm-api/</url>
@@ -18,7 +18,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <camunda-engine.version>7.15.0</camunda-engine.version>
+    <camunda-engine.version>7.16.0</camunda-engine.version>
   </properties>
 
   <modules>
@@ -60,14 +60,14 @@
           <!-- cleaning -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.2.0</version>
         </plugin>
 
         <plugin>
           <!-- Java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.10.1</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <source>${maven.compiler.source}</source>
@@ -78,7 +78,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.0</version>
           <executions>
             <!--
               <execution>
@@ -112,7 +112,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.0</version>
           <executions>
             <execution>
               <phase>generate-sources</phase>
@@ -137,7 +137,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.4.0</version>
           <configuration>
             <failOnWarnings>false</failOnWarnings>
             <failOnError>false</failOnError>
@@ -173,7 +173,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.16.0</version>
+          <version>1.18.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -218,7 +218,7 @@
         <!-- Deploy -->
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0-M1</version>
+          <version>2.8.2</version>
           <configuration>
             <skip>true</skip>
           </configuration>
@@ -227,7 +227,7 @@
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.8</version>
+          <version>1.6.13</version>
           <executions>
             <execution>
               <id>default-deploy</id>
@@ -257,7 +257,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.0.0-M3</version>
+          <version>3.0.0</version>
           <executions>
             <execution>
               <id>enforce-maven</id>
