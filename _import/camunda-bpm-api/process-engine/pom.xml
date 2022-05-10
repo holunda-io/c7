@@ -98,6 +98,7 @@
                     org/camunda/bpm/engine/repository/**/*.java,
                     org/camunda/bpm/engine/runtime/**/*.java,
                     org/camunda/bpm/engine/task/**/*.java,
+                    org/camunda/bpm/engine/telemetry/**.java,
 
                     org/camunda/bpm/engine/impl/bpmn/parser/Error.java,
                     org/camunda/bpm/engine/impl/core/variable/mapping/value/ParameterValueProvider.java,
