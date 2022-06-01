@@ -26,7 +26,7 @@
     <immutables.version>2.9.0</immutables.version>
     <jackson.version>2.13.3</jackson.version>
     <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
-    <assertj.version>3.23.0</assertj.version>
+    <assertj.version>3.23.1</assertj.version>
 
     <assertj.generated.dir>src/test/generated-assertions</assertj.generated.dir>
   </properties>
