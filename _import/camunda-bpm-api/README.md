@@ -1,7 +1,9 @@
+# Camunda Platform 7 Engine API
+
+[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-api)
 
-## Camunda Platform 7 Engine API
 
 > A small extract of the API layer from the greatest process engine ever.
 
