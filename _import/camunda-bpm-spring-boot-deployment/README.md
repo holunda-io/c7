@@ -1,42 +1,107 @@
-# camunda-bpm-spring-boot-deployment
+# Camunda BPM SpringBoot Deployment
 
-Template repository for usage in organizations: toolisticon, holunda-io, holixon...
-
+[![incubating](https://img.shields.io/badge/lifecycle-INCUBATING-orange.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
 ![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
 
-This repository is a **template repository** designed to be a template for the next project.
+## What is it good for?
 
-## How to use
+This library offers an alternative way to deploy processes and decisions (and even cases) to Camunda BPM and replaces the default Camunda auto deployment
+mechanism.
 
-* create a new repo on github (can be in any organization). Choose this project as template repository. Copy all branches, so the `master`exists in your repo (for the github actions)
-* on the command line: clone your new repo locally
-* in the `setup.sh` script: set your organization, repository and base package
-* run the `setup.sh` script, all placeholders are filled with your information
-* delete the setup-script
-* Update the `README.md`
-* in the `developers` section of the `pom.xml`: mention yourself ... it is your project.
+Why would you want to do that? There are mainly two reasons:
 
-## Things to change after usage of template
+* Camunda's auto deployment cannot handle multi tenant deployments within SpringBoot applications, as it does not properly discover the resources within the
+  repackaged JAR
+* The default way to specify process archives in `processes.xml` is not as easy and SpringBoot-like as defining it in YAML (which this library allows)
 
-To change the following values, modify the placeholders in `setup.sh` and run it.
-This is a one-time operation, you can safely delete the `setup.sh` file afterwards.
+If you want to know more about the issue with SpringBoot, you can
+read [this article on medium](https://medium.com/holisticon-consultants/multi-tenant-deployments-with-camunda-bpm-and-springboot-ecac2c8826f8).
 
-Of course, you can also edit manually .... and do not forget to change this `README.md` with YOUR project specific information :-).
+## How to use the library
 
-### Maven pom.xml 
+### Setup
 
-* Maven coordinates: `groupId`, `artifactId` and `version`
-* Main description: `name`, `url`, `description`
-* SCM: `connection`, `url`, `developerConnection`
+Add the dependency to your `pom.xml`:
 
-### Issue Template
+```xml
 
-* correct the URL to repo
+<dependency>
+  <groupId>io.holunda.deployment</groupId>
+  <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
-### Issue Labels
+If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
-* Check the release-notes.yml for details, but create the following labels: Type: dependencies, Type: bug, Type: documentation, Type: question, Type: enhancement
+```kts
+implementation("io.holunda.data:camunda-bpm-data:1.2.6")
+```
+
+For Gradle Groovy DSL add to your `build.gradle`:
+
+```Groovy
+implementation 'io.holunda.data:camunda-bpm-data:1.2.6'
+```
+
+The library configures itself by Spring Autoconfiguration and is enabled by default, if necessary you can still disable the deployment mechanism by adding the
+following property to your `application.yaml`:
+
+```yaml
+camunda:
+  bpm:
+    deployment:
+      enabled: false
+```
+
+**NB!** Make sure you disable Camunda's auto deployment! It is as easy as just deleting the `processes.xml`.
+
+### Configuration
+
+Instead of `processes.xml` you now have configure the process archives in your `application.yaml`:
+
+```yaml
+camunda:
+  bpm:
+    deployment:
+      archives:
+        - name: Default
+          path: tenants/default
+        - name: TenantOne
+          tenant: one
+          path: tenants/one
+```
+
+If you don't specify a `tenant`, the tenant within Camunda will be `null`, which is the Camunda default.
+
+You have to place your resources in a folder structure that matches the specified archives:
+
+```
+src/main/resources
+  /tenants
+    /default
+      - firstProcess.bpmn
+    /one
+      - secondProcess.bpmn
+```
+
+## License
+
+[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+This library is developed under Apache 2.0 License.
+
+## Contribution
+
+If you want to contribute to this project, feel free to do so. Start
+with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).
+
+## Maintainer
+
+[<img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117">](https://github.com/stefanzilske) |[<img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117">](https://github.com/jangalinski)|[<img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117">](https://github.com/zambrovski)
+:---:|:--------------------------------------------------------------------------------------------------------------------------------:|:---:|
+[stefanzilske](https://github.com/stefanzilske)|                                          [jangalinski](https://github.com/jangalinski)                                           |[zambrovski](https://github.com/zambrovski)|
 

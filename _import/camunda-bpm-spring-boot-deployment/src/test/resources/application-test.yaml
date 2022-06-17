@@ -1,0 +1,10 @@
+camunda:
+  bpm:
+    deployment:
+      enabled: true
+      archives:
+        - name: Default
+          path: tenants/default
+        - name: Foo
+          tenant: foo
+          path: tenants/foo
