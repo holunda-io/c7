@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>BASE_GROUP_ID</groupId>
-  <artifactId>BASE_ARTIFACT_ID</artifactId>
+  <groupId>io.holunda.deployment</groupId>
+  <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>
-  <description>BASE_DESCRIPTION</description>
-  <url>https://github.com/GITHUB_ORGANIZATION/GITHUB_REPOSITORY/</url>
+  <description>camunda-bpm-spring-boot-deployment</description>
+  <url>https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/</url>
 
   <properties>
     <project.encoding>UTF-8</project.encoding>
@@ -598,9 +598,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</connection>
-    <url>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</url>
-    <developerConnection>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/camunda-bpm-spring-boot-deployment.git</connection>
+    <url>scm:git:git@github.com:holunda-io/camunda-bpm-spring-boot-deployment.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/camunda-bpm-spring-boot-deployment.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
