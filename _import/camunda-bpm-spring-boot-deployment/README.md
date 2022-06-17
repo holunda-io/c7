@@ -38,13 +38,13 @@ Add the dependency to your `pom.xml`:
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ```kts
-implementation("io.holunda.data:camunda-bpm-data:1.2.6")
+implementation("io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.0.0")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ```Groovy
-implementation 'io.holunda.data:camunda-bpm-data:1.2.6'
+implementation 'io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.0.0'
 ```
 
 The library configures itself by Spring Autoconfiguration and is enabled by default, if necessary you can still disable the deployment mechanism by adding the
