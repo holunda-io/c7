@@ -364,7 +364,7 @@
             </execution>
           </executions>
           <configuration>
-            <jdkVersion>11</jdkVersion>
+            <jdkVersion>17</jdkVersion>
             <!--
             <includes>
               <include>packages.md</include>
@@ -532,7 +532,7 @@
               <configuration>
                 <rules>
                   <requireJavaVersion>
-                    <version>11</version>
+                    <version>17</version>
                   </requireJavaVersion>
                   <requireMavenVersion>
                     <version>3.6.0</version>
