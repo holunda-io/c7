@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>${project.artifactId}</name>
   <description>camunda-bpm-spring-boot-deployment</description>
   <url>https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/</url>
@@ -14,18 +14,35 @@
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-    <kotlin.version>1.6.21</kotlin.version>
-    <java.version>11</java.version>
+    <kotlin.version>1.7.0</kotlin.version>
+    <java.version>17</java.version>
+
+    <spring-boot.version>2.6.8</spring-boot.version>
+    <camunda.version>7.17.0</camunda.version>
 
     <!-- TEST -->
     <kotlin-logging.version>2.1.23</kotlin-logging.version>
     <junit5.version>5.8.2</junit5.version>
-    <mockito.version>4.0.0</mockito.version>
+    <mockk.version>1.12.4</mockk.version>
     <assertj.version>3.23.1</assertj.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.camunda.bpm</groupId>
+        <artifactId>camunda-bom</artifactId>
+        <version>${camunda.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-bom</artifactId>
@@ -59,11 +76,21 @@
       <version>${kotlin-logging.version}</version>
     </dependency>
 
+    <!-- CAMUNDA -->
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+    </dependency>
+
     <!-- TEST -->
     <dependency>
-      <groupId>org.mockito.kotlin</groupId>
-      <artifactId>mockito-kotlin</artifactId>
-      <version>${mockito.version}</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.mockk</groupId>
+      <artifactId>mockk</artifactId>
+      <version>${mockk.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -87,10 +114,22 @@
       <artifactId>kotlin-test-junit5</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+    <sourceDirectory>src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>src/test/kotlin</testSourceDirectory>
     <resources>
       <!-- ignore gitkeep marker files -->
       <resource>
@@ -205,15 +244,10 @@
           <configuration>
             <jvmTarget>${java.version}</jvmTarget>
             <compilerPlugins>
-              <!--<plugin>spring</plugin>-->
-              <!--plugin>jpa</plugin-->
+              <plugin>spring</plugin>
               <plugin>no-arg</plugin>
               <plugin>all-open</plugin>
             </compilerPlugins>
-            <pluginOptions>
-              <!-- Each annotation is placed on its own line -->
-              <!--  <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option> -->
-            </pluginOptions>
           </configuration>
 
           <executions>
@@ -236,7 +270,6 @@
               <configuration>
                 <sourceDirs>
                   <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-                  <sourceDir>${project.basedir}/src/test/java</sourceDir>
                 </sourceDirs>
               </configuration>
             </execution>
@@ -269,12 +302,11 @@
         <!-- Unit Tests -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
+          <version>3.0.0-M7</version>
           <configuration>
             <useSystemClassLoader>false</useSystemClassLoader>
             <shutdown>kill</shutdown>
             <runOrder>random</runOrder>
-            <argLine>--illegal-access=permit ${surefireArgLine} -Djava.awt.headless=true -XX:+StartAttachListener</argLine>
             <excludes>
               <exclude>**/*ITest.*</exclude>
             </excludes>
@@ -332,7 +364,7 @@
             </execution>
           </executions>
           <configuration>
-            <jdkVersion>11</jdkVersion>
+            <jdkVersion>17</jdkVersion>
             <!--
             <includes>
               <include>packages.md</include>
@@ -500,7 +532,7 @@
               <configuration>
                 <rules>
                   <requireJavaVersion>
-                    <version>11</version>
+                    <version>17</version>
                   </requireJavaVersion>
                   <requireMavenVersion>
                     <version>3.6.0</version>
