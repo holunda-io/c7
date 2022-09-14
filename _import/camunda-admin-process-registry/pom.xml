@@ -1,27 +1,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0</version>
   <name>${project.artifactId}</name>
-  <description>camunda-admin-process-registry</description>
+  <description>Register and run utility processes</description>
   <url>https://github.com/holunda-io/camunda-admin-process-registry/</url>
 
   <properties>
-    <project.encoding>UTF-8</project.encoding>
-    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
-
     <kotlin.version>1.7.10</kotlin.version>
     <java.version>11</java.version>
+    <kotlin-logging.version>2.1.23</kotlin-logging.version>
+
+    <spring-boot.version>2.7.3</spring-boot.version>
+    <camunda.version>7.17.0</camunda.version>
+    <camunda-data.version>1.2.7</camunda-data.version>
+
+    <!-- required for camunda with jdk >= 9 -->
+    <jaxb-impl.version>4.0.0</jaxb-impl.version>
 
     <!-- TEST -->
-    <kotlin-logging.version>2.1.23</kotlin-logging.version>
     <junit5.version>5.9.0</junit5.version>
     <mockito.version>4.0.0</mockito.version>
     <assertj.version>3.23.1</assertj.version>
+
+    <!-- MAVEN -->
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
   </properties>
 
   <dependencyManagement>
@@ -30,6 +38,22 @@
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-bom</artifactId>
         <version>${kotlin.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <!-- CAMUNDA OFFICIAL -->
+      <dependency>
+        <groupId>org.camunda.bpm</groupId>
+        <artifactId>camunda-bom</artifactId>
+        <version>${camunda.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <!-- SPRING -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -59,6 +83,18 @@
       <version>${kotlin-logging.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data</artifactId>
+      <version>${camunda-data.version}</version>
+    </dependency>
+
     <!-- TEST -->
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
@@ -85,6 +121,35 @@
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda</groupId>
+      <artifactId>camunda-platform-7-autologin</artifactId>
+      <version>0.0.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- prior to jdk9 we have to include jaxb for camunda to work -->
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>${jaxb-impl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.200</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -204,16 +269,12 @@
           <version>${kotlin.version}</version>
           <configuration>
             <jvmTarget>${java.version}</jvmTarget>
+            <args>
+              <arg>-Xjsr305=strict</arg>
+            </args>
             <compilerPlugins>
-              <!--<plugin>spring</plugin>-->
-              <!--plugin>jpa</plugin-->
-              <plugin>no-arg</plugin>
-              <plugin>all-open</plugin>
+              <plugin>spring</plugin>
             </compilerPlugins>
-            <pluginOptions>
-              <!-- Each annotation is placed on its own line -->
-              <!--  <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option> -->
-            </pluginOptions>
           </configuration>
 
           <executions>
@@ -236,7 +297,6 @@
               <configuration>
                 <sourceDirs>
                   <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-                  <sourceDir>${project.basedir}/src/test/java</sourceDir>
                 </sourceDirs>
               </configuration>
             </execution>
