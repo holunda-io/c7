@@ -18,7 +18,7 @@ Once you included the lib in your camunda spring boot application, create an [Ad
 
 ```kotlin
 
-@Bean
+  @Bean
   fun helloWorldAdminProcess(): AdminProcess {
     val foo = StringField("foo", "Foo - enter your name")
     val date = DateField("date", "Date - select some magic")
