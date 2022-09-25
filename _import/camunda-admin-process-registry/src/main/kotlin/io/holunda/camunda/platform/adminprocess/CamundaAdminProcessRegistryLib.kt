@@ -1,14 +1,13 @@
 package io.holunda.camunda.platform.adminprocess
 
-import mu.KLogging
+import io.holunda.camunda.platform.adminprocess.form.FormField
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import javax.annotation.PostConstruct
+import org.camunda.bpm.model.bpmn.builder.StartEventBuilder
 
 object CamundaAdminProcessRegistryLib {
+
+  @JvmStatic
   fun adminProcess(
     activityId: String,
     label: String = activityId,
@@ -21,18 +20,15 @@ object CamundaAdminProcessRegistryLib {
       delegate.execute(execution)
     }
   }
-}
-
-@Configuration
-class CamundaAdminProcessAutoConfiguration {
-  companion object : KLogging()
 
   /**
-   * Collects all beans of type [AdminProcess] in context and registers them in a map.
+   * Add single form field to builder.
    */
-  @Bean(AdminProcessRegistry.NAME)
-  fun adminProcessRegistry(
-    processes: List<AdminProcess>?
-  ) = AdminProcessRegistry((processes?: emptyList()).associateBy { it.activityId })
+  fun StartEventBuilder.camundaFormField(formField: FormField<*>): StartEventBuilder = formField.addToStartEvent(this)
 
+  /**
+   * Add multiple form fields to builder.
+   */
+  fun StartEventBuilder.camundaFormFields(formFields: List<FormField<*>>): StartEventBuilder = formFields
+    .fold(this) { builder, formField -> builder.camundaFormField(formField) }
 }

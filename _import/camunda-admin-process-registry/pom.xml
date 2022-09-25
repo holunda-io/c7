@@ -4,7 +4,7 @@
 
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <name>${project.artifactId}</name>
   <description>Register and run utility processes</description>
   <url>https://github.com/holunda-io/camunda-admin-process-registry/</url>
@@ -145,6 +145,12 @@
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
       <version>${jaxb-impl.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
@@ -152,7 +158,14 @@
       <version>1.4.200</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>

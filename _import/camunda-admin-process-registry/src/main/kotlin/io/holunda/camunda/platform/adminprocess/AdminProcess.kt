@@ -1,10 +1,10 @@
 package io.holunda.camunda.platform.adminprocess
 
+import io.holunda.camunda.platform.adminprocess.CamundaAdminProcessRegistryLib.camundaFormFields
+import io.holunda.camunda.platform.adminprocess.form.FormField
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.model.bpmn.BpmnModelInstance
-import org.camunda.bpm.model.bpmn.builder.StartEventBuilder
-
 
 abstract class AdminProcess(
   val activityId: String,
@@ -39,12 +39,4 @@ abstract class AdminProcess(
 }
 
 
-fun StartEventBuilder.camundaFormFields(formFields: List<FormField<*>>): StartEventBuilder = formFields.fold(this) { builder, formField ->
-  builder.camundaFormField()
-    .camundaLabel(formField.label)
-    .camundaType(formField.type)
-    .camundaId(formField.id)
-    .camundaDefaultValue(formField.defaultValue?.toString())
-    .camundaFormFieldDone()
-}
 
