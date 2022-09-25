@@ -158,7 +158,14 @@
       <version>1.4.200</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>

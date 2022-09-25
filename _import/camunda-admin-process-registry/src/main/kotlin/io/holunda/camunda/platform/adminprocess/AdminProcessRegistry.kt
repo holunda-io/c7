@@ -8,7 +8,6 @@ import org.camunda.bpm.engine.repository.Deployment
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
 import org.springframework.context.event.EventListener
 
-
 class AdminProcessRegistry(
   private val processes: Map<ActivityId, AdminProcess>
 ) : JavaDelegate {
@@ -23,7 +22,6 @@ class AdminProcessRegistry(
     val WARN = CamundaAdminProcessRegistryLib.adminProcess("WARN") {
       logger.warn { "no adminProcess registered with processDefinitionKey=${it.currentActivityId}" }
     }
-
   }
 
   @EventListener
