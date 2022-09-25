@@ -2,7 +2,7 @@ package io.holunda.camunda.platform.adminprocess._test
 
 import com.github.javafaker.Faker
 import io.holunda.camunda.bpm.data.CamundaBpmData
-import io.holunda.camunda.platform.adminprocess.*
+import io.holunda.camunda.platform.adminprocess.AdminProcess
 import io.holunda.camunda.platform.adminprocess.AdminProcessRegistry.Companion.logger
 import io.holunda.camunda.platform.adminprocess.CamundaAdminProcessRegistryLib.adminProcess
 import io.holunda.camunda.platform.adminprocess.form.BooleanField
@@ -37,23 +37,23 @@ class CamundaAdminProcessRegistryTestApplication {
 
   @Bean
   fun helloWorldAdminProcess(): AdminProcess {
-    val foo = StringField("foo", "Foo - enter your name")
-    val date = DateField("date", "Date - select some magic")
-    val number = LongField("longId", "A number")
-    val trueFalse = BooleanField("booleanId", "Yes or no?")
+    val stringField = StringField("fooId", "Foo - enter your name")
+    val dateField = DateField("dateId", "Date - select some magic")
+    val numberField = LongField("longId", "A number")
+    val booleanField = BooleanField("booleanId", "Yes or no?")
 
     return adminProcess(
       activityId = "helloWorld",
       label = "Hello World 2",
-      formFields = listOf(foo, date, number, trueFalse)
+      formFields = listOf(stringField, dateField, numberField, booleanField)
     ) {
       val variables = CamundaBpmData.reader(it)
 
       logger.info { """ Hi, I am the process running with:
-          * foo: ${variables.get(foo)}
-          * date: ${variables.get(date)}
-          * number: ${variables.get(number)}
-          * yes?: ${variables.get(trueFalse)}
+          * foo: ${variables.get(stringField)}
+          * date: ${variables.get(dateField)}
+          * number: ${variables.get(numberField)}
+          * yes?: ${variables.get(booleanField)}
         """.trimIndent()
       }
     }
