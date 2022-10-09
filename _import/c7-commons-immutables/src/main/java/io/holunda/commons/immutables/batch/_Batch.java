@@ -7,6 +7,8 @@ import org.camunda.bpm.engine.batch.Batch;
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Date;
+
 /**
  * @see io.holunda.commons.immutables.CamundaImmutables#batch(Batch)
  */
@@ -56,4 +58,12 @@ interface _Batch extends Batch {
   default boolean isSuspended() {
     return false;
   }
+
+  @Nullable
+  @Override
+  Date getStartTime();
+
+  @Nullable
+  @Override
+  Date getExecutionStartTime();
 }

@@ -3,13 +3,29 @@ package io.holunda.commons.immutables;
 import io.holunda.commons.immutables.batch.ImmutableBatch;
 import io.holunda.commons.immutables.externaltask.ImmutableExternalTask;
 import io.holunda.commons.immutables.externaltask.ImmutableLockedExternalTask;
+import io.holunda.commons.immutables.form.ImmutableFormRef;
 import io.holunda.commons.immutables.history.ImmutableHistoricDecisionEvaluationEvent;
 import io.holunda.commons.immutables.identity.ImmutableGroup;
 import io.holunda.commons.immutables.identity.ImmutableTenant;
 import io.holunda.commons.immutables.identity.ImmutableUser;
 import io.holunda.commons.immutables.management.ImmutableJobDefinition;
-import io.holunda.commons.immutables.repository.*;
-import io.holunda.commons.immutables.runtime.*;
+import io.holunda.commons.immutables.repository.ImmutableCaseDefinition;
+import io.holunda.commons.immutables.repository.ImmutableDecisionDefinition;
+import io.holunda.commons.immutables.repository.ImmutableDecisionRequirementsDefinition;
+import io.holunda.commons.immutables.repository.ImmutableDeployment;
+import io.holunda.commons.immutables.repository.ImmutableProcessDefinition;
+import io.holunda.commons.immutables.repository.ImmutableResource;
+import io.holunda.commons.immutables.repository.ImmutableResourceDefinition;
+import io.holunda.commons.immutables.runtime.ImmutableActivityInstance;
+import io.holunda.commons.immutables.runtime.ImmutableCaseExecution;
+import io.holunda.commons.immutables.runtime.ImmutableCaseInstance;
+import io.holunda.commons.immutables.runtime.ImmutableEventSubscription;
+import io.holunda.commons.immutables.runtime.ImmutableExecution;
+import io.holunda.commons.immutables.runtime.ImmutableIncident;
+import io.holunda.commons.immutables.runtime.ImmutableJob;
+import io.holunda.commons.immutables.runtime.ImmutableProcessElementInstance;
+import io.holunda.commons.immutables.runtime.ImmutableProcessInstance;
+import io.holunda.commons.immutables.runtime.ImmutableVariableInstance;
 import io.holunda.commons.immutables.task.ImmutableAttachment;
 import io.holunda.commons.immutables.task.ImmutableComment;
 import io.holunda.commons.immutables.task.ImmutableIdentityLink;
@@ -17,17 +33,36 @@ import io.holunda.commons.immutables.task.ImmutableTask;
 import org.camunda.bpm.engine.batch.Batch;
 import org.camunda.bpm.engine.externaltask.ExternalTask;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.form.CamundaFormRef;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.history.event.HistoricDecisionEvaluationEvent;
 import org.camunda.bpm.engine.management.JobDefinition;
-import org.camunda.bpm.engine.repository.*;
-import org.camunda.bpm.engine.runtime.*;
+import org.camunda.bpm.engine.repository.CaseDefinition;
+import org.camunda.bpm.engine.repository.DecisionDefinition;
+import org.camunda.bpm.engine.repository.DecisionRequirementsDefinition;
+import org.camunda.bpm.engine.repository.Deployment;
+import org.camunda.bpm.engine.repository.ProcessDefinition;
+import org.camunda.bpm.engine.repository.Resource;
+import org.camunda.bpm.engine.repository.ResourceDefinition;
+import org.camunda.bpm.engine.runtime.ActivityInstance;
+import org.camunda.bpm.engine.runtime.CaseExecution;
+import org.camunda.bpm.engine.runtime.CaseInstance;
+import org.camunda.bpm.engine.runtime.EventSubscription;
+import org.camunda.bpm.engine.runtime.Execution;
+import org.camunda.bpm.engine.runtime.Incident;
+import org.camunda.bpm.engine.runtime.Job;
+import org.camunda.bpm.engine.runtime.ProcessElementInstance;
+import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
+import org.camunda.bpm.engine.runtime.VariableInstance;
 import org.camunda.bpm.engine.task.Attachment;
 import org.camunda.bpm.engine.task.Comment;
 import org.camunda.bpm.engine.task.IdentityLink;
 import org.camunda.bpm.engine.task.Task;
+
+import java.util.Optional;
 
 public final class CamundaImmutables {
   public static final long VERSION = 7140L;
@@ -86,6 +121,10 @@ public final class CamundaImmutables {
     return ImmutableExternalTask.builder().from(externalTask).build();
   }
 
+  public static ImmutableFormRef formRef(CamundaFormRef formRef) {
+    return ImmutableFormRef.builder().from(formRef).build();
+  }
+
   public static ImmutableLockedExternalTask lockedExternalTask(LockedExternalTask externalTask) {
     return ImmutableLockedExternalTask.builder().from(externalTask).build();
   }
@@ -140,7 +179,10 @@ public final class CamundaImmutables {
   }
 
   public static ImmutableTask task(final Task task) {
-    return ImmutableTask.builder().from(task).build();
+    final ImmutableFormRef immutableFormRef = Optional.ofNullable(task.getCamundaFormRef()).map(CamundaImmutables::formRef).orElse(null);
+    return ImmutableTask.builder().from(task)
+      .camundaFormRef(immutableFormRef)
+      .build();
   }
 
   public static ImmutableTenant tenant(final Tenant tenant) {

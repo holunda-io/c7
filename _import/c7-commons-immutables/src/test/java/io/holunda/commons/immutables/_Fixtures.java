@@ -3,10 +3,12 @@ package io.holunda.commons.immutables;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.form.CamundaFormRef;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.event.EventType;
+import org.camunda.bpm.engine.impl.form.CamundaFormRefImpl;
 import org.camunda.bpm.engine.repository.CaseDefinition;
 import org.camunda.bpm.engine.runtime.*;
 import org.camunda.bpm.engine.task.*;
@@ -119,6 +121,16 @@ public enum _Fixtures {
     @Override
     public boolean isSuspended() {
       return true;
+    }
+
+    @Override
+    public Date getStartTime() {
+      return new Date();
+    }
+
+    @Override
+    public Date getExecutionStartTime() {
+      return new Date();
     }
   };
 
@@ -796,6 +808,11 @@ public enum _Fixtures {
     }
 
     @Override
+    public Date getLastUpdated() {
+      return DATE_NOW;
+    }
+
+    @Override
     public String getTaskDefinitionKey() {
       return TASK_DEFINITION_KEY;
     }
@@ -843,6 +860,13 @@ public enum _Fixtures {
     @Override
     public String getFormKey() {
       return "form/key";
+    }
+
+    @Override
+    public CamundaFormRef getCamundaFormRef() {
+      CamundaFormRefImpl formRef = new CamundaFormRefImpl("key", "binding");
+      formRef.setVersion(1);
+      return formRef;
     }
 
     @Override

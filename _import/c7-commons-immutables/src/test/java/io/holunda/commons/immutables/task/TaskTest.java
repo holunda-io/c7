@@ -3,6 +3,7 @@ package io.holunda.commons.immutables.task;
 import io.holunda.commons.immutables.Assertions;
 import io.holunda.commons.immutables.CamundaImmutables;
 import io.holunda.commons.immutables._BasicImmutableTest;
+import io.holunda.commons.immutables.form.ImmutableFormRef;
 import org.camunda.bpm.engine.task.DelegationState;
 import org.camunda.bpm.engine.task.Task;
 
@@ -53,6 +54,9 @@ public class TaskTest extends _BasicImmutableTest<ImmutableTask> {
     Assertions.assertThat(dto).isSuspended();
     Assertions.assertThat(dto).hasFormKey(TASK.getFormKey());
     Assertions.assertThat(dto).hasTenantId(TENANT_ID);
+    Assertions.assertThat(dto).hasCamundaFormRef(ImmutableFormRef.builder().key("key")
+      .binding("binding")
+      .version(1).build());
   }
 
   @Override

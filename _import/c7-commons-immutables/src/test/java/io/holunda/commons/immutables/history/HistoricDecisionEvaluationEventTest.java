@@ -37,8 +37,7 @@ public class HistoricDecisionEvaluationEventTest extends _BasicImmutableTest<Imm
     assertThat(dto).hasProcessDefinitionName(_Fixtures.PROCESS_DEFINITION_NAME);
     assertThat(dto).hasProcessDefinitionVersion(_Fixtures.PROCESS_DEFINITION_VERSION);
     assertThat(dto).hasRootProcessInstanceId(_Fixtures.ROOT_PROCESS_INSTANCE_ID);
-
-    log.info(mapper.toJson(dto));
+    
   }
 
   @Override

@@ -4,15 +4,14 @@
 
   <groupId>io.holunda.commons</groupId>
   <artifactId>camunda-commons-immutables</artifactId>
-  <version>0.15.0-SNAPSHOT</version>
+  <version>0.18.0-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Collection of Camunda Immutables</description>
 
   <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -22,13 +21,17 @@
     <additionalparam>-Xdoclint:none</additionalparam>
 
     <!-- dependencies -->
-    <camunda.version>7.15.0</camunda.version>
-    <immutables.version>2.8.8</immutables.version>
-    <jackson.version>2.12.5</jackson.version>
+    <camunda.version>7.18.0</camunda.version>
+    <immutables.version>2.9.2</immutables.version>
+    <jackson.version>2.13.4</jackson.version>
     <jetbrains-annotations.version>22.0.0</jetbrains-annotations.version>
-    <assertj.version>3.21.0</assertj.version>
+    <assertj.version>3.23.1</assertj.version>
 
     <assertj.generated.dir>src/test/generated-assertions</assertj.generated.dir>
+
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
   </properties>
 
   <dependencyManagement>
@@ -95,9 +98,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.camunda.bpm.assert</groupId>
+      <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-bpm-assert</artifactId>
-      <version>10.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>

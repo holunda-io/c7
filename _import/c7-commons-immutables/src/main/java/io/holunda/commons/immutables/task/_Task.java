@@ -3,7 +3,9 @@ package io.holunda.commons.immutables.task;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.holunda.commons.immutables._config.CamundaPojoStyle;
-import org.camunda.bpm.engine.identity.Group;
+import io.holunda.commons.immutables._config.jackson.FormRefDeserializer;
+import io.holunda.commons.immutables._config.jackson.FormRefSerializer;
+import org.camunda.bpm.engine.form.CamundaFormRef;
 import org.camunda.bpm.engine.impl.util.ClockUtil;
 import org.camunda.bpm.engine.task.DelegationState;
 import org.camunda.bpm.engine.task.Task;
@@ -118,6 +120,17 @@ interface _Task extends _TaskWithoutSetters {
   @Override
   String getTenantId();
 
+  @Override
+  @Nullable
+  @JsonSerialize(using = FormRefSerializer.class)
+  @JsonDeserialize(using = FormRefDeserializer.class)
+  default CamundaFormRef getCamundaFormRef() {
+    return null;
+  }
+
+  @Nullable
+  @Override
+  Date getLastUpdated();
 }
 
 /**
