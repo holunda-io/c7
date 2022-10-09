@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.holunda.commons</groupId>
@@ -11,7 +11,6 @@
   <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
 
   <properties>
-
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -27,7 +26,7 @@
     <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
     <assertj.version>3.23.1</assertj.version>
 
-    <assertj.generated.dir>src/test/generated-assertions</assertj.generated.dir>
+    <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
 
     <project.encoding>UTF-8</project.encoding>
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
@@ -124,6 +123,7 @@
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+    <testSourceDirectory>${project.build.directory}/generated-test-sources/assertj</testSourceDirectory>
 
     <pluginManagement>
       <plugins>
@@ -149,8 +149,8 @@
           </executions>
         </plugin>
 
+        <!-- java compiler -->
         <plugin>
-          <!-- java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.10.1</version>
@@ -168,8 +168,8 @@
           </configuration>
         </plugin>
 
+        <!-- resources -->
         <plugin>
-          <!-- resources -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.0</version>
@@ -192,6 +192,7 @@
           </configuration>
         </plugin>
 
+        <!-- javadoc -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
@@ -281,6 +282,8 @@
             <skip>true</skip>
           </configuration>
         </plugin>
+
+        <!-- sonatype -->
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -328,6 +331,8 @@
             </execution>
           </executions>
         </plugin>
+
+        <!-- assertj -->
         <plugin>
           <groupId>org.assertj</groupId>
           <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
@@ -352,25 +357,6 @@
               <version>${assertj.version}</version>
             </dependency>
           </dependencies>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.3.0</version>
-          <executions>
-            <execution>
-              <id>add-source</id>
-              <phase>generate-test-sources</phase>
-              <goals>
-                <goal>add-test-source</goal>
-              </goals>
-              <configuration>
-                <sources>
-                  <source>${assertj.generated.dir}</source>
-                </sources>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
