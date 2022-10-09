@@ -1,19 +1,22 @@
 package io.holunda.commons.immutables;
 
+import io.holunda.commons.immutables._JacksonHelper.JsonMapper;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static io.holunda.commons.immutables._JacksonHelper.jsonMapper;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.holunda.commons.immutables._JacksonHelper.JsonMapper;
-import org.junit.Test;
-
+@SuppressWarnings({"java:S2699","java:S2187"})
 public abstract class _BasicImmutableTest<T> {
 
+  protected final Logger log = LoggerFactory.getLogger(_BasicImmutableTest.class);
   protected final JsonMapper<T> mapper;
 
   protected _BasicImmutableTest(Class<T> type) {
     this.mapper = jsonMapper(type);
   }
-
 
   @Test
   public void factory_method() {
@@ -27,11 +30,11 @@ public abstract class _BasicImmutableTest<T> {
 
   @Test
   public void convert_json() {
-    T dto = createDto();
-    String json = mapper.toJson(dto);
+    final T dto = createDto();
+    final var json = mapper.toJson(dto);
 
     assertThat(mapper.fromJson(json)).isEqualTo(dto);
   }
 
-  abstract T createDto();
+  protected abstract T createDto();
 }

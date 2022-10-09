@@ -1,19 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.holunda.commons</groupId>
   <artifactId>camunda-commons-immutables</artifactId>
-  <version>0.13.0</version>
+  <version>0.18.0</version>
   <name>${project.artifactId}</name>
   <description>Collection of Camunda Immutables</description>
 
   <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -22,26 +20,53 @@
     <additionalparam>-Xdoclint:none</additionalparam>
 
     <!-- dependencies -->
-    <camunda.version>7.13.0</camunda.version>
-    <immutables.version>2.8.8</immutables.version>
-    <jetbrains-annotations.version>16.0.1</jetbrains-annotations.version>
-    <jackson.version>2.10.3</jackson.version>
-    <assertj.version>3.15.0</assertj.version>
+    <camunda.version>7.18.0</camunda.version>
+    <immutables.version>2.9.2</immutables.version>
+    <jackson.version>2.14.0-rc1</jackson.version>
+    <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
+    <assertj.version>3.23.1</assertj.version>
 
-    <assertj.generated.dir>src/test/generated-assertions</assertj.generated.dir>
+    <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
+
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.camunda.bpm</groupId>
+        <artifactId>camunda-bom</artifactId>
+        <version>${camunda.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>
-      <version>${camunda.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm.dmn</groupId>
+      <artifactId>camunda-engine-dmn</artifactId>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.immutables</groupId>
       <artifactId>value</artifactId>
+      <version>${immutables.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.immutables</groupId>
+      <artifactId>serial</artifactId>
       <version>${immutables.version}</version>
       <scope>provided</scope>
     </dependency>
@@ -63,7 +88,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -73,15 +98,14 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.camunda.bpm.assert</groupId>
+      <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-bpm-assert</artifactId>
-      <version>5.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>3.3.0</version>
+      <version>4.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -90,10 +114,17 @@
       <version>1.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.3</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+    <testSourceDirectory>${project.build.directory}/generated-test-sources/assertj</testSourceDirectory>
 
     <pluginManagement>
       <plugins>
@@ -101,14 +132,14 @@
           <!-- cleaning -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.2.0</version>
         </plugin>
 
         <!-- Coverage metering -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.5</version>
+          <version>0.8.8</version>
           <executions>
             <execution>
               <id>pre-unit-test</id>
@@ -119,11 +150,11 @@
           </executions>
         </plugin>
 
+        <!-- java compiler -->
         <plugin>
-          <!-- java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.10.1</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <source>${maven.compiler.source}</source>
@@ -138,21 +169,20 @@
           </configuration>
         </plugin>
 
+        <!-- resources -->
         <plugin>
-          <!-- resources -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.3.0</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
         </plugin>
 
-
         <!-- Unit Tests -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.20.1</version>
+          <version>2.22.2</version>
           <configuration>
             <useSystemClassLoader>false</useSystemClassLoader>
             <shutdown>kill</shutdown>
@@ -163,10 +193,11 @@
           </configuration>
         </plugin>
 
+        <!-- javadoc -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.4.1</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -181,7 +212,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.2.1</version>
           <executions>
             <execution>
               <id>attach-sources</id>
@@ -201,7 +232,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.14.0</version>
+          <version>1.18.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -223,7 +254,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.6</version>
+          <version>3.0.1</version>
           <configuration>
             <keyname>${gpg.keyname}</keyname>
             <gpgArguments>
@@ -247,15 +278,17 @@
         <!-- Deploy -->
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0-M1</version>
+          <version>3.0.0</version>
           <configuration>
             <skip>true</skip>
           </configuration>
         </plugin>
+
+        <!-- sonatype -->
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.8</version>
+          <version>1.6.13</version>
           <configuration>
             <autoReleaseAfterClose>true</autoReleaseAfterClose>
             <serverId>ossrh</serverId>
@@ -275,14 +308,14 @@
         <!-- Install -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>3.0.1</version>
         </plugin>
 
         <!-- Enforce -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.0.0-M3</version>
+          <version>3.1.0</version>
           <executions>
             <execution>
               <id>enforce-maven</id>
@@ -299,6 +332,8 @@
             </execution>
           </executions>
         </plugin>
+
+        <!-- assertj -->
         <plugin>
           <groupId>org.assertj</groupId>
           <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
@@ -323,25 +358,6 @@
               <version>${assertj.version}</version>
             </dependency>
           </dependencies>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.9.1</version>
-          <executions>
-            <execution>
-              <id>add-source</id>
-              <phase>generate-test-sources</phase>
-              <goals>
-                <goal>add-test-source</goal>
-              </goals>
-              <configuration>
-                <sources>
-                  <source>${assertj.generated.dir}</source>
-                </sources>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
       </plugins>
     </pluginManagement>

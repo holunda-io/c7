@@ -1,33 +1,24 @@
 package io.holunda.commons.immutables;
 
-import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
-
-import java.util.Date;
-import java.util.UUID;
 import org.assertj.core.util.DateUtil;
 import org.camunda.bpm.engine.ActivityTypes;
 import org.camunda.bpm.engine.batch.Batch;
+import org.camunda.bpm.engine.form.CamundaFormRef;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.event.EventType;
-import org.camunda.bpm.engine.runtime.ActivityInstance;
-import org.camunda.bpm.engine.runtime.CaseExecution;
-import org.camunda.bpm.engine.runtime.EventSubscription;
-import org.camunda.bpm.engine.runtime.Execution;
-import org.camunda.bpm.engine.runtime.Incident;
-import org.camunda.bpm.engine.runtime.Job;
-import org.camunda.bpm.engine.runtime.ProcessElementInstance;
-import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
-import org.camunda.bpm.engine.runtime.TransitionInstance;
-import org.camunda.bpm.engine.task.Attachment;
-import org.camunda.bpm.engine.task.Comment;
-import org.camunda.bpm.engine.task.DelegationState;
-import org.camunda.bpm.engine.task.IdentityLink;
-import org.camunda.bpm.engine.task.IdentityLinkType;
-import org.camunda.bpm.engine.task.Task;
+import org.camunda.bpm.engine.impl.form.CamundaFormRefImpl;
+import org.camunda.bpm.engine.repository.CaseDefinition;
+import org.camunda.bpm.engine.runtime.*;
+import org.camunda.bpm.engine.task.*;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
+
+import java.util.Date;
+import java.util.UUID;
+
+import static io.holunda.commons.immutables.CamundaImmutables.UNMODIFIABLE;
 
 public enum _Fixtures {
   ;
@@ -37,19 +28,26 @@ public enum _Fixtures {
   public static final String BATCH_TYPE = "batchType";
   public static final String BUSINESS_KEY = uuid();
   public static final String CASE_DEFINITION_KEY = "theCase";
+  public static final String CASE_DEFINITION_NAME = "The Case";
   public static final String CASE_DEFINITION_ID = CASE_DEFINITION_KEY + ":1:1";
+  public static final String CASE_EXECUTION_ID = uuid();
   public static final String CASE_INSTANCE_ID = uuid();
   public static final Date DATE_NOW = DateUtil.now();
   public static final Date DATE_TOMORROW = DateUtil.tomorrow();
 
+
   public static final String DEPLOYMENT_ID = uuid();
+  public static final String ID = uuid();
   public static final String EXECUTION_ID = uuid();
   public static final String GROUP_ID = "group-y";
   public static final String JOB_ID = uuid();
   public static final String JOB_DEFINITION_ID = uuid();
   public static final String PROCESS_DEFINITION_KEY = "theProcess";
+  public static final String PROCESS_DEFINITION_NAME = "The Process";
+  public static final int PROCESS_DEFINITION_VERSION = 1;
   public static final String PROCESS_DEFINITION_ID = PROCESS_DEFINITION_KEY + ":1:1";
   public static final String PROCESS_INSTANCE_ID = uuid();
+  public static final String ROOT_PROCESS_INSTANCE_ID = uuid();
   public static final String TASK_ID = uuid();
   public static final String TASK_DEFINITION_KEY = "theTask";
   public static final String TENANT_ID = "tenant-a";
@@ -123,6 +121,16 @@ public enum _Fixtures {
     @Override
     public boolean isSuspended() {
       return true;
+    }
+
+    @Override
+    public Date getStartTime() {
+      return new Date();
+    }
+
+    @Override
+    public Date getExecutionStartTime() {
+      return new Date();
     }
   };
 
@@ -426,7 +434,7 @@ public enum _Fixtures {
   };
 
   public static final CaseExecution CASE_EXECUTION = new CaseExecution() {
-    String id = uuid();
+    final String id = CASE_EXECUTION_ID;
 
     @Override
     public String getId() {
@@ -504,9 +512,99 @@ public enum _Fixtures {
     }
   };
 
+  public static final CaseInstance CASE_INSTANCE = new CaseInstance() {
+
+    final String id = CASE_INSTANCE_ID;
+
+    @Override
+    public String getId() {
+      return id;
+    }
+
+    @Override
+    public String getCaseInstanceId() {
+      return CASE_INSTANCE_ID;
+    }
+
+    @Override
+    public String getCaseDefinitionId() {
+      return CASE_DEFINITION_ID;
+    }
+
+    @Override
+    public String getActivityId() {
+      return ACTIVITY_ID;
+    }
+
+    @Override
+    public String getActivityName() {
+      return ACTIVITY_NAME;
+    }
+
+    @Override
+    public String getActivityType() {
+      return ActivityTypes.TASK_USER_TASK;
+    }
+
+    @Override
+    public String getActivityDescription() {
+      return "the description";
+    }
+
+    @Override
+    public String getParentId() {
+      return null;
+    }
+
+    @Override
+    public boolean isRequired() {
+      return true;
+    }
+
+    @Override
+    public boolean isAvailable() {
+      return true;
+    }
+
+    @Override
+    public boolean isActive() {
+      return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+      return true;
+    }
+
+    @Override
+    public boolean isDisabled() {
+      return true;
+    }
+
+    @Override
+    public boolean isTerminated() {
+      return true;
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public String getBusinessKey() {
+      return BUSINESS_KEY;
+    }
+
+    @Override
+    public boolean isCompleted() {
+      return true;
+    }
+  };
+
   public static final ProcessInstanceWithVariables PROCESS_INSTANCE = new ProcessInstanceWithVariables() {
 
-    String id = uuid();
+    final String id = uuid();
 
     @Override
     public VariableMap getVariables() {
@@ -560,7 +658,7 @@ public enum _Fixtures {
   };
 
   public static final Comment COMMENT = new Comment() {
-    String id = uuid();
+    final String id = uuid();
 
     @Override
     public String getId() {
@@ -710,6 +808,11 @@ public enum _Fixtures {
     }
 
     @Override
+    public Date getLastUpdated() {
+      return DATE_NOW;
+    }
+
+    @Override
     public String getTaskDefinitionKey() {
       return TASK_DEFINITION_KEY;
     }
@@ -757,6 +860,13 @@ public enum _Fixtures {
     @Override
     public String getFormKey() {
       return "form/key";
+    }
+
+    @Override
+    public CamundaFormRef getCamundaFormRef() {
+      CamundaFormRefImpl formRef = new CamundaFormRefImpl("key", "binding");
+      formRef.setVersion(1);
+      return formRef;
     }
 
     @Override
@@ -822,9 +932,9 @@ public enum _Fixtures {
   };
 
   public static final Incident INCIDENT = new Incident() {
-    String id = uuid();
-    String rootId = uuid();
-    String causeId = uuid();
+    final String id = uuid();
+    final String rootId = uuid();
+    final String causeId = uuid();
 
     @Override
     public String getId() {
@@ -899,6 +1009,11 @@ public enum _Fixtures {
     @Override
     public String getHistoryConfiguration() {
       return "historic-configuration";
+    }
+
+    @Override
+    public String getAnnotation() {
+      return "annotation";
     }
   };
 
@@ -1005,6 +1120,58 @@ public enum _Fixtures {
     @Override
     public void setName(String name) {
       throw UNMODIFIABLE;
+    }
+  };
+
+  public static final CaseDefinition CASE_DEFINITION = new CaseDefinition() {
+    @Override
+    public String getId() {
+      return CASE_DEFINITION_ID;
+    }
+
+    @Override
+    public String getCategory() {
+      return "category";
+    }
+
+    @Override
+    public String getName() {
+      return "CaseDefinition";
+    }
+
+    @Override
+    public String getKey() {
+      return CASE_DEFINITION_KEY;
+    }
+
+    @Override
+    public int getVersion() {
+      return 1;
+    }
+
+    @Override
+    public String getResourceName() {
+      return CASE_DEFINITION_KEY + ".cmmn";
+    }
+
+    @Override
+    public String getDeploymentId() {
+      return DEPLOYMENT_ID;
+    }
+
+    @Override
+    public String getDiagramResourceName() {
+      return "file/" + getResourceName();
+    }
+
+    @Override
+    public String getTenantId() {
+      return TENANT_ID;
+    }
+
+    @Override
+    public Integer getHistoryTimeToLive() {
+      return 19;
     }
   };
 }

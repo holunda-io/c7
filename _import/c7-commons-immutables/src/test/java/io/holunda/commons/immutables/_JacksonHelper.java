@@ -8,7 +8,7 @@ public class _JacksonHelper {
   public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
   public static <T> JsonMapper<T> jsonMapper(Class<T> type) {
-    return new JsonMapper<>(OBJECT_MAPPER,type);
+    return new JsonMapper<>(OBJECT_MAPPER, type);
   }
 
   public static class JsonMapper<T> {
