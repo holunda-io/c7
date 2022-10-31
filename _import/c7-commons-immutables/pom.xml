@@ -22,7 +22,7 @@
     <!-- dependencies -->
     <camunda.version>7.18.0</camunda.version>
     <immutables.version>2.9.2</immutables.version>
-    <jackson.version>2.14.0-rc2</jackson.version>
+    <jackson.version>2.14.0-rc3</jackson.version>
     <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
     <assertj.version>3.23.1</assertj.version>
 
