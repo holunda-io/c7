@@ -102,6 +102,8 @@
 
                     org/camunda/bpm/engine/impl/bpmn/parser/Error.java,
                     org/camunda/bpm/engine/impl/core/variable/mapping/value/ParameterValueProvider.java,
+                    org/camunda/bpm/engine/impl/errorcode/BuiltinExceptionCode.java,
+                    org/camunda/bpm/engine/impl/errorcode/ExceptionCodeProvider.java,
                     org/camunda/bpm/engine/impl/identity/Account.java,
                     org/camunda/bpm/engine/impl/identity/Authentication.java,
                   </includes>
