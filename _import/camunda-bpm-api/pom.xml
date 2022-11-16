@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-api-parent</artifactId>
-  <version>7.17.0</version>
+  <version>7.18.0</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Engine API</description>
   <url>https://github.com/holunda-io/camunda-bpm-api/</url>
@@ -18,7 +18,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <camunda-engine.version>7.17.0</camunda-engine.version>
+    <camunda-engine.version>7.18.0</camunda-engine.version>
   </properties>
 
   <modules>
@@ -127,7 +127,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.0</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
@@ -137,7 +137,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.4.0</version>
+          <version>3.4.1</version>
           <configuration>
             <failOnWarnings>false</failOnWarnings>
             <failOnError>false</failOnError>
@@ -173,7 +173,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.18.0</version>
+          <version>1.19.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -218,7 +218,7 @@
         <!-- Deploy -->
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
+          <version>3.0.0</version>
           <configuration>
             <skip>true</skip>
           </configuration>
@@ -250,14 +250,14 @@
         <!-- Install -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>3.0.1</version>
         </plugin>
 
         <!-- Enforce -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.0</version>
           <executions>
             <execution>
               <id>enforce-maven</id>

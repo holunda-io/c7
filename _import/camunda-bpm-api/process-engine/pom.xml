@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.camunda-api</groupId>
     <artifactId>camunda-api-parent</artifactId>
-    <version>7.17.0</version>
+    <version>7.18.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -102,6 +102,8 @@
 
                     org/camunda/bpm/engine/impl/bpmn/parser/Error.java,
                     org/camunda/bpm/engine/impl/core/variable/mapping/value/ParameterValueProvider.java,
+                    org/camunda/bpm/engine/impl/errorcode/BuiltinExceptionCode.java,
+                    org/camunda/bpm/engine/impl/errorcode/ExceptionCodeProvider.java,
                     org/camunda/bpm/engine/impl/identity/Account.java,
                     org/camunda/bpm/engine/impl/identity/Authentication.java,
                   </includes>

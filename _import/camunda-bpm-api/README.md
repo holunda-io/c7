@@ -1,15 +1,20 @@
+# Camunda Platform 7 Engine API
+
+A small extract of the API layer from the greatest process engine ever.
+
+[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-api)
-
-## Camunda BPM Engine API
-
-> A small extract of the API layer from the greatest process engine ever.
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.camunda-api/camunda-bpm-engine-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.camunda-api/camunda-bpm-engine-api)
 
 ## What is this?
 
-Sometimes for building libraries it is useful to have the API only, without the implementation. This library extracts the official Java Camunda Engine API 
-from Camunda JAR and packages it as a small JAR. By doing so, we had to provide very few own classes, to cut the track to implementation. It is by **NO MEANS** a replacement, but just a bunch of classes which may be required on the classpath, if 
-you use a library referencing Camunda BPM classes (but not using them).
+Sometimes for building libraries it is useful to have the API only, without the implementation. This library extracts the official Java Camunda Engine API from Camunda JAR and packages it as a small JAR. By doing so, we had to provide very few own classes, to cut the track to implementation. It is by **NO MEANS** a replacement, but just a bunch of classes which may be required on the classpath, if you use a library referencing Camunda BPM classes (but not using them).
+
+## Why do you need this
+
+Imagine you are implementing a remote-communication library like Camunda REST Client Spring Boot that implements the Camunda Plattform 7 Engine API by calling a remote process engine. Or you are building a library that wants to use different artifacts of the Camunda API, without puting them on a compile 
+dependency. Then - consider to use this lib...
+
 
 Short facts:
 
@@ -28,7 +33,7 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-bpm-engine-api</artifactId>
-  <version>7.15.0</version>
+  <version>7.17.0</version>
 </dependency>
 ```
 
@@ -38,7 +43,7 @@ If you are interested in using the DMN engine API only, put the following depend
 <dependency>
     <groupId>io.holunda.camunda-api</groupId>
     <artifactId>camunda-dmn-engine-api</artifactId>
-    <version>7.15.0</version>
+    <version>7.17.0</version>
 </dependency>
 ```
 
@@ -46,26 +51,26 @@ If you are interested in using the DMN engine API only, put the following depend
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ```kotlin
-implementation("io.holunda.camunda-api:camunda-bpm-engine-api:7.15.0")
+implementation("io.holunda.camunda-api:camunda-bpm-engine-api:7.17.0")
 ```
 
 and for DMN only:
 
 ```kotlin
-implementation("io.holunda.camunda-api:camunda-dmn-engine-api:7.15.0")
+implementation("io.holunda.camunda-api:camunda-dmn-engine-api:7.17.0")
 ```
 
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ```groovy
-implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.15.0'
+implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.17.0'
 ```
 
 and for DMN only:
 
 ```groovy
-implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.15.0'
+implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.17.0'
 ```
 
 Please note that the version of this library is tightly-coupled to the version of original Camunda API.  
@@ -76,6 +81,8 @@ Please note that the version of this library is tightly-coupled to the version o
 | ------------------------ |------------------------:| 
 | 7.14                     |                  7.14.0 |
 | 7.15                     |                  7.15.0 |
+| 7.16                     |                  7.16.0 |
+| 7.17                     |                  7.17.0 |
 
 
 
