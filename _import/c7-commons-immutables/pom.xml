@@ -4,11 +4,11 @@
 
   <groupId>io.holunda.commons</groupId>
   <artifactId>camunda-commons-immutables</artifactId>
-  <version>0.18.0</version>
+  <version>0.18.1</version>
   <name>${project.artifactId}</name>
   <description>Collection of Camunda Immutables</description>
 
-  <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
+  <url>https://github.com/holunda-io/c7-commons-immutables/</url>
 
   <properties>
     <java.version>11</java.version>
@@ -22,7 +22,7 @@
     <!-- dependencies -->
     <camunda.version>7.18.0</camunda.version>
     <immutables.version>2.9.2</immutables.version>
-    <jackson.version>2.14.0-rc1</jackson.version>
+    <jackson.version>2.14.1</jackson.version>
     <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
     <assertj.version>3.23.1</assertj.version>
 
@@ -105,7 +105,7 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>4.8.0</version>
+      <version>4.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -117,7 +117,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>2.0.3</version>
+      <version>2.0.4</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -232,7 +232,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.18.0</version>
+          <version>1.19.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -308,7 +308,7 @@
         <!-- Install -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.0</version>
         </plugin>
 
         <!-- Enforce -->
@@ -379,10 +379,6 @@
         <groupId>org.assertj</groupId>
         <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-      </plugin>
     </plugins>
   </build>
 
@@ -428,16 +424,16 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</connection>
-    <url>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</url>
-    <developerConnection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/c7-commons-immutables.git</connection>
+    <url>scm:git:git@github.com:holunda-io/c7-commons-immutables.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/c7-commons-immutables.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
     <site>
       <id>README</id>
-      <url>https://github.com/holunda-io/camunda-commons-immutables</url>
+      <url>https://github.com/holunda-io/c7-commons-immutables</url>
     </site>
     <snapshotRepository>
       <id>ossrh</id>
