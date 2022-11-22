@@ -10,21 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Set up JDK 11
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 11
-
-      - name: Cache .m2
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          distribution: zulu
+          cache: maven
+          server-id: ossrh
+          server-username: OSS_CENTRAL_USERNAME # env variable for Maven Central
+          server-password: OSS_CENTRAL_PASSWORD # env variable for Maven Central
 
       - name: Prepare mvnw
         run: chmod +x ./mvnw
@@ -38,13 +32,8 @@ jobs:
       - name: Import GPG key
         run: echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes --always-trust
 
-      - name: Clean settings.xml
-        run: rm -rf ~/.m2/settings.xml
-
-      - name: Create settings.xml
-        uses: s4u/maven-settings-action@v1
-        with:
-          servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
-
       - name: Deploy a new version to central
         run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.keyname=${{secrets.GPG_KEYNAME}} -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
+        env:
+          OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
