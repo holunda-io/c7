@@ -8,7 +8,7 @@
   <name>${project.artifactId}</name>
   <description>Collection of Camunda Immutables</description>
 
-  <url>https://github.com/holunda-io/camunda-commons-immutables/</url>
+  <url>https://github.com/holunda-io/c7-commons-immutables/</url>
 
   <properties>
     <java.version>11</java.version>
@@ -424,16 +424,16 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</connection>
-    <url>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</url>
-    <developerConnection>scm:git:git@github.com:holunda-io/camunda-commons-immutables.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/c7-commons-immutables.git</connection>
+    <url>scm:git:git@github.com:holunda-io/c7-commons-immutables.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/c7-commons-immutables.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
     <site>
       <id>README</id>
-      <url>https://github.com/holunda-io/camunda-commons-immutables</url>
+      <url>https://github.com/holunda-io/c7-commons-immutables</url>
     </site>
     <snapshotRepository>
       <id>ossrh</id>
