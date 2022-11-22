@@ -36,7 +36,7 @@ jobs:
         run: echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes --always-trust
 
       - name: Deploy a new version to central
-        run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.keyname=${{secrets.GPG_KEYNAME}} -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
+        run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}" -Dgpg.passphrase="${{secrets.GPG_PASSPHRASE}}"
         env:
-          OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          OSS_CENTRAL_USERNAME: "${{ secrets.SONATYPE_USERNAME }}"
+          OSS_CENTRAL_PASSWORD: "${{ secrets.SONATYPE_PASSWORD }}"
