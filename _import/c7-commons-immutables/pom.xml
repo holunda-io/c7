@@ -23,7 +23,7 @@
     <camunda.version>7.18.0</camunda.version>
     <immutables.version>2.9.2</immutables.version>
     <jackson.version>2.14.1</jackson.version>
-    <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
+    <jetbrains-annotations.version>23.1.0</jetbrains-annotations.version>
     <assertj.version>3.23.1</assertj.version>
 
     <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
