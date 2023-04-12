@@ -6,7 +6,7 @@ import io.holunda.commons.immutables._Fixtures;
 import org.assertj.core.api.Assertions;
 import org.camunda.bpm.engine.impl.history.event.HistoricDecisionEvaluationEvent;
 import org.camunda.bpm.engine.impl.history.event.HistoryEventTypes;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static io.holunda.commons.immutables._Fixtures.uuid;
 import static io.holunda.commons.immutables.history.ImmutableHistoricDecisionEvaluationEventAssert.assertThat;

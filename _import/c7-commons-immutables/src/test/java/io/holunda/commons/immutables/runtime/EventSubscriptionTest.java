@@ -3,7 +3,7 @@ package io.holunda.commons.immutables.runtime;
 import io.holunda.commons.immutables.CamundaImmutables;
 import io.holunda.commons.immutables._BasicImmutableTest;
 import io.holunda.commons.immutables._Fixtures;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static io.holunda.commons.immutables.Assertions.assertThat;
 import static io.holunda.commons.immutables._Fixtures.ACTIVITY_ID;

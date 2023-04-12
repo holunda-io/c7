@@ -24,6 +24,9 @@
     <immutables.version>2.9.3</immutables.version>
     <jackson.version>2.14.1</jackson.version>
     <jetbrains-annotations.version>24.0.0</jetbrains-annotations.version>
+
+    <junit5.version>5.9.2</junit5.version>
+    <mockito.version>4.1.0</mockito.version>
     <assertj.version>3.24.2</assertj.version>
 
     <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
@@ -42,6 +45,15 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit5.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -85,10 +97,32 @@
       <scope>provided</scope>
     </dependency>
 
+    <!--  TEST  -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
+      <groupId>org.mockito.kotlin</groupId>
+      <artifactId>mockito-kotlin</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -100,12 +134,6 @@
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-bpm-assert</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>5.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -123,7 +151,7 @@
   </dependencies>
 
   <build>
-    <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+    <defaultGoal>clean jacoco:prepare-agent test package</defaultGoal>
     <testSourceDirectory>${project.build.directory}/generated-test-sources/assertj</testSourceDirectory>
 
     <pluginManagement>
@@ -182,14 +210,37 @@
         <!-- Unit Tests -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
+          <version>3.0.0-M8</version>
           <configuration>
             <useSystemClassLoader>false</useSystemClassLoader>
             <shutdown>kill</shutdown>
             <runOrder>random</runOrder>
             <!-- Sets the VM argument line used when unit tests are run. -->
             <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-            <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener -Xmx1024m -XX:MaxPermSize=256m</argLine>
+            <argLine>--illegal-access=permit ${surefireArgLine} -Djava.awt.headless=true -XX:+StartAttachListener</argLine>
+            <excludes>
+              <exclude>**/*ITest.*</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+
+        <!-- ITests -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>3.0.0-M8</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <argLine>--illegal-access=permit ${failsafeArgLine}</argLine>
+            <includes>
+              <include>**/*ITest.*</include>
+            </includes>
           </configuration>
         </plugin>
 

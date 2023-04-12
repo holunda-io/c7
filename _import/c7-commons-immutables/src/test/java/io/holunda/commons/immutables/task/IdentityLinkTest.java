@@ -4,7 +4,7 @@ import io.holunda.commons.immutables.CamundaImmutables;
 import io.holunda.commons.immutables._BasicImmutableTest;
 import org.assertj.core.api.Assertions;
 import org.camunda.bpm.engine.task.IdentityLinkType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static io.holunda.commons.immutables._Fixtures.GROUP_ID;
 import static io.holunda.commons.immutables._Fixtures.IDENTITY_LINK;
