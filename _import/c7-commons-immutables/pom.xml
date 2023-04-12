@@ -38,6 +38,7 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- CAMUNDA -->
       <dependency>
         <groupId>org.camunda.bpm</groupId>
         <artifactId>camunda-bom</artifactId>
@@ -46,6 +47,7 @@
         <type>pom</type>
       </dependency>
 
+      <!-- JUNIT -->
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
@@ -53,7 +55,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
 
@@ -99,13 +100,6 @@
 
     <!--  TEST  -->
     <dependency>
-      <groupId>org.mockito.kotlin</groupId>
-      <artifactId>mockito-kotlin</artifactId>
-      <version>${mockito.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
@@ -136,6 +130,7 @@
       <artifactId>camunda-bpm-assert</artifactId>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
@@ -158,12 +153,12 @@
 
   <build>
     <defaultGoal>clean jacoco:prepare-agent test package</defaultGoal>
-    <testSourceDirectory>${project.build.directory}/generated-test-sources/assertj</testSourceDirectory>
 
     <pluginManagement>
       <plugins>
+
+        <!-- cleaning -->
         <plugin>
-          <!-- cleaning -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.2.0</version>
@@ -215,16 +210,14 @@
 
         <!-- Unit Tests -->
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0</version>
-          <configuration>
-            <useSystemClassLoader>false</useSystemClassLoader>
-            <shutdown>kill</shutdown>
-            <runOrder>random</runOrder>
-            <!-- Sets the VM argument line used when unit tests are run. -->
-            <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-            <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener -Xmx1024m -XX:MaxPermSize=256m</argLine>
-          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>3.0.0</version>
         </plugin>
 
         <!-- javadoc -->
@@ -282,6 +275,26 @@
             <keepBranch>false</keepBranch>
             <pushRemote>true</pushRemote>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.3.0</version>
+          <executions>
+            <execution>
+              <id>add-test-source</id>
+              <phase>generate-test-sources</phase>
+              <goals>
+                <goal>add-test-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>${project.build.directory}/generated-test-sources/assertj</source>
+                </sources>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
 
         <!-- To sign the artifacts -->
