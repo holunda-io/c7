@@ -13,7 +13,7 @@ public class ExceptionUtil {
     throw __NotImplemented.EXCEPTION;
   }
 
-  public static boolean checkForeignKeyConstraintViolation(SQLException sqlException, boolean b) {
+  public static boolean checkForeignKeyConstraintViolation(SQLException sqlException) {
     throw __NotImplemented.EXCEPTION;
   }
 
