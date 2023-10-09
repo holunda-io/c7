@@ -43,7 +43,7 @@ If you are interested in using the DMN engine API only, put the following depend
 <dependency>
     <groupId>io.holunda.camunda-api</groupId>
     <artifactId>camunda-dmn-engine-api</artifactId>
-    <version>7.18.0</version>
+    <version>7.20.0</version>
 </dependency>
 ```
 
@@ -51,26 +51,26 @@ If you are interested in using the DMN engine API only, put the following depend
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ```kotlin
-implementation("io.holunda.camunda-api:camunda-bpm-engine-api:7.18.0")
+implementation("io.holunda.camunda-api:camunda-bpm-engine-api:7.20.0")
 ```
 
 and for DMN only:
 
 ```kotlin
-implementation("io.holunda.camunda-api:camunda-dmn-engine-api:7.18.0")
+implementation("io.holunda.camunda-api:camunda-dmn-engine-api:7.20.0")
 ```
 
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ```groovy
-implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.18.0'
+implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.20.0'
 ```
 
 and for DMN only:
 
 ```groovy
-implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.18.0'
+implementation 'io.holunda.camunda-api:camunda-bpm-engine-api:7.20.0'
 ```
 
 Please note that the version of this library is tightly-coupled to the version of original Camunda API.  
@@ -84,6 +84,8 @@ Please note that the version of this library is tightly-coupled to the version o
 | 7.16                |                  7.16.0 |
 | 7.17                |                  7.17.0 |
 | 7.18                |                  7.18.0 |
+| 7.19                |                  7.19.0 |
+| 7.20                |                  7.20.0 |
 
 
 
