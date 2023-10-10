@@ -1,13 +1,11 @@
 package io.holunda.deployment
 
+import jakarta.validation.ValidationException
 import mu.KLogging
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.ConstructorBinding
-import javax.validation.ValidationException
 
 @ConfigurationProperties("camunda.bpm.deployment")
-@ConstructorBinding
 @ConditionalOnProperty(prefix = "camunda.bpm.deployment", value = ["enabled"], havingValue = "true", matchIfMissing = true)
 data class CamundaDeploymentProperties(
   val archives: List<ProcessArchive> = emptyList()
