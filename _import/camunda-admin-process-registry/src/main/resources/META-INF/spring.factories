@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.holunda.camunda.platform.adminprocess.config.CamundaAdminProcessAutoConfiguration
