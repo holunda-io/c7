@@ -8,3 +8,6 @@ camunda:
         - name: Foo
           tenant: foo
           path: tenants/foo
+    generic-properties:
+      properties:
+        historyTimeToLive: P1D
