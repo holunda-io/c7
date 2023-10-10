@@ -1,6 +1,7 @@
 # Camunda BPM SpringBoot Deployment
 
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
+[![Camunda 7.20](https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg)](https://docs.camunda.org/manual/7.20/)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
@@ -31,20 +32,20 @@ Add the dependency to your `pom.xml`:
 <dependency>
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>1.0.0</version>
+  <version>1.20.0</version>
 </dependency>
 ```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ```kts
-implementation("io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.0.0")
+implementation("io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.20.0")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ```Groovy
-implementation 'io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.0.0'
+implementation 'io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.20.0'
 ```
 
 The library configures itself by Spring Autoconfiguration and is enabled by default, if necessary you can still disable the deployment mechanism by adding the
