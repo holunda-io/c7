@@ -34,7 +34,7 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-bpm-engine-api</artifactId>
-  <version>7.18.0</version>
+  <version>7.20.0</version>
 </dependency>
 ```
 
