@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>1.20.1-SNAPSHOT</version>
+  <version>1.20.1</version>
   <name>${project.artifactId}</name>
   <description>camunda-bpm-spring-boot-deployment</description>
   <url>https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/</url>
