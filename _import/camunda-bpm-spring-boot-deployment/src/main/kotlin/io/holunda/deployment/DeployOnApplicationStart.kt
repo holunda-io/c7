@@ -1,7 +1,6 @@
 package io.holunda.deployment
 
 import mu.KLogging
-import org.apache.commons.io.FilenameUtils
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.repository.DeploymentBuilder
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
@@ -18,11 +17,11 @@ open class DeployOnApplicationStart(
 
   companion object : KLogging() {
     const val PROCESS_APPLICATION = "process application"
-    val CAMUNDA_FILE_SUFFIXES = setOf(
-      CamundaBpmProperties.DEFAULT_BPMN_RESOURCE_SUFFIXES.toSet(),
-      CamundaBpmProperties.DEFAULT_CMMN_RESOURCE_SUFFIXES.toSet(),
-      CamundaBpmProperties.DEFAULT_DMN_RESOURCE_SUFFIXES.toSet()
-    ).flatten()
+    val CAMUNDA_FILE_SUFFIXES: Set<String> = buildSet {
+      addAll(CamundaBpmProperties.DEFAULT_BPMN_RESOURCE_SUFFIXES)
+      addAll(CamundaBpmProperties.DEFAULT_CMMN_RESOURCE_SUFFIXES)
+      addAll(CamundaBpmProperties.DEFAULT_DMN_RESOURCE_SUFFIXES)
+    }
   }
 
   @EventListener
@@ -65,8 +64,7 @@ open class DeployOnApplicationStart(
     }
   }
 
-  private fun isCamundaResource(resource: Resource) =
-    CAMUNDA_FILE_SUFFIXES.any { it.equals(FilenameUtils.getExtension(resource.filename)) }
+  private fun isCamundaResource(resource: Resource) = CAMUNDA_FILE_SUFFIXES.contains(resource.filename!!.substringAfterLast("."))
 
   private fun addDeployment(
     processArchive: CamundaDeploymentProperties.ProcessArchive,

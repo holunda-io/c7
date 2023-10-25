@@ -130,6 +130,7 @@ class DeploymentBuilderFake(
     return this
   }
 
+  @Deprecated("delegates to deprecated method.", replaceWith = ReplaceWith("DeploymentBuilder#enableDuplicateFiltering(deployChangedOnly: Boolean)"))
   override fun enableDuplicateFiltering(): DeploymentBuilder {
     return this
   }
