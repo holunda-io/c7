@@ -27,7 +27,7 @@
 
     <junit5.version>5.10.1</junit5.version>
     <mockito.version>4.1.0</mockito.version>
-    <assertj.version>3.24.2</assertj.version>
+    <assertj.version>3.25.1</assertj.version>
 
     <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
 
