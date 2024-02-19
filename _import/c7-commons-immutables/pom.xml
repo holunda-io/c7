@@ -21,7 +21,7 @@
 
     <!-- dependencies -->
     <camunda.version>7.20.0</camunda.version>
-    <immutables.version>2.10.0</immutables.version>
+    <immutables.version>2.10.1</immutables.version>
     <jackson.version>2.16.1</jackson.version>
     <jetbrains-annotations.version>24.0.1</jetbrains-annotations.version>
 
