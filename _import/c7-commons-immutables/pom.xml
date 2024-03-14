@@ -23,7 +23,7 @@
     <camunda.version>7.20.0</camunda.version>
     <immutables.version>2.10.1</immutables.version>
     <jackson.version>2.16.1</jackson.version>
-    <jetbrains-annotations.version>24.0.1</jetbrains-annotations.version>
+    <jetbrains-annotations.version>24.1.0</jetbrains-annotations.version>
 
     <junit5.version>5.10.2</junit5.version>
     <mockito.version>4.1.0</mockito.version>
