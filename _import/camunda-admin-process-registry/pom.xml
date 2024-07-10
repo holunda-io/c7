@@ -20,7 +20,7 @@
   <properties>
     <spring-boot.version>3.2.5</spring-boot.version>
     <camunda.version>7.21.0</camunda.version>
-    <camunda-data.version>1.4.0</camunda-data.version>
+    <camunda-data.version>1.5.0</camunda-data.version>
 
     <!-- required for camunda with jdk >= 9 -->
     <jaxb-impl.version>4.0.3</jaxb-impl.version>
@@ -155,6 +155,13 @@
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
+        <configuration>
+          <compilerPlugins>
+            <plugin>spring</plugin>
+            <plugin>no-arg</plugin>
+            <plugin>all-open</plugin>
+          </compilerPlugins>
+        </configuration>
       </plugin>
     </plugins>
   </build>
