@@ -3,7 +3,7 @@
 Run administration tasks directly from the camunda 7 cockpit using generated mini-processes.
 
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-[![Camunda 7.20](https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg)](https://docs.camunda.org/manual/7.20/)
+[![Camunda 7.21](https://img.shields.io/badge/Camunda%20Version-7.21-orange.svg)](https://docs.camunda.org/manual/7.21/)
 [![Build Status](https://github.com/holunda-io/camunda-admin-process-registry/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-admin-process-registry/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-admin-process-registry/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-admin-process-registry)

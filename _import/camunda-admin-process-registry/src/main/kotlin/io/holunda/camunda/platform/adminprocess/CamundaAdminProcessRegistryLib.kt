@@ -8,6 +8,7 @@ import org.camunda.bpm.model.bpmn.builder.StartEventBuilder
 object CamundaAdminProcessRegistryLib {
 
   @JvmStatic
+  @JvmOverloads
   fun adminProcess(
     activityId: String,
     label: String = activityId,
