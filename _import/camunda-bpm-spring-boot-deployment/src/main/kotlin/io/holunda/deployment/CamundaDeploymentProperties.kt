@@ -1,17 +1,25 @@
 package io.holunda.deployment
 
 import jakarta.validation.ValidationException
-import mu.KLogging
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties("camunda.bpm.deployment")
 @ConditionalOnProperty(prefix = "camunda.bpm.deployment", value = ["enabled"], havingValue = "true", matchIfMissing = true)
 data class CamundaDeploymentProperties(
+  /**
+   * Flag to activate (by defaults) or deactivate the library.
+   */
+  val enabled: Boolean = true,
+  /**
+   * Allows definition of tenants with overlapping classpath locations. Defaults to `false`.
+   */
+  val allowOverlapping: Boolean = false,
+  /**
+   * List of process archives to be deployed, defaults to an empty list.
+   */
   val archives: List<ProcessArchive> = emptyList()
 ) {
-
-  companion object : KLogging()
 
   init {
     this.archives.groupBy { it.name }.forEach {

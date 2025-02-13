@@ -10,24 +10,32 @@ import org.springframework.jmx.support.RegistrationPolicy
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 
-@SpringBootTest(classes = [CamundaDeploymentTestApplication::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("itest")
+@SpringBootTest(
+  classes = [CamundaDeploymentTestApplication::class],
+  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+)
+@ActiveProfiles("itest-overlapping")
 @DirtiesContext
-internal class CamundaDeploymentITest {
+internal class CamundaDeploymentOverlappingITest {
 
   @Autowired
   private lateinit var repositoryService: RepositoryService
 
   @Test
-  internal fun contextLoads() {
+  fun contextLoads() {
   }
 
   @Test
-  internal fun `processes are deployed for both tenants`() {
+  fun `processes are deployed for all tenants`() {
     val deployments = repositoryService.createDeploymentQuery().list()
 
-    assertThat(deployments).hasSize(2)
+    assertThat(deployments).hasSize(3)
     assertThat(deployments.filter { it.tenantId == null }).hasSize(1)
+    assertThat(deployments.filter { it.tenantId == "bar" }).hasSize(1)
     assertThat(deployments.filter { it.tenantId == "foo" }).hasSize(1)
+
+    assertThat(repositoryService.createProcessDefinitionQuery().withoutTenantId().count()).isEqualTo(1)
+    assertThat(repositoryService.createProcessDefinitionQuery().tenantIdIn("bar").count()).isEqualTo(1)
+    assertThat(repositoryService.createProcessDefinitionQuery().tenantIdIn("foo").count()).isEqualTo(1)
   }
 }

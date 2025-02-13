@@ -1,6 +1,6 @@
 package io.holunda.deployment
 
-import mu.KLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.repository.DeploymentBuilder
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
@@ -10,12 +10,14 @@ import org.springframework.core.io.Resource
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.util.StopWatch
 
+private val logger = KotlinLogging.logger {}
+
 open class DeployOnApplicationStart(
   private val camundaDeployment: CamundaDeploymentProperties,
   private val repositoryService: RepositoryService
 ) {
 
-  companion object : KLogging() {
+  companion object {
     const val PROCESS_APPLICATION = "process application"
     val CAMUNDA_FILE_SUFFIXES: Set<String> = buildSet {
       addAll(CamundaBpmProperties.DEFAULT_BPMN_RESOURCE_SUFFIXES)
@@ -32,16 +34,28 @@ open class DeployOnApplicationStart(
       logger.warn { "No process archives specified" }
     }
 
-    camundaDeployment.archives.forEach { deployProcessArchive(it) }
+    camundaDeployment.archives.forEach {
+      val otherPaths = if (camundaDeployment.allowOverlapping) {
+        (camundaDeployment.archives
+          .map { archive -> archive.path }
+          .filterNot { otherPath -> it.path.startsWith(otherPath) } // don't take parent paths if current is contained in it
+          - it.path // remove yourself
+        ).toSet()
+      } else {
+        emptySet()
+      }
+      deployProcessArchive(it, otherPaths)
+    }
 
     logger.info { "Camunda deployment finished" }
   }
 
-  private fun deployProcessArchive(processArchive: CamundaDeploymentProperties.ProcessArchive) {
+  private fun deployProcessArchive(processArchive: CamundaDeploymentProperties.ProcessArchive, otherPaths: Set<String>) {
     logger.info { "Deploying process archive: [$processArchive]" }
 
     val resources = PathMatchingResourcePatternResolver().getResources("classpath*:${processArchive.path}/**/*.*")
       .filter { isCamundaResource(it) }
+      .filter { isNotPartOfOtherProcessArchivePaths(it, otherPaths) }
 
     if (resources.isNotEmpty()) {
       val deploymentBuilder = repositoryService.createDeployment()
@@ -63,6 +77,9 @@ open class DeployOnApplicationStart(
       logger.warn { "No resources found in the specified path: [${processArchive.path}]" }
     }
   }
+
+  private fun isNotPartOfOtherProcessArchivePaths(resource: Resource, otherPaths: Set<String>): Boolean =
+    otherPaths.none { path -> resource.uri.toString().contains(path) }
 
   private fun isCamundaResource(resource: Resource) = CAMUNDA_FILE_SUFFIXES.contains(resource.filename!!.substringAfterLast("."))
 
