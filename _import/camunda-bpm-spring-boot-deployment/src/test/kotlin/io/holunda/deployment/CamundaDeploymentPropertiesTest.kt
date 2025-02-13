@@ -10,7 +10,7 @@ internal class CamundaDeploymentPropertiesTest {
   internal fun `name must be unique`() {
     Assertions.assertThatThrownBy {
       CamundaDeploymentProperties(
-        listOf(
+        archives = listOf(
           ProcessArchive("one", "one", "/one"),
           ProcessArchive("one", "two", "/two")
         )
@@ -22,7 +22,7 @@ internal class CamundaDeploymentPropertiesTest {
   internal fun `tenant must be unique`() {
     Assertions.assertThatThrownBy {
       CamundaDeploymentProperties(
-        listOf(
+        archives = listOf(
           ProcessArchive("one", "one", "/one"),
           ProcessArchive("two", "one", "/two")
         )

@@ -24,7 +24,7 @@ internal class DeployOnApplicationStartTest {
   @Test
   internal fun `deploy specified process archive with resources`() {
     val processArchive = CamundaDeploymentProperties.ProcessArchive("foo", "foo", "tenants/foo")
-    val properties = CamundaDeploymentProperties(listOf(processArchive))
+    val properties = CamundaDeploymentProperties(archives = listOf(processArchive))
     val deployOnApplicationStart = DeployOnApplicationStart(properties, repositoryService)
 
     val deploymentBuilder = DeploymentBuilderFake()
@@ -42,7 +42,7 @@ internal class DeployOnApplicationStartTest {
 
   @Test
   internal fun `deploy nothing if no ProcessArchives are specified`() {
-    val deployOnApplicationStart = DeployOnApplicationStart(CamundaDeploymentProperties(emptyList()), repositoryService)
+    val deployOnApplicationStart = DeployOnApplicationStart(CamundaDeploymentProperties(archives = emptyList()), repositoryService)
 
     deployOnApplicationStart.accept(PostDeployEvent(mockk()))
 
@@ -53,7 +53,7 @@ internal class DeployOnApplicationStartTest {
   internal fun `Do not deploy anything if no resources exist`() {
     val deployOnApplicationStart = DeployOnApplicationStart(
       CamundaDeploymentProperties(
-        listOf(
+        archives = listOf(
           CamundaDeploymentProperties.ProcessArchive("test", "test", "test/does_not_exist")
         )
       ),
