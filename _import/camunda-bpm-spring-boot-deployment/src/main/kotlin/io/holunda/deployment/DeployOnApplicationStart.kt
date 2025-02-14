@@ -7,6 +7,7 @@ import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
 import org.camunda.bpm.spring.boot.starter.property.CamundaBpmProperties
 import org.springframework.context.event.EventListener
 import org.springframework.core.io.Resource
+import org.springframework.core.io.ResourceLoader
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.util.StopWatch
 
@@ -14,7 +15,8 @@ private val logger = KotlinLogging.logger {}
 
 open class DeployOnApplicationStart(
   private val camundaDeployment: CamundaDeploymentProperties,
-  private val repositoryService: RepositoryService
+  private val repositoryService: RepositoryService,
+  private val resourceLoader: ResourceLoader,
 ) {
 
   companion object {
@@ -40,7 +42,7 @@ open class DeployOnApplicationStart(
           .map { archive -> archive.path }
           .filterNot { otherPath -> it.path.startsWith(otherPath) } // don't take parent paths if current is contained in it
           - it.path // remove yourself
-        ).toSet()
+          ).toSet()
       } else {
         emptySet()
       }
@@ -89,7 +91,10 @@ open class DeployOnApplicationStart(
     resource: Resource
   ) = sanitizePath(resource.uri.toString(), processArchive.path)
     .also { logger.info { "Adding resource: [$it]" } }
-    .let { deploymentBuilder.addClasspathResource(it) }
+    .let {
+      deploymentBuilder.addInputStream(resource.filename, resourceLoader.getResource("classpath:$it").inputStream)
+    }
 
-  private fun sanitizePath(path: String, fragment: String) = path.substring(path.indexOf(fragment))
+  private fun sanitizePath(path: String, fragment: String) =
+    if (fragment.isEmpty()) path.substring(path.lastIndexOf("/")) else path.substring(path.indexOf(fragment))
 }

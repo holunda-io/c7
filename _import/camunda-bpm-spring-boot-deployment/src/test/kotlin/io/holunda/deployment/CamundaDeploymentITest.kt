@@ -5,8 +5,6 @@ import org.camunda.bpm.engine.RepositoryService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.EnableMBeanExport
-import org.springframework.jmx.support.RegistrationPolicy
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 

@@ -12,7 +12,11 @@ import org.camunda.bpm.model.bpmn.BpmnModelInstance
 import org.camunda.bpm.model.cmmn.CmmnModelInstance
 import org.camunda.bpm.model.dmn.DmnModelInstance
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.core.io.Resource
+import org.springframework.core.io.ResourceLoader
+import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.util.*
 import java.util.zip.ZipInputStream
@@ -20,12 +24,20 @@ import java.util.zip.ZipInputStream
 internal class DeployOnApplicationStartTest {
 
   private val repositoryService: RepositoryService = mockk()
+  private val resourceLoader: ResourceLoader = mockk()
+
+  @BeforeEach
+  fun setUp() {
+    val resource = mockk<Resource>()
+    every { resourceLoader.getResource(any()) } returns resource
+    every { resource.inputStream } returns ByteArrayInputStream("some bpmn content".toByteArray(Charsets.UTF_8))
+  }
 
   @Test
   internal fun `deploy specified process archive with resources`() {
     val processArchive = CamundaDeploymentProperties.ProcessArchive("foo", "foo", "tenants/foo")
     val properties = CamundaDeploymentProperties(archives = listOf(processArchive))
-    val deployOnApplicationStart = DeployOnApplicationStart(properties, repositoryService)
+    val deployOnApplicationStart = DeployOnApplicationStart(properties, repositoryService, resourceLoader)
 
     val deploymentBuilder = DeploymentBuilderFake()
     every { repositoryService.createDeployment() } returns deploymentBuilder
@@ -35,14 +47,14 @@ internal class DeployOnApplicationStartTest {
     verify(exactly = 1) { repositoryService.createDeployment() }
     assertThat(deploymentBuilder.deployed).isTrue
     assertThat(deploymentBuilder.resourceNames).hasSize(1)
-    assertThat(deploymentBuilder.resourceNames[0]).isEqualTo("${processArchive.path}/dummyProcess.bpmn")
+    assertThat(deploymentBuilder.resourceNames[0]).isEqualTo("dummyProcess.bpmn")
     assertThat(deploymentBuilder.tenantId!!).isEqualTo(processArchive.tenant)
     assertThat(deploymentBuilder.name!!).isEqualTo(processArchive.name)
   }
 
   @Test
   internal fun `deploy nothing if no ProcessArchives are specified`() {
-    val deployOnApplicationStart = DeployOnApplicationStart(CamundaDeploymentProperties(archives = emptyList()), repositoryService)
+    val deployOnApplicationStart = DeployOnApplicationStart(CamundaDeploymentProperties(archives = emptyList()), repositoryService, resourceLoader)
 
     deployOnApplicationStart.accept(PostDeployEvent(mockk()))
 
@@ -57,7 +69,8 @@ internal class DeployOnApplicationStartTest {
           CamundaDeploymentProperties.ProcessArchive("test", "test", "test/does_not_exist")
         )
       ),
-      repositoryService
+      repositoryService,
+      resourceLoader
     )
 
     deployOnApplicationStart.accept(PostDeployEvent(mockk()))
@@ -72,7 +85,8 @@ class DeploymentBuilderFake(
   var tenantId: String? = null,
   var name: String? = null
 ) : DeploymentBuilder {
-  override fun addInputStream(resourceName: String?, inputStream: InputStream?): DeploymentBuilder {
+  override fun addInputStream(resourceName: String, inputStream: InputStream?): DeploymentBuilder {
+    resourceNames.add(resourceName)
     return this
   }
 
