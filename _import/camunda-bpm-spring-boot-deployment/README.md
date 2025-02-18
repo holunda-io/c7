@@ -1,7 +1,7 @@
 # Camunda BPM SpringBoot Deployment
 
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-[![Camunda 7.20](https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg)](https://docs.camunda.org/manual/7.20/)
+[![Camunda 7.22](https://img.shields.io/badge/Camunda%20Version-7.22-orange.svg)](https://docs.camunda.org/manual/7.22/)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
@@ -32,20 +32,20 @@ Add the dependency to your `pom.xml`:
 <dependency>
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>1.20.0</version>
+  <version>1.22.0</version>
 </dependency>
 ```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ```kts
-implementation("io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.20.0")
+implementation("io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.22.0")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ```Groovy
-implementation 'io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.20.0'
+implementation 'io.holunda.deployment:camunda-bpm-spring-boot-deployment:1.22.0'
 ```
 
 The library configures itself by Spring Autoconfiguration and is enabled by default, if necessary you can still disable the deployment mechanism by adding the
@@ -88,6 +88,24 @@ src/main/resources
     /one
       - secondProcess.bpmn
 ```
+
+It is possible that your tenant paths intersect. For example a common scenario is to have the default process application (without tenant) and then introduce a tenant contained in a certain folder at some day. This feature is deactivated by 
+default to prevent misconfiguration and needs to be activated by setting `allow-overlapping` to `true`, configuring the archives accordingly. The configuration would look like this:
+
+```yaml
+camunda:
+  bpm:
+    deployment:
+      allow-overlapping: true
+      archives:
+        - name: Default
+          path: # left empty to address the root of the resources folder and all subfolders.
+        - name: TenantOne
+          tenant: tenant-one
+          path: one # subfolder of the root resources folder 
+```
+As a result, all Camunda relevant files from the root of the classpath `src/main/resources` and all subdirectories, excluding `one` are deployed in a default archive (without a tenant). All resources from `src/main/resources/one` are deployed ina a second archive with tenant `tenant-one`.
+
 
 ## License
 
