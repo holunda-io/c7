@@ -28,7 +28,7 @@
     <camunda.version>7.22.0</camunda.version>
 
     <!-- TEST -->
-    <assertj.version>3.24.2</assertj.version>
+    <assertj.version>3.27.3</assertj.version>
     <junit5.version>5.11.0</junit5.version>
     <mockk.version>1.13.8</mockk.version>
   </properties>
