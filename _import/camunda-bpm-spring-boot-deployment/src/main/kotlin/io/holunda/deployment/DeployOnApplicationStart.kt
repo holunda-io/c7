@@ -96,5 +96,9 @@ open class DeployOnApplicationStart(
     }
 
   private fun sanitizePath(path: String, fragment: String) =
-    if (fragment.isEmpty()) path.substring(path.lastIndexOf("/")) else path.substring(path.indexOf(fragment))
+    if (fragment.isEmpty()) {
+      path.substring(path.lastIndexOf("/"))
+    } else {
+      path.substring(path.indexOf(fragment))
+    }
 }
