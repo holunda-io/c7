@@ -5,7 +5,8 @@
 [![Build Status](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
-![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
+![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c) 
+[![codecov](https://codecov.io/gh/holunda-io/camunda-bpm-spring-boot-deployment/graph/badge.svg?token=yKCqS4nEEz)](https://codecov.io/gh/holunda-io/camunda-bpm-spring-boot-deployment)
 
 ## What is it good for?
 
