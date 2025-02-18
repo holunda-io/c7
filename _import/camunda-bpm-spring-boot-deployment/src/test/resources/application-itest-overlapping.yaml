@@ -1,13 +1,20 @@
+spring:
+  jpa:
+    open-in-view: true
 camunda:
   bpm:
     deployment:
       enabled: true
+      allow-overlapping: true
       archives:
         - name: Default
-          path: tenants/default
+          path: overlapping
+        - name: Bar
+          tenant: bar
+          path: overlapping/bar
         - name: Foo
           tenant: foo
-          path: tenants/foo
+          path: overlapping/foo
     generic-properties:
       properties:
         historyTimeToLive: P1D
