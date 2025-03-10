@@ -5,29 +5,24 @@
   <parent>
     <groupId>io.toolisticon.maven.parent</groupId>
     <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2024.9.2</version>
+    <version>2025.3.0</version>
     <relativePath/>
   </parent>
 
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
-  <version>0.21.0</version>
+  <version>0.22.0</version>
 
   <name>${project.artifactId}</name>
   <description>Register and run utility processes</description>
   <url>https://github.com/holunda-io/camunda-admin-process-registry/</url>
 
   <properties>
-    <spring-boot.version>3.2.5</spring-boot.version>
-    <camunda.version>7.21.0</camunda.version>
-    <camunda-data.version>1.5.0</camunda-data.version>
+    <spring-boot.version>3.4.3</spring-boot.version>
+    <camunda.version>7.22.0</camunda.version>
 
     <!-- required for camunda with jdk >= 9 -->
-    <jaxb-impl.version>4.0.3</jaxb-impl.version>
-
-    <!-- TEST -->
-    <mockito.version>4.0.0</mockito.version>
-    <assertj.version>3.26.3</assertj.version>
+    <jaxb-impl.version>4.0.5</jaxb-impl.version>
   </properties>
 
   <dependencyManagement>
@@ -62,7 +57,7 @@
       <artifactId>kotlin-reflect</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.microutils</groupId>
+      <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
     </dependency>
 
@@ -75,14 +70,14 @@
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
-      <version>${camunda-data.version}</version>
+      <version>1.6.1</version>
     </dependency>
 
     <!-- TEST -->
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
-      <version>${mockito.version}</version>
+      <version>5.4.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -98,7 +93,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
+      <version>3.27.3</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -114,7 +109,7 @@
     <dependency>
       <groupId>io.holunda</groupId>
       <artifactId>camunda-platform-7-autologin</artifactId>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>

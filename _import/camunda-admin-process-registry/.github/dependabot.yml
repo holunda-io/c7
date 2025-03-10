@@ -4,6 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: daily
-    open-pull-requests-limit: 10
-    default-labels:
-        - "Type: dependencies"
+    open-pull-requests-limit: 19
+    labels:
+      - "Type: dependencies"
