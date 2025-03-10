@@ -15,8 +15,9 @@ object CamundaAdminProcessRegistryLib {
     formFields: List<FormField<*>> = emptyList(),
     historyTimeToLive: Int = 0,
     versionTag: String = "1",
+    tenantId: String = AdminProcessRegistry.DEFAULT_TENANT,
     delegate: JavaDelegate
-  ): AdminProcess = object : AdminProcess(activityId, label, formFields, historyTimeToLive, versionTag) {
+  ): AdminProcess = object : AdminProcess(activityId, label, formFields, historyTimeToLive, versionTag, tenantId) {
     override fun execute(execution: DelegateExecution) {
       delegate.execute(execution)
     }

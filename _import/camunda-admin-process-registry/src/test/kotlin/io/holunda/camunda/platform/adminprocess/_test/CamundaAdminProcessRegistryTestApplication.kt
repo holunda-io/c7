@@ -45,7 +45,8 @@ class CamundaAdminProcessRegistryTestApplication {
     return adminProcess(
       activityId = "helloWorld",
       label = "Hello World 2",
-      formFields = listOf(stringField, dateField, numberField, booleanField)
+      formFields = listOf(stringField, dateField, numberField, booleanField),
+      tenantId = "my-tenant"
     ) {
       val variables = CamundaBpmData.reader(it)
 
@@ -58,6 +59,32 @@ class CamundaAdminProcessRegistryTestApplication {
       }
     }
   }
+
+  @Bean
+  fun helloWorldAdminProcess2(): AdminProcess {
+    val stringField = StringField("fooId", "Foo - enter your name")
+    val dateField = DateField("dateId", "Date - select some magic")
+    val numberField = LongField("longId", "A number")
+    val booleanField = BooleanField("booleanId", "Yes or no?")
+
+    return adminProcess(
+      activityId = "helloWorld3",
+      label = "Hello World 2",
+      formFields = listOf(stringField, dateField, numberField, booleanField),
+      tenantId = "my-tenant"
+    ) {
+      val variables = CamundaBpmData.reader(it)
+
+      logger.info { """ Hi, I am the process running with:
+          * foo: ${variables.get(stringField)}
+          * date: ${variables.get(dateField)}
+          * number: ${variables.get(numberField)}
+          * yes?: ${variables.get(booleanField)}
+        """.trimIndent()
+      }
+    }
+  }
+
 
   @Bean
   fun fake() = JFakerProvider()

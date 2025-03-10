@@ -1,47 +1,60 @@
 package io.holunda.camunda.platform.adminprocess
 
-import mu.KLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.repository.Deployment
-import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
-import org.springframework.context.event.EventListener
+import java.util.UUID
+
+
 
 class AdminProcessRegistry(
-  private val processes: Map<ActivityId, AdminProcess>
+  private val processes: Map<ActivityId, AdminProcess>,
+  private val repositoryService: RepositoryService
 ) : JavaDelegate {
-  companion object : KLogging() {
+  companion object {
 
-    const val NAME = "adminProcessRegistry"
+    val logger = KotlinLogging.logger {}
+
+    const val DEFAULT_TENANT = "adminProcessRegistry"
 
     /**
      * Implementation of [AdminProcess] that does not get deployed and is only used as a fallback, when
      * the engine tries to run an activity that is not registered.
      */
     val WARN = CamundaAdminProcessRegistryLib.adminProcess("WARN") {
-      logger.warn { "no adminProcess registered with processDefinitionKey=${it.currentActivityId}" }
+      logger.warn { "No adminProcess registered with processDefinitionKey=${it.currentActivityId}" }
     }
   }
 
-  @EventListener
-  fun deploy(evt: PostDeployEvent) {
+  fun deploy() {
     if (processes.isNotEmpty()) {
-      logger.info { "deploying admin processes: ${processes.values}" }
-      createDeployment(evt.processEngine.repositoryService)
+      logger.info { "Deploying admin processes: ${processes.values}" }
+      createDeployment(repositoryService)
     } else
-      logger.info { "no admin processes registered - skip deployment." }
+      logger.info { "No admin processes registered - skipping deployment." }
   }
 
-  fun createDeployment(repositoryService: RepositoryService, tenantId: String? = NAME): Deployment =
-    processes.values.fold(repositoryService.createDeployment()) { builder, process ->
-      builder.addModelInstance(
-        "${process.processDefinitionKey}.bpmn",
-        process.modelInstance
-      )
-    }.tenantId(tenantId)
-      .enableDuplicateFiltering(true)
-      .deploy()
+  private fun createDeployment(repositoryService: RepositoryService): List<Deployment> {
+    return processes
+      .values
+      .groupBy { it.tenantId }
+      .map { (tenantId, adminProcesses) ->
+      repositoryService
+        .createDeployment()
+        .name("Admin-${UUID.randomUUID()}")
+        .tenantId(tenantId)
+        .enableDuplicateFiltering(true)
+        .let { builder ->
+          adminProcesses.forEach { process ->
+            builder.addModelInstance("${process.processDefinitionKey}.bpmn", process.modelInstance,)
+          }
+          builder
+        }.deploy()
+      }
+  }
+
 
   /**
    * Delegates the execution to a registered admin process.

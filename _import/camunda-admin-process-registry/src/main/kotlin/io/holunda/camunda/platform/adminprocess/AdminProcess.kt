@@ -12,7 +12,8 @@ abstract class AdminProcess(
   private val label: String = activityId,
   private val formFields: List<FormField<*>>,
   private val historyTimeToLive: Int = 0,
-  private val versionTag: String = "1"
+  private val versionTag: String = "1",
+  val tenantId: String = AdminProcessRegistry.DEFAULT_TENANT
 ) : JavaDelegate {
   companion object {
     @JvmStatic
@@ -33,7 +34,7 @@ abstract class AdminProcess(
       .serviceTask(activityId)
       .camundaAsyncBefore()
       .name(label)
-      .camundaDelegateExpression("#{${AdminProcessRegistry.NAME}}")
+      .camundaDelegateExpression("#{${AdminProcessRegistry.DEFAULT_TENANT}}")
       .endEvent()
       .done()
   }
