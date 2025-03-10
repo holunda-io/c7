@@ -2,6 +2,7 @@
 name: 'Bug report'
 about: 'Report a bug'
 title:
+type: Bug
 labels: 'Type: bug'
 
 ---
