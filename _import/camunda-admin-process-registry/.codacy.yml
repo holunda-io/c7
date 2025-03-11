@@ -21,3 +21,4 @@ engines:
   markdownlint:
     exclude_paths:
       - ".github/**/*.md"  # No corrections of GitHub markdown files
+      - ".github/*.md"
