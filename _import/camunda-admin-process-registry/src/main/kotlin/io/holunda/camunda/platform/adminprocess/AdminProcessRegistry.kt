@@ -17,6 +17,9 @@ class AdminProcessRegistry(
   private val repositoryService: RepositoryService
 ) : JavaDelegate {
 
+  /**
+   * Static constant holder.
+   */
   companion object {
 
     val logger = KotlinLogging.logger {}
@@ -44,6 +47,9 @@ class AdminProcessRegistry(
   }
 
 
+  /**
+   * Deploys registered admin processes.
+   */
   fun deploy() {
     if (processes.isNotEmpty()) {
       logger.info { "Deploying admin processes: ${processes.values}" }

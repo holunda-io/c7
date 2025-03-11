@@ -21,6 +21,9 @@ abstract class AdminProcess(
   val tenantId: String
 ) : JavaDelegate {
 
+  /**
+   * Static helper to retrieve the builder.
+   */
   companion object {
     /**
      * Static builder to create new admin process.
