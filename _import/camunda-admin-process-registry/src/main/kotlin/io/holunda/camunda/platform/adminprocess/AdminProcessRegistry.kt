@@ -9,7 +9,9 @@ import org.camunda.bpm.model.xml.impl.util.IoUtil
 import java.util.UUID
 
 
-
+/**
+ * Registry holding the list of admin processes and responsible for deployment and dispatching of the execution.
+ */
 class AdminProcessRegistry(
   private val processes: Map<ActivityId, AdminProcess>,
   private val repositoryService: RepositoryService

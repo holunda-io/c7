@@ -3,3 +3,17 @@ engines:
     exclude_paths:
       - "**/*.js"        # Ignore all JavaScript files
       - "**/test/**"     # Ignore tests
+  detekt:  # Kotlin static analysis tool
+    exclude_paths:
+      - "**/test/**"        # Ignore test folders
+      - "**/*Test.kt"       # Ignore Kotlin test files
+      - "**/*Test.java"     # Ignore Java test files
+      - "**/*Tests.kt"      # Ignore Kotlin test files with plural naming
+      - "**/*Tests.java"    # Ignore Java test files with plural naming
+
+  spotbugs:  # Java static analysis tool
+    exclude_paths:
+      - "**/test/**"
+      - "**/tests/**"
+      - "**/*Test.java"
+      - "**/*Tests.java"
