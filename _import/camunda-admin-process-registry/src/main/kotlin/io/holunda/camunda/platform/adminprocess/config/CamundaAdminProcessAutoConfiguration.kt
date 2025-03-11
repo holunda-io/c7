@@ -20,7 +20,7 @@ class CamundaAdminProcessAutoConfiguration {
   /**
    * Collects all beans of type [AdminProcess] in context and registers them in a map.
    */
-  @Bean(AdminProcessRegistry.DEFAULT_TENANT)
+  @Bean(AdminProcessRegistry.BEAN_NAME)
   fun adminProcessRegistry(
     processes: List<AdminProcess>?,
     repositoryService: RepositoryService

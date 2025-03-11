@@ -11,7 +11,7 @@
 
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
-  <version>0.22.0</version>
+  <version>0.22.1</version>
 
   <name>${project.artifactId}</name>
   <description>Register and run utility processes</description>
