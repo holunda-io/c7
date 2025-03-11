@@ -45,13 +45,13 @@ abstract class AdminProcess(
     return "${this::class.simpleName ?: AdminProcess::class.simpleName}(activityName='$activityId', label='$label', processDefinitionKey='$processDefinitionKey', processName='$processName')"
   }
 
-  /**
+  /*
    * Add multiple form fields to builder.
    */
   private fun StartEventBuilder.camundaFormFields(formFields: List<FormField<*>>): StartEventBuilder = formFields
     .fold(this) { builder, formField -> builder.camundaFormField(formField) }
 
-  /**
+  /*
    * Add single form field to builder.
    */
   private fun StartEventBuilder.camundaFormField(formField: FormField<*>): StartEventBuilder = formField.addToStartEvent(this)
@@ -70,17 +70,54 @@ abstract class AdminProcess(
     private var tenantId: String = AdminProcessRegistry.DEFAULT_TENANT
     private var javaDelegate: JavaDelegate = WARN
 
+    /**
+     * Sets label.
+     * @param label of the service task.
+     * @return builder.
+     */
     fun label(label: String) = apply { this.label = label }
 
+    /**
+     * Adds form fields.
+     * @param formFields fields to add to the start event.
+     * @return builder.
+     */
     fun addFormField(vararg formFields: FormField<*>) = apply {
       formFields.forEach(this.formFields::add)
     }
 
+    /**
+     * Sets history TTL of the process.
+     * @param historyTimeToLive history time to live.
+     * @return builder.
+     */
     fun historyTimeToLive(historyTimeToLive: Int) = apply { this.historyTimeToLive = historyTimeToLive }
+
+    /**
+     * Sets version tag of the deployed process.
+     * @param versionTag version tag.
+     * @return builder.
+     */
     fun versionTag(versionTag: String) = apply { this.versionTag = versionTag }
+
+    /**
+     * Sets delegate for the service task.
+     * @param delegate delegate to call on service task execution.
+     * @return builder
+     */
     fun delegate(delegate: JavaDelegate) = apply { this.javaDelegate = delegate }
+
+    /**
+     * Sets tenant id for the process.
+     * @param tenantId tenant id to set.
+     * @return builder.
+     */
     fun tenantId(tenantId: String) = apply { this.tenantId = tenantId }
 
+    /**
+     * Builds the new admin process.
+     * @return admin process instance.
+     */
     fun build(): AdminProcess {
       AdminProcessRegistry.logger.debug { "Creating new admin process `$activityId` with delegate: ${javaDelegate.javaClass}" }
       return object :
