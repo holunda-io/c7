@@ -65,4 +65,3 @@ You can run the process in the webapp:
 And fill out the form:
 
 ![fill out form](.docs/admin-process-2.png)
-
