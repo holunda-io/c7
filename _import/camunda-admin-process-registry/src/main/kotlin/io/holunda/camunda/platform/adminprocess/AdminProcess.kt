@@ -8,6 +8,10 @@ import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.model.bpmn.BpmnModelInstance
 import org.camunda.bpm.model.bpmn.builder.StartEventBuilder
 
+/**
+ * Defines the admin process super class to implement by the user.
+ * Use [AdminProcess.builder] for instantiation.
+ */
 abstract class AdminProcess(
   val activityId: String,
   private val label: String,
@@ -18,6 +22,10 @@ abstract class AdminProcess(
 ) : JavaDelegate {
 
   companion object {
+    /**
+     * Static builder to create new admin process.
+     * @param activityId unique id of the service task to execute (used to identify process).
+     */
     @JvmStatic
     fun builder(activityId: String) = Builder(activityId = activityId)
   }

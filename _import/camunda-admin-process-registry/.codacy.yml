@@ -1,0 +1,5 @@
+engines:
+  eslint:
+    exclude_paths:
+      - "**/*.js"        # Ignore all JavaScript files
+      - "**/test/**"     # Ignore tests

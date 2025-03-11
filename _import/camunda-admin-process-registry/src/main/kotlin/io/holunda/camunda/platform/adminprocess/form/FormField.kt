@@ -3,6 +3,9 @@ package io.holunda.camunda.platform.adminprocess.form
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.model.bpmn.builder.StartEventBuilder
 
+/**
+ * Form field used to attached input values to the process on start.
+ */
 sealed class FormField<T>(
   /**
    * id of the formField, name of the variable
@@ -24,6 +27,9 @@ sealed class FormField<T>(
   private val variable: VariableFactory<T>
 ) : VariableFactory<T> by variable {
 
+  /**
+   * Adds to start event.
+   */
   fun addToStartEvent(startEventBuilder: StartEventBuilder): StartEventBuilder = startEventBuilder.camundaFormField()
     .camundaLabel(label)
     .camundaType(type)
