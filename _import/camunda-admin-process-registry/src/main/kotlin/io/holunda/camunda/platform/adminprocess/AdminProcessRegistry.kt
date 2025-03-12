@@ -63,17 +63,20 @@ class AdminProcessRegistry(
       .values
       .groupBy { it.tenantId }
       .map { (tenantId, adminProcesses) ->
+
       repositoryService
         .createDeployment()
-        .name("Admin-${UUID.randomUUID()}")
+        .name("AdminProcessRegistry" + if(tenantId != DEFAULT_TENANT) { "-${tenantId}" } else { "" })
         .let { builder ->
           adminProcesses.forEach { process ->
             logger.debug { "Deploying process ${process.processDefinitionKey} with model: \n${IoUtil.convertXmlDocumentToString(process.modelInstance.document)}\n" }
             builder.addModelInstance("${process.processDefinitionKey}.bpmn", process.modelInstance)
           }
+          if (tenantId != DEFAULT_TENANT) {
+            builder.tenantId(tenantId)
+          }
           builder
         }
-        .tenantId(tenantId)
         .enableDuplicateFiltering(true)
         .deploy()
       }
