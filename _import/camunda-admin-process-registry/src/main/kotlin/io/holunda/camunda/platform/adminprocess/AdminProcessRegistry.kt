@@ -6,7 +6,6 @@ import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.repository.Deployment
 import org.camunda.bpm.model.xml.impl.util.IoUtil
-import java.util.UUID
 
 
 /**
@@ -24,7 +23,7 @@ class AdminProcessRegistry(
 
     val logger = KotlinLogging.logger {}
 
-    const val DEFAULT_TENANT = "tenant-admin-process-registry"
+      const val DEFAULT_TENANT = "tenant-admin-process-registry"
     const val BEAN_NAME = "adminProcessRegistry"
 
     /**
