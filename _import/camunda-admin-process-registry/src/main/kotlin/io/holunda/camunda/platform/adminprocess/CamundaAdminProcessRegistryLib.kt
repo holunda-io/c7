@@ -3,6 +3,9 @@ package io.holunda.camunda.platform.adminprocess
 import io.holunda.camunda.platform.adminprocess.form.FormField
 import org.camunda.bpm.engine.delegate.JavaDelegate
 
+/**
+ * Static utility to simplify creation of Admin Processes.
+ */
 object CamundaAdminProcessRegistryLib {
 
   /**

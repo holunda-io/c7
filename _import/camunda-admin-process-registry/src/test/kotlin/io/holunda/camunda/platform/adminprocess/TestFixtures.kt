@@ -7,6 +7,11 @@ import org.camunda.bpm.model.bpmn.BpmnModelInstance
 
 object TestFixtures {
 
+  /**
+   * Creates a new process with given form fiels.
+   * @param field form field.
+   * @return process.
+   */
   fun createProcess(field: FormField<*>) = Bpmn.createExecutableProcess()
     .startEvent()
     .apply { field.addToStartEvent(this) }
@@ -14,14 +19,24 @@ object TestFixtures {
     .done()
 
 
-  fun BpmnModelInstance.xml() = Bpmn.convertToString(this)
+  /**
+   * Creates string representation of the BPMN model.
+   * @return string representation.
+   */
+  fun BpmnModelInstance.xml(): String = Bpmn.convertToString(this)
 
+  /**
+   * Retrieves the content of extension element block.
+   */
   fun String.extensionElements() = this
     .substringAfter("<extensionElements>")
     .substringBefore("</extensionElements>")
     .flatten()
-    .trim().trimIndent()
+    .trim()
+    .trimIndent()
 
-  fun String.flatten() = this.lines().map { it.trim() }
-    .joinToString("\n")
+  /**
+   * Removes new lines from the string.
+   */
+  fun String.flatten() = this.lines().joinToString("\n") { it.trim() }
 }

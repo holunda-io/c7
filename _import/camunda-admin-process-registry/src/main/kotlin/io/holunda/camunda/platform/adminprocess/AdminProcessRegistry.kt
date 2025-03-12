@@ -6,20 +6,24 @@ import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.repository.Deployment
 import org.camunda.bpm.model.xml.impl.util.IoUtil
-import java.util.UUID
 
 
-
+/**
+ * Registry holding the list of admin processes and responsible for deployment and dispatching of the execution.
+ */
 class AdminProcessRegistry(
   private val processes: Map<ActivityId, AdminProcess>,
   private val repositoryService: RepositoryService
 ) : JavaDelegate {
 
+  /**
+   * Static constant holder.
+   */
   companion object {
 
     val logger = KotlinLogging.logger {}
 
-    const val DEFAULT_TENANT = "tenant-admin-process-registry"
+      const val DEFAULT_TENANT = "tenant-admin-process-registry"
     const val BEAN_NAME = "adminProcessRegistry"
 
     /**
@@ -42,6 +46,9 @@ class AdminProcessRegistry(
   }
 
 
+  /**
+   * Deploys registered admin processes.
+   */
   fun deploy() {
     if (processes.isNotEmpty()) {
       logger.info { "Deploying admin processes: ${processes.values}" }
@@ -55,17 +62,20 @@ class AdminProcessRegistry(
       .values
       .groupBy { it.tenantId }
       .map { (tenantId, adminProcesses) ->
+
       repositoryService
         .createDeployment()
-        .name("Admin-${UUID.randomUUID()}")
+        .name("AdminProcessRegistry" + if(tenantId != DEFAULT_TENANT) { "-${tenantId}" } else { "" })
         .let { builder ->
           adminProcesses.forEach { process ->
             logger.debug { "Deploying process ${process.processDefinitionKey} with model: \n${IoUtil.convertXmlDocumentToString(process.modelInstance.document)}\n" }
             builder.addModelInstance("${process.processDefinitionKey}.bpmn", process.modelInstance)
           }
+          if (tenantId != DEFAULT_TENANT) {
+            builder.tenantId(tenantId)
+          }
           builder
         }
-        .tenantId(tenantId)
         .enableDuplicateFiltering(true)
         .deploy()
       }

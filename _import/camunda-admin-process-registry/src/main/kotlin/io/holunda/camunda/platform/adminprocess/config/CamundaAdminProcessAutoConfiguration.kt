@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Import
 
 val logger = KotlinLogging.logger {}
 
+/**
+ * Configures admin registry.
+ */
 @Configuration
 @AutoConfigureAfter(CamundaBpmAutoConfiguration::class)
 @Import(CamundaAdminProcessRegistryBinding::class)
