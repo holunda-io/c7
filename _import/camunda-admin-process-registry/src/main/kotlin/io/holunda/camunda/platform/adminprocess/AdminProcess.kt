@@ -7,6 +7,12 @@ import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.model.bpmn.BpmnModelInstance
 import org.camunda.bpm.model.bpmn.builder.StartEventBuilder
+import org.camunda.bpm.model.bpmn.instance.Definitions
+import org.camunda.bpm.model.bpmn.instance.bpmndi.BpmnDiagram
+import org.camunda.bpm.model.bpmn.instance.bpmndi.BpmnEdge
+import org.camunda.bpm.model.bpmn.instance.bpmndi.BpmnPlane
+import org.camunda.bpm.model.bpmn.instance.bpmndi.BpmnShape
+import org.camunda.bpm.model.xml.impl.util.ModelUtil
 
 /**
  * Defines the admin process super class to implement by the user.
@@ -37,19 +43,35 @@ abstract class AdminProcess(
 
   val processDefinitionKey = "admin_$activityId"
   val modelInstance: BpmnModelInstance by lazy {
-    Bpmn.createExecutableProcess(processDefinitionKey)
+    Bpmn
+      .createExecutableProcess(processDefinitionKey)
       .name(processName)
       .camundaHistoryTimeToLive(historyTimeToLive)
       .camundaVersionTag(versionTag)
       .camundaStartableInTasklist(true)
-      .startEvent()
+      .startEvent("started")
+      .name("Started")
       .camundaFormFields(formFields)
+      .sequenceFlowId("flow_started_to_${activityId}")
       .serviceTask(activityId)
       .camundaAsyncBefore()
       .name(label)
       .camundaDelegateExpression("#{${AdminProcessRegistry.BEAN_NAME}}")
-      .endEvent()
+      .sequenceFlowId("flow_${activityId}_to_ended")
+      .endEvent("ended")
+      .name("Ended")
       .done()
+      .apply {
+        /*
+         * Patching the ids to make them constant, avoiding redeployment of generated model
+         */
+        this.getModelElementsByType(Definitions::class.java).forEach { definitions -> ModelUtil.setNewIdentifier(definitions.elementType, definitions, "Definitions_$processDefinitionKey", true)}
+        this.getModelElementsByType(BpmnDiagram::class.java).forEach { diagram -> ModelUtil.setNewIdentifier(diagram.elementType, diagram, "BPMNDiagram_$processDefinitionKey", true)}
+        this.getModelElementsByType(BpmnPlane::class.java).forEach { plane -> ModelUtil.setNewIdentifier(plane.elementType, plane, "BPMNPlane_${plane.getAttributeValue("bpmnElement")}", true)}
+        this.getModelElementsByType(BpmnShape::class.java).forEach { shape -> ModelUtil.setNewIdentifier(shape.elementType, shape, "BPMNShape_${shape.getAttributeValue("bpmnElement")}", true)}
+        this.getModelElementsByType(BpmnEdge::class.java).forEach { edge -> ModelUtil.setNewIdentifier(edge.elementType, edge, "BPMNEdge_${edge.getAttributeValue("bpmnElement")}", true)}
+      }
+
   }
 
   override fun toString(): String {
