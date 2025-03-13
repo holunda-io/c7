@@ -2,6 +2,7 @@ name: Development branches
 
 on:
   push:
+    branches-ignore: [ master ]
   pull_request:
 
 jobs:
