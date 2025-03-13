@@ -23,7 +23,8 @@ class AdminProcessRegistry(
 
     val logger = KotlinLogging.logger {}
 
-      const val DEFAULT_TENANT = "tenant-admin-process-registry"
+    const val SOURCE = "admin process registry"
+    const val DEFAULT_TENANT = "tenant-admin-process-registry"
     const val BEAN_NAME = "adminProcessRegistry"
 
     /**
@@ -63,21 +64,28 @@ class AdminProcessRegistry(
       .groupBy { it.tenantId }
       .map { (tenantId, adminProcesses) ->
 
-      repositoryService
-        .createDeployment()
-        .name("AdminProcessRegistry" + if(tenantId != DEFAULT_TENANT) { "-${tenantId}" } else { "" })
-        .let { builder ->
-          adminProcesses.forEach { process ->
-            logger.debug { "Deploying process ${process.processDefinitionKey} with model: \n${IoUtil.convertXmlDocumentToString(process.modelInstance.document)}\n" }
-            builder.addModelInstance("${process.processDefinitionKey}.bpmn", process.modelInstance)
+        repositoryService
+          .createDeployment()
+          .name(
+            "AdminProcessRegistry" + if (tenantId != DEFAULT_TENANT) {
+              "-${tenantId}"
+            } else {
+              ""
+            }
+          )
+          .source(SOURCE)
+          .let { builder ->
+            adminProcesses.forEach { process ->
+              logger.debug { "Deploying process ${process.processDefinitionKey} with model: \n${IoUtil.convertXmlDocumentToString(process.modelInstance.document)}\n" }
+              builder.addModelInstance("${process.processDefinitionKey}.bpmn", process.modelInstance)
+            }
+            if (tenantId != DEFAULT_TENANT) {
+              builder.tenantId(tenantId)
+            }
+            builder
           }
-          if (tenantId != DEFAULT_TENANT) {
-            builder.tenantId(tenantId)
-          }
-          builder
-        }
-        .enableDuplicateFiltering(true)
-        .deploy()
+          .enableDuplicateFiltering(false)
+          .deploy()
       }
   }
 
