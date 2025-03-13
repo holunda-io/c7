@@ -1,7 +1,7 @@
 package io.holunda.camunda.platform.adminprocess.config
 
 import io.holunda.camunda.platform.adminprocess.AdminProcessRegistry
-import org.camunda.bpm.spring.boot.starter.event.ProcessApplicationStartedEvent
+import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
@@ -14,10 +14,10 @@ class CamundaAdminProcessRegistryBinding(
 ) {
 
   /**
-   * Executes deployment, if any processes aer defined.
+   * Executes deployment, if any processes are defined.
    */
   @EventListener
-  fun on(evt: ProcessApplicationStartedEvent) {
+  fun on(evt: PostDeployEvent) {
     adminProcessRegistry.deploy()
   }
 }
