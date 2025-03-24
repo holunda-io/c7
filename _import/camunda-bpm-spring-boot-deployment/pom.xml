@@ -21,7 +21,7 @@
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-    <kotlin.version>2.1.10</kotlin.version>
+    <kotlin.version>2.1.20</kotlin.version>
     <java.version>17</java.version>
 
     <spring-boot.version>3.4.3</spring-boot.version>
