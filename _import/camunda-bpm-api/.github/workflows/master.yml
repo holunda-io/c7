@@ -24,11 +24,11 @@ jobs:
         server-password: OSS_CENTRAL_PASSWORD # env variable for Maven Central
 
     # Get GPG private key into GPG
-    #- name: Import GPG Owner Trust
-    #  run: echo ${{ secrets.GPG_OWNERTRUST }} | base64 --decode | gpg --import-ownertrust
+    - name: Import GPG Owner Trust
+      run: echo ${{ secrets.GPG_OWNERTRUST }} | base64 --decode | gpg --import-ownertrust
 
-    #- name: Import GPG key
-    #  run: echo ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode | gpg --import --no-tty --batch --yes
+    - name: Import GPG key
+      run: echo ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode | gpg --import --no-tty --batch --yes
 
     - name: Prepare mvnw
       run: chmod +x ./mvnw
@@ -37,10 +37,8 @@ jobs:
       run: ./mvnw clean package -B -ntp
 
     - name: Deploy a new version to central
-      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.signer=bc
-      # -Dgpg.keyname="${{secrets.GPG_KEYNAME}}"
+      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}"
       env:
         OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-        MAVEN_GPG_KEY: ${{ secrets.RELEASES_GPG_PRIVATE_KEY }}
