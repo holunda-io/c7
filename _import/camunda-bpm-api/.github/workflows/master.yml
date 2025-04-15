@@ -23,7 +23,6 @@ jobs:
         server-username: OSS_CENTRAL_USERNAME # env variable for Maven Central
         server-password: OSS_CENTRAL_PASSWORD # env variable for Maven Central
         gpg-private-key: ${{ secrets.GPG_SECRET_KEYS }} # Value of the GPG private key to import
-        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
     # Get GPG private key into GPG
     #- name: Import GPG Owner Trust
@@ -44,3 +43,4 @@ jobs:
         OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        MAVEN_GPG_KEY: ${{ secrets.RELEASES_GPG_PRIVATE_KEY }}
