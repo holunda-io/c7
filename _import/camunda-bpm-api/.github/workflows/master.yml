@@ -34,10 +34,11 @@ jobs:
       run: chmod +x ./mvnw
 
     - name: Build
-      run: ./mvnw clean package
+      run: ./mvnw clean package -B -ntp
 
     - name: Deploy a new version to central
-      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}" -Dgpg.passphrase="${{secrets.GPG_PASSPHRASE}}"
+      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}"
       env:
         OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
