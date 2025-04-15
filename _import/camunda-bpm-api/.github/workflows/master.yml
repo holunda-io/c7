@@ -22,6 +22,7 @@ jobs:
         server-id: ossrh
         server-username: OSS_CENTRAL_USERNAME # env variable for Maven Central
         server-password: OSS_CENTRAL_PASSWORD # env variable for Maven Central
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
     # Get GPG private key into GPG
     - name: Import GPG Owner Trust
@@ -37,7 +38,8 @@ jobs:
       run: ./mvnw clean package
 
     - name: Deploy a new version to central
-      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}" -Dgpg.passphrase="${{secrets.GPG_PASSPHRASE}}"
+      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}"
       env:
         OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
