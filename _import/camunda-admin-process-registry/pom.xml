@@ -18,7 +18,7 @@
   <url>https://github.com/holunda-io/camunda-admin-process-registry/</url>
 
   <properties>
-    <spring-boot.version>3.4.4</spring-boot.version>
+    <spring-boot.version>3.4.5</spring-boot.version>
     <camunda.version>7.22.0</camunda.version>
 
     <!-- required for camunda with jdk >= 9 -->
