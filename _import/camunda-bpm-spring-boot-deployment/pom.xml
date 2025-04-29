@@ -5,13 +5,13 @@
   <parent>
     <groupId>io.toolisticon.maven.parent</groupId>
     <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2025.2.0</version>
+    <version>2025.4.0</version>
     <relativePath />
   </parent>
 
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>1.22.0</version>
+  <version>1.22.1</version>
   <name>${project.artifactId}</name>
   <description>camunda-bpm-spring-boot-deployment</description>
   <url>https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/</url>
@@ -21,16 +21,16 @@
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-    <kotlin.version>2.1.10</kotlin.version>
+    <kotlin.version>2.1.20</kotlin.version>
     <java.version>17</java.version>
 
-    <spring-boot.version>3.4.2</spring-boot.version>
+    <spring-boot.version>3.4.5</spring-boot.version>
     <camunda.version>7.22.0</camunda.version>
 
     <!-- TEST -->
-    <assertj.version>3.24.2</assertj.version>
+    <assertj.version>3.27.3</assertj.version>
     <junit5.version>5.11.0</junit5.version>
-    <mockk.version>1.13.8</mockk.version>
+    <mockk.version>1.14.0</mockk.version>
   </properties>
 
   <dependencyManagement>

@@ -11,28 +11,14 @@ jobs:
     name: Build and run tests on JDK ${{ matrix.java }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Restore the cache first
-      - name: Cache .m2
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven
-
-      # Get GPG private key into GPG
-      - name: Import GPG Owner Trust
-        run: echo ${{ secrets.GPG_OWNERTRUST }} | base64 --decode | gpg --import-ownertrust
-
-      - name: Import GPG key
-        run: echo ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode | gpg --import --no-tty --batch --yes
+        uses: actions/checkout@v4
 
       # Setup JDK and .m2/settings.xml
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: temurin
+          cache: maven
           java-version: 17
           server-id: ossrh
           server-username: OSS_CENTRAL_USERNAME # env variable for Maven Central
@@ -44,16 +30,24 @@ jobs:
 
       # Build
       - name: Build with Maven
-        run: ./mvnw clean verify -U -B -T4
+        run: ./mvnw clean verify -U -B -T4 -ntp
+
+      # Get GPG private key into GPG
+      - name: Import GPG Owner Trust
+        run: echo ${{ secrets.GPG_OWNERTRUST }} | base64 --decode | gpg --import-ownertrust
+
+      - name: Import GPG key
+        run: echo ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode | gpg --import --no-tty --batch --yes
 
       # Publish release
       - name: Deploy a new release version to Maven Central
-        run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.keyname="${{ secrets.GPG_KEYNAME }}" -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}"
+        run: ./mvnw clean deploy -B -ntp -DskipTests -DskipExamples -Prelease -Dgpg.keyname="${{ secrets.GPG_KEYNAME }}" -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}"
         env:
           OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 
-#      - name: Upload coverage information
-#        uses: codecov/codecov-action@v2
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage to Codecov
+        if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
