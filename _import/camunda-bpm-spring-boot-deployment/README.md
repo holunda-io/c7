@@ -33,7 +33,7 @@ Add the dependency to your `pom.xml`:
 <dependency>
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>1.22.0</version>
+  <version>2025.05.1</version>
 </dependency>
 ```
 
