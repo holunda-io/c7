@@ -1,7 +1,7 @@
 # Camunda BPM SpringBoot Deployment
 
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-[![Camunda 7.22](https://img.shields.io/badge/Camunda%20Version-7.22-orange.svg)](https://docs.camunda.org/manual/7.22/)
+[![Camunda 7.22](https://img.shields.io/badge/Camunda%20Version-7.23-orange.svg)](https://docs.camunda.org/manual/7.23/)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
