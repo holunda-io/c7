@@ -19,7 +19,7 @@ Doing so enables you to implement administration/house-keeping jobs as a process
 <dependency>
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
-  <version>0.22.1</version>
+  <version>0.23.0</version>
 </dependency>
 
 ```
