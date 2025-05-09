@@ -20,7 +20,7 @@ import_repo_into_monorepo() {
 
   # 4. Create import branch and merge develop
   git checkout -b import-$old_repo_name
-  git merge monorepo/develop --allow-unrelated-histories
+  git merge monorepo/develop --allow-unrelated-histories --no-edit
 
   # 5. Push import branch to monorepo
   git push monorepo import-$old_repo_name
