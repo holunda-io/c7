@@ -31,6 +31,7 @@
     <module>_import/camunda-bpm-data</module>
     <module>_import/camunda-bpm-jgiven</module>
     <module>_import/camunda-bpm-spring-boot-deployment</module>
+    <module>_import/camunda-admin-process-registry</module>
   </modules>
 
   <dependencyManagement>

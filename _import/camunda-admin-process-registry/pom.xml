@@ -3,38 +3,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>io.toolisticon.maven.parent</groupId>
-    <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2025.4.0</version>
-    <relativePath/>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2025.05.2-SNAPSHOT</version>
+    <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
-  <version>2025.05.2-SNAPSHOT</version>
 
   <name>${project.artifactId}</name>
   <description>Register and run utility processes</description>
-  <url>https://github.com/holunda-io/camunda-admin-process-registry/</url>
 
   <properties>
-    <spring-boot.version>3.4.5</spring-boot.version>
-    <camunda.version>7.23.0</camunda.version>
-
     <!-- required for camunda with jdk >= 9 -->
     <jaxb-impl.version>4.0.5</jaxb-impl.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-      <!-- CAMUNDA OFFICIAL -->
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
       <!-- SPRING -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -70,7 +57,7 @@
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
-      <version>2025.05.1</version>
+      <version>${project.version}</version>
     </dependency>
 
     <!-- TEST -->
@@ -109,7 +96,7 @@
     <dependency>
       <groupId>io.holunda</groupId>
       <artifactId>camunda-platform-7-autologin</artifactId>
-      <version>0.1.3</version>
+      <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -203,53 +190,4 @@
       </build>
     </profile>
   </profiles>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <scm>
-    <connection>scm:git:git@github.com:holunda-io/camunda-admin-process-registry.git</connection>
-    <url>scm:git:git@github.com:holunda-io/camunda-admin-process-registry.git</url>
-    <developerConnection>scm:git:git@github.com:holunda-io/camunda-admin-process-registry.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
-
-  <developers>
-    <developer>
-      <id>jangalinski</id>
-      <name>Jan Galinski</name>
-      <roles>
-        <role>Product Owner</role>
-        <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-    <developer>
-      <id>zambrovski</id>
-      <name>Simon Zambrovski</name>
-      <roles>
-        <role>Product Owner</role>
-        <role>Developer</role>
-        <role>Toolsmith</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-  </developers>
 </project>
