@@ -1,0 +1,22 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: Camunda BPM Data Java Example
+  jpa:
+    open-in-view: true
+
+camunda:
+  bpm:
+    default-serialization-format: application/json
+    admin-user:
+      id: admin
+      email: admin@localhost
+      first-name: Admin
+      last-name: Administratius
+      password: admin
+    filter:
+      create: all
+    generic-properties:
+      properties:
+        telemetry-reporter-activate: false

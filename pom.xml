@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.toolisticon.maven.parent</groupId>
+    <artifactId>maven-parent-kotlin-base</artifactId>
+    <version>2025.4.0</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>io.holunda.c7._</groupId>
+  <artifactId>c7-root</artifactId>
+  <version>2025.05.0-SNAPSHOT</version>
+
+  <name>pom: ${project.artifactId}</name>
+  <description>Root of all holunda/camunda7 libs.</description>
+  <url>https://github.com/holunda-io/c7/</url>
+  <packaging>pom</packaging>
+
+  <properties>
+    <!-- Global versions that are crucial for all submodules. -->
+    <camunda-ee.version>7.23.0-ee</camunda-ee.version>
+    <spring-boot.version>3.4.5</spring-boot.version>
+  </properties>
+
+  <modules>
+    <module>_build/parent</module>
+  </modules>
+
+  <dependencyManagement>
+    <!-- empty -->
+  </dependencyManagement>
+
+  <dependencies/>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:holunda-io/c7.git</connection>
+    <url>scm:git:git@github.com:holunda-io/c7.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/c7.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <id>zambrovski</id>
+      <name>Simon Zambrovski</name>
+      <roles>
+        <role>Product Owner</role>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+    <developer>
+      <id>jangalinski</id>
+      <name>Jan Galinski</name>
+      <roles>
+        <role>Product Owner</role>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+  </developers>
+
+  <repositories>
+    <!-- we need the camunda-7-ee releases -->
+    <repository>
+      <id>camunda-bpm-ee</id>
+      <url>https://artifacts.camunda.com/artifactory/camunda-bpm-ee/</url>
+    </repository>
+  </repositories>
+</project>
