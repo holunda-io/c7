@@ -19,6 +19,7 @@
   <packaging>pom</packaging>
 
   <properties>
+    <!-- Global versions that are crucial for all submodules. -->
     <camunda-ee.version>7.23.0-ee</camunda-ee.version>
     <spring-boot.version>3.4.5</spring-boot.version>
   </properties>
@@ -41,9 +42,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:holuda-io/c7.git</connection>
-    <url>scm:git:git@github.com:holuda-io/c7.git</url>
-    <developerConnection>scm:git:git@github.com:holuda-io/c7.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/c7.git</connection>
+    <url>scm:git:git@github.com:holunda-io/c7.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/c7.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -82,6 +83,7 @@
   </developers>
 
   <repositories>
+    <!-- we need the camunda-7-ee releases -->
     <repository>
       <id>camunda-bpm-ee</id>
       <url>https://artifacts.camunda.com/artifactory/camunda-bpm-ee/</url>
