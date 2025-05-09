@@ -1,0 +1,6 @@
+# Simple example with spring boot
+
+Simple example which uses an embedded engine.
+On startup a batch will be created which works on a list of random string data.
+
+Start with mvn spring-boot:run.

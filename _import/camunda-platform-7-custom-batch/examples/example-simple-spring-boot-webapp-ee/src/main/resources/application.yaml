@@ -1,0 +1,12 @@
+spring:
+  application.name: simpleApplication
+
+server.port: 10100
+
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+
+#camunda.bpm.auto-deployment-enabled: false
+

@@ -1,0 +1,66 @@
+image::https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700[caption="Comuinity Extension", link=https://github.com/camunda-community-hub/community]
+image::https://img.shields.io/badge/Lifecycle-Stable-brightgreen[caption="Stable", link=https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#stable-]
+image::https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c[caption="compatible with Camunda Platform 7"]
+
+
+[cols="a,a,a,a,a,a,a,a"]
+|===
+| // maven central
+image::https://maven-badges.herokuapp.com/maven-central/org.camunda.community.rest/camunda-platform-7-rest-client-spring-boot/badge.svg[caption="Maven Central", link=https://maven-badges.herokuapp.com/maven-central/org.camunda.community.rest/camunda-platform-7-rest-client-spring-boot]
+| // Camunda version
+image::https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg[link="https://docs.camunda.org/manual/7.20/"]
+| // codecov
+image::https://codecov.io/gh/camunda-community-hub/camunda-platform-7-rest-client-spring-boot/branch/master/graph/badge.svg[caption="codecov", link=https://codecov.io/gh/camunda-community-hub/camunda-platform-7-rest-client-spring-boot]
+| // codacy code quality
+image::https://app.codacy.com/project/badge/Grade/689735cb8ec5408a8390ac7b0d5df59f[caption="Codacy code quality", link="https://www.codacy.com/gh/camunda-community-hub/camunda-platform-7-rest-client-spring-boot/dashboard?utm_source=github.com&utm_medium=referral&utm_content=camunda-community-hub/camunda-platform-7-rest-client-spring-boot&utm_campaign=Badge_Grade"]
+| // codacy coverage
+image::https://app.codacy.com/project/badge/Coverage/689735cb8ec5408a8390ac7b0d5df59f[caption="Codacy Coverage Badge", link=https://www.codacy.com/gh/camunda-community-hub/camunda-platform-7-rest-client-spring-boot/dashboard?utm_source=github.com&utm_medium=referral&utm_content=camunda-community-hub/camunda-platform-7-rest-client-spring-boot&utm_campaign=Badge_Coverage]
+| // license
+image::https://img.shields.io/badge/License-Apache%202.0-blue.svg[caption="License", link="https://github.com/camunda-community-hub/camunda-platform-7-rest-client-spring-boot/blob/master/LICENSE"]
+| // changelog
+image::https://img.shields.io/badge/CHANGES-blue.svg[caption="Change log", link="https://github.com/camunda-community-hub/camunda-platform-7-rest-client-spring-boot/releases/latest"]
+| // openhub
+image::https://www.openhub.net/p/camunda-platform-7-rest-client-spring-boot/widgets/project_thin_badge.gif[caption="OpenHub", link="https://www.openhub.net/p/camunda-platform-7-rest-client-spring-boot"]
+| // sponsored
+image::https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg[caption="sponsored", link="https://holisticon.de/"]
+|===
+
+== Introduction
+
+This library aims to provide a REST client for Camunda REST API for SpringBoot. In doing so it offers "remote" implementations of Camunda
+Engine Java API. This project is highly iterative and releases the functionality in small increments. Please check the link:https://camunda-community-hub.github.io/camunda-platform-7-rest-client-spring-boot/snapshot/user-guide/support-matrix.html[support matrix]
+to find out if the functionality you require is already supported by the library.
+
+
+== Quick Start
+
+If you just want to start using the library, please consult our link:https://camunda-community-hub.github.io/camunda-platform-7-rest-client-spring-boot/snapshot/getting-started.html[Quick Start]
+guide.
+
+== Working Example
+
+We provide a working example demonstrating some features of the library. See our link:https://camunda-community-hub.github.io/camunda-platform-7-rest-client-spring-boot/snapshot/user-guide/examples.html#standalone-usage[Examples] section for usage and configuration.
+
+
+== User Guide
+
+If you have any questions regarding configuration of Camunda BPM Feign please
+have a look at our link:https://camunda-community-hub.github.io/camunda-platform-7-rest-client-spring-boot/snapshot/user-guide/index.html[User Guide].
+
+== Direct usage of feign clients
+
+You can also just use the generated feign clients directly and not via the Camunda services.
+If you're interested have a look at the link:https://camunda-community-hub.github.io/camunda-platform-7-rest-client-spring-boot/snapshot/user-guide/examples.html#usage-of-feign-clients[Examples] section for usage and configuration.
+
+== License
+
+This library is developed under Apache License 2.
+
+== Contribution
+
+If you want to contribute to this project, feel free to do so. Start with link:https://camunda-community-hub.github.io/camunda-platform-7-rest-client-spring-boot/snapshot/developer-guide/contribution.html[Contributing guide].
+
+== Maintainer
+
+* link:https://github.com/zambrovski[Simon Zambrovski, Holisticon AG]
+* link:https://github.com/rohwerj[Jan Rohwer, Holisticon AG]
