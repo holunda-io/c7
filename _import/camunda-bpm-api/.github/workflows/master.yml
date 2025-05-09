@@ -1,0 +1,44 @@
+name: Master branch
+
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: zulu
+        cache: maven
+        java-version: 17
+        server-id: ossrh
+        server-username: OSS_CENTRAL_USERNAME # env variable for Maven Central
+        server-password: OSS_CENTRAL_PASSWORD # env variable for Maven Central
+
+    # Get GPG private key into GPG
+    - name: Import GPG Owner Trust
+      run: echo ${{ secrets.GPG_OWNERTRUST }} | base64 --decode | gpg --import-ownertrust
+
+    - name: Import GPG key
+      run: echo ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode | gpg --import --no-tty --batch --yes
+
+    - name: Prepare mvnw
+      run: chmod +x ./mvnw
+
+    - name: Build
+      run: ./mvnw clean package -B -ntp
+
+    - name: Deploy a new version to central
+      run: ./mvnw clean deploy -B -ntp -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}"
+      env:
+        OSS_CENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+        OSS_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
