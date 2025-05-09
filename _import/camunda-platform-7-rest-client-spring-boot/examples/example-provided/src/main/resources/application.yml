@@ -1,0 +1,38 @@
+#
+# Controls a client running in the same process.
+#
+client.enabled: true
+
+server:
+  port: 8083
+spring:
+  application:
+    name: RestExampleEngineProvided
+  jpa:
+    open-in-view: true
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+      password: admin
+      email: adminus@adminius.io
+      first-name: Adminus
+      last-name: Administratius
+    filter:
+      create: true
+    generic-properties:
+      properties:
+        historyTimeToLive: P1D
+feign:
+  client:
+    config:
+      default:
+        url: "http://localhost:${server.port}/engine-rest/"
+
+logging:
+  level:
+    org.camunda.community.rest.client.api: DEBUG
+    # To log REST controllers
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: TRACE
+    # To log web access
+    org.springframework.web: TRACE
