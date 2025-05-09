@@ -1,5 +1,3 @@
-_tmp/avro-kotlin/_test/target/
-
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -14,13 +12,15 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 .mvn/maven.config
 .mvn/settings.xml
+target/
 
 ### STS ###
 .apt_generated
 .classpath
 .factorypath
+.meta-data/
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
@@ -42,3 +42,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### MAC
+.DS_Store
+
+### Java
+Snap.*.trc
+javacore.*.txt
+.attach_*

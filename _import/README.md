@@ -16,5 +16,4 @@
   * `.gitignore`
   * `LICENSE`
   * `.github`
-* `rm -rf .git .mvn mvnw* .javaversion .editorconfig LICENSE .github `
-
+* `rm -rf .git .mvn mvnw* .java-version .editorconfig LICENSE .github .gitignore`
