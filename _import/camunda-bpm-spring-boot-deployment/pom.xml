@@ -3,30 +3,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>io.toolisticon.maven.parent</groupId>
-    <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2025.4.0</version>
-    <relativePath />
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2025.05.2-SNAPSHOT</version>
+    <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <version>2025.05.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>camunda-bpm-spring-boot-deployment</description>
-  <url>https://github.com/holunda-io/camunda-bpm-spring-boot-deployment/</url>
 
   <properties>
-    <project.encoding>UTF-8</project.encoding>
-    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
-
-    <kotlin.version>2.1.20</kotlin.version>
-    <java.version>17</java.version>
-
-    <spring-boot.version>3.4.5</spring-boot.version>
-    <camunda.version>7.23.0</camunda.version>
-
     <!-- TEST -->
     <assertj.version>3.27.3</assertj.version>
     <junit5.version>5.11.0</junit5.version>
@@ -42,15 +30,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
 
@@ -132,42 +111,9 @@
   </dependencies>
 
   <build>
-    <defaultGoal>clean install</defaultGoal>
     <sourceDirectory>src/main/kotlin</sourceDirectory>
     <testSourceDirectory>src/test/kotlin</testSourceDirectory>
-    <resources>
-      <!-- ignore gitkeep marker files -->
-      <resource>
-        <directory>src/main/resources</directory>
-        <excludes>
-          <exclude>.gitkeep</exclude>
-        </excludes>
-      </resource>
-    </resources>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.jetbrains.kotlin</groupId>
-          <artifactId>kotlin-maven-plugin</artifactId>
-          <version>${kotlin.version}</version>
-          <configuration>
-            <compilerPlugins>
-              <plugin>spring</plugin>
-              <plugin>no-arg</plugin>
-              <plugin>all-open</plugin>
-            </compilerPlugins>
-          </configuration>
-          <dependencies>
-            <dependency>
-              <groupId>org.jetbrains.kotlin</groupId>
-              <artifactId>kotlin-maven-allopen</artifactId>
-              <version>${kotlin.version}</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
@@ -179,25 +125,5 @@
       </plugin>
     </plugins>
   </build>
-
-  <scm>
-    <connection>scm:git:git@github.com:holunda-io/camunda-bpm-spring-boot-deployment.git</connection>
-    <url>scm:git:git@github.com:holunda-io/camunda-bpm-spring-boot-deployment.git</url>
-    <developerConnection>scm:git:git@github.com:holunda-io/camunda-bpm-spring-boot-deployment.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
-  <developers>
-    <developer>
-      <id>stefanzilske</id>
-      <name>Stefan Zilske</name>
-      <roles>
-        <role>Product Owner</role>
-        <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-  </developers>
 
  </project>

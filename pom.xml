@@ -30,6 +30,7 @@
     <module>_build/parent</module>
     <module>_import/camunda-bpm-data</module>
     <module>_import/camunda-bpm-jgiven</module>
+    <module>_import/camunda-bpm-spring-boot-deployment</module>
   </modules>
 
   <dependencyManagement>
@@ -142,6 +143,16 @@
     <developer>
       <name>Christian Maschmann</name>
       <roles>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+    <developer>
+      <id>stefanzilske</id>
+      <name>Stefan Zilske</name>
+      <roles>
+        <role>Product Owner</role>
         <role>Developer</role>
       </roles>
       <organization>Holisticon AG</organization>
