@@ -2,37 +2,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2025.05.2-SNAPSHOT</version>
+    <relativePath>../../_build/parent/pom.xml</relativePath>
+  </parent>
+
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>2025.05.2-SNAPSHOT</version>
+
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
-  <url>https://github.com/holunda-io/camunda-bpm-data/</url>
   <packaging>pom</packaging>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>17</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <version.java>${java.version}</version.java>
 
-    <camunda.version.ee>7.23.0</camunda.version.ee>
-    <camunda.version.ce>7.23.0</camunda.version.ce>
-
-    <spring-boot.version>3.4.5</spring-boot.version>
-    <spin.version>7.23.0</spin.version>
-    <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
-
-    <kotlin.version>2.1.20</kotlin.version>
+    <camunda-assert.version>${camunda-ce.version}</camunda-assert.version>
     <jgiven.version>2.0.2</jgiven.version>
-    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-
-    <kotlin-logging.version>7.0.7</kotlin-logging.version>
     <mockito-kotlin.version>5.4.0</mockito-kotlin.version>
-
-    <pattern.class.itest>%regex[.*ITest.*]</pattern.class.itest>
 
     <!-- Skip instrumentalization by default -->
     <jacoco.skip>true</jacoco.skip>
@@ -46,14 +34,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- Kotlin -->
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-bom</artifactId>
-        <version>${kotlin.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
 
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -66,27 +46,11 @@
       <dependency>
         <groupId>io.github.oshai</groupId>
         <artifactId>kotlin-logging-jvm</artifactId>
-        <version>${kotlin-logging.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.spin</groupId>
-        <artifactId>camunda-spin-bom</artifactId>
-        <scope>import</scope>
-        <type>pom</type>
-        <version>${spin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.camunda.bpm.springboot</groupId>
         <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-        <version>${camunda.version.ce}</version>
+        <version>${camunda-ce.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -104,7 +68,6 @@
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>26.0.2</version>
     </dependency>
 
     <!-- Testing -->
@@ -128,60 +91,17 @@
   </dependencies>
 
   <build>
-    <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
 
     <pluginManagement>
       <plugins>
         <plugin>
-          <!-- cleaning -->
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.4.1</version>
-        </plugin>
-
-        <!-- Coverage metering -->
-        <plugin>
-          <groupId>org.jacoco</groupId>
-          <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.13</version>
-          <executions>
-            <execution>
-              <id>pre-unit-test</id>
-              <goals>
-                <goal>prepare-agent</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>pre-integration-test</id>
-              <goals>
-                <goal>prepare-agent-integration</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-
-        <plugin>
           <!-- Kotlin compiler -->
           <artifactId>kotlin-maven-plugin</artifactId>
           <groupId>org.jetbrains.kotlin</groupId>
-          <version>${kotlin.version}</version>
-          <configuration>
-            <languageVersion>1.9</languageVersion>
-            <apiVersion>1.9</apiVersion>
-            <args>
-              <arg>-Xinline-classes</arg>
-            </args>
-            <jvmTarget>${java.version}</jvmTarget>
-            <compilerPlugins>
-              <plugin>spring</plugin>
-              <plugin>no-arg</plugin>
-              <plugin>all-open</plugin>
-            </compilerPlugins>
-            <pluginOptions>
-              <!-- Each annotation is placed on its own line -->
-              <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
-            </pluginOptions>
-          </configuration>
+
           <executions>
             <execution>
               <id>compile</id>
@@ -201,7 +121,6 @@
                 <goal>test-compile</goal>
               </goals>
               <configuration>
-                <skip>${maven.test.skip}</skip>
                 <sourceDirs>
                   <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                   <sourceDir>${project.basedir}/src/test/java</sourceDir>
@@ -209,421 +128,12 @@
               </configuration>
             </execution>
           </executions>
-
-          <dependencies>
-            <dependency>
-              <groupId>org.jetbrains.kotlin</groupId>
-              <artifactId>kotlin-maven-allopen</artifactId>
-              <version>${kotlin.version}</version>
-            </dependency>
-            <dependency>
-              <groupId>org.jetbrains.kotlin</groupId>
-              <artifactId>kotlin-maven-noarg</artifactId>
-              <version>${kotlin.version}</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-
-        <plugin>
-          <!-- Java compiler -->
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.14.0</version>
-          <configuration>
-            <encoding>${project.build.sourceEncoding}</encoding>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
-          </configuration>
-          <executions>
-            <!-- Replacing default-compile as it is treated specially by maven -->
-            <execution>
-              <id>default-compile</id>
-              <phase>none</phase>
-            </execution>
-            <!-- Replacing default-testCompile as it is treated specially by maven -->
-            <execution>
-              <id>default-testCompile</id>
-              <phase>none</phase>
-            </execution>
-            <execution>
-              <id>java-compile</id>
-              <phase>compile</phase>
-              <goals>
-                <goal>compile</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>java-test-compile</id>
-              <phase>test-compile</phase>
-              <goals>
-                <goal>testCompile</goal>
-              </goals>
-              <configuration>
-                <skip>${maven.test.skip}</skip>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
-        <plugin>
-          <!-- resources -->
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.1</version>
-          <configuration>
-            <encoding>${project.build.sourceEncoding}</encoding>
-          </configuration>
-        </plugin>
-
-        <!-- Unit Tests -->
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.5.3</version>
-          <configuration>
-            <useSystemClassLoader>false</useSystemClassLoader>
-            <shutdown>kill</shutdown>
-            <runOrder>random</runOrder>
-            <excludes>
-              <exclude>${pattern.class.itest}</exclude>
-            </excludes>
-            <!-- Sets the VM argument line used when unit tests are run. -->
-            <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-            <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
-            <systemPropertyVariables>
-              <jgiven.report.dir>${project.build.directory}/jgiven-reports</jgiven.report.dir>
-            </systemPropertyVariables>
-          </configuration>
-        </plugin>
-
-        <!-- ITests -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.3</version>
-          <executions>
-            <execution>
-              <goals>
-                <goal>integration-test</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <includes>
-              <include>${pattern.class.itest}</include>
-            </includes>
-            <!-- Sets the VM argument line used when unit tests are run. -->
-            <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-            <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
-            <runOrder>random</runOrder>
-          </configuration>
-        </plugin>
-
-
-        <!-- JavaDoc for Java and KDoc for Kotlin -->
-        <plugin>
-          <groupId>org.jetbrains.dokka</groupId>
-          <artifactId>dokka-maven-plugin</artifactId>
-          <version>2.0.0</version>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <phase>package</phase>
-              <goals>
-                <goal>dokka</goal>
-                <goal>javadocJar</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <skip>${dokka.skip}</skip>
-            <includes>
-              <include>${project.basedir}/src/main/kotlin/packages.md</include>
-            </includes>
-            <sourceLinks>
-              <link>
-                <path>${project.basedir}</path>
-                <url>https://github.com/holunda-io/camunda-bpm-data/blob/master</url>
-                <lineSuffix>#L</lineSuffix>
-              </link>
-            </sourceLinks>
-            <jdkVersion>17</jdkVersion>
-            <sourceDirectories>
-              <dir>${project.basedir}/src/main/kotlin</dir>
-              <dir>${project.basedir}/src/main/java</dir>
-            </sourceDirectories>
-          </configuration>
-        </plugin>
-        <!-- Source from kotlin -->
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.6.0</version>
-          <executions>
-            <execution>
-              <phase>generate-sources</phase>
-              <goals>
-                <goal>add-source</goal>
-              </goals>
-              <configuration>
-                <sources>
-                  <source>${project.basedir}/src/main/kotlin</source>
-                </sources>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- attach sources -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>3.3.1</version>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <phase>package</phase>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-              <configuration>
-                <attach>true</attach>
-                <forceCreation>true</forceCreation>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- gitflow -->
-        <plugin>
-          <groupId>com.amashchenko.maven.plugin</groupId>
-          <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.21.0</version>
-          <configuration>
-            <gitFlowConfig>
-              <productionBranch>master</productionBranch>
-              <developmentBranch>develop</developmentBranch>
-              <featureBranchPrefix>feature/</featureBranchPrefix>
-              <releaseBranchPrefix>release/</releaseBranchPrefix>
-              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-              <supportBranchPrefix>support/</supportBranchPrefix>
-              <origin>origin</origin>
-            </gitFlowConfig>
-            <useSnapshotInHotfix>true</useSnapshotInHotfix>
-            <useSnapshotInRelease>true</useSnapshotInRelease>
-            <keepBranch>false</keepBranch>
-            <pushRemote>true</pushRemote>
-          </configuration>
-        </plugin>
-
-        <!-- To sign the artifacts -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-gpg-plugin</artifactId>
-          <version>3.2.7</version>
-          <configuration>
-            <gpgArguments>
-              <arg>--batch</arg>
-              <arg>--yes</arg>
-              <arg>--pinentry-mode</arg>
-              <arg>loopback</arg>
-            </gpgArguments>
-          </configuration>
-          <executions>
-            <execution>
-              <id>sign-artifacts</id>
-              <phase>verify</phase>
-              <goals>
-                <goal>sign</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- Deploy -->
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.4</version>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.7.0</version>
-          <executions>
-            <execution>
-              <id>default-deploy</id>
-              <phase>deploy</phase>
-              <goals>
-                <goal>deploy</goal>
-              </goals>
-              <configuration>
-                <serverId>ossrh</serverId>
-                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                <keepStagingRepositoryOnCloseRuleFailure>true
-                </keepStagingRepositoryOnCloseRuleFailure><!-- go to oss.nexus.org and inspect the failure -->
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- Install -->
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.4</version>
-        </plugin>
-
-        <!-- Enforce -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.5.0</version>
-          <executions>
-            <execution>
-              <id>enforce-maven</id>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireMavenVersion>
-                    <version>3.9.0</version>
-                  </requireMavenVersion>
-                  <requireJavaVersion>
-                    <version>17</version>
-                  </requireJavaVersion>
-                </rules>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
-
-    <plugins>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-      </plugin>
-    </plugins>
-
   </build>
 
   <profiles>
-    <!--
-    Profile for selecting the Camunda BPM Engine version.
-    CE stands for Community Edition
-    EE stands for Enterprise Edition
-  -->
-    <profile>
-      <id>camunda-ce</id>
-      <activation>
-        <property>
-          <name>!camunda-ee</name>
-        </property>
-      </activation>
-      <properties>
-        <camunda.version>7.20.0</camunda.version>
-      </properties>
-      <dependencyManagement>
-        <dependencies>
-          <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${camunda.version.ce}</version>
-          </dependency>
-        </dependencies>
-      </dependencyManagement>
-    </profile>
-    <profile>
-      <id>camunda-ee</id>
-      <activation>
-        <property>
-          <name>camunda-ee</name>
-        </property>
-      </activation>
-      <properties>
-        <camunda.version>${camunda.version.ee}</camunda.version>
-      </properties>
-      <repositories>
-        <repository>
-          <id>camunda-bpm-ee</id>
-          <name>camunda-bpm-ee</name>
-          <url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee</url>
-        </repository>
-      </repositories>
-      <dependencyManagement>
-        <dependencies>
-          <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-            <version>${camunda.version.ee}</version>
-          </dependency>
-        </dependencies>
-      </dependencyManagement>
-    </profile>
-
-    <profile>
-      <id>itest</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <configuration>
-              <!-- Skip Unit test execution on ITest profile run -->
-              <skipTests>true</skipTests>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <!--
-      Profile creating all artifacts: JARs, POMs, Sources, JavaDoc and all signatures.
-    -->
-    <profile>
-      <id>release</id>
-      <activation>
-        <property>
-          <name>release</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.jetbrains.dokka</groupId>
-            <artifactId>dokka-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>build-helper-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
     <profile>
       <!--
       Profile for building examples and metering coverage
@@ -639,74 +149,5 @@
       </modules>
     </profile>
   </profiles>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <scm>
-    <connection>scm:git:git@github.com:holunda-io/camunda-bpm-data.git</connection>
-    <url>scm:git:git@github.com:holunda-io/camunda-bpm-data.git</url>
-    <developerConnection>scm:git:git@github.com:holunda-io/camunda-bpm-data.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
-  <distributionManagement>
-    <site>
-      <id>README</id>
-      <url>https://github.com/holunda-io/camunda-bpm-data</url>
-    </site>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
-
-  <pluginRepositories>
-    <!-- required for Dokka (KDoc) and Orchid (Docs) -->
-    <pluginRepository>
-      <id>jcenter</id>
-      <name>JCenter</name>
-      <url>https://jcenter.bintray.com/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
-
-  <developers>
-    <developer>
-      <name>Simon Zambrovski</name>
-      <roles>
-        <role>Product Owner</role>
-        <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-    <developer>
-      <name>Christian Maschmann</name>
-      <roles>
-        <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-    <developer>
-      <name>Jan Galinski</name>
-      <roles>
-        <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-  </developers>
 
 </project>

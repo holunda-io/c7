@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-root</artifactId>
-    <version>2025.05.0-SNAPSHOT</version>
+    <version>2025.05.2-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -26,10 +26,34 @@
       <dependency>
         <groupId>org.camunda.bpm</groupId>
         <artifactId>camunda-bom</artifactId>
-        <version>${camunda-ee.version}</version>
+        <version>${camunda.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <!-- Kotlin compiler -->
+          <artifactId>kotlin-maven-plugin</artifactId>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <configuration>
+            <compilerPlugins>
+              <plugin>spring</plugin>
+              <plugin>no-arg</plugin>
+              <plugin>all-open</plugin>
+            </compilerPlugins>
+            <pluginOptions>
+              <!-- Each annotation is placed on its own line -->
+              <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
+              <option>all-open:annotation=io.toolisticon.testing.jgiven.JGivenKotlinStage</option>
+            </pluginOptions>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

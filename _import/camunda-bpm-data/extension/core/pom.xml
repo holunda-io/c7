@@ -12,7 +12,6 @@
 
   <artifactId>camunda-bpm-data</artifactId>
   <name>${project.artifactId}</name>
-  <packaging>jar</packaging>
 
   <properties>
     <jacoco.skip>false</jacoco.skip>

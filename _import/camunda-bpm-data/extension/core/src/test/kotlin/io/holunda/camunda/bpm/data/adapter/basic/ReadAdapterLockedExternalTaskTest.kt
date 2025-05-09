@@ -56,6 +56,7 @@ data class LockedExternalTaskFake(
   private var priority: Long = 0,
   private var businessKey: String? = null,
   private var extensionProperties: Map<String, String>? = null,
+  private var createTime: Date = Date()
 ) : LockedExternalTask {
   override fun getId() = id
 
@@ -64,6 +65,8 @@ data class LockedExternalTaskFake(
   override fun getWorkerId() = workerId
 
   override fun getLockExpirationTime() = lockExpirationTime
+
+  override fun getCreateTime(): Date = createTime
 
   override fun getProcessInstanceId() = processInstanceId
 
