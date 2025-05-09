@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: RestClientExample
+server:
+  port: 8082
+feign:
+  client:
+    config:
+      default:
+        url: "http://localhost:8083/engine-rest/"
+
+logging:
+  level:
+    org.camunda.community.rest.client.api: DEBUG
+

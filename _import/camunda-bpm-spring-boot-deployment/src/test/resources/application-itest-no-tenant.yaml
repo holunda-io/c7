@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    open-in-view: true
+camunda:
+  bpm:
+    deployment:
+      enabled: true
+      allow-overlapping: true
+      archives:
+        - name: Default
+          path: # root path
+    generic-properties:
+      properties:
+        historyTimeToLive: P1D

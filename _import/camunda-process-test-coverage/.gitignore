@@ -1,0 +1,14 @@
+target/
+.gradle/
+build/
+# IDEA
+.idea/
+*.iml
+# ECLIPSE
+.classpath
+.project
+.settings/
+# GitHub Pages
+
+node/
+node_modules/

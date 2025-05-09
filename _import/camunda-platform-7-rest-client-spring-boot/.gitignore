@@ -1,0 +1,11 @@
+*.iml
+.idea/
+.classpath
+.project
+.settings/
+.meta-data/
+.DS_Store
+target/
+jgiven-reports/
+pom.xml.versionsBackup
+
