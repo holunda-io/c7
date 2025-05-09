@@ -1,3 +1,3 @@
 Please use one of the following templates:
 
-https://github.com/holunda-io/camunda-bpm-data/issues/new/choose
+https://github.com/holunda-io/c7/issues/new/choose

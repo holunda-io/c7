@@ -9,15 +9,15 @@ assignees:
 
 ### Steps to reproduce
 
-* camunda-bpm-data version:
+* Library version:
 * Camunda BPM version:
 * JDK version:  
 * Operating system:
 * Complete executable reproducer: (e.g. GitHub Repo)
 * Steps: (what exactly are you doing with the above reproducer?)
 
-### Expected behaviour
+### Expected behavior
 
 ### Actual behaviour
 
-(In case of exceptions provide full stack trace)
+(In case of exceptions, provide full stack trace)
