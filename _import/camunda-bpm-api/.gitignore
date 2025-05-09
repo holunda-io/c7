@@ -1,0 +1,14 @@
+.attach_*
+*.iml
+.idea/
+.classpath
+.project
+.settings/
+.meta-data/
+.DS_Store
+target/
+pom.xml.versionsBackup
+
+# java mem
+Snap.*.trc
+javacore.*.txt
