@@ -17,7 +17,7 @@
   <properties>
     <immutables.version>2.10.1</immutables.version>
     <jetbrains-annotations.version>24.1.0</jetbrains-annotations.version>
-    <assertj.version>3.26.3</assertj.version>
+    <assertj.version>3.27.3</assertj.version>
 
     <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
   </properties>
