@@ -37,4 +37,7 @@ interface _Execution extends Execution {
   default boolean isEnded() {
     return false;
   }
+
+  @Override
+  String getProcessDefinitionKey();
 }

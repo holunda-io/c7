@@ -96,4 +96,7 @@ interface _LockedExternalTask extends LockedExternalTask {
   default VariableMap getVariables() {
     return Variables.createVariables();
   }
+
+  @Override
+  Date getCreateTime();
 }

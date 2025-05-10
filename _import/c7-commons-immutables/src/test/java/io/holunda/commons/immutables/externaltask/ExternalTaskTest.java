@@ -16,6 +16,7 @@ public class ExternalTaskTest {
       .workerId("w")
       .lockExpirationTime(new Date())
       .retries(2)
+      .createTime(new Date())
       .build();
   }
 }

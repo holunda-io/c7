@@ -91,4 +91,6 @@ interface _ExternalTask extends ExternalTask {
     return Collections.emptyMap();
   }
 
+  @Override
+  Date getCreateTime();
 }

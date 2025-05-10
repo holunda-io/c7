@@ -76,4 +76,10 @@ interface _Job extends Job {
   @Override
   @Nullable
   String getFailedActivityId();
+
+  @Override
+  String getRootProcessInstanceId();
+
+  @Override
+  String getBatchId();
 }

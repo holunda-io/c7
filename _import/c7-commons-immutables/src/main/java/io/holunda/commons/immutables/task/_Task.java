@@ -238,4 +238,14 @@ interface _TaskWithoutSetters extends Task {
   default void setTenantId(String tenantId) {
     throw UNMODIFIABLE;
   }
+
+  /**
+   * @deprecated setter has to be implemented to fulfill the interface but will throw {@link UnsupportedOperationException}.
+   */
+  @Override
+  @Deprecated(since = "0.13.0")
+  default void setTaskState(String taskState) {
+    throw UNMODIFIABLE;
+  }
+
 }

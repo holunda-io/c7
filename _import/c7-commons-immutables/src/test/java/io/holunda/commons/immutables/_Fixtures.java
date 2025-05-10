@@ -36,6 +36,7 @@ public enum _Fixtures {
   public static final Date DATE_TOMORROW = DateUtil.tomorrow();
 
 
+  public static final String BATCH_ID = uuid();
   public static final String DEPLOYMENT_ID = uuid();
   public static final String ID = uuid();
   public static final String EXECUTION_ID = uuid();
@@ -248,6 +249,16 @@ public enum _Fixtures {
     @Override
     public Date getCreateTime() {
       return DATE_NOW;
+    }
+
+    @Override
+    public String getRootProcessInstanceId() {
+      return "";
+    }
+
+    @Override
+    public String getBatchId() {
+      return BATCH_ID;
     }
   };
 
@@ -655,6 +666,11 @@ public enum _Fixtures {
     public String getTenantId() {
       return TENANT_ID;
     }
+
+    @Override
+    public String getProcessDefinitionKey() {
+      return PROCESS_DEFINITION_KEY;
+    }
   };
 
   public static final Comment COMMENT = new Comment() {
@@ -878,6 +894,26 @@ public enum _Fixtures {
     public void setTenantId(String tenantId) {
       throw UNMODIFIABLE;
     }
+
+    @Override
+    public String getTaskState() {
+      return "";
+    }
+
+    @Override
+    public void setTaskState(String taskState) {
+
+    }
+
+    @Override
+    public boolean hasAttachment() {
+      return false;
+    }
+
+    @Override
+    public boolean hasComment() {
+      return false;
+    }
   };
 
   public static final Execution EXECUTION = new Execution() {
@@ -904,6 +940,11 @@ public enum _Fixtures {
     @Override
     public String getTenantId() {
       return TENANT_ID;
+    }
+
+    @Override
+    public String getProcessDefinitionKey() {
+      return PROCESS_DEFINITION_KEY;
     }
   };
 
