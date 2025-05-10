@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.holunda.camunda-api</groupId>
     <artifactId>camunda-api-parent</artifactId>
-    <version>7.23.1-SNAPSHOT</version>
+    <version>2025.05.2-SNAPSHOT</version>
   </parent>
-  <modelVersion>4.0.0</modelVersion>
 
   <artifactId>camunda-dmn-engine-api</artifactId>
   <name>${project.artifactId}</name>
@@ -40,7 +40,7 @@
                 <artifactItem>
                   <groupId>org.camunda.bpm.dmn</groupId>
                   <artifactId>camunda-engine-dmn</artifactId>
-                  <version>${camunda-engine.version}</version>
+                  <version>${camunda.version}</version>
                   <type>jar</type>
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
