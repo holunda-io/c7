@@ -1,0 +1,52 @@
+name: Development branches
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '*'
+      - '**/*'
+      - '!master'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Expose branch name
+      run: echo ${{ github.ref }}
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: zulu
+        java-version: 17
+        cache: maven
+
+    - name: Prepare mvnw
+      run: chmod +x ./mvnw
+
+    - name: Build
+      run: ./mvnw -ntp clean package
+
+    - name: Run integration tests and generate coverage reports
+      run: ./mvnw -Pitest -ntp verify failsafe:verify
+
+#    - name: Upload coverage to Codecov
+#      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+#      uses: codecov/codecov-action@v5
+#      with:
+#        token: ${{secrets.CODECOV_TOKEN}}
+
+#    - name: Upload test coverage to Codacy
+#      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+#      run: bash <(curl -Ls https://coverage.codacy.com/get.sh)
+#      env:
+#        CODACY_PROJECT_TOKEN: "${{secrets.CODACY_PROJECT_TOKEN}}"

@@ -1,8 +1,29 @@
 version: 2
 updates:
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  labels: [ "Type: dependencies" ]
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
