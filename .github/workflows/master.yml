@@ -1,5 +1,8 @@
 name: Master branch
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -11,26 +14,29 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+
+    - name: Expose branch name
+      run: echo ${{ github.ref }}
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         cache: maven
         distribution: zulu
         java-version: 17
         server-id: ossrh
-        server-username: OSS_CENTRAL_USERNAME # env variable for Maven Central
-        server-password: OSS_CENTRAL_PASSWORD # env variable for Maven Central
+        server-username: OSS_CENTRAL_USERNAME
+        server-password: OSS_CENTRAL_PASSWORD
 
     - name: Prepare mvnw
       run: chmod +x ./mvnw
 
     - name: Build
-      run: ./mvnw clean package
+      run: ./mvnw clean package -ntp
 
     - name: Run integration tests and generate coverage reports
-      run: ./mvnw -Pitest verify failsafe:verify
+      run: ./mvnw -Pitest verify -ntp failsafe:verify
 
       # Get GPG private key into GPG
     - name: Import GPG Owner Trust
@@ -40,14 +46,15 @@ jobs:
       run: echo ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode | gpg --import --no-tty --batch --yes
 
     - name: Deploy a new version to central
-      run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}" -Dgpg.passphrase="${{secrets.GPG_PASSPHRASE}}"
+      run: ./mvnw clean deploy -B -ntp -DskipTests -DskipExamples -Prelease -Dgpg.keyname="${{secrets.GPG_KEYNAME}}"
       env:
         OSS_CENTRAL_USERNAME: "${{ secrets.SONATYPE_USERNAME }}"
         OSS_CENTRAL_PASSWORD: "${{ secrets.SONATYPE_PASSWORD }}"
+        MAVEN_GPG_PASSPHRASE: "${{ secrets.GPG_PASSPHRASE }}"
 
     - name: Upload coverage to Codecov
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         token: ${{secrets.CODECOV_TOKEN}}
 
