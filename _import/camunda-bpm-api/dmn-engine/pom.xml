@@ -21,7 +21,6 @@
       <groupId>org.camunda.commons</groupId>
       <artifactId>camunda-commons-typed-values</artifactId>
     </dependency>
-
   </dependencies>
 
   <build>

@@ -1,25 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.camunda.community</groupId>
-    <artifactId>community-hub-release-parent</artifactId>
-    <version>1.4.4</version>
-    <relativePath />
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2025.05.2-SNAPSHOT</version>
+    <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
   <groupId>org.camunda.community.mockito</groupId>
   <artifactId>camunda-platform-7-mockito</artifactId>
-  <version>7.23.3-SNAPSHOT</version>
 
   <properties>
-    <!-- Avoid the message "[WARNING] Using platform encoding (UTF-8 actually) ... also for the failsafe plugin -->
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <version.java>17</version.java>
-    <java.version>${version.java}</java.version>
-
-    <camunda.version>7.23.0</camunda.version>
-    <camunda-bpm-data.version>2025.05.1</camunda-bpm-data.version>
+    <camunda-bpm-data.version>${project.version}</camunda-bpm-data.version>
 
     <commons-lang3.version>3.17.0</commons-lang3.version>
     <slf4j.version>2.0.17</slf4j.version>
@@ -39,18 +33,6 @@
     <!-- disable javadoc linter for JDK8 to not fail on incomplete javadoc -->
     <additionalparam>-Xdoclint:none</additionalparam>
   </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -167,103 +149,4 @@
       <version>2.3.232</version>
     </dependency>
   </dependencies>
-
-  <build>
-    <defaultGoal>clean package</defaultGoal>
-
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.14.0</version>
-        <configuration>
-          <source>${version.java}</source>
-          <target>${version.java}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <source>17</source>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.13</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <scm>
-    <connection>scm:git:git@github.com:camunda-community-hub/camunda-platform-7-mockito.git</connection>
-    <url>scm:git:git@github.com:camunda-community-hub/camunda-platform-7-mockito.git</url>
-    <developerConnection>scm:git:git@github.com:camunda-community-hub/camunda-platform-7-mockito.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
-  <developers>
-    <developer>
-      <name>Jan Galinski</name>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>http://holisticon.de</organizationUrl>
-    </developer>
-    <developer>
-      <name>Simon Zambrovski</name>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>http://holisticon.de</organizationUrl>
-    </developer>
-  </developers>
-  <profiles>
-    <profile>
-      <id>community-action-maven-release</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.2.7</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <!-- Prevent gpg from using pinentry programs -->
-              <gpgArguments>
-                <arg>--pinentry-mode</arg>
-                <arg>loopback</arg>
-              </gpgArguments>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>

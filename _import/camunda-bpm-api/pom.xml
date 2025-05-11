@@ -15,10 +15,6 @@
   <description>Camunda BPM Engine API</description>
   <packaging>pom</packaging>
 
-  <properties>
-    <jacoco.skip>true</jacoco.skip>
-  </properties>
-
   <modules>
     <module>dmn-engine</module>
     <module>process-engine</module>
@@ -55,41 +51,9 @@
   </dependencyManagement>
 
   <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
+
     <pluginManagement>
       <plugins>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <executions>
-            <!--
-              <execution>
-                <id>everything-sources</id>
-                <goals>
-                  <goal>unpack</goal>
-                </goals>
-                <configuration>
-                  <artifactItems>
-                    <artifactItem>
-                      <groupId>org.camunda.bpm</groupId>
-                      <artifactId>camunda-engine</artifactId>
-                      <version>${camunda-engine.version}</version>
-                      <type>jar</type>
-                      <classifier>sources</classifier>
-                      <overWrite>false</overWrite>
-                      <outputDirectory>${project.build.directory}/generated-sources/api/src/main/other</outputDirectory>
-
-                      <includes>org/camunda/bpm/**/*.java</includes>
-                    </artifactItem>
-                  </artifactItems>
-                  <overWriteReleases>true</overWriteReleases>
-                  <overWriteSnapshots>true</overWriteSnapshots>
-                </configuration>
-              </execution>
-              -->
-          </executions>
-        </plugin>
 
         <!-- Additional source folders -->
         <plugin>
@@ -114,5 +78,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

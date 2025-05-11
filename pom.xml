@@ -35,6 +35,7 @@
     <module>_import/camunda-bpm-spring-boot-deployment</module>
     <module>_import/camunda-platform-7-autologin</module>
     <module>_import/camunda-admin-process-registry</module>
+    <module>_import/camunda-platform-7-mockito</module>
   </modules>
 
   <dependencyManagement>

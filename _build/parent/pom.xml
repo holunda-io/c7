@@ -14,6 +14,10 @@
   <description>Parent for holunda-io/c7</description>
   <packaging>pom</packaging>
 
+  <properties>
+    <version.java>${java.version}</version.java>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
