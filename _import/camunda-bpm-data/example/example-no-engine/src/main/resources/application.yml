@@ -1,0 +1,8 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: Camunda BPM Data No Engine Example
+  jpa:
+    open-in-view: true
+

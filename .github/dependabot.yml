@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
+
+  - package-ecosystem: "npm"
+    directories:
+      - ./_import/camunda-process-test-coverage/extension/sonar-process-test-coverage-plugin/package.json
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 30
+    labels: [ "Type: dependencies" ]
