@@ -9,7 +9,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <name>Example / Axon / Hotel Service</name>
+  <name>camunda-bpm-correlate Example / Axon / Hotel Service</name>
   <artifactId>camunda-bpm-correlate-example-hotel-axon</artifactId>
   <packaging>jar</packaging>
 

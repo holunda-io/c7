@@ -54,6 +54,7 @@
               <!-- Each annotation is placed on its own line -->
               <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
               <option>all-open:annotation=io.toolisticon.testing.jgiven.JGivenKotlinStage</option>
+              <option>all-open:annotation=io.holunda.camunda.bpm.correlate.util.ComponentLike</option>
             </pluginOptions>
           </configuration>
         </plugin>

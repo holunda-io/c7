@@ -11,7 +11,7 @@
 
   <artifactId>camunda-bpm-correlate-integration-test</artifactId>
   <packaging>jar</packaging>
-  <name>Example / Integration tests of the library</name>
+  <name>camunda-bpm-correlate Example / Integration tests of the library</name>
 
   <dependencies>
     <!-- Extension -->
@@ -92,6 +92,12 @@
     <dependency>
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito.kotlin</groupId>
+      <artifactId>mockito-kotlin</artifactId>
+      <version>5.4.0</version>
       <scope>test</scope>
     </dependency>
     <!-- Disable Admin Client -->

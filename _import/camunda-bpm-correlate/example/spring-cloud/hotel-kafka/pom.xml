@@ -9,7 +9,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <name>Example / Spring Cloud / Kafka Hotel Service</name>
+  <name>camunda-bpm-correlate Example / Spring Cloud / Kafka Hotel Service</name>
   <artifactId>camunda-bpm-correlate-example-hotel-kafka</artifactId>
   <packaging>jar</packaging>
 

@@ -9,7 +9,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <name>Example / Common</name>
+  <name>camunda-bpm-correlate Example / Common</name>
   <artifactId>camunda-bpm-correlate-example-common</artifactId>
   <packaging>jar</packaging>
 </project>

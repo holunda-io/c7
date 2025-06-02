@@ -34,7 +34,7 @@ use parent
     <artifactId>c7-parent</artifactId>
     <version>2025.05.0-SNAPSHOT</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
-  </parent>
+</parent>
 
 ```
 

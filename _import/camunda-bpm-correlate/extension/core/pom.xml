@@ -4,19 +4,20 @@
 
   <parent>
     <groupId>io.holunda</groupId>
-    <artifactId>camunda-bpm-correlate-parent</artifactId>
+    <artifactId>camunda-bpm-correlate-root</artifactId>
     <version>2025.05.2-SNAPSHOT</version>
-    <relativePath>../../bom/parent/pom.xml</relativePath>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
 
   <artifactId>camunda-bpm-correlate</artifactId>
-  <name>Extension / Core</name>
+  <name>camunda-bpm-correlate Extension / Core</name>
   <packaging>jar</packaging>
 
   <dependencies>
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
+      <version>2025.05.1</version>
     </dependency>
     <dependency>
       <groupId>io.micrometer</groupId>
@@ -37,6 +38,10 @@
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.oshai</groupId>
+      <artifactId>kotlin-logging-jvm</artifactId>
     </dependency>
 
     <!-- Testing -->
@@ -62,6 +67,13 @@
       <artifactId>h2</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.mockito.kotlin</groupId>
+      <artifactId>mockito-kotlin</artifactId>
+      <version>5.4.0</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 </project>

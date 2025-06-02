@@ -11,27 +11,27 @@
 
   <artifactId>camunda-bpm-correlate-bom</artifactId>
   <packaging>pom</packaging>
-  <name>POM / BOM</name>
+  <name>camunda-bpm-correlate pom</name>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>${project.groupId}</groupId>
+        <groupId>io.holunda</groupId>
         <artifactId>camunda-bpm-correlate</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>${project.groupId}</groupId>
+        <groupId>io.holunda</groupId>
         <artifactId>camunda-bpm-correlate-spring-boot-starter</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>${project.groupId}</groupId>
+        <groupId>io.holunda</groupId>
         <artifactId>camunda-bpm-correlate-spring-cloud-stream</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>${project.groupId}</groupId>
+        <groupId>io.holunda</groupId>
         <artifactId>camunda-bpm-correlate-axon-framework</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -43,6 +43,7 @@
     </dependencies>
   </dependencyManagement>
 
+  <!--
   <build>
     <plugins>
       <plugin>
@@ -59,5 +60,5 @@
       </plugin>
     </plugins>
   </build>
-
+   -->
 </project>

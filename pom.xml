@@ -30,6 +30,7 @@
     <module>_build/parent</module>
     <module>_import/c7-commons-immutables</module>
     <module>_import/camunda-bpm-api</module>
+    <module>_import/camunda-bpm-correlate</module>
     <module>_import/camunda-bpm-data</module>
     <module>_import/camunda-bpm-jgiven</module>
     <module>_import/camunda-bpm-spring-boot-deployment</module>
