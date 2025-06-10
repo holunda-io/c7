@@ -2,12 +2,6 @@
 
 Run administration tasks directly from the camunda 7 cockpit using generated mini-processes.
 
-[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-[![Camunda 7.22](https://img.shields.io/badge/Camunda%20Version-7.22-orange.svg)](https://docs.camunda.org/manual/7.22/)
-[![Build Status](https://github.com/holunda-io/camunda-admin-process-registry/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/camunda-admin-process-registry/actions)
-[![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-admin-process-registry/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-admin-process-registry)
-![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
 
 This lib/spring-boot-auto-config allows you to easily and fast generate and deploy single-service-task processes that can be started from the camunda-webapp/tasklist.
 

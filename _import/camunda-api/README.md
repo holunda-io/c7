@@ -2,11 +2,6 @@
 
 A small extract of the API layer from the greatest process engine ever.
 
-[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-[![Camunda 7.23](https://img.shields.io/badge/Camunda%20Version-7.23-orange.svg)](https://docs.camunda.org/manual/7.23/)
-[![Build Status](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-api/actions/workflows/default.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.camunda-api/camunda-bpm-engine-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.camunda-api/camunda-bpm-engine-api)
-
 ## What is this?
 
 Sometimes for building libraries it is useful to have the API only, without the implementation. This library extracts the official Java Camunda Engine API from Camunda JAR and packages it as a small JAR. By doing so, we had to provide very few own classes, to cut the track to implementation. It is by **NO MEANS** a replacement, but just a bunch of classes which may be required on the classpath, if you use a library referencing Camunda BPM classes (but not using them).
