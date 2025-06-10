@@ -37,7 +37,7 @@ jobs:
       run: ./mvnw -ntp clean package
 
     - name: Run integration tests and generate coverage reports
-      run: ./mvnw -Pitest -ntp verify failsafe:verify
+      run: ./mvnw -Pitest -ntp verify failsafe:verify -DskipFrontend
 
 #    - name: Upload coverage to Codecov
 #      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'

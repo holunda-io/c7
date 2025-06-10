@@ -22,7 +22,6 @@
 
   <modules>
     <module>extension/core</module>
-    <module>extension/cockpit-plugin</module>
     <module>extension/spring-boot-starter</module>
     <module>extension/spring-cloud-stream</module>
     <module>extension/axon</module>
@@ -41,10 +40,20 @@
         <module>example</module>
       </modules>
     </profile>
+    <profile>
+      <id>plugin</id>
+      <activation>
+        <property>
+          <name>!skipFrontend</name>
+        </property>
+      </activation>
+      <modules>
+        <module>extension/cockpit-plugin</module>
+      </modules>
+    </profile>
   </profiles>
 
   <build>
-    <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
     <resources>
       <!-- ignore gitkeep marker files -->
       <resource>
