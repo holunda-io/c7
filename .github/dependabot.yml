@@ -9,15 +9,17 @@ updates:
 
   - package-ecosystem: "npm"
     directories:
-     # - ./_import/camunda-process-test-coverage/extension/sonar-process-test-coverage-plugin/package.json
-      - ./_import/camunda-bpm-correlate/extension/cockpit-plugin/package.json
+     # - ./_import/camunda-process-test-coverage/extension/sonar-process-test-coverage-plugin/
+      - ./_import/camunda-bpm-correlate/extension/cockpit-plugin/
     schedule:
       interval: daily
     open-pull-requests-limit: 30
     labels: [ "Type: dependencies" ]
 
   - package-ecosystem: "docker"
-    directory: "/"
+    directories:
+      - ./_import/camunda-bpm-correlate/example/axon/
+      - ./_import/camunda-bpm-correlate/example/spring-cloud/
     schedule:
       interval: daily
     open-pull-requests-limit: 30
