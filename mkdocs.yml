@@ -4,23 +4,22 @@
 #
 # To run:
 # mkdocs serve
-# More help: https://www.holunda.io/camunda-bpm-taskpool/developer-guide/project-setup.html#build-documentation
+# More help: https://www.holunda.io/c7/developer-guide/project-setup.html#build-documentation
 # ###############################
 
-site_name: Camunda Platform Correlate
-site_url: https://www.holunda.io/camunda-bpm-correlate/
+site_name: Holunda C7
+site_url: https://www.holunda.io/c7/
 site_author: Holisticon BPM Craftsman
 site_description: >-
- Camunda Platform Correlate is an open-source framework for correlation of messages
- from external systems with workflows running in Camunda Platform 7 process engine.
+ Holunda C7 is a collection of open-source Camunda Platform 7 tools and extensions.
 
-copyright: Copyright &copy; 2022, Holisticon AG
+copyright: Copyright &copy; 2025, Holisticon AG
 
 use_directory_urls: false
 
 # Repository
-repo_name: holunda-io/camunda-bpm-correlate
-repo_url: https://github.com/holunda-io/camunda-bpm-correlate/
+repo_name: holunda-io/c7
+repo_url: https://github.com/holunda-io/c7/
 edit_uri: edit/develop/docs/
 
 markdown_extensions:
@@ -92,25 +91,31 @@ plugins:
 
 nav:
   - Home: index.md
-  - Getting started: getting-started.md
-  - Introduction:
-      - Start here: introduction/index.md
-      - Motivation: introduction/motivation.md
-      - Features: introduction/features.md
-      - Solution: introduction/solution.md
-      - Further Outlook: introduction/further-outlook.md
+  - Getting started:
+      - Correlate: getting-started/camunda-bpm-correlate.md
+      - Data: getting-started/camunda-bpm-data.md
   - User Guide:
       - Overview: user-guide/index.md
-      - Architecture: user-guide/architecture.md
-      - Components:
-          - Ingress Adapter: user-guide/ingress.md
-          - Spring Cloud Ingress Adapter: user-guide/ingress-spring-cloud.md
-          - Axon Framework Ingress Adapter: user-guide/ingress-axon.md
-          - Message Acceptor: user-guide/message-acceptor.md
-          - Message Filter: user-guide/filtering-messages.md
-          - Message Persistence: user-guide/message-persistence.md
-          - Scheduled Processing: user-guide/scheduled-processing.md
-      - Examples: user-guide/examples.md
+      - Extensions: user-guide/extensions.md
+      - Correlate:
+          - Overview: user-guide/camunda-bpm-correlate/index.md
+          - Components:
+            - Ingress Adapter: user-guide/camunda-bpm-correlate/ingress.md
+            - Spring Cloud Ingress Adapter: user-guide/camunda-bpm-correlate/ingress-spring-cloud.md
+            - Axon Framework Ingress Adapter: user-guide/camunda-bpm-correlate/ingress-axon.md
+            - Message Acceptor: user-guide/camunda-bpm-correlate/message-acceptor.md
+            - Message Filter: user-guide/camunda-bpm-correlate/filtering-messages.md
+            - Message Persistence: user-guide/camunda-bpm-correlate/message-persistence.md
+            - Scheduled Processing: user-guide/camunda-bpm-correlate/scheduled-processing.md
+            - Metrics: user-guide/camunda-bpm-correlate/metrics.md
+          - Examples: user-guide/camunda-bpm-correlate/examples.md
+      - Data:
+          - Overview: user-guide/camunda-bpm-data/index.md
+          - Features: user-guide/camunda-bpm-data/features.md
+          - Examples:
+              - Java Examples: user-guide/camunda-bpm-data/examples-java.md
+              - Kotlin Examples: user-guide/camunda-bpm-data/examples-kotlin.md
+              - Examples without engine: user-guide/camunda-bpm-data/examples-no-engine.md
   - Developer Guide:
       - Contributing: developer-guide/contribution.md
       - Project Setup: developer-guide/project-setup.md

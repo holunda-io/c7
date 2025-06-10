@@ -1,4 +1,14 @@
-## Install Dependency
+## Why should I use this?
+
+Imagine you integrate your Camunda Engine into a larger application landscape.
+In doing so the inter-system communication becomes important and questions on
+communication styles and patterns arise. In the world of self-contained systems,
+the asynchronous communication with messages is wide adopted. This library helps
+you to solve integration problems around correlation of messages with processes.
+
+## How to start?
+
+### Install Dependency
 
 First install the extension using the corresponding ingress adapter (in this example we use Spring Cloud Stream for connecting with Kafka):
 
@@ -29,7 +39,7 @@ First install the extension using the corresponding ingress adapter (in this exa
 </dependencies>
 ```
 
-## Configuration
+### Configuration
 
 Please add the configuration of the extension:
 
@@ -63,8 +73,8 @@ correlate:
 ```
 
 Now configure your basic Spring Cloud Streams Kafka configuration to looks like this (or similar).
-Pay attention to the name of the function definition and the bindings' in channels. It results from the 
-value of `correlate.channels.<channel-nam>.beanName` and accordingly is part of the expression to 
+Pay attention to the name of the function definition and the bindings' in channels. It results from the
+value of `correlate.channels.<channel-nam>.beanName` and accordingly is part of the expression to
 bind the parameter of the binding (`special-name-in-0`).
 
 ```yaml

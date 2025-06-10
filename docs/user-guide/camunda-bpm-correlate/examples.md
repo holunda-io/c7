@@ -1,5 +1,3 @@
-## Working example 
-
 We provide examples demonstrating the usage of the library with different messaging technologies.
 The general example is a "Travel Reservation" business process, aiming to book flights and a hotel 
 in a target city. The reservation process receives the customer name, the source city, the target city 
@@ -7,11 +5,11 @@ and the dates of the travel. Using this information, it requests the flights by 
 a hotel by the hotel service. The confirmed flight information and hotel information is stored inside 
 the process payload variables.
 
-!["Example messaging process"](../assets/img/reservation-processing.png)
+!["Example messaging process"](img/reservation-processing.png)
 
 The following sequence diagram illustrates the timing of messages being passed:
 
-!["Example messaging process"](../assets/img/reservation-processing-seq.png)
+!["Example messaging process"](img/reservation-processing-seq.png)
 
 As a result, the `HotelReservationConfirmed` is received before `FlightReservationConfirmed` causing a trouble,
 if message order is strict and must be preserved. In addition, at the time of the receiving of
@@ -21,7 +19,7 @@ In the following examples we are not focusing on demonstration of features resul
 race conditions (resolved faulty), but on purpose created illegal (unwished) message ordering,
 causing to fail the orchestration by design.
 
-### Software requirements to run examples
+## Software requirements to run examples
 
 * Docker
 * Docker-Compose
@@ -29,7 +27,7 @@ causing to fail the orchestration by design.
 * JQ
 * Curl
 
-### Spring Cloud Streams with Kafka
+## Spring Cloud Streams with Kafka
 
 The example demonstrates the usage of the library using Kafka for communication. In doing so,
 we rely on the Spring Cloud Streams binding for Kafka. We constructed an example sending and 
@@ -65,7 +63,7 @@ is received. Therefor, you will see the exception (`MismatchedCorrelationExcepti
 After this, you can inspect the content of the inbox by calling an endpoint [http://localhost:8080/admin/list-messages/](http://localhost:8080/admin/list-messages/),
 as alternative you might open the Camunda Cockpit and check the messages inside the plugin section `Correlation`.
 
-### Axon Events aka using Camunda Platform 7 as Microservice Orchestrator
+## Axon Events aka using Camunda Platform 7 as Microservice Orchestrator
 
 The example demonstrates the usage of the library using Axon Framework / Axon Server based communication. In doing so,
 We constructed an example sending and receiving data between services using Axon Command and Event Buses.

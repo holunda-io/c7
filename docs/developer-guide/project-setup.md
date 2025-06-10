@@ -5,8 +5,8 @@ If you are interested in developing and building the project please read the fol
 To get sources of the project, please execute:
 
 ```sh
-git clone https://github.com/holunda-io/camunda-bpm-correlate.git
-cd camunda-bpm-correlate
+git clone https://github.com/holunda-io/c7.git
+cd c7
 ```
 
 We are using gitflow in our git SCM for naming branches. That means that you should start from `develop` branch,

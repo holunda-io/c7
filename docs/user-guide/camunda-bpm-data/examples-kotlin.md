@@ -17,7 +17,7 @@ object Variables {
 
 ### Define nonNull variable
 
-**IMPORTANT:** Since 1.5.0 all predefined variable types are nullable by default. (For more information, see  here: [Github Issue](https://github.com/holunda-io/camunda-bpm-data/issues/394))
+**IMPORTANT:** Since 1.5.0 all predefined variable types are nullable by default. (For more information, see  here: [GitHub Issue](https://github.com/holunda-io/camunda-bpm-data/issues/394))
 If you want to define a variable to be non-null-able, please call nonNull on variable factory as shown in the example below.
 
 ``` kotlin
