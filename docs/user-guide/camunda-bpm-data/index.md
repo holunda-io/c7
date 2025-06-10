@@ -1,4 +1,13 @@
-## Typed access to process variables
+## Motivation
+
+The main three features we support are:
+
+- typed access to process variables
+- building pre- and post-conditions using variable guards
+- building anti-corruption layer for inter-process-communcation
+
+
+### Typed access to process variables
 
 Camunda BPM engine provide Java API to access the process variables.
 This consists of:
@@ -28,7 +37,7 @@ More details can be found in:
 *  [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
 *  [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
-## Variable guards
+### Variable guards
 
 Process automation often follows strict rules defined by the business. On the other hand, the process execution itself
 defines rules in terms of pre- and post-conditions on the process payload (stored as process variables in Camunda BPM).
@@ -37,7 +46,7 @@ conditions on process variables during the execution of business processes, a co
 the library. A guard consists of a set of `VariableConditions` and can be evaluated in all contexts, the variables
 are used in: `DelegateTask`, `DelegateExecution`, `TaskService`, `RuntimeService`, `VariableMap`.
 
-Here is an example of a task listener defining a `VariablesGuard` to test that the process variables `ORDER_APPROVED` and 
+Here is an example of a task listener defining a `VariablesGuard` to test that the process variables `ORDER_APPROVED` and
 `APPROVER_ID` are set, which will throw a `GuardViolationException` if the condition is not met.
 
 
@@ -55,7 +64,7 @@ class MyGuardListener extends DefaultGuardTaskListener {
 ```
 
 By default, all conditions of a `VariablesGuard` must be met in order to pass the validations. This behaviour can be explicitly  
-defined by passing the `reduceOperator = VariablesGuard.ALL` when creating the `VariablesGuard`. The `reduceOperator` can take 
+defined by passing the `reduceOperator = VariablesGuard.ALL` when creating the `VariablesGuard`. The `reduceOperator` can take
 the following values:
 
 | `reduceOperator`        | Semantics                                    |
@@ -63,7 +72,7 @@ the following values:
 | `VariablesGuard.ALL`    | All `VariableCondition`s must be met         |
 | `VariablesGuard.ONE_OF` | At least ONE `VariableCondition` must be met |
 
-## Anti-Corruption-Layer
+### Anti-Corruption-Layer
 
 If a process is signalled or hit by a correlated message, there is no way to check if the transported variables are set correctly.
 In addition, the variables are written directly to the execution of the correlated process instance. In case of a multi-instance
@@ -127,3 +136,5 @@ class SomeConfiguration {
 
 Such a setup will only allow to correlate messages, if the variables provided include a value for the `ORDER_ID`. It will write all
 variables provided (`ORDER_ID` and `ORDER_APPROVED`) into a local scope of the execution.
+
+

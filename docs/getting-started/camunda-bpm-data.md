@@ -1,4 +1,22 @@
-## Add dependency
+## Why should I use this?
+
+If you are a software engineer and run process automation projects in your company or on behalf of the customer
+based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
+them and thereby manipulate the state of the process execution - one of the core features during process automation.
+
+Unfortunately, as a user of the Camunda API, you have to exactly know the variable type (so the Java class behind it).
+For example, if you store a String in a variable `"orderId"` you must extract it as a String in every piece of code.
+Since there is no code connection between the different code parts, but the BPMN process model orchestrates
+these snippets to a single process execution, it makes refactoring and testing of process automation projects
+error-prone and challenging.
+
+This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
+easy and convenient. We leverage the Camunda API and offer you not only a better API but also some
+[additional features](../user-guide/camunda-bpm-data/features.md).
+
+## How to start?
+
+### Add dependency
 
 Current version available in Sonatype OSS Maven Central is:
 
@@ -18,13 +36,7 @@ For Gradle Kotlin DSL add to your `build.gradle.kts`:
 implementation("io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}")
 ```
 
-For Gradle Groovy DSL add to your `build.gradle`:
-
-```groovy
-implementation 'io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}'
-```
-
-## Declare process variable factories
+### Declare process variable factories
 
 First you have to define your process variables, by providing the variable name and type. For providing the type,
 different convenience methods exist:
@@ -45,7 +57,7 @@ public class OrderApproval {
 }
 ```
 
-## Access process variables from Java Delegate
+### Access process variables from Java Delegate
 
 If you want to access the process variable, call methods on the `ProcessVariableFactory` to configure the usage context,
 and then invoke the variable access methods.
@@ -70,7 +82,7 @@ class JavaDelegates {
 }
 ```
 
-## Variable access from REST Controller
+### Variable access from REST Controller
 
 Now imagine you are implementing a REST controller for a user task form which
 loads data from the process application, displays it, captures some input and

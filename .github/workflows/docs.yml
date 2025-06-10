@@ -1,5 +1,8 @@
 name: Build the docs
 
+permissions:
+  content: read
+
 on:
   push:
     branches:
@@ -12,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
           cache: pip
@@ -36,27 +41,30 @@ jobs:
         env:
           GH_USERNAME: ${{ github.actor }}
 
-      - name: Pre-fetch the gh-pages branch
-        run: git fetch --depth=1
-
       - name: Build docs with MkDocs
         run: mkdocs build
+        env:
+          GithubAccessToken: ${{ secrets.GITHUB_TOKEN }} # needed for multirepo plugin
 
       - name: Read the tag name
         id: get_tag_name
         if: startsWith(github.ref, 'refs/tags/')
-        run: echo ::set-output name=TAG_NAME::${GITHUB_REF/refs\/tags\//}
+        run: echo "TAG_NAME=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
+
+      # Prefetch gh-pages for mike to get correct versions
+      - name: Pre-fetch the gh-pages branch
+        run: git fetch origin gh-pages --depth=1
 
       # This is for a tagged version
       - name: Create a new version of documentation and push to GH pages.
         if: startsWith(github.ref, 'refs/tags/')
-        run: mike deploy ${{ steps.get_tag_name.outputs.TAG_NAME }} stable --push -u
+        run: mike deploy ${{ steps.get_tag_name.outputs.TAG_NAME }} stable --push --update-aliases
 
       - name: Make stable to default.
         if: startsWith(github.ref, 'refs/tags/')
-        run: mike set-default stable --push
+        run: mike set-default stable --push --allow-empty
 
       # This is for develop
       - name: Deploy latest develop snapshot docs to GH pages.
         if: github.ref == 'refs/heads/develop'
-        run: mike deploy snapshot --push -u
+        run: mike deploy snapshot --push --update-aliases
