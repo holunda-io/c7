@@ -40,9 +40,6 @@
     Currently deactivated, see https://github.com/holunda-io/c7/issues/10
     <module>_import/camunda-platform-7-mockito</module>
     -->
-
-    <!-- Must be defined as last module -->
-    <module>_build/coverage-aggregator</module>
   </modules>
 
   <dependencyManagement>
@@ -52,6 +49,18 @@
   <dependencies/>
 
   <profiles>
+    <profile>
+      <id>examples</id>
+      <activation>
+        <property>
+          <name>!skipExamples</name>
+        </property>
+      </activation>
+      <modules>
+        <!-- Must be defined as last module -->
+        <module>_build/coverage-aggregator</module>
+      </modules>
+    </profile>
     <!--
     Profile for selecting the Camunda BPM Engine version.
     CE stands for Community Edition
