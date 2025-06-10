@@ -4,17 +4,16 @@ title: "[Bug]:"
 labels:
   - "Type: bug"
 body:
-  - id: description
-    type: textarea
-    attributes:
-      label: What happend?
-      description: what exactly are you doing with the above reproducer?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
   - id: version
-    type: input
+    type: dropdown
     attributes:
       label: Library Version
+      options:
+        - "latest"
+        - "any"
+      default: 0
+    validations:
+      required: true
   - id: camunda-version
     type: dropdown
     attributes:
@@ -42,3 +41,12 @@ body:
         - camunda-bpm-jgiven
         - camunda-bpm-spring-auto-deployment
         - camunda-platform-7-autologin
+    validations:
+      required: true
+  - id: description
+    type: textarea
+    attributes:
+      label: What happend?
+      description: what exactly are you doing with the above reproducer?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
