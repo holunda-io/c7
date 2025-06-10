@@ -1,0 +1,44 @@
+name: Bug report
+description: File a bug report
+title: "[Bug]:"
+labels:
+  - "Type: bug"
+body:
+  - id: description
+    type: textarea
+    attributes:
+      label: What happend?
+      description: what exactly are you doing with the above reproducer?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+  - id: version
+    type: input
+    attributes:
+      label: Library Version
+  - id: camunda-version
+    type: dropdown
+    attributes:
+      label: Camunda Version
+      options:
+        - "7.23 (Default)"
+        - "7.22"
+        - "7.21"
+        - "7.20"
+        - "older 7.20"
+        - "any"
+      default: 0
+    validations:
+      required: true
+  - id: component
+    type: dropdown
+    attributes:
+      label: Component
+      options:
+        - c7-commons-immutables
+        - camunda-admin-process-registry
+        - camunda-api
+        - camunda-bpm-correlate
+        - camunda-bpm-data
+        - camunda-bpm-jgiven
+        - camunda-bpm-spring-auto-deployment
+        - camunda-platform-7-autologin
