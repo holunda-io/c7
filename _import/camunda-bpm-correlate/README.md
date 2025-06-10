@@ -30,15 +30,3 @@ you to solve integration problems around correlation of messages with processes.
 * Asynchronous scheduled batch-mode correlation
 * Variety of error handling modes on mismatched correlation
 * Configurable timings, retry strategies and many other parameters
-
-## License
-
-[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-
-This library is developed under Apache 2.0 License.
-
-## Contribution
-
-If you want to contribute to this project, feel free to do so. 
-Start with [Contributing guide](http://holunda.io/camunda-bpm-correlate/snapshot/developer-guide/contribution.html).
-

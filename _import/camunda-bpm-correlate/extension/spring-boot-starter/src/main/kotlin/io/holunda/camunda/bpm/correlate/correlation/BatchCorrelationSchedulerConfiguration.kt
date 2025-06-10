@@ -49,7 +49,7 @@ class BatchCorrelationSchedulerConfiguration(
 
     correlationMetrics.reportMessageCounts(messageManagementService.countMessagesByStatus())
 
-    if (logger.isTraceEnabled) {
+    if (logger.isTraceEnabled()) {
       val remaining = messageManagementService.listAllMessages()
       if (remaining.isNotEmpty()) {
         logger.trace { "There are ${remaining.size} messages in the message inbox." }

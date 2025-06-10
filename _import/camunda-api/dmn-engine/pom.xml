@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-dmn-engine-api</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-api Extension / DMN Engine</name>
 
   <dependencies>
     <dependency>

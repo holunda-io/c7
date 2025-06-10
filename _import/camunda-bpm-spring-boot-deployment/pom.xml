@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.deployment</groupId>
   <artifactId>camunda-bpm-spring-boot-deployment</artifactId>
-  <name>${project.artifactId}</name>
+  <name>${project.artifactId} Extension / Core</name>
   <description>camunda-bpm-spring-boot-deployment</description>
 
   <properties>

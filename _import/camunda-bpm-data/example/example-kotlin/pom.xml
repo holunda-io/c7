@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-data-example-kotlin</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-data Example / Kotlin</name>
 
   <properties>
     <jacoco.skip>true</jacoco.skip>

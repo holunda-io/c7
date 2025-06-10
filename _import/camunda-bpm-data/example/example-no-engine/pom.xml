@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-data-example-no-engine</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-data Example / No Engine</name>
 
   <properties>
     <jacoco.skip>false</jacoco.skip>

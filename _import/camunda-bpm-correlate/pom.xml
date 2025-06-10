@@ -13,7 +13,7 @@
   <groupId>io.holunda</groupId>
   <artifactId>camunda-bpm-correlate-root</artifactId>
   <packaging>pom</packaging>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-correlate Parent</name>
   <url>https://github.com/holunda-io/camunda-bpm-correlate/</url>
   <description>A library for correlation of messages with processes running inside the Camunda 7 platform engine.</description>
 
@@ -54,27 +54,6 @@
         </excludes>
       </resource>
     </resources>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>flatten-maven-plugin</artifactId>
-          <version>1.7.0</version>
-          <executions>
-            <execution>
-              <id>flatten</id>
-              <phase>process-resources</phase>
-              <goals>
-                <goal>flatten</goal>
-              </goals>
-              <configuration>
-                <flattenMode>ossrh</flattenMode>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>

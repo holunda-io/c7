@@ -11,7 +11,7 @@
 
   <artifactId>camunda-bpm-correlate-bom</artifactId>
   <packaging>pom</packaging>
-  <name>camunda-bpm-correlate pom</name>
+  <name>camunda-bpm-correlate BOM</name>
 
   <dependencyManagement>
     <dependencies>
@@ -43,22 +43,4 @@
     </dependencies>
   </dependencyManagement>
 
-  <!--
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>flatten-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>flatten</id>
-            <configuration>
-              <flattenMode>bom</flattenMode>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-   -->
 </project>

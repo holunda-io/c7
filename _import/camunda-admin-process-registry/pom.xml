@@ -12,7 +12,7 @@
   <groupId>io.holunda</groupId>
   <artifactId>camunda-admin-process-registry</artifactId>
 
-  <name>${project.artifactId}</name>
+  <name>${project.artifactId} Extension / Core</name>
   <description>Register and run utility processes</description>
 
   <properties>

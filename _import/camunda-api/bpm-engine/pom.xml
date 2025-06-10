@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-engine-api</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-api Extension / BPM Engine</name>
 
   <dependencies>
     <dependency>

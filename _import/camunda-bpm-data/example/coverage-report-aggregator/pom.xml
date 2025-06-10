@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-data-coverage-report</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-data Coverage Report</name>
   <packaging>pom</packaging>
 
   <properties>

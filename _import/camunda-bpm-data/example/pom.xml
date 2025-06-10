@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.data.example</groupId>
   <artifactId>camunda-bpm-data-example-parent</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-data Example / Parent</name>
   <packaging>pom</packaging>
 
   <properties>

@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-data Example / SpinTypeDetector </name>
   <packaging>jar</packaging>
 
   <properties>

@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.commons</groupId>
   <artifactId>camunda-commons-immutables</artifactId>
-  <name>${project.artifactId}</name>
+  <name>${project.artifactId} Extension / Core</name>
   <description>Collection of Camunda Immutables</description>
 
   <properties>

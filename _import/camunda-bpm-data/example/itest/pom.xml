@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-data-integration-test</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-bpm-data Example / Integration Tests of the library</name>
 
   <properties>
     <jacoco.skip>false</jacoco.skip>

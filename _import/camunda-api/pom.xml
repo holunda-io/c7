@@ -11,13 +11,13 @@
 
   <groupId>io.holunda.camunda-api</groupId>
   <artifactId>camunda-api-parent</artifactId>
-  <name>${project.artifactId}</name>
+  <name>camunda-api Parent</name>
   <description>Camunda BPM Engine API</description>
   <packaging>pom</packaging>
 
   <modules>
     <module>dmn-engine</module>
-    <module>process-engine</module>
+    <module>bpm-engine</module>
   </modules>
 
   <dependencyManagement>
