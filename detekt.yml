@@ -1,6 +1,17 @@
+#
+# see https://github.com/arturbosch/detekt/blob/master/detekt-cli/src/main/resources/default-detekt-config.yml
+#
 comments:
   active: true
-  excludes: [ "**/test/**","**/*Test.kt","*/src/test/kotlin/**/*.kt","**/*Stages.kt","**/*ITest.kt" ]
+  excludes: [
+    "example/**",
+    "**/example/**",
+    "**/test/**",
+    "**/*Test.kt",
+    "*/src/test/kotlin/**/*.kt",
+    "**/*Stages.kt",
+    "**/*ITest.kt"
+  ]
   CommentOverPrivateFunction:
     active: false
   CommentOverPrivateProperty:
