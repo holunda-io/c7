@@ -1,0 +1,39 @@
+name: Feature request
+description: Suggest a feature
+title: "[Feat]:"
+labels:
+  - "Type: enhancement"
+type: "Feature"
+body:
+  - id: component
+    type: dropdown
+    attributes:
+      label: Component
+      options:
+        - c7-commons-immutables
+        - camunda-admin-process-registry
+        - camunda-api
+        - camunda-bpm-correlate
+        - camunda-bpm-data
+        - camunda-bpm-jgiven
+        - camunda-bpm-spring-auto-deployment
+        - camunda-platform-7-autologin
+    validations:
+      required: true
+  - id: description
+    type: textarea
+    attributes:
+      label: What happend?
+      description: what exactly are you doing with the above reproducer?
+      value: |
+      ### Scenario
+        Detailed description of a user story, including the role and the intention.
+
+      ### Current Behaviour
+
+      ### Wanted Behavior
+
+      ### Possible Workarounds
+
+
+

@@ -40,6 +40,9 @@
     Currently deactivated, see https://github.com/holunda-io/c7/issues/10
     <module>_import/camunda-platform-7-mockito</module>
     -->
+
+    <!-- Must be defined as last module -->
+    <module>_build/coverage-aggregator</module>
   </modules>
 
   <dependencyManagement>

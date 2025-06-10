@@ -30,7 +30,6 @@
     <module>example-no-engine</module>
     <module>spin-type-detector</module>
     <module>itest</module>
-    <module>coverage-report-aggregator</module>
   </modules>
 
   <dependencyManagement>
