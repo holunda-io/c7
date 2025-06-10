@@ -17,6 +17,12 @@ engines:
     exclude_paths:
       - ".github/**/*.md"  # No corrections of GitHub markdown files
       - ".github/*.md"
+  pmd:
+    exclude_paths:
+      - "**/test/**"
+      - "**/tests/**"
+      - "**/*Test.java"
+      - "**/*Tests.java"
   spotbugs:  # Java static analysis tool
     exclude_paths:
       - "**/test/**"
