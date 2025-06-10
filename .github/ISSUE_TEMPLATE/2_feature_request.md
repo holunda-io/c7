@@ -1,6 +1,6 @@
 ---
 name: 'Feature request'
-about: 'Suggest a feature for camunda-bpm-data'
+about: 'Suggest a feature for holunda-c7'
 title:
 labels: 'type: enhancement'
 assignees: 

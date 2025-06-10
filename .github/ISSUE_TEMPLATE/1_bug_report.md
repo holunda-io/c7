@@ -1,6 +1,6 @@
 ---
 name: 'Bug report'
-about: 'Report a bug in camunda-bpm-data'
+about: 'Report a bug in holunda-c7'
 title:
 labels: 'type: bug :bug:'
 assignees: 
@@ -11,6 +11,7 @@ assignees:
 
 * Library version:
 * Camunda BPM version:
+* Component: 
 * JDK version:  
 * Operating system:
 * Complete executable reproducer: (e.g. GitHub Repo)

@@ -1,7 +1,7 @@
 name: Build the docs
 
 permissions:
-  content: read
+  contents: read
 
 on:
   push:
