@@ -100,6 +100,20 @@ camunda:
 ```
 As a result, all Camunda relevant files from the root of the classpath `src/main/resources` and all subdirectories, excluding `one` are deployed in a default archive (without a tenant). All resources from `src/main/resources/one` are deployed ina a second archive with tenant `tenant-one`.
 
+To deploy multipel folders for the same tenant the tenant uniqueness check needs to be disabled:
+
+```yaml
+camunda:
+  bpm:
+    deployment:
+      allow-overlapping: true
+      check-tenant-archive-uniqueness: false
+      archives:
+        - name: BPMN
+          path: bpmn
+        - name: DMN
+          path: dmn
+```
 
 ## License
 
