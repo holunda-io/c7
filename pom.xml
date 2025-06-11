@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.c7._</groupId>
   <artifactId>c7-root</artifactId>
-  <version>2025.05.2-SNAPSHOT</version>
+  <version>2025.06.1-SNAPSHOT</version>
 
   <name>pom: ${project.artifactId}</name>
   <description>Root of all holunda/camunda7 libs.</description>
