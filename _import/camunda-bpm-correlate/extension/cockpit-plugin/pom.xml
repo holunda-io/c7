@@ -14,8 +14,8 @@
   <packaging>jar</packaging>
 
   <properties>
-    <npm.version>8.1.2</npm.version>
-    <node.version>v16.13.2</node.version>
+    <npm.version>10.8.2</npm.version>
+    <node.version>v18.20.8</node.version>
 
     <camunda.plugin.category>Monitoring</camunda.plugin.category>
     <camunda.plugin.screenshot>screenshot.png</camunda.plugin.screenshot>
