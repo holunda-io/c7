@@ -23,16 +23,19 @@ repo_url: https://github.com/holunda-io/c7/
 edit_uri: edit/develop/docs/
 
 markdown_extensions:
-    - attr_list
-    - toc:
-        permalink: "#"
-    - pymdownx.highlight
-    - pymdownx.superfences
-    - pymdownx.details
     - admonition
+    - attr_list
+    - md_in_html
+    - pymdownx.details
     - pymdownx.emoji:
         emoji_index: !!python/name:material.extensions.emoji.twemoji
         emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    - pymdownx.highlight
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
+    - toc:
+        permalink: "#"
 
 theme:
   name: material
@@ -95,29 +98,31 @@ plugins:
 
 nav:
   - Home: index.md
-  - Getting started:
+  - Quick Start:
       - Admin Process Registry: getting-started/c7-admin-process-registry.md
       - Correlate: getting-started/camunda-bpm-correlate.md
       - Data: getting-started/camunda-bpm-data.md
+      - Deployment: getting-started/c7-deployment.md
+      - JGiven: getting-started/c7-jgiven.md
       - Webapp Auto Login: getting-started/c7-webapp-autologin.md
   - User Guide:
       - Overview: user-guide/index.md
-      - Extensions: user-guide/extensions.md
-      - Admin Process Registry:
-          - Overview: user-guide/c7-admin-process-registry/index.md
-          - Example: user-guide/c7-admin-process-registry/examples.md
+      - Modules: user-guide/modules.md
+      - Architecture: user-guide/architecture.md
+  - Support Libraries:
+      - Overview: user-guide/libraries-support.md
       - Correlate:
           - Overview: user-guide/camunda-bpm-correlate/index.md
           - Components:
-            - Ingress Adapter: user-guide/camunda-bpm-correlate/ingress.md
-            - Spring Cloud Ingress Adapter: user-guide/camunda-bpm-correlate/ingress-spring-cloud.md
-            - Axon Framework Ingress Adapter: user-guide/camunda-bpm-correlate/ingress-axon.md
-            - Message Acceptor: user-guide/camunda-bpm-correlate/message-acceptor.md
-            - Message Filter: user-guide/camunda-bpm-correlate/filtering-messages.md
-            - Message Persistence: user-guide/camunda-bpm-correlate/message-persistence.md
-            - Scheduled Processing: user-guide/camunda-bpm-correlate/scheduled-processing.md
-            - Cockpit Plugin: user-guide/camunda-bpm-correlate/cockpit-plugin.md
-            - Metrics: user-guide/camunda-bpm-correlate/metrics.md
+              - Ingress Adapter: user-guide/camunda-bpm-correlate/ingress.md
+              - Spring Cloud Ingress Adapter: user-guide/camunda-bpm-correlate/ingress-spring-cloud.md
+              - Axon Framework Ingress Adapter: user-guide/camunda-bpm-correlate/ingress-axon.md
+              - Message Acceptor: user-guide/camunda-bpm-correlate/message-acceptor.md
+              - Message Filter: user-guide/camunda-bpm-correlate/filtering-messages.md
+              - Message Persistence: user-guide/camunda-bpm-correlate/message-persistence.md
+              - Scheduled Processing: user-guide/camunda-bpm-correlate/scheduled-processing.md
+              - Cockpit Plugin: user-guide/camunda-bpm-correlate/cockpit-plugin.md
+              - Metrics: user-guide/camunda-bpm-correlate/metrics.md
           - Examples: user-guide/camunda-bpm-correlate/examples.md
       - Data:
           - Overview: user-guide/camunda-bpm-data/index.md
@@ -126,9 +131,33 @@ nav:
               - Java Examples: user-guide/camunda-bpm-data/examples-java.md
               - Kotlin Examples: user-guide/camunda-bpm-data/examples-kotlin.md
               - Examples without engine: user-guide/camunda-bpm-data/examples-no-engine.md
+      - Deployment:
+          - Overview: user-guide/c7-deployment/index.md
+
+  - Operations Libraries:
+      - Overview: user-guide/libraries-operations.md
+      - Admin Process Registry:
+          - Overview: user-guide/c7-admin-process-registry/index.md
+          - Example: user-guide/c7-admin-process-registry/examples.md
+      - API:
+          - Overview: user-guide/c7-api/index.md
+      - Immutables:
+          - Overview: user-guide/c7-immutables/index.md
+      - REST Client Spring Boot:
+          - Overview: user-guide/camunda-platform-7-rest-client-spring-boot/index.md
       - Webapp Auto Login:
           - Overview: user-guide/c7-webapp-autologin/index.md
           - Example: user-guide/c7-webapp-autologin/examples.md
+
+  - Testing Libraries:
+      - Overview: user-guide/libraries-testing.md
+      - JGiven:
+          - Overview: user-guide/c7-jgiven/index.md
+      - Mockito:
+          - Overview: user-guide/camunda-platform-7-mockito/index.md
+      - Test Coverage:
+          - Overview: user-guide/camunda-process-test-coverage/index.md
+
 
   - Developer Guide:
       - Contributing: developer-guide/contribution.md

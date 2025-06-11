@@ -33,7 +33,7 @@
     <module>_import/c7-correlate</module>
     <module>_import/c7-data</module>
     <module>_import/c7-jgiven</module>
-    <module>_import/c7-spring-boot-deployment</module>
+    <module>_import/c7-deployment</module>
     <module>_import/c7-webapp-autologin</module>
     <module>_import/c7-admin-process-registry</module>
     <!--

@@ -1,3 +1,7 @@
+---
+title: Camunda BPM Correlate Overview
+---
+
 ## Motivation
 
 Correlation is about targeting a running workflow (for example running inside the Camunda Platform 7)
@@ -18,12 +22,12 @@ pre-configured error strategies, like retry, ignore or drop...
 
 In addition, there are a set of several ingress adapters to support different communication technologies.
 
-
-## Supported features
+## Main features
 
 * Ingress Adapters:
-    * Spring Cloud Kafka
-    * Axon Framework
+    * Spring Cloud Streams (e.g. Kafka Streams, Rabbit MQ, Azure Event Hubs, AWS SQS, AWS SNS, Solace PubSub+, Google PubSub)
+    * Axon Framework (Axon Event Bus)
+* Inbox pattern on message receiving
 * MetaData extractors:
     * Message based (Headers)
     * Channel based (Properties)
@@ -31,27 +35,14 @@ In addition, there are a set of several ingress adapters to support different co
 * Message Persistence
     * In-Memory
     * MyBatis (using the same DB as Camunda Platform 7)
-* Batch processor running on schedule
+* Asynchronous batch processor running correlation on schedule
     * Batch modes: all, fail-first
-* Correlation error strategies: ignore, drop, retry
+* Variety of error handling strategies on mismatched correlation (ignore, drop, retry)
+* Configurable timings, retry strategies and many other parameters
 * Message Buffering (TTL)
 * Message Expiry
 * Camunda Cockpit Plugin to display the content of the inbox table
 
-## Concepts and Components
-
-* [Ingress Adapter](ingress.md)
-* [Message Acceptor](message-acceptor.md)
-* [Message Persistence](message-persistence.md)
-* [Scheduled Processing](scheduled-processing.md)
-* [Metrics](metrics.md)
-* [Cockpit Plugin](cockpit-plugin.md)
-
-## Examples
-
-* [Kafka Example](examples.md#spring-cloud-streams-with-kafka)
-* [Axon Example](examples.md#axon-events-aka-using-camunda-platform-7-as-microservice-orchestrator)
-
-## References
+## External References
 
 * [Camunda Community Summit 2022 Talk](https://page.camunda.com/ccs2022-correlatingmessages?hsLang=en)

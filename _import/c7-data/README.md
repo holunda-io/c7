@@ -1,6 +1,6 @@
 ## Camunda BPM Data
 
-> Beautiful process data handling for Camunda Platform 7.
+> 
 
 ## Why to use this library in every Camunda project
 
