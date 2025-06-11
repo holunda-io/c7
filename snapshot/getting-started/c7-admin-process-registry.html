@@ -12,28 +12,28 @@
         <meta name="author" content="Holisticon BPM Craftsman">
       
       
-        <link rel="canonical" href="https://www.holunda.io/c7/snapshot/user-guide/camunda-bpm-correlate/ingress-axon.html">
+        <link rel="canonical" href="https://www.holunda.io/c7/snapshot/getting-started/c7-admin-process-registry.html">
       
       
-        <link rel="prev" href="ingress-spring-cloud.html">
+        <link rel="prev" href="../index.html">
       
       
-        <link rel="next" href="message-acceptor.html">
+        <link rel="next" href="camunda-bpm-correlate.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Axon Framework Ingress Adapter - Holunda C7</title>
+        <title>Admin Process Registry - Holunda C7</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +52,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/css/extra.css">
+      <link rel="stylesheet" href="../assets/css/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#message" class="md-skip">
+        <a href="#why-should-i-use-this" class="md-skip">
           Skip to content
         </a>
       
@@ -100,9 +100,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../index.html" title="Holunda C7" class="md-header__button md-logo" aria-label="Holunda C7" data-md-component="logo">
+    <a href="../index.html" title="Holunda C7" class="md-header__button md-logo" aria-label="Holunda C7" data-md-component="logo">
       
-  <img src="../../assets/img/camunda-logo.png" alt="logo">
+  <img src="../assets/img/camunda-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Axon Framework Ingress Adapter
+              Admin Process Registry
             
           </span>
         </div>
@@ -224,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../index.html" class="md-tabs__link">
+      <a href="../index.html" class="md-tabs__link">
         
   
   
@@ -241,11 +241,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../getting-started/c7-admin-process-registry.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="c7-admin-process-registry.html" class="md-tabs__link">
           
   
   
@@ -261,13 +263,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../user-guide/index.html" class="md-tabs__link">
           
   
   
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../developer-guide/contribution.html" class="md-tabs__link">
+        <a href="../developer-guide/contribution.html" class="md-tabs__link">
           
   
   
@@ -329,9 +329,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../index.html" title="Holunda C7" class="md-nav__button md-logo" aria-label="Holunda C7" data-md-component="logo">
+    <a href="../index.html" title="Holunda C7" class="md-nav__button md-logo" aria-label="Holunda C7" data-md-component="logo">
       
-  <img src="../../assets/img/camunda-logo.png" alt="logo">
+  <img src="../assets/img/camunda-logo.png" alt="logo">
 
     </a>
     Holunda C7
@@ -358,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   
@@ -377,26 +377,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -409,7 +414,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Getting started
@@ -420,10 +425,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../getting-started/c7-admin-process-registry.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Admin Process Registry
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="c7-admin-process-registry.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -434,6 +459,66 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-should-i-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why should I use this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to start?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to start?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-dependency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install dependency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-a-bean-factory-for-your-admin-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Define a Bean Factory for your Admin Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -446,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/camunda-bpm-correlate.html" class="md-nav__link">
+      <a href="camunda-bpm-correlate.html" class="md-nav__link">
         
   
   
@@ -469,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/camunda-bpm-data.html" class="md-nav__link">
+      <a href="camunda-bpm-data.html" class="md-nav__link">
         
   
   
@@ -492,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/c7-webapp-autologin.html" class="md-nav__link">
+      <a href="c7-webapp-autologin.html" class="md-nav__link">
         
   
   
@@ -526,31 +611,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -563,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             User Guide
@@ -577,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../user-guide/index.html" class="md-nav__link">
         
   
   
@@ -600,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extensions.html" class="md-nav__link">
+      <a href="../user-guide/extensions.html" class="md-nav__link">
         
   
   
@@ -629,20 +709,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
   
   
@@ -669,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c7-admin-process-registry/index.html" class="md-nav__link">
+      <a href="../user-guide/c7-admin-process-registry/index.html" class="md-nav__link">
         
   
   
@@ -692,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c7-admin-process-registry/examples.html" class="md-nav__link">
+      <a href="../user-guide/c7-admin-process-registry/examples.html" class="md-nav__link">
         
   
   
@@ -720,31 +797,26 @@
                 
   
   
-    
   
   
-  
     
     
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   
@@ -757,7 +829,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Correlate
@@ -771,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/index.html" class="md-nav__link">
         
   
   
@@ -791,8 +863,6 @@
                 
   
   
-    
-  
   
   
     
@@ -805,11 +875,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
         
           
           <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
@@ -825,7 +895,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4_2">
             <span class="md-nav__icon md-icon"></span>
             Components
@@ -839,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ingress.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/ingress.html" class="md-nav__link">
         
   
   
@@ -862,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ingress-spring-cloud.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/ingress-spring-cloud.html" class="md-nav__link">
         
   
   
@@ -882,30 +952,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Axon Framework Ingress Adapter
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="ingress-axon.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../user-guide/camunda-bpm-correlate/ingress-axon.html" class="md-nav__link">
         
   
   
@@ -916,33 +966,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -955,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="message-acceptor.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/message-acceptor.html" class="md-nav__link">
         
   
   
@@ -978,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="filtering-messages.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/filtering-messages.html" class="md-nav__link">
         
   
   
@@ -1001,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="message-persistence.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/message-persistence.html" class="md-nav__link">
         
   
   
@@ -1024,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scheduled-processing.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/scheduled-processing.html" class="md-nav__link">
         
   
   
@@ -1047,7 +1070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cockpit-plugin.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/cockpit-plugin.html" class="md-nav__link">
         
   
   
@@ -1070,7 +1093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="metrics.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/metrics.html" class="md-nav__link">
         
   
   
@@ -1101,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-correlate/examples.html" class="md-nav__link">
         
   
   
@@ -1138,20 +1161,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
         
           
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
             
   
   
@@ -1178,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../camunda-bpm-data/index.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-data/index.html" class="md-nav__link">
         
   
   
@@ -1201,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../camunda-bpm-data/features.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-data/features.html" class="md-nav__link">
         
   
   
@@ -1267,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../camunda-bpm-data/examples-java.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-data/examples-java.html" class="md-nav__link">
         
   
   
@@ -1290,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../camunda-bpm-data/examples-kotlin.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-data/examples-kotlin.html" class="md-nav__link">
         
   
   
@@ -1313,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../camunda-bpm-data/examples-no-engine.html" class="md-nav__link">
+      <a href="../user-guide/camunda-bpm-data/examples-no-engine.html" class="md-nav__link">
         
   
   
@@ -1358,20 +1378,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
         
           
-          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
             
   
   
@@ -1398,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c7-webapp-autologin/index.html" class="md-nav__link">
+      <a href="../user-guide/c7-webapp-autologin/index.html" class="md-nav__link">
         
   
   
@@ -1421,7 +1438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c7-webapp-autologin/examples.html" class="md-nav__link">
+      <a href="../user-guide/c7-webapp-autologin/examples.html" class="md-nav__link">
         
   
   
@@ -1502,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer-guide/contribution.html" class="md-nav__link">
+      <a href="../developer-guide/contribution.html" class="md-nav__link">
         
   
   
@@ -1525,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer-guide/project-setup.html" class="md-nav__link">
+      <a href="../developer-guide/project-setup.html" class="md-nav__link">
         
   
   
@@ -1567,13 +1584,48 @@
   
 
 
-  <h1>Axon Framework Ingress Adapter</h1>
+  <h1>Admin Process Registry</h1>
 
-<p>The Axon Framework Ingress Adapter is responsible for receiving events on Axon Event bus and sending them for the correlation to the library. </p>
-<h3 id="message">Message<a class="headerlink" href="#message" title="Permanent link">#</a></h3>
-<p>Axon Event Message is received and deserialized by Axon Framework, using the configured message de-serializer and passed to the ingress adapter.
-The adapter is reading headers from message <code>MetaData</code> and converts them into message headers. The payload is encoded into serializable payload using 
-the configured encoder (currently Jackson).</p>
+<h2 id="why-should-i-use-this">Why should I use this?<a class="headerlink" href="#why-should-i-use-this" title="Permanent link">#</a></h2>
+<p>You are developing an application and need to build a small function called by the ops or by developers directly 
+from the Camunda 7 tool stack available? You might create a REST resource, deploy swagger-ui, configure security,
+provide good examples and instructions for the user... Or you implement a simple function and deploy it as a 
+simple one-service process start-able from the Camunda Tasklist. </p>
+<h2 id="how-to-start">How to start?<a class="headerlink" href="#how-to-start" title="Permanent link">#</a></h2>
+<h3 id="install-dependency">Install dependency<a class="headerlink" href="#install-dependency" title="Permanent link">#</a></h3>
+<p>Add the following dependency to your project classpath:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">  </span><span class="nt">&lt;groupId&gt;</span>io.holunda<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>camunda-admin-process-registry<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h3 id="define-a-bean-factory-for-your-admin-process">Define a Bean Factory for your Admin Process<a class="headerlink" href="#define-a-bean-factory-for-your-admin-process" title="Permanent link">#</a></h3>
+<p>Define a Bean Factory for an Admin Process Bean like this:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nn">io.holunda.camunda.platform.adminprocess.AdminProcess</span>
+
+
+<span class="w">  </span><span class="nd">@Bean</span>
+<span class="w">  </span><span class="kd">fun</span><span class="w"> </span><span class="nf">helloWorldAdminProcess</span><span class="p">():</span><span class="w"> </span><span class="n">AdminProcess</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringField</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Foo - enter your name&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateField</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Date - select some magic&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">adminProcess</span><span class="p">(</span>
+<span class="w">      </span><span class="n">activityId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;helloWorld&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World 2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">formFields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">      </span><span class="kd">val</span><span class="w"> </span><span class="nv">variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CamundaBpmData</span><span class="p">.</span><span class="na">reader</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;&quot;&quot; Hi, I am the process running with:</span>
+<span class="s">          * foo: </span><span class="si">${</span><span class="n">variables</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span><span class="si">}</span>
+<span class="s">          * date: </span><span class="si">${</span><span class="n">variables</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">date</span><span class="p">)</span><span class="si">}</span>
+<span class="s">        &quot;&quot;&quot;</span><span class="p">.</span><span class="na">trimIndent</span><span class="p">()</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
 
 
 
@@ -1594,7 +1646,7 @@ the configured encoder (currently Jackson).</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 10, 2025 18:47:50 UTC">June 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 11, 2025 17:49:02 UTC">June 11, 2025</span>
   </span>
 
     
@@ -1673,10 +1725,10 @@ the configured encoder (currently Jackson).</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

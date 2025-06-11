@@ -12,13 +12,13 @@
         <meta name="author" content="Holisticon BPM Craftsman">
       
       
-        <link rel="canonical" href="https://www.holunda.io/c7/snapshot/user-guide/camunda-bpm-correlate/ingress-axon.html">
+        <link rel="canonical" href="https://www.holunda.io/c7/snapshot/user-guide/c7-admin-process-registry/index.html">
       
       
-        <link rel="prev" href="ingress-spring-cloud.html">
+        <link rel="prev" href="../extensions.html">
       
       
-        <link rel="next" href="message-acceptor.html">
+        <link rel="next" href="examples.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Axon Framework Ingress Adapter - Holunda C7</title>
+        <title>Overview - Holunda C7</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#message" class="md-skip">
+        <a href="#motivation" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Axon Framework Ingress Adapter
+              Overview
             
           </span>
         </div>
@@ -620,6 +620,8 @@
                 
   
   
+    
+  
   
   
     
@@ -635,11 +637,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
@@ -655,7 +657,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Admin Process Registry
@@ -666,10 +668,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../c7-admin-process-registry/index.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -680,6 +702,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -692,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c7-admin-process-registry/examples.html" class="md-nav__link">
+      <a href="examples.html" class="md-nav__link">
         
   
   
@@ -720,8 +787,6 @@
                 
   
   
-    
-  
   
   
     
@@ -737,11 +802,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
@@ -757,7 +822,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Correlate
@@ -771,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/index.html" class="md-nav__link">
         
   
   
@@ -791,8 +856,6 @@
                 
   
   
-    
-  
   
   
     
@@ -805,11 +868,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
         
           
           <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
@@ -825,7 +888,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4_2">
             <span class="md-nav__icon md-icon"></span>
             Components
@@ -839,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ingress.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/ingress.html" class="md-nav__link">
         
   
   
@@ -862,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ingress-spring-cloud.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/ingress-spring-cloud.html" class="md-nav__link">
         
   
   
@@ -882,30 +945,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Axon Framework Ingress Adapter
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="ingress-axon.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../camunda-bpm-correlate/ingress-axon.html" class="md-nav__link">
         
   
   
@@ -916,33 +959,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#message" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -955,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="message-acceptor.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/message-acceptor.html" class="md-nav__link">
         
   
   
@@ -978,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="filtering-messages.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/filtering-messages.html" class="md-nav__link">
         
   
   
@@ -1001,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="message-persistence.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/message-persistence.html" class="md-nav__link">
         
   
   
@@ -1024,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scheduled-processing.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/scheduled-processing.html" class="md-nav__link">
         
   
   
@@ -1047,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cockpit-plugin.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/cockpit-plugin.html" class="md-nav__link">
         
   
   
@@ -1070,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="metrics.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/metrics.html" class="md-nav__link">
         
   
   
@@ -1101,7 +1117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples.html" class="md-nav__link">
+      <a href="../camunda-bpm-correlate/examples.html" class="md-nav__link">
         
   
   
@@ -1567,13 +1583,25 @@
   
 
 
-  <h1>Axon Framework Ingress Adapter</h1>
+  <h1>Overview</h1>
 
-<p>The Axon Framework Ingress Adapter is responsible for receiving events on Axon Event bus and sending them for the correlation to the library. </p>
-<h3 id="message">Message<a class="headerlink" href="#message" title="Permanent link">#</a></h3>
-<p>Axon Event Message is received and deserialized by Axon Framework, using the configured message de-serializer and passed to the ingress adapter.
-The adapter is reading headers from message <code>MetaData</code> and converts them into message headers. The payload is encoded into serializable payload using 
-the configured encoder (currently Jackson).</p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">#</a></h2>
+<p>Sometimes you need to execute small tasks or functions and integrate this execution into existing
+infrastructure with your enterprise set-up of security, user management and others.
+If you want to run administration tasks directly from the Camunda 7 Task list using auto-generated mini-processes.</p>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
+<p>This lib/spring-boot-auto-config allows you to generate and deploy single-service-task processes that can be 
+started from the Camunda Webapp Tasklist. Doing so enables you to implement administration / house-keeping 
+jobs as a process, use Camunda's Form/UI and run tasks controlled with the full power of the engine, 
+including error handling and analysis.</p>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h2>
+<ul>
+<li>The created process will include one service task (with id <code>activityId</code> and label <code>label</code>), </li>
+<li>The service task will execute a fixed Java Delegate, calling the Admin Process Registry to resolve provided lambda expression</li>
+<li>The process will have provided <code>name</code>, <code>historyTtl</code> and an optional <code>tenantId</code></li>
+<li>The process is marked as <code>startable from tasklist</code></li>
+<li>If a list of form fields is supplied, the autogenerated-form will be shown in the task list</li>
+</ul>
 
 
 
@@ -1594,7 +1622,7 @@ the configured encoder (currently Jackson).</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 10, 2025 18:47:50 UTC">June 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 11, 2025 17:49:02 UTC">June 11, 2025</span>
   </span>
 
     
