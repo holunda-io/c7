@@ -3,5 +3,12 @@
     "version": "snapshot",
     "title": "snapshot",
     "aliases": []
+  },
+  {
+    "version": "2025.06.1",
+    "title": "2025.06.1",
+    "aliases": [
+      "stable"
+    ]
   }
 ]
