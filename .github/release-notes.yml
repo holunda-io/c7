@@ -13,4 +13,4 @@ changelog:
       labels: [ "Type: question" ]
   contributors:
     exclude:
-      names: [ "dependabot[bot]" ]
+      names: [ "dependabot[bot]", "codacy-badger" ]

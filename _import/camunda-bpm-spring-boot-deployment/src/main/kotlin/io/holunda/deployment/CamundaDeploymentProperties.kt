@@ -16,6 +16,10 @@ data class CamundaDeploymentProperties(
    */
   val allowOverlapping: Boolean = false,
   /**
+   * Check archives for tenants uniqueness. Defaults to `true`.
+   */
+  val checkTenantArchiveUniqueness: Boolean = true,
+  /**
    * List of process archives to be deployed, defaults to an empty list.
    */
   val archives: List<ProcessArchive> = emptyList()
@@ -27,9 +31,11 @@ data class CamundaDeploymentProperties(
         throw ProcessArchiveNameNotUniqueException("Name [${it.key}] is not unique within process archives [$archives]")
     }
 
-    this.archives.groupBy { it.tenant }.forEach {
-      if (it.value.size > 1)
-        throw ProcessArchiveTenantNotUniqueException("Tenant [${it.key}] is not unique within process archives [$archives]")
+    if (this.checkTenantArchiveUniqueness) {
+      this.archives.groupBy { it.tenant }.forEach {
+        if (it.value.size > 1)
+          throw ProcessArchiveTenantNotUniqueException("Tenant [${it.key}] is not unique within process archives [$archives]")
+      }
     }
   }
 
