@@ -22,17 +22,17 @@ In addition, there are a set of several ingress adapters to support different co
 ## Supported features
 
 * Ingress Adapters:
-  * Spring Cloud Kafka
-  * Axon Framework
+    * Spring Cloud Kafka
+    * Axon Framework
 * MetaData extractors:
-  * Message based (Headers)
-  * Channel based (Properties)
+    * Message based (Headers)
+    * Channel based (Properties)
 * Persisting Message Accepting Adapter
 * Message Persistence
-  * In-Memory
-  * MyBatis (using the same DB as Camunda Platform 7)
+    * In-Memory
+    * MyBatis (using the same DB as Camunda Platform 7)
 * Batch processor running on schedule
-  * Batch modes: all, fail-first
+    * Batch modes: all, fail-first
 * Correlation error strategies: ignore, drop, retry
 * Message Buffering (TTL)
 * Message Expiry
@@ -45,6 +45,7 @@ In addition, there are a set of several ingress adapters to support different co
 * [Message Persistence](message-persistence.md)
 * [Scheduled Processing](scheduled-processing.md)
 * [Metrics](metrics.md)
+* [Cockpit Plugin](cockpit-plugin.md)
 
 ## Examples
 

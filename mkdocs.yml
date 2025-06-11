@@ -30,7 +30,9 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.details
     - admonition
-
+    - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 theme:
   name: material
@@ -71,6 +73,8 @@ extra:
       link: https://medium.com/holisticon-consultants/tagged/mpb
   version:
     provider: mike
+  status:
+    camunda-ee-only: Suppoorted by Camunda EE only
 
 plugins:
   - search
@@ -92,11 +96,16 @@ plugins:
 nav:
   - Home: index.md
   - Getting started:
+      - Admin Process Registry: getting-started/c7-admin-process-registry.md
       - Correlate: getting-started/camunda-bpm-correlate.md
       - Data: getting-started/camunda-bpm-data.md
+      - Webapp Auto Login: getting-started/c7-webapp-autologin.md
   - User Guide:
       - Overview: user-guide/index.md
       - Extensions: user-guide/extensions.md
+      - Admin Process Registry:
+          - Overview: user-guide/c7-admin-process-registry/index.md
+          - Example: user-guide/c7-admin-process-registry/examples.md
       - Correlate:
           - Overview: user-guide/camunda-bpm-correlate/index.md
           - Components:
@@ -107,6 +116,7 @@ nav:
             - Message Filter: user-guide/camunda-bpm-correlate/filtering-messages.md
             - Message Persistence: user-guide/camunda-bpm-correlate/message-persistence.md
             - Scheduled Processing: user-guide/camunda-bpm-correlate/scheduled-processing.md
+            - Cockpit Plugin: user-guide/camunda-bpm-correlate/cockpit-plugin.md
             - Metrics: user-guide/camunda-bpm-correlate/metrics.md
           - Examples: user-guide/camunda-bpm-correlate/examples.md
       - Data:
@@ -116,6 +126,10 @@ nav:
               - Java Examples: user-guide/camunda-bpm-data/examples-java.md
               - Kotlin Examples: user-guide/camunda-bpm-data/examples-kotlin.md
               - Examples without engine: user-guide/camunda-bpm-data/examples-no-engine.md
+      - Webapp Auto Login:
+          - Overview: user-guide/c7-webapp-autologin/index.md
+          - Example: user-guide/c7-webapp-autologin/examples.md
+
   - Developer Guide:
       - Contributing: developer-guide/contribution.md
       - Project Setup: developer-guide/project-setup.md

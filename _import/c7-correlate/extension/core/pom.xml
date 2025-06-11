@@ -17,7 +17,7 @@
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
-      <version>2025.05.1</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.micrometer</groupId>
