@@ -15,11 +15,13 @@ class InMemMessageRepository : MessageRepository {
   private val store: MutableMap<String, MessageEntity> = mutableMapOf()
 
   override fun findAll(page: Int, pageSize: Int): List<MessageEntity> {
-    return store.values.toList().subList(page * pageSize, pageSize)
+    return store.values.toList().let { it.subList(page * pageSize, pageSize.coerceAtMost(it.size)) }
   }
 
   override fun findAllLight(page: Int, pageSize: Int, faultsOnly: Boolean): List<MessageEntity> {
-    return store.values.filter { if (faultsOnly) { it.error != null } else { true } }.toList().subList(page * pageSize, pageSize)
+    return store.values.filter { if (faultsOnly) { it.error != null } else { true } }.toList().let {
+      it.subList(page * pageSize, pageSize.coerceAtMost(it.size))
+    }
   }
 
   override fun findByIdOrNull(id: String): MessageEntity? {
