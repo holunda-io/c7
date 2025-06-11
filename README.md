@@ -62,3 +62,9 @@ This can be done via `.m2/settings.xml` or a local `.mvn/settings.xml` file, in 
 build with the `-s .mvn/settings.xml` option:.
 
 
+## License
+
+[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+This library is developed under Apache 2.0 License.
+
