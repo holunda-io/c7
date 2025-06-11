@@ -23,7 +23,7 @@
     <camunda-ee.version>7.23.0-ee</camunda-ee.version>
     <camunda-ce.version>7.23.0</camunda-ce.version>
 
-    <spring-boot.version>3.4.5</spring-boot.version>
+    <spring-boot.version>3.5.0</spring-boot.version>
   </properties>
 
   <modules>
