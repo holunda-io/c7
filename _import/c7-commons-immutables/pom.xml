@@ -16,7 +16,7 @@
   <description>Collection of Camunda Immutables</description>
 
   <properties>
-    <immutables.version>2.10.1</immutables.version>
+    <immutables.version>2.11.0</immutables.version>
     <jetbrains-annotations.version>26.0.2</jetbrains-annotations.version>
     <assertj.version>3.27.3</assertj.version>
 
