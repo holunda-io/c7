@@ -14,7 +14,7 @@
   <name>camunda-bpm-correlate Extension / Spring Boot Starter</name>
 
   <properties>
-    <shedlock.version>6.9.0</shedlock.version>
+    <shedlock.version>6.9.2</shedlock.version>
   </properties>
   <dependencyManagement>
     <dependencies>
