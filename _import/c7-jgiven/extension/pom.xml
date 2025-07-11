@@ -10,6 +10,7 @@
   </parent>
 
   <artifactId>camunda-bpm-jgiven</artifactId>
+  <name>camunda-bpm-jgiven Extension / Core</name>
   <packaging>jar</packaging>
 
   <dependencies>
