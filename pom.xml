@@ -5,13 +5,13 @@
   <parent>
     <groupId>io.toolisticon.maven.parent</groupId>
     <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2025.6.0</version>
+    <version>2025.7.2</version>
     <relativePath/>
   </parent>
 
   <groupId>io.holunda.c7._</groupId>
   <artifactId>c7-root</artifactId>
-  <version>2025.06.1</version>
+  <version>2025.07.1</version>
 
   <name>pom: ${project.artifactId}</name>
   <description>Root of all holunda/camunda7 libs.</description>
@@ -23,19 +23,19 @@
     <camunda-ee.version>7.23.0-ee</camunda-ee.version>
     <camunda-ce.version>7.23.0</camunda-ce.version>
 
-    <spring-boot.version>3.4.5</spring-boot.version>
+    <spring-boot.version>3.5.3</spring-boot.version>
   </properties>
 
   <modules>
     <module>_build/parent</module>
     <module>_import/c7-commons-immutables</module>
-    <module>_import/camunda-api</module>
-    <module>_import/camunda-bpm-correlate</module>
-    <module>_import/camunda-bpm-data</module>
-    <module>_import/camunda-bpm-jgiven</module>
-    <module>_import/camunda-bpm-spring-boot-deployment</module>
-    <module>_import/camunda-platform-7-autologin</module>
-    <module>_import/camunda-admin-process-registry</module>
+    <module>_import/c7-api</module>
+    <module>_import/c7-correlate</module>
+    <module>_import/c7-data</module>
+    <module>_import/c7-jgiven</module>
+    <module>_import/c7-deployment</module>
+    <module>_import/c7-webapp-autologin</module>
+    <module>_import/c7-admin-process-registry</module>
     <!--
     Currently deactivated, see https://github.com/holunda-io/c7/issues/10
     <module>_import/camunda-platform-7-mockito</module>

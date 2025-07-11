@@ -1,0 +1,41 @@
+{
+  "name": "correlate-cockpit-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "plugin.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "Holunda.io",
+  "license": "APACHE 2.0",
+  "dependencies": {
+    "@radix-ui/react-dialog": "1.0.2",
+    "classnames": "2.5.1",
+    "date-fns": "2.29.3",
+    "lodash-es": "4.17.21",
+    "react": "^18.2.0",
+    "react-cookie": "^7.2.1",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.27.4",
+    "@babel/plugin-transform-runtime": "~7.27.4",
+    "@babel/preset-env": "~7.27.2",
+    "@babel/preset-react": "~7.27.1",
+    "@rollup/plugin-babel": "~5.3.1",
+    "@rollup/plugin-commonjs": "~28.0.3",
+    "@rollup/plugin-node-resolve": "~16.0.1",
+    "@rollup/plugin-replace": "~6.0.2",
+    "@rollup/plugin-typescript": "8.4.0",
+    "@types/lodash-es": "4.17.12",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "5.34.0",
+    "@typescript-eslint/parser": "5.34.0",
+    "eslint": "8.22.0",
+    "eslint-plugin-react": "7.37.5",
+    "rollup": "2.79.2",
+    "rollup-plugin-scss": "~4.0.1",
+    "typescript": "4.7.4"
+  }
+}

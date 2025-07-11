@@ -17,7 +17,7 @@ engines:
     exclude_paths:
       - ".github/**/*.md"  # No corrections of GitHub markdown files
       - ".github/*.md"
-      - "**/README.md"
+      - "**/index.md"
       - "docs/**/*.md"
   pmd:
     exclude_paths:

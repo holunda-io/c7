@@ -14,23 +14,20 @@ First install the extension using the corresponding ingress adapter (in this exa
 
 ```xml
 
-<properties>
-  <camunda-bpm-correlate.version>1.0.0</camunda-bpm-correlate.version>
-</properties>
-
 <dependencies>
+  <!-- Core -->
   <dependency>
     <groupId>io.holunda</groupId>
     <artifactId>camunda-bpm-correlate-spring-boot-starter</artifactId>
-    <version>${camunda-bpm-correlate.version}</version>
   </dependency>
 
+  <!-- Cloud Stream Ingress -->
   <dependency>
     <groupId>io.holunda</groupId>
     <artifactId>camunda-bpm-correlate-spring-cloud-stream</artifactId>
-    <version>${camunda-bpm-correlate.version}</version>
   </dependency>
 
+  <!-- Kafka Binding -->
   <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-stream-binder-kafka</artifactId>

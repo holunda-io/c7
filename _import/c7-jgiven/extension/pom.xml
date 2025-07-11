@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.testing</groupId>
+    <artifactId>camunda-bpm-jgiven-parent</artifactId>
+    <version>2025.07.1</version>
+  </parent>
+
+  <artifactId>camunda-bpm-jgiven</artifactId>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.toolisticon.testing</groupId>
+      <artifactId>jgiven-kotlin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-core</artifactId>
+      <version>${jgiven.version}</version>
+    </dependency>
+
+    <!-- This is a test library not a BOM, trying to avoid transitive dependencies -->
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-bpm-assert</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+</project>

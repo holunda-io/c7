@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.06.1</version>
+    <version>2025.07.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
@@ -16,7 +16,7 @@
   <description>Collection of Camunda Immutables</description>
 
   <properties>
-    <immutables.version>2.10.1</immutables.version>
+    <immutables.version>2.11.0</immutables.version>
     <jetbrains-annotations.version>26.0.2</jetbrains-annotations.version>
     <assertj.version>3.27.3</assertj.version>
 
