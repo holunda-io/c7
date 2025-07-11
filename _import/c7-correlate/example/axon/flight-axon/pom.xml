@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda</groupId>
     <artifactId>camunda-bpm-correlate-example-parent</artifactId>
-    <version>2025.06.2-SNAPSHOT</version>
+    <version>2025.07.1-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
