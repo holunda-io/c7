@@ -5,7 +5,7 @@
 
 [![Build Status](https://github.com/holunda-io/c7/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/c7/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.c7._/c7-root/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.c7._/c7-root)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.c7._/c7-root)](https://central.sonatype.com/artifact/io.holunda.c7._/c7-root)
 ![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
 [![codecov](https://codecov.io/gh/holunda-io/c7/branch/develop/graph/badge.svg?token=imlMg9vhLZ)](https://codecov.io/gh/holunda-io/c7)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8f4d11e919354d9eaa9be3be7b1a4232)](https://app.codacy.com/gh/holunda-io/c7/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
