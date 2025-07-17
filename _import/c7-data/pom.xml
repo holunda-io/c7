@@ -20,7 +20,7 @@
 
     <camunda-assert.version>${camunda-ce.version}</camunda-assert.version>
     <jgiven.version>2.0.2</jgiven.version>
-    <mockito-kotlin.version>5.4.0</mockito-kotlin.version>
+    <mockito-kotlin.version>6.0.0</mockito-kotlin.version>
 
     <!-- Skip instrumentalization by default -->
     <jacoco.skip>true</jacoco.skip>
