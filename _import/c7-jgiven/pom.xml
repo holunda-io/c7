@@ -21,7 +21,7 @@
 
 
   <properties>
-    <jgiven.version>2.0.2</jgiven.version>
+    <jgiven.version>2.0.3</jgiven.version>
     <assertj.version>3.27.6</assertj.version>
     <jgiven-kotlin.version>2.0.2.1</jgiven-kotlin.version>
 
