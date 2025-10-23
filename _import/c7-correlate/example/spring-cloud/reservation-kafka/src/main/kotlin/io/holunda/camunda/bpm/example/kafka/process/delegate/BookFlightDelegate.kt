@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.example.kafka.process.delegate
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.bpm.example.common.domain.flight.BookFlightCommand
 import io.holunda.camunda.bpm.example.kafka.ReservationProcessing
 import io.github.oshai.kotlinlogging.KotlinLogging

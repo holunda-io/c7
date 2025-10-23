@@ -1,7 +1,7 @@
 package io.holunda.camunda.bpm.data.acl.apply
 
-import io.holunda.camunda.bpm.data.CamundaBpmData
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import org.assertj.core.api.Assertions
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.junit.jupiter.api.Test
@@ -13,7 +13,7 @@ class LocalScopeReplaceStrategyTest {
 
   @Test
   fun `should apply local`() {
-    val variables = CamundaBpmData.builder().set(FOO, "bar").build()
+    val variables = builder().set(FOO, "bar").build()
     val executionMock = mock(DelegateExecution::class.java)
 
     LocalScopeReplaceStrategy.apply(variables, executionMock)

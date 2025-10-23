@@ -1,6 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter.basic
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.externaltask.LockedExternalTask
 import org.camunda.bpm.engine.variable.VariableMap
@@ -13,7 +14,7 @@ class ReadAdapterLockedExternalTaskTest {
 
   @Test
   fun `get UUID type from variableMap directly`() {
-    val map = CamundaBpmData.builder()
+    val map = builder()
       .set(uuidVar, UUID.randomUUID())
       .build()
 
@@ -22,7 +23,7 @@ class ReadAdapterLockedExternalTaskTest {
 
   @Test
   fun `get UUID type from ExternalTask`() {
-    val variables = CamundaBpmData.builder()
+    val variables = builder()
       .set(uuidVar, UUID.randomUUID())
       .build()
 

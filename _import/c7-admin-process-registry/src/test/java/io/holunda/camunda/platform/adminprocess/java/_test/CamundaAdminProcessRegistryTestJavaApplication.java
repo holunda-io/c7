@@ -1,6 +1,5 @@
 package io.holunda.camunda.platform.adminprocess.java._test;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.platform.adminprocess.AdminProcess;
 import io.holunda.camunda.platform.adminprocess.form.BooleanField;
 import io.holunda.camunda.platform.adminprocess.form.DateField;
@@ -13,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import static io.holunda.camunda.bpm.data.Readers.C7.reader;
 import static io.holunda.camunda.platform.adminprocess.AdminProcess.builder;
 
 @EnableProcessApplication
@@ -40,7 +40,7 @@ public class CamundaAdminProcessRegistryTestJavaApplication {
       .addFormField(numberField)
       .addFormField(booleanField)
       .delegate(execution -> {
-        var reader = CamundaBpmData.reader(execution);
+        var reader = reader(execution);
 
         logger.info(" Hi, I am the process running with:");
         logger.info("foo: {}", reader.get(stringField));

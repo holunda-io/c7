@@ -5,6 +5,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.junit.jupiter.api.Test;
 
+import static io.holunda.camunda.bpm.data.Readers.C7.reader;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,22 +20,22 @@ public class VariableMapReaderTest {
 
   @Test
   public void shouldDelegateGet() {
-    assertThat(CamundaBpmData.reader(variableMap).get(STRING)).isEqualTo(value);
+    assertThat(reader(variableMap).get(STRING)).isEqualTo(value);
   }
 
   @Test
   public void shouldDelegateGetOptional() {
-    assertThat(CamundaBpmData.reader(variableMap).getOptional(STRING)).hasValue(value);
-    assertThat(CamundaBpmData.reader(variableMap).getOptional(stringVariable("xxx"))).isEmpty();
+    assertThat(reader(variableMap).getOptional(STRING)).hasValue(value);
+    assertThat(reader(variableMap).getOptional(stringVariable("xxx"))).isEmpty();
   }
 
   @Test
   public void shouldDelegateGetLocalOptional() {
-    assertThatThrownBy(() -> CamundaBpmData.reader(variableMap).getLocalOptional(STRING)).isInstanceOf(UnsupportedOperationException.class);
+    assertThatThrownBy(() -> reader(variableMap).getLocalOptional(STRING)).isInstanceOf(UnsupportedOperationException.class);
   }
 
   @Test
   public void shouldDelegateGetLocal() {
-    assertThatThrownBy(() -> CamundaBpmData.reader(variableMap).getLocalOptional(STRING)).isInstanceOf(UnsupportedOperationException.class);
+    assertThatThrownBy(() -> reader(variableMap).getLocalOptional(STRING)).isInstanceOf(UnsupportedOperationException.class);
   }
 }

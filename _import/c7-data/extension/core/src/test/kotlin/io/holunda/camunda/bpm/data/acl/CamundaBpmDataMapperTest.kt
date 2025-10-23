@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.CamundaBpmData
+import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
 import io.holunda.camunda.bpm.data.acl.apply.GlobalScopeReplaceStrategy
 import io.holunda.camunda.bpm.data.acl.apply.LocalScopeReplaceStrategy
 import io.holunda.camunda.bpm.data.acl.transform.IdentityVariableMapTransformer
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 
 class CamundaBpmDataMapperTest {
 
-  val TRANSIENT_VAR = CamundaBpmData.customVariable("__transient__", VariableMap::class.java)
+  val TRANSIENT_VAR = customVariable("__transient__", VariableMap::class.java)
 
   @Test
   fun `should create transformingLocalReplace`() {

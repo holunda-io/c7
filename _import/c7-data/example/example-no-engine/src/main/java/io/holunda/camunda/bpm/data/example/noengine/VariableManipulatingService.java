@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.reader;
+import static io.holunda.camunda.bpm.data.Writers.C7.builder;
+import static io.holunda.camunda.bpm.data.Readers.C7.reader;
 import static io.holunda.camunda.bpm.data.example.noengine.CamundaBpmDataExampleNoEngineApplication.ORDER;
 import static io.holunda.camunda.bpm.data.example.noengine.CamundaBpmDataExampleNoEngineApplication.ORDER_ID;
 import static java.time.Instant.now;
@@ -24,7 +24,7 @@ public class VariableManipulatingService {
   public boolean workWithVariables() {
 
     final OrderPosition position = new OrderPosition("Pencil", BigDecimal.valueOf(10.00), 3L);
-    List<OrderPosition> positions = Arrays.asList(position);
+    List<OrderPosition> positions = List.of(position);
 
 
     VariableMap variables = builder()

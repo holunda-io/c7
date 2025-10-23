@@ -1,6 +1,5 @@
 package io.holunda.camunda.bpm.data.reader;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.Variables;
@@ -12,17 +11,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.camunda.bpm.engine.impl.util.CollectionUtil.asHashSet;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static io.holunda.camunda.bpm.data.Readers.C7.reader;
 
 public class LockedExternalTaskReaderTest {
 
@@ -39,7 +35,7 @@ public class LockedExternalTaskReaderTest {
   private final Map<String, String> mapValue = Map.of("a", "b", "c", "d");
 
   LockedExternalTask externalTask = mock(LockedExternalTask.class);
-  private VariableReader reader = CamundaBpmData.reader(externalTask);
+  private final VariableReader reader = reader(externalTask);
 
 
   @BeforeEach

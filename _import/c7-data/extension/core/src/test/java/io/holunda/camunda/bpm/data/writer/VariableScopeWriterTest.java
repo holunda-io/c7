@@ -1,11 +1,11 @@
 package io.holunda.camunda.bpm.data.writer;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.DelegateExecutionFake;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.junit.jupiter.api.Test;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.Writers.C7.writer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableScopeWriterTest {
@@ -16,8 +16,7 @@ public class VariableScopeWriterTest {
   public void testSet() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
 
-    CamundaBpmData
-      .writer(execution)
+    writer(execution)
       .set(STRING, "value")
       .variables();
     assertThat(execution.getVariable(STRING.getName())).isEqualTo("value");
@@ -26,8 +25,7 @@ public class VariableScopeWriterTest {
   @Test
   public void testSetLocal() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
-    CamundaBpmData
-      .writer(execution)
+    writer(execution)
       .setLocal(STRING, "value");
     assertThat(execution.getVariableLocal(STRING.getName())).isEqualTo("value");
   }
@@ -36,8 +34,8 @@ public class VariableScopeWriterTest {
   public void testRemove() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
     STRING.on(execution).set("value");
-    CamundaBpmData.writer(execution)
-                  .remove(STRING);
+    writer(execution)
+      .remove(STRING);
     assertThat(execution.getVariableNames()).isEmpty();
   }
 
@@ -45,8 +43,7 @@ public class VariableScopeWriterTest {
   public void testRemoveLocal() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
     STRING.on(execution).setLocal("value");
-    CamundaBpmData
-      .writer(execution)
+    writer(execution)
       .removeLocal(STRING);
     assertThat(execution.getVariableNames()).isEmpty();
   }

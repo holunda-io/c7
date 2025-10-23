@@ -103,7 +103,7 @@ class OrderApproval {
    */
   @EventListener(condition = "#task != null && #task.eventName == 'create'")
   fun taskLogger(task: DelegateTask) {
-    logger.info("TASK LOGGER: Created user task ${task.id}")
+    logger.info{ "TASK LOGGER: Created user task ${task.id}" }
   }
 
   @EventListener(condition = "#execution != null && #execution.eventName == 'start' && #execution.currentActivityId == 'start_order_created'")

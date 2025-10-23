@@ -13,7 +13,7 @@ import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMes
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.HeaderNames.TIMESTAMP
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.HeaderNames.TTL
 import io.holunda.camunda.bpm.correlate.ingress.message.ChannelMessage
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import java.time.Instant
@@ -129,7 +129,7 @@ open class HeaderMessageMetaDataSnippetExtractor(
     return if (value != null) {
       try {
         Instant.parse(value)
-      } catch (e: DateTimeParseException) {
+      } catch (_: DateTimeParseException) {
         null
       }
     } else {

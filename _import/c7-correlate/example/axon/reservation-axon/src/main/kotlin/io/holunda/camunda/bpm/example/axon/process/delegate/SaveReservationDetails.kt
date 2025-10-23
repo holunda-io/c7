@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.example.axon.process.delegate
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.bpm.example.axon.ReservationProcessing.Variables.CUSTOMER_NAME
 import io.holunda.camunda.bpm.example.axon.ReservationProcessing.Variables.DELAY
 import io.holunda.camunda.bpm.example.axon.ReservationProcessing.Variables.RESERVATION_ID

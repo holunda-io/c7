@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.example.kafka.process.delegate
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.bpm.example.kafka.ReservationProcessing.Variables.CUSTOMER_NAME
 import io.holunda.camunda.bpm.example.kafka.ReservationProcessing.Variables.DELAY
 import io.holunda.camunda.bpm.example.kafka.ReservationProcessing.Variables.RESERVATION_ID

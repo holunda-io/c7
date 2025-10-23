@@ -1,6 +1,5 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.builder
 import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.DelegateExecutionFake
@@ -20,6 +19,7 @@ import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.value.ObjectValue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 
 class AntiCorruptionLayerTest {
 

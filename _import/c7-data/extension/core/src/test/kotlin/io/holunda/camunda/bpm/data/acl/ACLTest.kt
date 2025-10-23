@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.CamundaBpmData
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
@@ -32,7 +32,7 @@ class TransientVariableMappingListenerTest {
     BpmnAwareTests.assertThat(processInstance).isWaitingAt("event_wait_forever")
 
     // when
-    val variables = CamundaBpmData.builder().set(FOO, "bar").build()
+    val variables = builder().set(FOO, "bar").build()
     camunda.runtimeService
       .createSignalEvent("startSubProcess_" + processInstance.id)
       .setVariables(variables)
@@ -55,7 +55,7 @@ class TransientVariableMappingListenerTest {
     BpmnAwareTests.assertThat(processInstance).isWaitingAt("event_wait_forever")
     // when
     // Here the magic happens: all variables are wrapped in one transient variable
-    val variables = ACL_LR.wrap(CamundaBpmData.builder().set(FOO, "bar").build())
+    val variables = ACL_LR.wrap(builder().set(FOO, "bar").build())
     camunda.runtimeService
       .createSignalEvent("startSubProcess_" + processInstance.id)
       .setVariables(variables)
@@ -81,7 +81,7 @@ class TransientVariableMappingListenerTest {
     // when
     // Here the magic happens: all variables are wrapped in one transient variable
     val variables = ACL_GTLR.checkAndWrap(
-      CamundaBpmData.builder()
+      builder()
         .set(FOO, "bar")
         .set(BAZ, 42L)
         .build()
@@ -134,8 +134,7 @@ class TransientVariableMappingListenerTest {
       ),
       variableMapTransformer = object : VariableMapTransformer {
         override fun transform(variableMap: VariableMap): VariableMap {
-          return CamundaBpmData
-            .builder()
+          return builder()
             .set(BAZ_INTERNAL, BAZ.from(variableMap).get() / 2L)
             .set(FOO, FOO.from(variableMap).get())
             .build()
