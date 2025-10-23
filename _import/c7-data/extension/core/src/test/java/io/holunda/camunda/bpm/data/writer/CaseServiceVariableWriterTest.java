@@ -1,6 +1,7 @@
 package io.holunda.camunda.bpm.data.writer;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
+import static io.holunda.camunda.bpm.data.Writers.C7.writer;
+import static io.holunda.camunda.bpm.data.Readers.C7.reader;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.CaseService;
 import org.junit.jupiter.api.AfterEach;
@@ -37,35 +38,35 @@ public class CaseServiceVariableWriterTest {
 
   @Test
   public void testSet() {
-    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+    writer(caseService, CASE_EXECUTION_ID)
       .set(STRING, "value");
     verify(caseService).setVariable(CASE_EXECUTION_ID, STRING.getName(), stringValue("value"));
   }
 
   @Test
   public void testSetLocal() {
-    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+    writer(caseService, CASE_EXECUTION_ID)
       .setLocal(STRING, "value");
     verify(caseService).setVariableLocal(CASE_EXECUTION_ID, STRING.getName(), stringValue("value"));
   }
 
   @Test
   public void testRemove() {
-    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+    writer(caseService, CASE_EXECUTION_ID)
       .remove(STRING);
     verify(caseService).removeVariable(CASE_EXECUTION_ID, STRING.getName());
   }
 
   @Test
   public void testRemoveLocal() {
-    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+    writer(caseService, CASE_EXECUTION_ID)
       .removeLocal(STRING);
     verify(caseService).removeVariableLocal(CASE_EXECUTION_ID, STRING.getName());
   }
 
   @Test
   public void testUpdate() {
-    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+    writer(caseService, CASE_EXECUTION_ID)
       .update(STRING, (old) -> "new value");
     verify(caseService).getVariable(CASE_EXECUTION_ID, STRING.getName());
     verify(caseService).setVariable(CASE_EXECUTION_ID, STRING.getName(), stringValue("new value"));
@@ -73,7 +74,7 @@ public class CaseServiceVariableWriterTest {
 
   @Test
   public void testUpdateLocal() {
-    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+    writer(caseService, CASE_EXECUTION_ID)
       .updateLocal(STRING, (old) -> "new value");
     verify(caseService).getVariableLocal(CASE_EXECUTION_ID, STRING.getName());
     verify(caseService).setVariableLocal(CASE_EXECUTION_ID, STRING.getName(), stringValue("new value"));

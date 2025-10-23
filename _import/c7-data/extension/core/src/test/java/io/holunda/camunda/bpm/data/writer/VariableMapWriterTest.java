@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.junit.jupiter.api.Test;
 
+import static io.holunda.camunda.bpm.data.Writers.C7.writer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableMapWriterTest {
@@ -16,7 +17,7 @@ public class VariableMapWriterTest {
 
   @Test
   public void testSet() {
-    CamundaBpmData.writer(variables)
+    writer(variables)
       .set(STRING, "value");
     assertThat(variables.get(STRING.getName())).isEqualTo("value");
   }
@@ -24,7 +25,7 @@ public class VariableMapWriterTest {
   @Test
   public void testRemove() {
     STRING.on(variables).set("value");
-    CamundaBpmData.writer(variables)
+    writer(variables)
       .remove(STRING);
     assertThat(variables).isEmpty();
   }

@@ -49,7 +49,7 @@ Read/Write adapters for set variable factory.
 
 # Package io.holunda.camunda.bpm.data.builder
 
-Writers are used to create multiple variables inside a variable map.
+io.holunda.camunda.bpm.data.Writers are used to create multiple variables inside a variable map.
 @see [io.holunda.camunda.bpm.data.CamundaBpmData#builder()] methods.
 @since 0.0.5
 
@@ -73,6 +73,6 @@ Readers are used to interact with multiple variables in the same context.
 
 # Package io.holunda.camunda.bpm.data.writer
 
-Writers are used to interact with multiple variables in the same context.
+io.holunda.camunda.bpm.data.Writers are used to interact with multiple variables in the same context.
 @since 0.0.5
 @see [io.holunda.camunda.bpm.data.CamundaBpmData#writer()] methods.

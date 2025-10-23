@@ -41,7 +41,7 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
       return false;
     }
     final TypeVariable<? extends Class<?>>[] typeParameters = erasedType.getTypeParameters();
-    int varLen = typeParameters != null ? typeParameters.length : 0;
+    int varLen = typeParameters.length;
     if (varLen == 0) {
       return false;
     }

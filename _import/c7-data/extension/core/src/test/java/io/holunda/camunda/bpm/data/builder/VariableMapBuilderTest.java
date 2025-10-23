@@ -1,10 +1,10 @@
 package io.holunda.camunda.bpm.data.builder;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.junit.jupiter.api.Test;
 
+import static io.holunda.camunda.bpm.data.Writers.C7.builder;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,12 +14,12 @@ public class VariableMapBuilderTest {
 
   @Test
   public void builderCanCreateEmptyVariableMap() {
-    assertThat(CamundaBpmData.builder().build()).isEmpty();
+    assertThat(builder().build()).isEmpty();
   }
 
   @Test
   public void builderCanWriteVariable() {
-    VariableMap variables = CamundaBpmData.builder().set(FOO, "bar").build();
+    VariableMap variables = builder().set(FOO, "bar").build();
 
     assertThat(FOO.from(variables).get()).isEqualTo("bar");
   }
@@ -27,7 +27,7 @@ public class VariableMapBuilderTest {
   @Test
   public void buildCreatesANewInstanceEveryTime() {
 
-    VariableMapBuilder builder = CamundaBpmData.builder()
+    VariableMapBuilder builder = builder()
       .set(FOO, "bar");
 
     // build copy with "bar"

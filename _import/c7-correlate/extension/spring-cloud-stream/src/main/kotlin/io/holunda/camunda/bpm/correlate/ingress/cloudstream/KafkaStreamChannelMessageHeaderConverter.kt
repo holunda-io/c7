@@ -2,7 +2,7 @@ package io.holunda.camunda.bpm.correlate.ingress.cloudstream
 
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.Companion.HEADER_MESSAGE_ID
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.Companion.HEADER_MESSAGE_TIMESTAMP
-import io.holunda.camunda.bpm.data.CamundaBpmData.builder
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import org.springframework.messaging.Message
 import org.springframework.messaging.MessageHeaders
 import java.time.Instant

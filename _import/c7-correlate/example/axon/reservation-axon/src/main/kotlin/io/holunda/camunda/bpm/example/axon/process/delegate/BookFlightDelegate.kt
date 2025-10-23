@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.example.axon.process.delegate
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.bpm.example.axon.ReservationProcessing
 import io.holunda.camunda.bpm.example.common.domain.flight.BookFlightCommand
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -29,6 +29,6 @@ class BookFlightDelegate(
       bookingReference = reader.get(ReservationProcessing.Variables.RESERVATION_ID)
     )
     commandGateway.sendAndWait<Void>(command)
-    logger.info("[SEND BOOK FLIGHT] Book flight sent for ${reader.get(ReservationProcessing.Variables.RESERVATION_ID)}.")
+    logger.info { "[SEND BOOK FLIGHT] Book flight sent for ${reader.get(ReservationProcessing.Variables.RESERVATION_ID)}." }
   }
 }

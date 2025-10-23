@@ -1,7 +1,7 @@
 package io.holunda.camunda.bpm.data.acl.apply
 
-import io.holunda.camunda.bpm.data.CamundaBpmData
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.junit.jupiter.api.Test
@@ -15,7 +15,7 @@ class GlobalScopeReplaceStrategyTest {
 
   @Test
   fun `should apply global`() {
-    val variables = CamundaBpmData.builder().set(FOO, "bar").build()
+    val variables = builder().set(FOO, "bar").build()
     val executionMock = Mockito.mock(DelegateExecution::class.java)
 
     GlobalScopeReplaceStrategy.apply(variables, executionMock)

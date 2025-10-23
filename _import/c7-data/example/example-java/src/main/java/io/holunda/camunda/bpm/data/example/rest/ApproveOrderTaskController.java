@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
+import static io.holunda.camunda.bpm.data.Writers.C7.builder;
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
 
 @RestController

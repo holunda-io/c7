@@ -1,7 +1,7 @@
 package io.holunda.camunda.platform.adminprocess._test
 
 import com.github.javafaker.Faker
-import io.holunda.camunda.bpm.data.CamundaBpmData
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.platform.adminprocess.AdminProcess
 import io.holunda.camunda.platform.adminprocess.AdminProcessRegistry.Companion.logger
 import io.holunda.camunda.platform.adminprocess.CamundaAdminProcessRegistryLib.adminProcess
@@ -48,7 +48,7 @@ class CamundaAdminProcessRegistryTestApplication {
       formFields = listOf(stringField, dateField, numberField, booleanField),
       tenantId = "my-tenant"
     ) {
-      val variables = CamundaBpmData.reader(it)
+      val variables = reader(it)
 
       logger.info { """ Hi, I am the process running with:
           * foo: ${variables.get(stringField)}
@@ -73,7 +73,7 @@ class CamundaAdminProcessRegistryTestApplication {
       formFields = listOf(stringField, dateField, numberField, booleanField),
       tenantId = "my-tenant"
     ) {
-      val variables = CamundaBpmData.reader(it)
+      val variables = reader(it)
 
       logger.info { """ Hi, I am the process running with:
           * foo: ${variables.get(stringField)}

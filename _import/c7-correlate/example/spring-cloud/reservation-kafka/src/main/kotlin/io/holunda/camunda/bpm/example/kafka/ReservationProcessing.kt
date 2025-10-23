@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.example.kafka
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.builder
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.longVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable

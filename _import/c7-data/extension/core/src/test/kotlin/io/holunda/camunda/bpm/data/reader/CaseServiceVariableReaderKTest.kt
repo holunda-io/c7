@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.data.reader
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
+import io.holunda.camunda.bpm.data.Readers.C7.reader
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import org.assertj.core.api.Assertions
 import org.camunda.bpm.engine.CaseService

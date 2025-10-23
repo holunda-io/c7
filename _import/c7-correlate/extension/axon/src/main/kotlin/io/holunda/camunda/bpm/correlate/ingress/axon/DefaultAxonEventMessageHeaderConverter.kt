@@ -3,7 +3,7 @@ package io.holunda.camunda.bpm.correlate.ingress.axon
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.Companion.HEADER_MESSAGE_ID
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.Companion.HEADER_MESSAGE_PAYLOAD_TYPE_CLASS_NAME
 import io.holunda.camunda.bpm.correlate.correlation.metadata.extractor.HeaderMessageMetaDataSnippetExtractor.Companion.HEADER_MESSAGE_TIMESTAMP
-import io.holunda.camunda.bpm.data.CamundaBpmData.builder
+import io.holunda.camunda.bpm.data.Writers.C7.builder
 import org.axonframework.eventhandling.EventMessage
 
 /**
