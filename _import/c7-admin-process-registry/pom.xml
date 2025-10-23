@@ -17,7 +17,7 @@
 
   <properties>
     <!-- required for camunda with jdk >= 9 -->
-    <jaxb-impl.version>4.0.5</jaxb-impl.version>
+    <jaxb-impl.version>4.0.6</jaxb-impl.version>
   </properties>
 
   <dependencyManagement>
@@ -64,7 +64,7 @@
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
-      <version>5.4.0</version>
+      <version>6.1.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -80,7 +80,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.27.3</version>
+      <version>3.27.6</version>
       <scope>test</scope>
     </dependency>
     <dependency>

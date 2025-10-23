@@ -48,13 +48,13 @@
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>3.0.4</version>
+      <version>3.0.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter-test</artifactId>
-      <version>3.0.4</version>
+      <version>3.0.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -70,7 +70,7 @@
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
-      <version>5.4.0</version>
+      <version>6.1.0</version>
       <scope>test</scope>
     </dependency>
 

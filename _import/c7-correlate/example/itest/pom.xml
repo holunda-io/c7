@@ -109,13 +109,13 @@
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
-      <version>5.4.0</version>
+      <version>6.1.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
-      <version>1.53.0</version>
+      <version>1.56.0</version>
       <scope>test</scope>
     </dependency>
 

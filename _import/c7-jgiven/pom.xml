@@ -21,8 +21,8 @@
 
 
   <properties>
-    <jgiven.version>2.0.2</jgiven.version>
-    <assertj.version>3.27.3</assertj.version>
+    <jgiven.version>2.0.3</jgiven.version>
+    <assertj.version>3.27.6</assertj.version>
     <jgiven-kotlin.version>2.0.2.1</jgiven-kotlin.version>
 
     <jgiven.report.dir>target/jgiven-reports</jgiven.report.dir>
@@ -113,7 +113,7 @@
           <!-- java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.14.0</version>
+          <version>3.14.1</version>
           <configuration>
             <encoding>UTF-8</encoding>
             <source>${java.version}</source>

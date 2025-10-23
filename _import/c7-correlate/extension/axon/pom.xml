@@ -14,7 +14,7 @@
   <name>camunda-bpm-correlate Extension / Ingress Adapter Axon Framework</name>
 
   <properties>
-    <axon-framework.version>4.11.3</axon-framework.version>
+    <axon-framework.version>4.12.1</axon-framework.version>
   </properties>
 
   <dependencyManagement>
@@ -37,7 +37,7 @@
     <dependency>
       <groupId>io.toolisticon.spring</groupId>
       <artifactId>spring-boot-conditions</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
     </dependency>
     <dependency>
       <groupId>io.holunda</groupId>

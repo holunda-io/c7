@@ -16,9 +16,9 @@
   <description>Collection of Camunda Immutables</description>
 
   <properties>
-    <immutables.version>2.11.0</immutables.version>
-    <jetbrains-annotations.version>26.0.2</jetbrains-annotations.version>
-    <assertj.version>3.27.3</assertj.version>
+    <immutables.version>2.11.6</immutables.version>
+    <jetbrains-annotations.version>26.0.2-1</jetbrains-annotations.version>
+    <assertj.version>3.27.6</assertj.version>
 
     <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
   </properties>

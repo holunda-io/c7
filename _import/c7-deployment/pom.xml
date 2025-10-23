@@ -16,9 +16,9 @@
 
   <properties>
     <!-- TEST -->
-    <assertj.version>3.27.3</assertj.version>
+    <assertj.version>3.27.6</assertj.version>
     <junit5.version>5.11.0</junit5.version>
-    <mockk.version>1.14.4</mockk.version>
+    <mockk.version>1.14.6</mockk.version>
   </properties>
 
   <dependencyManagement>
