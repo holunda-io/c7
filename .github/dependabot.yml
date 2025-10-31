@@ -10,7 +10,7 @@ updates:
   - package-ecosystem: "npm"
     directories:
      # - ./_import/camunda-process-test-coverage/extension/sonar-process-test-coverage-plugin/
-      - ./c7-support/c7-correlate/extension/cockpit-plugin/
+      - /c7-support/c7-correlate/extension/cockpit-plugin/
     schedule:
       interval: daily
     open-pull-requests-limit: 30
@@ -18,8 +18,12 @@ updates:
 
   - package-ecosystem: "docker"
     directories:
-      - ./c7-support/c7-correlate/example/axon/
-      - ./c7-support/c7-correlate/example/spring-cloud/
+      - /c7-support/c7-correlate/example/axon/
+      - /c7-support/c7-correlate/example/axon/flight-axon/src/main/docker/
+      - /c7-support/c7-correlate/example/axon/hotel-axon/src/main/docker/
+      - /c7-support/c7-correlate/example/spring-cloud/
+      - /c7-support/c7-correlate/example/spring-cloud/flight-kafka/src/main/docker/
+      - /c7-support/c7-correlate/example/spring-cloud/hotel-kafka/src/main/docker/
     schedule:
       interval: daily
     open-pull-requests-limit: 30
