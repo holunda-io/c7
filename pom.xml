@@ -28,14 +28,16 @@
 
   <modules>
     <module>_build/parent</module>
-    <module>_import/c7-commons-immutables</module>
-    <module>_import/c7-api</module>
-    <module>_import/c7-correlate</module>
-    <module>_import/c7-data</module>
-    <module>_import/c7-jgiven</module>
-    <module>_import/c7-deployment</module>
-    <module>_import/c7-webapp-autologin</module>
-    <module>_import/c7-admin-process-registry</module>
+    <module>c7-operations/c7-admin-process-registry</module>
+    <module>c7-operations/c7-webapp-autologin</module>
+
+    <module>c7-support/c7-api</module>
+    <module>c7-support/c7-commons-immutables</module>
+    <module>c7-support/c7-correlate</module>
+    <module>c7-support/c7-data</module>
+    <module>c7-support/c7-deployment</module>
+
+    <module>c7-testing/c7-jgiven</module>
     <!--
     Currently deactivated, see https://github.com/holunda-io/c7/issues/10
     <module>_import/camunda-platform-7-mockito</module>
@@ -144,18 +146,18 @@
       <organizationUrl>https://holisticon.de</organizationUrl>
     </developer>
     <developer>
-      <name>Christian Maschmann</name>
+      <id>stefanzilske</id>
+      <name>Stefan Zilske</name>
       <roles>
+        <role>Product Owner</role>
         <role>Developer</role>
       </roles>
       <organization>Holisticon AG</organization>
       <organizationUrl>https://holisticon.de</organizationUrl>
     </developer>
     <developer>
-      <id>stefanzilske</id>
-      <name>Stefan Zilske</name>
+      <name>Christian Maschmann</name>
       <roles>
-        <role>Product Owner</role>
         <role>Developer</role>
       </roles>
       <organization>Holisticon AG</organization>
