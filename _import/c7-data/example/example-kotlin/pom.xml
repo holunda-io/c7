@@ -88,7 +88,6 @@
     <dependency>
       <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
-      <version>${kotlin-logging.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springdoc</groupId>
