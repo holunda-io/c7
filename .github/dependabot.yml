@@ -10,7 +10,7 @@ updates:
   - package-ecosystem: "npm"
     directories:
      # - ./_import/camunda-process-test-coverage/extension/sonar-process-test-coverage-plugin/
-      - /c7-support/c7-correlate/extension/cockpit-plugin/
+      - "/"
     schedule:
       interval: daily
     open-pull-requests-limit: 30
