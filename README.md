@@ -59,7 +59,7 @@ Includes features for testing.
 - camunda-bpm-jgiven [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
   [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.testing/camunda-bpm-jgiven)](https://central.sonatype.com/artifact/io.holunda.testing/camunda-bpm-jgiven)
 - camunda-platform-7-mockito (coming soon)
-- camunda-process-tet-coverage (coming soon)
+- camunda-process-test-coverage (coming soon)
 
 
 ## Built for Camunda CE and Camunda EE
