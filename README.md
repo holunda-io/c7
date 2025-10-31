@@ -5,7 +5,7 @@
 
 [![Build Status](https://github.com/holunda-io/c7/workflows/Development%20branches/badge.svg)](https://github.com/holunda-io/c7/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.c7._/c7-root/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.c7._/c7-root)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.c7._/c7-root)](https://central.sonatype.com/artifact/io.holunda.c7._/c7-root)
 ![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
 [![codecov](https://codecov.io/gh/holunda-io/c7/branch/develop/graph/badge.svg?token=imlMg9vhLZ)](https://codecov.io/gh/holunda-io/c7)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8f4d11e919354d9eaa9be3be7b1a4232)](https://app.codacy.com/gh/holunda-io/c7/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
@@ -26,13 +26,12 @@ repository.
 Includes libraries built as improvements to Camunda 7 engine itself.
 
 - camunda-bpm-correlate: [![incubating](https://img.shields.io/badge/lifecycle-INCUBATING-orange.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-correlate/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-bpm-correlate)
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda/camunda-bpm-correlate)](https://central.sonatype.com/artifact/io.holunda/camunda-bpm-correlate)
 - camunda-bpm-data [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.data/camunda-bpm-data)](https://central.sonatype.com/artifact/io.holunda.data/camunda-bpm-data)
 
 - camunda-bpm-spring-boot-deployment [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
-
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.deployment/camunda-bpm-spring-boot-deployment)](https://central.sonatype.com/artifact/io.holunda.deployment/camunda-bpm-spring-boot-deployment)
 - camunda-platform-7-custom-batch (coming soon)
 
 ### Operations
@@ -40,16 +39,16 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 Includes extensions used for improved operations of Camunda 7.
 
 - camunda-api [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.camunda-api/camunda-bpm-engine-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.camunda-api/camunda-bpm-engine-api)
-
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.camunda-api/camunda-api-parent)](https://central.sonatype.com/artifact/io.holunda.camunda-api/camunda-api-parent)
+  
 - c7-commons-immutables [![incubating](https://img.shields.io/badge/lifecycle-INCUBATING-orange.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.commons/camunda-commons-immutables/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.commons/camunda-commons-immutables)
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.commons/camunda-commons-immutables)](https://central.sonatype.com/artifact/io.holunda.commons/camunda-commons-immutables)
 
 - camunda-platform-7-autologin [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-platform-7-autologin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-platform-7-autologin)
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda/camunda-platform-7-autologin)](https://central.sonatype.com/artifact/io.holunda/camunda-platform-7-autologin)
 
 - camunda-admin-process-registry [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-admin-process-registry/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda/camunda-admin-process-registry)
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda/camunda-admin-process-registry)](https://central.sonatype.com/artifact/io.holunda/camunda-admin-process-registry)
 
 - camunda-platform-7-rest-client-spring-boot (coming soon)
 
@@ -58,7 +57,7 @@ Includes extensions used for improved operations of Camunda 7.
 Includes features for testing.
 
 - camunda-bpm-jgiven [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.testing/camunda-bpm-jgiven/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.testing/camunda-bpm-jgiven)
+  [![Maven Central Version](https://img.shields.io/maven-central/v/io.holunda.testing/camunda-bpm-jgiven)](https://central.sonatype.com/artifact/io.holunda.testing/camunda-bpm-jgiven)
 - camunda-platform-7-mockito (coming soon)
 - camunda-process-tet-coverage (coming soon)
 
