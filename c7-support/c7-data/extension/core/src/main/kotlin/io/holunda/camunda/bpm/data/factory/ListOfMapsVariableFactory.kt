@@ -5,6 +5,7 @@ import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import io.holunda.camunda.bpm.data.adapter.listofmaps.*
 import java.util.*
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -61,6 +62,19 @@ class ListOfMapsVariableFactory<K, V>(
   ): ReadAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterRuntimeService(
         runtimeService, executionId, name, keyClass, valueClass)
+  }
+
+  override fun from(
+    historyService: HistoryService,
+    executionId: String
+  ): ReadAdapter<List<Map<K, V>>> {
+    return ListOfMapsReadAdapterHistoryService(
+      historyService,
+      executionId,
+      name,
+      keyClass,
+      valueClass
+    )
   }
 
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<List<Map<K, V>>> {
