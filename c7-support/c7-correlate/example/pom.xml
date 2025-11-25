@@ -18,7 +18,7 @@
 
   <properties>
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.0</spring-cloud.version>
+    <spring-cloud.version>2025.1.0</spring-cloud.version>
     <axon.framework.version>4.12.2</axon.framework.version>
   </properties>
 
