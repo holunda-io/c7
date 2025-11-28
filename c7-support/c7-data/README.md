@@ -201,6 +201,8 @@ and the type is often stored as `java.util.HashMap<java.lang.Object,java.lang.Ob
 To solve this problem we provide the `spin-type-detector` extension module. This module contains a custom SpinTypeDetector which is able to store and retrieve generic type information for collections, such that
 CamundaBpmData can read and write variables of type `List<T>`, `Set<T>` and `Map<K,V>` correctly. This will result in types like `java.util.HasMap<java.lang.String,com.example.MyCustomType>` being stored instead of `java.util.HashMap<java.lang.Object,java.lang.Object>`.
 
+**Note:** The module cannot detect interface types in collections. Only concrete types are supported for generic type detection.
+
 To include this extension in your project, add the following dependency to your `pom.xml`:
 
 ``` xml
