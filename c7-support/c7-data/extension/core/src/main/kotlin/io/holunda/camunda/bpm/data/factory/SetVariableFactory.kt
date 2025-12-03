@@ -69,18 +69,6 @@ class SetVariableFactory<T>(override val name: String, val memberClass: Class<T>
     )
   }
 
-  override fun fromTask(
-    historyService: HistoryService,
-    taskId: String
-  ): ReadAdapter<Set<T>> {
-    return SetReadAdapterHistoricTaskService(
-      historyService,
-      taskId,
-      name,
-      memberClass
-    )
-  }
-
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<Set<T>> {
     return SetReadWriteAdapterTaskService(taskService, taskId, name, memberClass)
   }

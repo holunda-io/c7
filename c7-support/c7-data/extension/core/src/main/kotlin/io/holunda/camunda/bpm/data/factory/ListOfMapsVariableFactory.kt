@@ -79,13 +79,6 @@ class ListOfMapsVariableFactory<K, V>(
     )
   }
 
-  override fun fromTask(
-    historyService: HistoryService,
-    taskId: String
-  ): ReadAdapter<List<Map<K, V>>> {
-    return ListOfMapsReadAdapterHistoricTaskService(historyService, taskId, name, keyClass, valueClass)
-  }
-
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterTaskService(taskService, taskId, name, keyClass, valueClass)
   }

@@ -69,13 +69,6 @@ class BasicVariableFactory<T : Any?>(
     return ReadAdapterHistoryService(historyService, executionId, name, variableClass)
   }
 
-  override fun fromTask(
-    historyService: HistoryService,
-    taskId: String
-  ): ReadAdapter<T> {
-    return ReadAdapterHistoricTaskService(historyService, taskId, name, variableClass)
-  }
-
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<T> {
     return ReadWriteAdapterTaskService(
       taskService,

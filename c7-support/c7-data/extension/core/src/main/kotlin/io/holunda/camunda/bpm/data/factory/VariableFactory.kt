@@ -80,15 +80,6 @@ interface VariableFactory<T> {
   fun from(historyService: HistoryService, executionId: String): ReadAdapter<T>
 
   /**
-   * Creates a read adapter on historic execution
-   *
-   * @param historyService underlying history service to work on.
-   * @param taskId      id identifying task.
-   * @return read adapter.
-   */
-  fun fromTask(historyService: HistoryService, taskId: String): ReadAdapter<T>
-
-  /**
    * Creates a write adapter on task.
    *
    * @param taskService underlying task service to work on.
