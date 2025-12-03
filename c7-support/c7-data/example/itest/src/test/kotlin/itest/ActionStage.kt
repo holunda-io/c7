@@ -5,6 +5,7 @@ import com.tngtech.jgiven.annotation.BeforeScenario
 import com.tngtech.jgiven.annotation.ProvidedScenarioState
 import com.tngtech.jgiven.integration.spring.JGivenStage
 import org.assertj.core.api.Assertions
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
@@ -35,6 +36,10 @@ class ActionStage : Stage<ActionStage>() {
   @Autowired
   @ProvidedScenarioState
   lateinit var taskService: TaskService
+
+  @Autowired
+  @ProvidedScenarioState
+  lateinit var historyService: HistoryService
 
   @ProvidedScenarioState
   lateinit var processDefinition: ProcessDefinition
@@ -192,6 +197,14 @@ class ActionStage : Stage<ActionStage>() {
    */
   fun task_is_accessed_in_user_task(taskServiceTaskCallback: (taskService: TaskService, taskId: String) -> Unit): ActionStage {
     taskServiceTaskCallback.invoke(this.taskService, this.task.id)
+    return self()
+  }
+
+  /**
+   * Calls task callback with task service and task.
+   */
+  fun task_is_accessed_in_historic_user_task(taskServiceTaskCallback: (historyService: HistoryService, taskId: String) -> Unit): ActionStage {
+    taskServiceTaskCallback.invoke(this.historyService, this.task.id)
     return self()
   }
 

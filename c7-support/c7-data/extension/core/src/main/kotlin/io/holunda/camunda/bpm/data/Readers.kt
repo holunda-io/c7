@@ -55,6 +55,18 @@ object Readers {
       return HistoryServiceVariableReader(historyService, executionId)
     }
 
+    /**
+     * Creates a new execution variable reader.
+     *
+     * @param historyService the Camunda history service
+     * @param taskId      the id of the task to use
+     * @return variable reader working on execution
+     */
+    @JvmStatic
+    fun taskReader(historyService: HistoryService, taskId: String): VariableReader {
+      return HistoricTaskServiceVariableReader(historyService, taskId)
+    }
+
 
 
     /**

@@ -7,19 +7,19 @@ import java.util.Optional
 
 class HistoricTaskServiceVariableReader(private val historyService: HistoryService, private val taskId: String) : VariableReader {
   override fun <T> getOptional(variableFactory: VariableFactory<T>): Optional<T> {
-    return variableFactory.from(historyService, taskId).getOptional()
+    return variableFactory.fromTask(historyService, taskId).getOptional()
   }
 
   override fun <T> get(variableFactory: VariableFactory<T>): T {
-    return variableFactory.from(historyService, taskId).get()
+    return variableFactory.fromTask(historyService, taskId).get()
   }
 
   override fun <T> getLocal(variableFactory: VariableFactory<T>): T {
-    return variableFactory.from(historyService, taskId).getLocal()
+    return variableFactory.fromTask(historyService, taskId).getLocal()
   }
 
   override fun <T> getLocalOptional(variableFactory: VariableFactory<T>): Optional<T> {
-    return variableFactory.from(historyService, taskId).getLocalOptional()
+    return variableFactory.fromTask(historyService, taskId).getLocalOptional()
   }
 
   override fun equals(other: Any?): Boolean {

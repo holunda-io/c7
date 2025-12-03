@@ -3,7 +3,6 @@ package io.holunda.camunda.bpm.data.factory
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import io.holunda.camunda.bpm.data.adapter.listofmaps.*
-import java.util.*
 import org.camunda.bpm.engine.CaseService
 import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
@@ -11,6 +10,7 @@ import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.externaltask.LockedExternalTask
 import org.camunda.bpm.engine.variable.VariableMap
+import java.util.*
 
 /**
  * Variable factory of a base parametrized list of maps type.
@@ -19,9 +19,9 @@ import org.camunda.bpm.engine.variable.VariableMap
  * @param [V] member value type of the factory.
  */
 class ListOfMapsVariableFactory<K, V>(
-    override val name: String,
-    val keyClass: Class<K>,
-    val valueClass: Class<V>
+  override val name: String,
+  val keyClass: Class<K>,
+  val valueClass: Class<V>
 ) : VariableFactory<List<Map<K, V>>> {
 
   companion object {
@@ -49,19 +49,21 @@ class ListOfMapsVariableFactory<K, V>(
   }
 
   override fun on(
-      runtimeService: RuntimeService,
-      executionId: String
+    runtimeService: RuntimeService,
+    executionId: String
   ): WriteAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterRuntimeService(
-        runtimeService, executionId, name, keyClass, valueClass)
+      runtimeService, executionId, name, keyClass, valueClass
+    )
   }
 
   override fun from(
-      runtimeService: RuntimeService,
-      executionId: String
+    runtimeService: RuntimeService,
+    executionId: String
   ): ReadAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterRuntimeService(
-        runtimeService, executionId, name, keyClass, valueClass)
+      runtimeService, executionId, name, keyClass, valueClass
+    )
   }
 
   override fun from(
@@ -77,6 +79,13 @@ class ListOfMapsVariableFactory<K, V>(
     )
   }
 
+  override fun fromTask(
+    historyService: HistoryService,
+    taskId: String
+  ): ReadAdapter<List<Map<K, V>>> {
+    return ListOfMapsReadAdapterHistoricTaskService(historyService, taskId, name, keyClass, valueClass)
+  }
+
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterTaskService(taskService, taskId, name, keyClass, valueClass)
   }
@@ -86,19 +95,21 @@ class ListOfMapsVariableFactory<K, V>(
   }
 
   override fun on(
-      caseService: CaseService,
-      caseExecutionId: String
+    caseService: CaseService,
+    caseExecutionId: String
   ): WriteAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterCaseService(
-        caseService, caseExecutionId, name, keyClass, valueClass)
+      caseService, caseExecutionId, name, keyClass, valueClass
+    )
   }
 
   override fun from(
-      caseService: CaseService,
-      caseExecutionId: String
+    caseService: CaseService,
+    caseExecutionId: String
   ): ReadAdapter<List<Map<K, V>>> {
     return ListOfMapsReadWriteAdapterCaseService(
-        caseService, caseExecutionId, name, keyClass, valueClass)
+      caseService, caseExecutionId, name, keyClass, valueClass
+    )
   }
 
   override fun from(lockedExternalTask: LockedExternalTask): ReadAdapter<List<Map<K, V>>> {
@@ -118,13 +129,13 @@ class ListOfMapsVariableFactory<K, V>(
 
   override fun toString(): String {
     return "ListOfMapsVariableFactory{" +
-        "name='" +
-        name +
-        '\'' +
-        ", keyClazz=" +
-        keyClass +
-        ", valueClazz=" +
-        valueClass +
-        '}'
+            "name='" +
+            name +
+            '\'' +
+            ", keyClazz=" +
+            keyClass +
+            ", valueClazz=" +
+            valueClass +
+            '}'
   }
 }

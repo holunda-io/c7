@@ -276,6 +276,8 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(delegateExecution).get()
     }
 
+
+
     @Bean
     fun readLocalFromVariableScope() = JavaDelegate { delegateExecution ->
       readLocalVarsFromVariableScope(variableScope = delegateExecution)

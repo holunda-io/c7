@@ -27,4 +27,11 @@ class AssertStage : Stage<AssertStage>() {
     }
     return self()
   }
+
+  fun variables_had_historic_value(readValues: Map<String, Any>, variablesWithValue: Set<Pair<VariableFactory<*>, Any>>): AssertStage {
+    variablesWithValue.forEach {
+      Assertions.assertThat(readValues).containsEntry(it.first.name, it.second)
+    }
+    return self()
+  }
 }

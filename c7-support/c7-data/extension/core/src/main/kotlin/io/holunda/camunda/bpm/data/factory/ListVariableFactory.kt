@@ -77,6 +77,13 @@ class ListVariableFactory<T>(override val name: String, val memberClass: Class<T
     )
   }
 
+  override fun fromTask(
+    historyService: HistoryService,
+    taskId: String
+  ): ReadAdapter<List<T>> {
+    return ListReadAdapterHistoricTaskService(historyService, taskId, name, memberClass)
+  }
+
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<List<T>> {
     return ListReadWriteAdapterTaskService(
       taskService,
