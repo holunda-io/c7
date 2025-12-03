@@ -276,8 +276,6 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(delegateExecution).get()
     }
 
-
-
     @Bean
     fun readLocalFromVariableScope() = JavaDelegate { delegateExecution ->
       readLocalVarsFromVariableScope(variableScope = delegateExecution)
@@ -400,26 +398,6 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       SET_STRING_VAR.on(delegateExecution).remove()
       MAP_STRING_LONG_VAR.on(delegateExecution).remove()
       LIST_MAP_STRING_OBJECT_VAR.on(delegateExecution).remove()
-    }
-
-    @Bean
-    fun readFromHistoricScope() = JavaDelegate { delegateExecution ->
-      // no implementation needed for the test
-//      vars[STRING_VAR.name] = STRING_VAR.from(historyService = null, delegateExecution.id).get()
-      vars[DATE_VAR.name] = DATE_VAR.from(variableMap).get()
-      vars[SHORT_VAR.name] = SHORT_VAR.from(variableMap).get()
-      vars[INT_VAR.name] = INT_VAR.from(variableMap).get()
-      vars[LONG_VAR.name] = LONG_VAR.from(variableMap).get()
-      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(variableMap).get()
-      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(variableMap).get()
-      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(variableMap).get()
-      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(variableMap).get()
-      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(variableMap).get()
-      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(variableMap).get()
-      vars[LIST_MAP_STRING_OBJECT_VAR.name] = LIST_MAP_STRING_OBJECT_VAR.from(variableMap).get()
-      vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(variableMap).get()
-      vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(variableMap).get()
-      vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(variableMap).get()
     }
   }
 
