@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-mockito</artifactId>
-  <name>testing/c7-mockito - core</name>
+  <name>testing: c7-mockito - core</name>
   <description>Supports various mocking strategies in camunda 7 process tests.</description>
 
   <properties>
