@@ -154,7 +154,7 @@ nav:
       - JGiven:
           - Overview: user-guide/c7-jgiven/index.md
       - Mockito:
-          - Overview: user-guide/camunda-platform-7-mockito/index.md
+          - Overview: user-guide/c7-mockito/index.md
       - Test Coverage:
           - Overview: user-guide/camunda-process-test-coverage/index.md
 

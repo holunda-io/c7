@@ -47,3 +47,4 @@ node/
 node_modules/
 jgiven-reports/
 site/
+/openbpm-studio.xml

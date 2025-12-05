@@ -5,13 +5,13 @@
   <parent>
     <groupId>io.toolisticon.maven.parent</groupId>
     <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2025.10.2</version>
+    <version>2025.11.0</version>
     <relativePath/>
   </parent>
 
   <groupId>io.holunda.c7._</groupId>
   <artifactId>c7-root</artifactId>
-  <version>2025.10.1</version>
+  <version>2025.12.1</version>
 
   <name>pom: ${project.artifactId}</name>
   <description>Root of all holunda/camunda7 libs.</description>
@@ -20,10 +20,10 @@
 
   <properties>
     <!-- Global versions that are crucial for all submodules. -->
-    <camunda-ee.version>7.23.3-ee</camunda-ee.version>
+    <camunda-ee.version>7.24.2-ee</camunda-ee.version>
     <camunda-ce.version>7.24.0</camunda-ce.version>
 
-    <spring-boot.version>3.5.7</spring-boot.version>
+    <spring-boot.version>3.5.8</spring-boot.version>
   </properties>
 
   <modules>
@@ -38,10 +38,7 @@
     <module>c7-support/c7-deployment</module>
 
     <module>c7-testing/c7-jgiven</module>
-    <!--
-    Currently deactivated, see https://github.com/holunda-io/c7/issues/10
-    <module>_import/camunda-platform-7-mockito</module>
-    -->
+    <module>c7-testing/c7-mockito</module>
   </modules>
 
   <dependencyManagement>
@@ -102,7 +99,7 @@
         <repository>
           <id>camunda-bpm-ee</id>
           <name>camunda-bpm-ee</name>
-          <url>https://artifacts.camunda.com/artifactory/camunda-bpm-ee/</url>
+          <url>https://artifacts.camunda.com/artifactory/private/</url>
         </repository>
       </repositories>
       <dependencyManagement>
