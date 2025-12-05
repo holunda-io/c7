@@ -1,45 +1,7 @@
-# camunda-platform-7-mockito
 
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
-[![Camunda 7.22](https://img.shields.io/badge/Camunda%20Version-7.23-orange.svg)]([https://github.com/holisticon#open-source-lifecycle](https://docs.camunda.org/manual/7.23/))
-![](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
-[![](https://img.shields.io/badge/Lifecycle-Stable-brightgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#stable-)
+## Simplify process mocking and testing
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.camunda.community.mockito/camunda-platform-7-mockito/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.camunda.community.mockito/camunda-platform-7-mockito)
-[![codecov](https://codecov.io/gh/camunda/camunda-platform-7-mockito/branch/master/graph/badge.svg)](https://codecov.io/gh/camunda/camunda-platform-7-mockito) 
-[![Apache License V.2](https://img.shields.io/badge/license-Apache%20V.2-blue.svg)](./LICENSE)
-
-| Important                                                                                                                                                                            |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| With camunda 8 released, we renamed this extension to clarify that it is only supposed to work with the Camunda BPM 7 platform, beginning with 6.17.x the maven coordinates changed!  This will also require that you change your imports to `org.camunda.community.mockito`. We are sorry for the inconvenience. |
-
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Get started](#get-started)
-- [Mocking of queries](#mocking-of-queries)
-- [Mock Listener and Delegate behavior](#mock-listener-and-delegate-behavior)
-  - [Possible Actions](#possible-actions)
-  - [Easy register and verify mocks](#easy-register-and-verify-mocks)
-  - [Auto mock all delegates and listeners](#auto-mock-all-delegates-and-listeners)
-- [Delegate&#91;Task|Execution&#93;Fake](#delegatetaskexecutionfake)
-- [Mocking of external subprocesses](#mocking-of-external-subprocesses)
-- [Mocking of message correlation builder](#mocking-of-message-correlation-builder)
-- [Stubbing and verifying access to Camunda Java API services to access process variables](#stubbing-and-verifying-access-to-camunda-java-api-services-to-access-process-variables)
-- [Release Notes](#release-notes)
-  - [Release Process](#release-process)
-- [Limitations](#limitations)
-- [Resources](#resources)
-- [Maintainer](#maintainer)
-- [License](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-**simplify process mocking and testing**
-
-camunda-platform-7-mockito is a community extension for the Camunda BPM process engine that aims to simplify and 
+c7-mockito is a community extension for the Camunda BPM process engine that aims to simplify and
 automate mocking of process applications.
 
 **Features:**
@@ -57,17 +19,10 @@ Just include camunda-platform-7-mockito in the test scope of your project:
 
 ```xml
 <dependency>
-  <groupId>org.camunda.community.mockito</groupId>
-  <artifactId>camunda-platform-7-mockito</artifactId>
+  <groupId>org.holunda.c7</groupId>
+  <artifactId>c7-mockito</artifactId>
   <scope>test</scope>
-  <version>7.23.0</version>
 </dependency>
-```
-
-gradle (kts):
-
-```kotlin
-   testImplementation("org.camunda.community.mockito:camunda-platform-7-mockito:7.22.0")
 ```
 
 
@@ -100,13 +55,13 @@ With the QueryMocks extension, you can do all this in just one line of code, see
 
 ## Mock Listener and Delegate behavior
 
-Mocking void methods using mockito is not very convenient, since you need to 
-use the `doAnswer(Answer<>).when()` construct, implement your own answer and pick up the parameter from the 
+Mocking void methods using mockito is not very convenient, since you need to
+use the `doAnswer(Answer<>).when()` construct, implement your own answer and pick up the parameter from the
 invocation context. JavaDelegate and ExecutionListener are providing their basic functionality using void methods.  
-In general, when working with the Delegate and Listener interfaces, there are basically two things they can do from the 
-point of interaction between the process execution: modify process variables and raise errors. 
+In general, when working with the Delegate and Listener interfaces, there are basically two things they can do from the
+point of interaction between the process execution: modify process variables and raise errors.
 
-We can use this to test bpmn-processes without relying on the delegate implementation. 
+We can use this to test bpmn-processes without relying on the delegate implementation.
 
 ```java
 public class FluentJavaDelegateMockTest {
@@ -138,7 +93,7 @@ public class FluentJavaDelegateMockTest {
 
 * Set single variable
 
-You can set a single variable on execution with: 
+You can set a single variable on execution with:
 
 ```java
 DelegateExpressions.registerJavaDelegateMock(BEAN_NAME/BEAN_CLASS)
@@ -194,7 +149,7 @@ To verify the Mock execution, you can use
 ### Auto mock all delegates and listeners
 
 With the autoMock() feature, you can register all Delegates and Listeners at once, without explicitly adding "register"-statements to your testcase.
-If you do need to specify behaviour for the mocks, you can still get the mock via `getJavaDelegateMock` for delegates. 
+If you do need to specify behaviour for the mocks, you can still get the mock via `getJavaDelegateMock` for delegates.
 And `getExecutionListenerMock` / `getTaskListenerMock` for listeners.
 
 ```java
@@ -217,9 +172,9 @@ And `getExecutionListenerMock` / `getTaskListenerMock` for listeners.
 ## Delegate[Task|Execution]Fake
 
 Unit-testing listeners and JavaDelegates can be difficult, because the methods are void and only
- white-box testing via verify is possible. But most of the time, you just want to 
- confirm that a certain variable was set (or a dueDate, a candidate, ...).
-  
+white-box testing via verify is possible. But most of the time, you just want to
+confirm that a certain variable was set (or a dueDate, a candidate, ...).
+
 In these cases, use the Delegate fakes. They implement the interfaces DelegateTask and DelegateExecution,
 but are implemented as plain, fluent-styled Pojos.
 
@@ -266,7 +221,7 @@ With ProcessExpressions.registerCallActivityMock() you can easily register a moc
 * onExecutionDo ... the MockProcess will execute the given consumer
 * onExecutionThrowEscalation ... the MockProcess will throw escalation with the given code at the end event
 
-All of those methods could be combined on the fluent sub process mock builder. 
+All of those methods could be combined on the fluent sub process mock builder.
 
 The following example will e.g. register a process mock which does the following:
 
@@ -287,7 +242,7 @@ More examples could be found in the following class [`CallActivityMockExampleTes
 
 ## Mocking of message correlation builder
 
-Sometimes you have services or delegates responsible for the execution of message correlation 
+Sometimes you have services or delegates responsible for the execution of message correlation
 with your process engine. Camunda provides a fluent builder API for creation a message correlation
 and running it.
 
@@ -355,9 +310,9 @@ public class MessageCorrelationMockExample {
 }
 ```
 
-## Stubbing and verifying access to Camunda Java API services to access process variables 
+## Stubbing and verifying access to Camunda Java API services to access process variables
 
-If you use [camunda-bpm-data](https://github.com/holunda-io/camunda-bpm-data/) library to access process variables, you might 
+If you use [camunda-bpm-data](https://github.com/holunda-io/camunda-bpm-data/) library to access process variables, you might
 want to test that access. If you are testing `DelegateTask` or `DelegateExecution` code, the examples above already gives you
 possibilities to do so. If your code relies on direct access to Camunda Java API services (`RuntimeService`, `TaskService` and
 `CaseService`) you might need to stub them and verify with the help of `ServiceExpressions` helper:
@@ -424,43 +379,12 @@ public class RuntimeServiceAwareServiceTest {
 
 
 
-## Release Notes
-
-see https://camunda.github.io/camunda-platform-7-mockito/release-notes/
-
-### Release Process
-
-* All issues should be added to a milestone
-* close the milestone to generate a github-release draft, containing all changes
-* publish the github-release (mark as latest release)
-* watch the actions/release pipeline
-* file an issue mentioning camundacommunity/devrel and mark issue with `waitingforcamunda``
-* fingers crossed
-
-
 ## Limitations
 
-* Though it is possible to use arbitrary beans as expressions (myBean.doSomething()), we solely focus on 
-Listeners (notify()) and Delegates (execute()) here, since this is the only way to apply automatic behavior. If you need
-to mock custom beans, you still can use some other tools to register the mock, but can not use the fluent mocking or 
-auto mocking feature. Due to the nature of automatic mocking, this is immanent and will not change.
-* Currently, only expression-delegates (${myDelegate}) are supported (as you do use with CDI/Spring)) but no FQN class names. 
-This might and probably will change with future versions, it just has to be implemented ... 
+* Though it is possible to use arbitrary beans as expressions (myBean.doSomething()), we solely focus on
+  Listeners (notify()) and Delegates (execute()) here, since this is the only way to apply automatic behavior. If you need
+  to mock custom beans, you still can use some other tools to register the mock, but can not use the fluent mocking or
+  auto mocking feature. Due to the nature of automatic mocking, this is immanent and will not change.
+* Currently, only expression-delegates (${myDelegate}) are supported (as you do use with CDI/Spring)) but no FQN class names.
+  This might and probably will change with future versions, it just has to be implemented ...
 * while automocking, expressions are only parsed for listeners and delegates, not for process variables.
-
-## Resources
-
-* [Issue Tracker](https://github.com/camunda/camunda-platform-7-mockito/issues)
-* [Contributing](https://github.com/camunda/camunda-platform-7-mockito/blob/master/CONTRIBUTING.md) 
-* [openhub](https://www.openhub.net/p/camunda-bpm-mockito)
-
-## Maintainer
-
-* [Jan Galinski](https://github.com/jangalinski)
-* [Simon Zambrovski](https://github.com/zambrovski)
-* ??
-  
-## License
-
-* [Apache License, Version 2.0](./LICENSE)
-
