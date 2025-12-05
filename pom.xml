@@ -20,10 +20,10 @@
 
   <properties>
     <!-- Global versions that are crucial for all submodules. -->
-    <camunda-ee.version>7.24.1-ee</camunda-ee.version>
+    <camunda-ee.version>7.24.2-ee</camunda-ee.version>
     <camunda-ce.version>7.24.0</camunda-ce.version>
 
-    <spring-boot.version>3.5.7</spring-boot.version>
+    <spring-boot.version>3.5.8</spring-boot.version>
   </properties>
 
   <modules>
