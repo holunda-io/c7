@@ -38,10 +38,7 @@
     <module>c7-support/c7-deployment</module>
 
     <module>c7-testing/c7-jgiven</module>
-    <!--
-    Currently deactivated, see https://github.com/holunda-io/c7/issues/10
-    <module>_import/camunda-platform-7-mockito</module>
-    -->
+    <module>c7-testing/c7-mockito</module>
   </modules>
 
   <dependencyManagement>
