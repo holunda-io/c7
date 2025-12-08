@@ -107,15 +107,15 @@ Includes features for testing.
 
     [:octicons-arrow-right-24: Reference](c7-jgiven/index.md)
 
--   :fontawesome-brands-markdown:{ .lg .middle } __camunda-platform-7-mockito__
+-   :fontawesome-brands-markdown:{ .lg .middle } __c7-mockito__
 
     ---
 
     Simplify mocking and stubbung for process testing in Camunda 7
 
-    [:octicons-arrow-right-24: Reference](camunda-platform-7-mockito/index.md)
+    [:octicons-arrow-right-24: Reference](c7-mockito/index.md)
 
--   :material-format-font:{ .lg .middle } __camunda-process-tet-coverage__
+-   :material-format-font:{ .lg .middle } __camunda-process-test-coverage__
 
     ---
 

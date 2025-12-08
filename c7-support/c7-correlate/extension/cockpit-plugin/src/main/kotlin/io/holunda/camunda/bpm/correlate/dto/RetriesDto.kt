@@ -7,9 +7,9 @@ import java.time.ZonedDateTime
  * Retries DTO.
  */
 class RetriesDto(
-  @JsonProperty("retries")
+  @field:JsonProperty("retries")
   var retries: Int,
-  @JsonProperty("nextRetry")
+  @field:JsonProperty("nextRetry")
   var nextRetry: ZonedDateTime
 )
 

@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import io.holunda.camunda.bpm.data.adapter.basic.*
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -59,6 +60,13 @@ class BasicVariableFactory<T : Any?>(
       name,
       variableClass
     )
+  }
+
+  override fun from(
+    historyService: HistoryService,
+    executionId: String
+  ): ReadAdapter<T> {
+    return ReadAdapterHistoryService(historyService, executionId, name, variableClass)
   }
 
   override fun on(taskService: TaskService, taskId: String): WriteAdapter<T> {

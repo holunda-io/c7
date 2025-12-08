@@ -5,23 +5,25 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.06.2Ï-SNAPSHOT</version>
+    <version>2025.12.2-SNAPSHOT</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>org.camunda.community.mockito</groupId>
-  <artifactId>camunda-platform-7-mockito</artifactId>
+  <groupId>io.holunda.c7</groupId>
+  <artifactId>c7-mockito</artifactId>
+  <name>testing: c7-mockito - core</name>
+  <description>Supports various mocking strategies in camunda 7 process tests.</description>
 
   <properties>
     <camunda-bpm-data.version>${project.version}</camunda-bpm-data.version>
 
-    <commons-lang3.version>3.18.0</commons-lang3.version>
+    <commons-lang3.version>3.20.0</commons-lang3.version>
     <slf4j.version>2.0.17</slf4j.version>
     <spring.version>6.2.7</spring.version>
 
     <!-- test tools -->
-    <assertj.version>3.27.3</assertj.version>
-    <mockito.version>5.18.0</mockito.version>
+    <assertj.version>3.27.6</assertj.version>
+    <mockito.version>5.20.0</mockito.version>
     <hamcrest.version>3.0</hamcrest.version>
 
     <!-- plugins -->
@@ -146,7 +148,49 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>provided</scope>
-      <version>2.3.232</version>
+      <version>2.4.240</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <!-- java compiler -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-compile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>java-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>java-test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
