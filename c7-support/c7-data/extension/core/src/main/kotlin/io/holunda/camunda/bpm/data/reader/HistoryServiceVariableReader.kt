@@ -5,7 +5,13 @@ import org.camunda.bpm.engine.HistoryService
 import java.util.Objects
 import java.util.Optional
 
-class HistoryServiceVariableReader(private val historyService: HistoryService, private val executionId: String) : VariableReader {
+/**
+ * Reader for history service.
+ */
+class HistoryServiceVariableReader(
+  private val historyService: HistoryService,
+  private val executionId: String
+) : VariableReader {
   override fun <T> getOptional(variableFactory: VariableFactory<T>): Optional<T> {
     return variableFactory.from(historyService, executionId).getOptional()
   }

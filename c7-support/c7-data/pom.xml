@@ -30,6 +30,7 @@
 
   <modules>
     <module>extension/core</module>
+    <module>extension/spin-type-detector</module>
   </modules>
 
   <dependencyManagement>

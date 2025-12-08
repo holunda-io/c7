@@ -23,7 +23,7 @@
       <artifactId>camunda-bpm-data</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.holunda.data.example</groupId>
+      <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
       <version>${project.parent.version}</version>
     </dependency>

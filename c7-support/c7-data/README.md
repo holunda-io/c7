@@ -188,6 +188,31 @@ guide or have a look to our primary documentation: [User Guide](https://www.holu
 We prepared some typical usage scenarios and implemented two example projects in Java and Kotlin.
 See our [Examples](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/examples.html) section for usage and configuration.
 
+## Extensions
+
+### spin-type-detector
+Camunda tries to detect variable types automatically when saving them. For primitives types this works quite well.
+The variable information is stored in datables `ACT_RU_VARIABLE` and `ACT_HI_VARINST` respectively.
+For complex objects the the `TYPE_` is stored for example as `spin://application/json` and the `TEXT2_` is used to store the actual type of the object.
+
+This continues to work when using simple objects. For collections (List, Set, Map) the generic type information is lost during serialization
+and the type is often stored as `java.util.HashMap<java.lang.Object,java.lang.Object>`. Then when using CamundaBpmData to read the variable there will be an exception because the type cannot be converted to the expected type.
+
+To solve this problem we provide the `spin-type-detector` extension module. This module contains a custom SpinTypeDetector which is able to store and retrieve generic type information for collections, such that
+CamundaBpmData can read and write variables of type `List<T>`, `Set<T>` and `Map<K,V>` correctly. This will result in types like `java.util.HasMap<java.lang.String,com.example.MyCustomType>` being stored instead of `java.util.HashMap<java.lang.Object,java.lang.Object>`.
+
+**Note:** The module cannot detect interface types in collections. Only concrete types are supported for generic type detection.
+
+To include this extension in your project, add the following dependency to your `pom.xml`:
+
+``` xml
+<dependency>
+  <groupId>io.holunda.data</groupId>
+  <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
+  <version>xxx</version>
+</dependency>
+```
+
 ## License
 
 [![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
