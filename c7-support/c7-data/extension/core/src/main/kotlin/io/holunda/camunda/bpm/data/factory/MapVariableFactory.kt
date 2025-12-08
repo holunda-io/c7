@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import io.holunda.camunda.bpm.data.adapter.map.*
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -76,6 +77,19 @@ class MapVariableFactory<K, V>(
   override fun from(runtimeService: RuntimeService, executionId: String): ReadAdapter<Map<K, V>> {
     return MapReadWriteAdapterRuntimeService(
       runtimeService,
+      executionId,
+      name,
+      keyClass,
+      valueClass
+    )
+  }
+
+  override fun from(
+    historyService: HistoryService,
+    executionId: String
+  ): ReadAdapter<Map<K, V>> {
+    return MapReadAdapterHistoryService(
+      historyService,
       executionId,
       name,
       keyClass,

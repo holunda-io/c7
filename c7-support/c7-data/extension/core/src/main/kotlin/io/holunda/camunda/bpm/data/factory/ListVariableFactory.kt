@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import io.holunda.camunda.bpm.data.adapter.list.*
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -58,6 +59,18 @@ class ListVariableFactory<T>(override val name: String, val memberClass: Class<T
   override fun from(runtimeService: RuntimeService, executionId: String): ReadAdapter<List<T>> {
     return ListReadWriteAdapterRuntimeService(
       runtimeService,
+      executionId,
+      name,
+      memberClass
+    )
+  }
+
+  override fun from(
+    historyService: HistoryService,
+    executionId: String
+  ): ReadAdapter<List<T>> {
+    return ListReadAdapterHistoryService(
+      historyService,
       executionId,
       name,
       memberClass
