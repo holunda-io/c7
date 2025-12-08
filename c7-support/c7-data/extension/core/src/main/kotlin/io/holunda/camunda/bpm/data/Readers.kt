@@ -32,7 +32,7 @@ object Readers {
     }
 
     /**
-     * Creates a new execution variable reader.
+     * Creates a new runtime execution variable reader.
      *
      * @param runtimeService the Camunda runtime service
      * @param executionId    the executionId to use
@@ -44,7 +44,7 @@ object Readers {
     }
 
     /**
-     * Creates a new execution variable reader.
+     * Creates a new history execution variable reader.
      *
      * @param historyService the Camunda history service
      * @param executionId    the executionId to use
@@ -56,7 +56,7 @@ object Readers {
     }
 
     /**
-     * Creates a new execution variable reader.
+     * Creates a new case execution variable reader.
      *
      * @param caseService     the Camunda case service
      * @param caseExecutionId the caseExecutionId to use
