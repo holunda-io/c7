@@ -47,4 +47,5 @@ node/
 node_modules/
 jgiven-reports/
 site/
-/openbpm-studio.xml
+openbpm-studio.xml
+flowset-studio.xml
