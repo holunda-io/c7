@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.camunda.community.rest</groupId>
     <artifactId>camunda-platform-7-rest-client-spring-boot-parent</artifactId>
-    <version>7.23.1-SNAPSHOT</version>
+    <version>7.24.1-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -25,17 +25,19 @@
       <artifactId>camunda-platform-7-rest-client-spring-boot-openapi</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <!-- Camunda -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>camunda-platform-7-rest-client-variables</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <!-- Camunda API -->
     <dependency>
       <groupId>io.holunda.camunda-api</groupId>
       <artifactId>camunda-bpm-engine-api</artifactId>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.camunda.spin</groupId>
-      <artifactId>camunda-spin-core</artifactId>
-      <scope>provided</scope>
-    </dependency>
+
+    <!-- SPIN -->
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine-plugin-spin</artifactId>

@@ -8,7 +8,7 @@ import org.camunda.community.rest.adapter.ProcessInstanceAdapter
 import org.camunda.community.rest.client.api.ProcessInstanceApiClient
 import org.camunda.community.rest.client.model.ProcessInstanceQueryDto
 import org.camunda.community.rest.impl.toProcessInstanceSorting
-import org.camunda.community.rest.variables.toDto
+import org.camunda.community.rest.impl.toDto
 import kotlin.reflect.KMutableProperty1
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.isAccessible
@@ -19,6 +19,7 @@ import kotlin.reflect.jvm.isAccessible
 class DelegatingProcessInstanceQuery(
   private val processInstanceApiClient: ProcessInstanceApiClient,
   var processInstanceId: String? = null,
+  var rootProcessInstanceId: String? = null,
   var processInstanceIds: Set<String>? = null,
   var businessKey: String? = null,
   var businessKeyLike: String? = null,
@@ -48,6 +49,8 @@ class DelegatingProcessInstanceQuery(
   override fun processInstanceId(processInstanceId: String?) = this.apply { this.processInstanceId = requireNotNull(processInstanceId) }
 
   override fun processInstanceIds(processInstanceIds: MutableSet<String>?) = this.apply { this.processInstanceIds = requireNotNull(processInstanceIds) }
+
+  override fun rootProcessInstanceId(rootProcessInstanceId: String?) = this.apply { this.rootProcessInstanceId = requireNotNull(rootProcessInstanceId) }
 
   override fun processInstanceBusinessKey(processInstanceBusinessKey: String?) = this.apply { this.businessKey = requireNotNull(processInstanceBusinessKey) }
 

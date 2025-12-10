@@ -6,26 +6,37 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.camunda.bpm.engine.BadUserRequestException
 import org.camunda.bpm.engine.exception.NotFoundException
 import org.camunda.bpm.engine.exception.NotValidException
+import org.camunda.bpm.engine.variable.Variables
 import org.camunda.community.rest.client.api.DecisionDefinitionApiClient
 import org.camunda.community.rest.client.model.DecisionDefinitionDto
 import org.camunda.community.rest.client.model.VariableValueDto
+import org.camunda.community.rest.variables.serialization.SpinJsonValueSerializer
+import org.camunda.community.rest.variables.ValueMapper
+import org.camunda.community.rest.variables.ValueTypeRegistration
 import org.camunda.community.rest.variables.ValueTypeResolverImpl
+import org.camunda.community.rest.variables.serialization.JsonValueSerializer
 import org.junit.Test
-import org.mockito.kotlin.any
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.isNull
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 import org.springframework.http.ResponseEntity
 
-class DelegatingDecisionEvaluationBuilderTest {
+internal class DelegatingDecisionEvaluationBuilderTest {
 
-  val decisionDefinitionApiClient = mock<DecisionDefinitionApiClient>()
+  private val decisionDefinitionApiClient = mock<DecisionDefinitionApiClient>()
+  private val objectMapper = jacksonObjectMapper()
+  private val typeResolver = ValueTypeResolverImpl()
+  private val typeRegistration = ValueTypeRegistration()
+  private val valueMapper = ValueMapper(
+    objectMapper = objectMapper,
+    valueTypeResolver = typeResolver,
+    valueTypeRegistration = typeRegistration,
+    valueSerializers = listOf(JsonValueSerializer(objectMapper)),
+    serializationFormat = Variables.SerializationDataFormats.JSON,
+    customValueSerializers = listOf(SpinJsonValueSerializer(typeResolver, typeRegistration))
+  )
 
   val builder = DelegatingDecisionEvaluationBuilder(
     decisionDefinitionApiClient = decisionDefinitionApiClient,
-    objectMapper = jacksonObjectMapper(),
-    valueTypeResolver = ValueTypeResolverImpl(),
+    valueMapper = valueMapper,
     decisionDefinitionKey = "decisionDefinitionKey"
   ).apply {
     this.variables(mutableMapOf("var" to "value"))
@@ -36,8 +47,7 @@ class DelegatingDecisionEvaluationBuilderTest {
   fun cannotSupplyDecisionDefinitionIdAndKey() {
     val builder = DelegatingDecisionEvaluationBuilder(
       decisionDefinitionApiClient = decisionDefinitionApiClient,
-      objectMapper = jacksonObjectMapper(),
-      valueTypeResolver = ValueTypeResolverImpl(),
+      valueMapper = valueMapper,
       decisionDefinitionKey = "decisionDefinitionKey",
       decisionDefinitionId = "decisionDefinitionId"
     )
@@ -50,8 +60,7 @@ class DelegatingDecisionEvaluationBuilderTest {
   fun cannotUseTenantWithDecisionDefinitionId() {
     val builder = DelegatingDecisionEvaluationBuilder(
       decisionDefinitionApiClient = decisionDefinitionApiClient,
-      objectMapper = jacksonObjectMapper(),
-      valueTypeResolver = ValueTypeResolverImpl(),
+      valueMapper = valueMapper,
       decisionDefinitionId = "decisionDefinitionId"
     ).apply {
       this.decisionDefinitionTenantId("tenantId")
@@ -64,9 +73,36 @@ class DelegatingDecisionEvaluationBuilderTest {
   @Test
   fun testEvaluateDecisionWithKeyAndVersion() {
     builder.version(1)
-    whenever(decisionDefinitionApiClient.getDecisionDefinitions(isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), isNull(),
-      isNull(), isNull(), isNull(), isNull(), eq("decisionDefinitionKey"), isNull(), isNull(), isNull(), eq(1), isNull(), isNull(), isNull(),
-      isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), isNull())
+    whenever(
+      decisionDefinitionApiClient.getDecisionDefinitions(
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        eq("decisionDefinitionKey"),
+        isNull(),
+        isNull(),
+        isNull(),
+        eq(1),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull()
+      )
     ).thenReturn(
       ResponseEntity.ok(listOf(DecisionDefinitionDto().id("decisionDefinitionId")))
     )
@@ -80,9 +116,36 @@ class DelegatingDecisionEvaluationBuilderTest {
   @Test
   fun testEvaluateDecisionWithKeyAndVersionNotFound() {
     builder.version(1)
-    whenever(decisionDefinitionApiClient.getDecisionDefinitions(isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), isNull(),
-      isNull(), isNull(), isNull(), isNull(), eq("decisionDefinitionKey"), isNull(), isNull(), isNull(), eq(1), isNull(), isNull(), isNull(),
-      isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), isNull())
+    whenever(
+      decisionDefinitionApiClient.getDecisionDefinitions(
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        eq("decisionDefinitionKey"),
+        isNull(),
+        isNull(),
+        isNull(),
+        eq(1),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull(),
+        isNull()
+      )
     ).thenReturn(
       ResponseEntity.ok(listOf())
     )
@@ -114,8 +177,7 @@ class DelegatingDecisionEvaluationBuilderTest {
   fun testEvaluateByDecisionDefinitionId() {
     val builder = DelegatingDecisionEvaluationBuilder(
       decisionDefinitionApiClient = decisionDefinitionApiClient,
-      objectMapper = jacksonObjectMapper(),
-      valueTypeResolver = ValueTypeResolverImpl(),
+      valueMapper = valueMapper,
       decisionDefinitionId = "decisionDefinitionId"
     )
     whenever(decisionDefinitionApiClient.evaluateDecisionById(eq("decisionDefinitionId"), any())).thenReturn(
