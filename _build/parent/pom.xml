@@ -59,6 +59,16 @@
             </pluginOptions>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>com.google.code.maven-replacer-plugin</groupId>
+          <artifactId>maven-replacer-plugin</artifactId>
+          <version>1.4.1</version>
+        </plugin>
+        <plugin>
+          <groupId>com.bobpaulin.maven.jsonp</groupId>
+          <artifactId>jsonp-maven-plugin</artifactId>
+          <version>0.0.7</version>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

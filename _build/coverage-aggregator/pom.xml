@@ -81,6 +81,29 @@
       <version>${project.version}</version>
     </dependency>
 
+    <!-- REST Client -->
+    <dependency>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-rest-client-spring-boot</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-rest-client-spring-boot-openapi</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-rest-client-spring-boot-starter</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-rest-client-variables</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
