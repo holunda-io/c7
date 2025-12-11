@@ -4,13 +4,13 @@
   <parent>
     <groupId>org.camunda.community</groupId>
     <artifactId>community-hub-release-parent</artifactId>
-    <version>1.4.4</version>
+    <version>2.1.0</version>
     <relativePath />
   </parent>
 
   <groupId>org.camunda.community.rest</groupId>
   <artifactId>camunda-platform-7-rest-client-spring-boot-parent</artifactId>
-  <version>7.23.1-SNAPSHOT</version>
+  <version>7.24.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>camunda-platform-7-rest-client-spring-boot/parent</name>
   <description>Camunda Platform 7 REST Client Spring-Boot</description>
@@ -31,22 +31,22 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <version.java>${java.version}</version.java>
 
-    <camunda.version.base>7.23</camunda.version.base>
+    <camunda.version.base>7.24</camunda.version.base>
     <camunda.version.ce>${camunda.version.base}.0</camunda.version.ce>
     <camunda.version.ee>${camunda.version.base}.0-ee</camunda.version.ee>
-    <camunda-bpm-api.version>7.23.0</camunda-bpm-api.version>
-    <spin.version>7.23.0</spin.version>
+    <holunda-c7.version>2025.12.1</holunda-c7.version>
+    <spin.version>7.24.0</spin.version>
 
-    <spring-boot.version>3.4.5</spring-boot.version>
-    <spring-cloud.version>2024.0.1</spring-cloud.version>
+    <spring-boot.version>3.5.7</spring-boot.version>
+    <spring-cloud.version>2025.0.0</spring-cloud.version>
 
-    <kotlin.version>2.1.20</kotlin.version>
-    <kotlin-logging.version>7.0.7</kotlin-logging.version>
+    <kotlin.version>2.1.21</kotlin.version>
+    <kotlin-logging.version>7.0.13</kotlin-logging.version>
 
     <!-- test tools -->
-    <assertj.version>3.27.3</assertj.version>
-    <mockito.version>5.17.0</mockito.version>
-    <mockito-kotlin.version>5.4.0</mockito-kotlin.version>
+    <assertj.version>3.27.6</assertj.version>
+    <mockito.version>5.20.0</mockito.version>
+    <mockito-kotlin.version>6.1.0</mockito-kotlin.version>
 
     <pattern.class.itest>**/*ITest.*</pattern.class.itest>
     <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
@@ -59,9 +59,11 @@
 
   <modules>
     <module>extension/client</module>
+    <module>extension/variables</module>
     <module>extension/core</module>
     <module>extension/starter</module>
     <module>extension/starter-provided</module>
+    <module>extension/starter-feign</module>
   </modules>
 
   <dependencyManagement>
@@ -95,9 +97,16 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>org.camunda.commons</groupId>
+        <artifactId>camunda-commons-bom</artifactId>
+        <version>${camunda.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
         <groupId>io.holunda.camunda-api</groupId>
         <artifactId>camunda-bpm-engine-api</artifactId>
-        <version>${camunda-bpm-api.version}</version>
+        <version>${holunda-c7.version}</version>
       </dependency>
       <dependency>
         <groupId>org.camunda.bpm</groupId>
@@ -114,7 +123,7 @@
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>2.2.30</version>
+        <version>2.2.40</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -176,7 +185,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.13</version>
+          <version>0.8.14</version>
           <executions>
             <execution>
               <id>pre-unit-test</id>
@@ -197,7 +206,7 @@
           <!-- java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.14.0</version>
+          <version>3.14.1</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <source>${maven.compiler.source}</source>
@@ -308,7 +317,7 @@
         <!-- Unit Tests -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.5.3</version>
+          <version>3.5.4</version>
           <configuration>
             <useSystemClassLoader>false</useSystemClassLoader>
             <runOrder>random</runOrder>
@@ -324,7 +333,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.3</version>
+          <version>3.5.4</version>
           <executions>
             <execution>
               <goals>
@@ -359,7 +368,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>2.0.0</version>
+          <version>2.1.0</version>
           <executions>
             <execution>
               <phase>package</phase>
@@ -380,7 +389,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.6.0</version>
+          <version>3.6.1</version>
           <executions>
             <execution>
               <phase>generate-sources</phase>
@@ -420,7 +429,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>2.5.0</version>
+          <version>2.7.0</version>
           <configuration>
             <licenseName>camunda_apache_v2</licenseName>
             <licenseResolver>${project.baseUri}src/license</licenseResolver>
@@ -449,7 +458,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>3.6.2</version>
           <executions>
             <execution>
               <id>enforce-maven</id>

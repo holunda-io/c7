@@ -1,16 +1,21 @@
 package org.camunda.community.rest.impl.builder
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.assertj.core.api.Assertions.assertThat
+import org.camunda.bpm.engine.variable.Variables
 import org.camunda.community.rest.client.api.ExternalTaskApiClient
 import org.camunda.community.rest.client.model.LockedExternalTaskDto
 import org.camunda.community.rest.config.CamundaRestClientProperties
 import org.camunda.community.rest.variables.ValueMapper
+import org.camunda.community.rest.variables.ValueTypeRegistration
 import org.camunda.community.rest.variables.ValueTypeResolverImpl
+import org.camunda.community.rest.variables.serialization.JsonValueSerializer
 import org.junit.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import org.springframework.http.ResponseEntity
+import java.time.OffsetDateTime
 
 class RemoteExternalTaskQueryBuilderTest {
 
@@ -18,9 +23,20 @@ class RemoteExternalTaskQueryBuilderTest {
 
   val camundaRestClientProperties = mock<CamundaRestClientProperties>()
 
+  private val objectMapper = jacksonObjectMapper()
+  private val typeResolver = ValueTypeResolverImpl()
+  private val typeRegistration = ValueTypeRegistration()
+
   val builder = RemoteExternalTaskQueryBuilder(
     externalTaskApiClient,
-    valueMapper = ValueMapper(valueTypeResolver = ValueTypeResolverImpl()),
+    valueMapper = ValueMapper(
+      objectMapper = objectMapper,
+      valueTypeResolver = typeResolver,
+      valueTypeRegistration = typeRegistration,
+      valueSerializers = listOf(JsonValueSerializer(objectMapper)),
+      serializationFormat = Variables.SerializationDataFormats.JSON,
+      customValueSerializers = listOf()
+    ),
     camundaRestClientProperties,
     workerId = "workerId",
     maxTasks = 10,
@@ -30,7 +46,7 @@ class RemoteExternalTaskQueryBuilderTest {
   @Test
   fun execute() {
     whenever(externalTaskApiClient.fetchAndLock(any())).thenReturn(
-      ResponseEntity.ok(listOf(LockedExternalTaskDto().id("id").priority(1)))
+      ResponseEntity.ok(listOf(LockedExternalTaskDto().id("id").priority(1).createTime(OffsetDateTime.now())))
     )
     val result = builder
       .topic("topic", 5000)
