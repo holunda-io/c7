@@ -12,13 +12,13 @@
         <meta name="author" content="Holisticon BPM Craftsman">
       
       
-        <link rel="canonical" href="https://www.holunda.io/c7/snapshot/getting-started/camunda-bpm-data.html">
+        <link rel="canonical" href="https://www.holunda.io/c7/snapshot/getting-started/c7-rest-client-spring-boot.html">
       
       
-        <link rel="prev" href="camunda-bpm-correlate.html">
+        <link rel="prev" href="c7-process-test-coverage.html">
       
       
-        <link rel="next" href="c7-deployment.html">
+        <link rel="next" href="c7-webapp-autologin.html">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Data - Holunda C7</title>
+        <title>REST Client Spring Boot - Holunda C7</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#why-should-i-use-this" class="md-skip">
+        <a href="#install-dependency" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data
+              REST Client Spring Boot
             
           </span>
         </div>
@@ -537,35 +537,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Data
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="camunda-bpm-data.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="camunda-bpm-data.html" class="md-nav__link">
         
   
   
@@ -581,96 +556,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-should-i-use-this" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why should I use this?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to start?
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How to start?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#add-dependency" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add dependency
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#declare-process-variable-factories" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Declare process variable factories
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#access-process-variables-from-java-delegate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access process variables from Java Delegate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variable-access-from-rest-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variable access from REST Controller
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -764,10 +649,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="c7-rest-client-spring-boot.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST Client Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="c7-rest-client-spring-boot.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -783,6 +693,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-dependency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Dependency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3102,96 +3063,81 @@
   
 
 
-  <h1>Data</h1>
+  <h1>REST Client Spring Boot</h1>
 
-<h2 id="why-should-i-use-this">Why should I use this?<a class="headerlink" href="#why-should-i-use-this" title="Permanent link">#</a></h2>
-<p>If you are a software engineer and run process automation projects in your company or on behalf of the customer
-based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
-them and thereby manipulate the state of the process execution - one of the core features during process automation.</p>
-<p>Unfortunately, as a user of the Camunda API, you have to exactly know the variable type (so the Java class behind it).
-For example, if you store a String in a variable <code>"orderId"</code> you must extract it as a String in every piece of code.
-Since there is no code connection between the different code parts, but the BPMN process model orchestrates
-these snippets to a single process execution, it makes refactoring and testing of process automation projects
-error-prone and challenging.</p>
-<p>This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
-easy and convenient. We leverage the Camunda API and offer you not only a better API but also some
-<a href="../user-guide/camunda-bpm-data/features.html">additional features</a>.</p>
-<h2 id="how-to-start">How to start?<a class="headerlink" href="#how-to-start" title="Permanent link">#</a></h2>
-<h3 id="add-dependency">Add dependency<a class="headerlink" href="#add-dependency" title="Permanent link">#</a></h3>
-<p>Current version available in Sonatype OSS Maven Central is:</p>
-<p>In Apache Maven add to your <code>pom.xml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
-<span class="w">  </span><span class="nt">&lt;groupId&gt;</span>io.holunda.data<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>camunda-bpm-data<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">  </span><span class="nt">&lt;version&gt;</span>${camunda-bpm-data.version}<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using the extension from an application containing Camunda BPM Engine classes on the classpath, please check the
+<a href="./examples/Usage_inside_a_process_application">Working Example</a> section of our user guide.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also use the generated feign clients directly without using the Camunda Services.
+Please check out the <a href="./examples/Usage_of_feign_clients">Feign Example</a> section of our user guide.</p>
+</div>
+<h2 id="install-dependency">Install Dependency<a class="headerlink" href="#install-dependency" title="Permanent link">#</a></h2>
+<p>First install the extension dependency and configure Feign and Feign client:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">  </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>io.holunda.c7<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>c7-rest-client-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
-<p>For Gradle Kotlin DSL add to your <code>build.gradle.kts</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.holunda.data:camunda-bpm-data:</span><span class="si">${</span><span class="n">camunda</span><span class="o">-</span><span class="n">bpm</span><span class="o">-</span><span class="n">data</span><span class="p">.</span><span class="na">version</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="declare-process-variable-factories">Declare process variable factories<a class="headerlink" href="#declare-process-variable-factories" title="Permanent link">#</a></h3>
-<p>First you have to define your process variables, by providing the variable name and type. For providing the type,
-different convenience methods exist:</p>
-<p>Here is an example in Java:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">io.holunda.camunda.bpm.data.factory.VariableFactory</span><span class="p">;</span>
-<span class="kn">import static</span><span class="w"> </span><span class="nn">io.holunda.camunda.bpm.data.CamundaBpmData.*</span><span class="p">;</span>
-
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderApproval</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringVariable</span><span class="p">(</span><span class="s">&quot;orderId&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customVariable</span><span class="p">(</span><span class="s">&quot;order&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Order</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_APPROVED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">booleanVariable</span><span class="p">(</span><span class="s">&quot;orderApproved&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">OrderPosition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_POSITION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customVariable</span><span class="p">(</span><span class="s">&quot;orderPosition&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OrderPosition</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">BigDecimal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_TOTAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customVariable</span><span class="p">(</span><span class="s">&quot;orderTotal&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="access-process-variables-from-java-delegate">Access process variables from Java Delegate<a class="headerlink" href="#access-process-variables-from-java-delegate" title="Permanent link">#</a></h3>
-<p>If you want to access the process variable, call methods on the <code>ProcessVariableFactory</code> to configure the usage context,
-and then invoke the variable access methods.</p>
-<p>Here is an example, how it looks like to access variable from <code>JavaDelegate</code> implemented in Java. In this example,
-the total amount is calculated from the amounts of order positions and stored in the process variable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please make sure your Spring Cloud version matches your Spring Boot version as described in the <a href="https://spring.io/projects/spring-cloud#release-trains">Spring Cloud documentation</a></p>
+</div>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
+<p>In your client code, activate the usage of REST client by adding the following annotation to your configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
-<span class="kd">class</span> <span class="nc">JavaDelegates</span><span class="w"> </span><span class="p">{</span>
+<span class="nd">@EnableCamundaRestClient</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClientConfiguration</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="nd">@Bean</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="nf">calculateOrderPositions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">OrderPosition</span><span class="w"> </span><span class="n">orderPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ORDER_POSITION</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">execution</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
-<span class="w">      </span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">oldTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ORDER_TOTAL</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">execution</span><span class="p">).</span><span class="na">getOptional</span><span class="p">().</span><span class="na">orElse</span><span class="p">(</span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">ZERO</span><span class="p">);</span>
-<span class="w">      </span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">newTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldTotal</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">orderPosition</span><span class="p">.</span><span class="na">getNetCost</span><span class="p">().</span><span class="na">multiply</span><span class="p">(</span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">orderPosition</span><span class="p">.</span><span class="na">getAmount</span><span class="p">())));</span>
-<span class="w">      </span><span class="n">ORDER_TOTAL</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="n">execution</span><span class="p">).</span><span class="na">setLocal</span><span class="p">(</span><span class="n">newTotal</span><span class="p">);</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="variable-access-from-rest-controller">Variable access from REST Controller<a class="headerlink" href="#variable-access-from-rest-controller" title="Permanent link">#</a></h3>
-<p>Now imagine you are implementing a REST controller for a user task form which
-loads data from the process application, displays it, captures some input and
-sends that back to the process application to complete the user task. By doing so,
-you will usually need to access process variables. Here is an example:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@RestController</span>
-<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/task/approve-order&quot;</span><span class="p">)</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ApproveOrderTaskController</span><span class="w"> </span><span class="p">{</span>
+<p>In order to configure the Feign client, make sure to provide usual feign client configuration
+(e.g. using <code>application.yml</code>). To set up the engine base URL, please set up the properties:</p>
+<div class="highlight"><pre><span></span><code>feign:
+  client:
+    config:
+      default:
+        url: &quot;http://your-process-engine-host/engine-rest/&quot;
+</code></pre></div>
+<p>There is also the possibility to configure a different URL for each feign client (even though this is a very uncommon setup):</p>
+<div class="highlight"><pre><span></span><code>feign:
+  client:
+    config:
+      processInstance:
+        url: &quot;http://your-process-engine-host/engine-rest/&quot;
+      processDefinition:
+        url: &quot;http://your-process-engine-host/engine-rest/&quot;
+      message:
+        url: &quot;http://your-process-engine-host/engine-rest/&quot;
+      ...
+</code></pre></div>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
+<p>To access the remote API, inject the remote API implementation:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClient</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">TaskService</span><span class="w"> </span><span class="n">taskService</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ApproveOrderTaskController</span><span class="p">(</span><span class="n">TaskService</span><span class="w"> </span><span class="n">taskService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">taskService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskService</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyClient</span><span class="p">(</span><span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&quot;remote&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">runtimeService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/{taskId}&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">ApproveTaskDto</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">loadTask</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&quot;taskId&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">taskId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ORDER</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">taskService</span><span class="p">,</span><span class="w"> </span><span class="n">taskId</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ApproveTaskDto</span><span class="p">(</span><span class="n">order</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">runtimeService</span>
+<span class="w">      </span><span class="p">.</span><span class="na">startProcessInstanceByKey</span><span class="p">(</span><span class="s">&quot;my_process_key&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/{taskId}&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">completeTask</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&quot;taskId&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">taskId</span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">ApproveTaskCompleteDto</span><span class="w"> </span><span class="n">userInput</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">VariableMap</span><span class="w"> </span><span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">ORDER_APPROVED</span><span class="p">,</span><span class="w"> </span><span class="n">userInput</span><span class="p">.</span><span class="na">getApproved</span><span class="p">())</span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">        </span><span class="n">taskService</span><span class="p">.</span><span class="na">complete</span><span class="p">(</span><span class="n">taskId</span><span class="p">,</span><span class="w"> </span><span class="n">vars</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">noContent</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">correlate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">runtimeService</span>
+<span class="w">      </span><span class="p">.</span><span class="na">createMessageCorrelation</span><span class="p">(</span><span class="s">&quot;message_received&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">processInstanceBusinessKey</span><span class="p">(</span><span class="s">&quot;WAIT_FOR_MESSAGE&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">correlateAllWithResult</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -3214,7 +3160,7 @@ you will usually need to access process variables. Here is an example:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 2, 2022 17:10:55 UTC">December 2, 2022</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 10, 2025 19:04:54 UTC">December 10, 2025</span>
   </span>
 
     
