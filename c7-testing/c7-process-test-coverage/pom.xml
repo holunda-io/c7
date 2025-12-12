@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2025.12.2-SNAPSHOT</version>
+    <relativePath>../../_build/parent/pom.xml</relativePath>
+  </parent>
+
+  <artifactId>c7-process-test-coverage-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <name>testing: c7-process-test-coverage - parent</name>
+  <description>Helper library to visualize and assert which parts of a BPMN process have been covered by a test.
+  </description>
+
+  <properties>
+    <camunda.compile.version>7.24.0</camunda.compile.version>
+  </properties>
+
+  <modules>
+    <module>bom</module>
+    <module>extension/core</module>
+    <module>extension/engine-platform-7</module>
+    <module>extension/junit5-common</module>
+    <module>extension/junit5-platform-7</module>
+    <module>extension/spring-test-common</module>
+    <module>extension/spring-test-platform-7</module>
+    <module>extension/starter-platform-7</module>
+    <module>extension/report-generator</module>
+
+  </modules>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <!-- Kotlin compiler -->
+          <artifactId>kotlin-maven-plugin</artifactId>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <version>${kotlin.version}</version>
+          <configuration>
+            <jvmTarget>${version.java}</jvmTarget>
+            <languageVersion>2.0</languageVersion>
+            <apiVersion>2.0</apiVersion>
+            <compilerPlugins>
+              <plugin>spring</plugin>
+              <plugin>no-arg</plugin>
+              <plugin>all-open</plugin>
+            </compilerPlugins>
+          </configuration>
+          <executions>
+            <execution>
+              <id>compile</id>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <configuration>
+                <sourceDirs>
+                  <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                  <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                </sourceDirs>
+              </configuration>
+            </execution>
+            <execution>
+              <id>test-compile</id>
+              <goals>
+                <goal>test-compile</goal>
+              </goals>
+              <configuration>
+                <sourceDirs>
+                  <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                  <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                </sourceDirs>
+              </configuration>
+            </execution>
+          </executions>
+          <dependencies>
+            <dependency>
+              <groupId>org.jetbrains.kotlin</groupId>
+              <artifactId>kotlin-maven-allopen</artifactId>
+              <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.jetbrains.kotlin</groupId>
+              <artifactId>kotlin-maven-noarg</artifactId>
+              <version>${kotlin.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.5.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+  </build>
+
+  <profiles>
+    <profile>
+      <id>plugins</id>
+      <activation>
+        <property>
+          <name>!skipPlugins</name>
+        </property>
+      </activation>
+      <modules>
+        <module>plugin/report-aggregator-maven-plugin</module>
+        <module>plugin/report-aggregator-gradle-plugin</module>
+        <module>plugin/sonar-process-test-coverage-plugin</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>examples</id>
+      <activation>
+        <property>
+          <name>!skipExamples</name>
+        </property>
+      </activation>
+      <modules>
+        <module>examples</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>regression-test</id>
+      <modules>
+        <module>regression-tests</module>
+      </modules>
+    </profile>
+  </profiles>
+
+</project>

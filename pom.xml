@@ -39,6 +39,7 @@
 
     <module>c7-testing/c7-jgiven</module>
     <module>c7-testing/c7-mockito</module>
+    <module>c7-testing/c7-process-test-coverage</module>
   </modules>
 
   <dependencyManagement>

@@ -1,0 +1,34 @@
+plugins {
+    kotlin("jvm")
+    id("java-gradle-plugin")
+    id("com.gradle.plugin-publish")
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("file://${projectDir}/target/dependencies")
+    }
+}
+
+dependencies {
+    implementation(gradleApi())
+    implementation(group = "io.holunda.c7", name = "c7-process-test-coverage-report-generator", version = "$version")
+    testImplementation(gradleTestKit())
+    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "5.12.0")
+    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+    testImplementation(group = "org.assertj", name = "assertj-core", version = "3.27.3")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+gradlePlugin {
+    plugins {
+        create("aggregateProcessTestCoverage") {
+            id = "io.holunda.c7.report-aggregator"
+            implementationClass = "io.holunda.c7.report.aggregator.ReportAggregatorPlugin"
+        }
+    }
+}
