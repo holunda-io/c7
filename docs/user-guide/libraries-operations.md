@@ -38,12 +38,4 @@ Includes extensions used for improved operations of Camunda 7.
 
     [:octicons-arrow-right-24: Reference](c7-admin-process-registry/index.md)
 
--   :material-scale-balance:{ .lg .middle } __camunda-platform-7-rest-client-spring-boot__
-
-    ---
-
-    Full-featured client for Camunda 7 REST API providing implementation of Camunda Java API
-
-    [:octicons-arrow-right-24: Reference](camunda-platform-7-rest-client-spring-boot/index.md)
-
 </div>

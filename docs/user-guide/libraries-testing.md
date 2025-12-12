@@ -24,15 +24,13 @@ Includes features for testing.
 
     [:octicons-arrow-right-24: Reference](c7-mockito/index.md)
 
--   :material-format-font:{ .lg .middle } __camunda-process-test-coverage__
+-   :material-format-font:{ .lg .middle } __c7-process-test-coverage__
 
     ---
 
     Visualise test process paths and ensure your process model coverage ratio
 
-    [:octicons-arrow-right-24: Reference](camunda-process-test-coverage/index.md)
+    [:octicons-arrow-right-24: Reference](c7-process-test-coverage/index.md)
 
 
 </div>
-
-

@@ -38,4 +38,13 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     [:octicons-arrow-right-24: Reference](#)
 
+-   :material-scale-balance:{ .lg .middle } __c7-rest-client-spring-boot__
+
+    ---
+
+    Full-featured client for Camunda 7 REST API providing implementation of Camunda Java API
+
+    [:octicons-arrow-right-24: Reference](c7-rest-client-spring-boot/index.md)
+
+
 </div>

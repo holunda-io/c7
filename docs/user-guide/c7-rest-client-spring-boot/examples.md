@@ -23,9 +23,8 @@ The application uses the library by adding it to the classpath via Apache Maven 
 
 ```xml
 <dependency>
-  <groupId>org.camunda.community.rest</groupId>
-  <artifactId>camunda-platform-7-rest-client-spring-boot-starter</artifactId>
-  <version>${project.version}</version>
+  <groupId>io.holunda.c7</groupId>
+  <artifactId>c7-rest-client-spring-boot-starter</artifactId>
 </dependency>
 ```
 
@@ -64,7 +63,7 @@ an engine is initialized and is running.
 
 Imagine the process engine has the following process deployed:
 
-!["Example messaging process"](../assets/img/process_messaging.png)
+!["Example messaging process"](../../assets/img/support/rest-client-spring-boot/process_messaging.png)
 
 The client (running technically in the same JVM, but accessing the engine via REST) again executes the following steps:
 
@@ -83,9 +82,8 @@ The application uses the library by adding it to the classpath via Apache Maven 
 
 ```xml
 <dependency>
-  <groupId>org.camunda.community.rest</groupId>
-  <artifactId>camunda-platform-7-rest-client-spring-boot-starter-provided</artifactId>
-  <version>${project.version}</version>
+  <groupId>io.holunda.c7</groupId>
+  <artifactId>c7-rest-client-spring-boot-starter-provided</artifactId>
 </dependency>
 ```
 
@@ -119,9 +117,8 @@ The application uses the library by adding it to the classpath via Apache Maven 
 
 ```xml
 <dependency>
-  <groupId>org.camunda.community.rest</groupId>
-  <artifactId>camunda-platform-7-rest-client-spring-boot-starter-feign</artifactId>
-  <version>${project.version}</version>
+  <groupId>io.holunda.c7</groupId>
+  <artifactId>c7-rest-client-spring-boot-starter-feign</artifactId>
 </dependency>
 ```
 

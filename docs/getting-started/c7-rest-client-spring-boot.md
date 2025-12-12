@@ -14,15 +14,10 @@ First install the extension dependency and configure Feign and Feign client:
 
 ```xml
 
-<properties>
-  <camunda-platform-7-rest-client-spring-boot.version>{{ POM_VERSION }}</camunda-platform-7-rest-client-spring-boot.version>
-</properties>
-
 <dependencies>
   <dependency>
-    <groupId>org.camunda.community.rest</groupId>
-    <artifactId>camunda-platform-7-rest-client-spring-boot-starter</artifactId>
-    <version>${camunda-platform-7-rest-client-spring-boot.version}</version>
+    <groupId>io.holunda.c7</groupId>
+    <artifactId>c7-rest-client-spring-boot-starter</artifactId>
   </dependency>
 </dependencies>
 ```

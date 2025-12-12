@@ -19,10 +19,10 @@ This can be used to define comma separated glob patterns to find the json report
 
 The plugin adds a coverage measure for each found BPMN diagram and also an accumulated one on project level.
 
-![Processes coverage](../assets/img/sonarqube_coverage_processes.png)
+![Processes coverage](../../assets/img/testing/process-test-coverage/sonarqube_coverage_processes.png)
 
-![Project coverage](../assets/img/sonarqube_coverage_project.png)
+![Project coverage](../../assets/img/testing/process-test-coverage/sonarqube_coverage_project.png)
 
-Also a HTML for the project is added as a project report page.
+Also an HTML for the project is added as a project report page.
 
-![Project report page](../assets/img/sonarqube_coverage_report_page.png)
+![Project report page](../../assets/img/testing/process-test-coverage/sonarqube_coverage_report_page.png)

@@ -1,17 +1,8 @@
-[![](https://img.shields.io/badge/Lifecycle-Stable-brightgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#stable-)
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
-![Compatible with: Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
-![Compatible with: Camunda Platform 8](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%208-26d07c)
-![Supported Camunda versions](https://img.shields.io/badge/Camunda%20Version-%207.18%20to%207.23%20and%208-orange.svg)
-
-
-![Camunda Logo](docs/assets/img/Favicons-Circle-Colour.png)
-
-# Camunda Process Test Coverage
+# C7 Process Test Coverage
 
 This Camunda Platform 7 and Platform 8 community extension **visualises** test process **paths** and **checks** your process model **coverage** ratio. Running  typical JUnit tests now leaves **html** files in your build output. Just open one and check yourself what your test did:
 
-![Coverage report](docs/assets/img/flowcov_coverage_report.png)
+![Coverage report](../../assets/img/testing/process-test-coverage/flowcov_coverage_report.png)
 
 ## Highlights
 
@@ -39,7 +30,7 @@ If you are interested in further documentation, please check our [Documentation 
 
 Add a **Maven test dependency** to your project <a href="https://maven-badges.herokuapp.com/maven-central/org.camunda.community.process_test_coverage/camunda-process-test-coverage-bom"><img src="https://maven-badges.herokuapp.com/maven-central/org.camunda.community.process_test_coverage/camunda-process-test-coverage-bom/badge.svg" align="right" /></a>
 
-### JUnit5 (Platform 7 or Platform 8)
+### JUnit5 (Platform 7)
 
 ```xml
 <dependency>
@@ -103,19 +94,23 @@ companion object {
 }
 ```
 
+## Quick Start
+
+If you just want to start using the library, please consult our [Getting Started](../../getting-started/c7-process-test-coverage.md) guide.
+
+## User Guide
+
+The user guide consists of several sections.
+
+## Configuration
+
+* [Configure report directory](configuration.md)
+
+## Plugins
+
+* [Sonarqube plugin](sonarqube.md)
+
 ## Running the tests
 
 Running your JUnit tests now leaves **html** files for individual test methods as well as whole test classes in your project's `target/process-test-coverage` folder. Just open one, check yourself - and have fun with your process tests! :smile:
 
-
-## News and Noteworthy & Contributors
-
-There are plenty of contributors to this project. Its initial design has been created by the WDW eLab GmbH and some others,
-but then the project has been abandoned for some time and received a full rewrite including the new architecture by members
-of flowcov.io squad and BPM craftsmen from Holisticon AG. We appreciate any help and effort you put into maintenance
-discussion and further development.
-
-Please check the release notes of [individual releases](https://github.com/camunda-community-hub/camunda-process-test-coverage/releases) for the changes and involved contributors.
-
-## License
-[Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). See [LICENSE](LICENSE.md) file.
