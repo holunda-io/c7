@@ -12,7 +12,7 @@
   <groupId>io.holunda.c7</groupId>
 
   <artifactId>sonar-camunda-process-test-coverage-plugin</artifactId>
-  <name>Camunda Process Test Coverage Sonar Plugin</name>
+  <name>testing - process-test-coverage - sonar-plugin</name>
   <packaging>sonar-plugin</packaging>
   <properties>
     <sonar-plugin-api.version>10.14.0.2599</sonar-plugin-api.version>
@@ -39,21 +39,6 @@
       <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-plugin-api-impl</artifactId>
       <version>${sonar.api.impl.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

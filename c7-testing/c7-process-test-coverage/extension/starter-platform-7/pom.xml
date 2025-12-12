@@ -11,13 +11,13 @@
 
   <groupId>io.holunda.c7</groupId>
 
-  <artifactId>c7-process-test-coverage-starter-platform-7</artifactId>
-  <name>Camunda Process Test Coverage Starter Platform 7</name>
+  <artifactId>c7-process-test-coverage-spring-test-starter</artifactId>
+  <name>testing: c7-process-test-coverage - spring-test-starter</name>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>c7-process-test-coverage-spring-test-platform-7</artifactId>
+      <artifactId>c7-process-test-coverage-spring-test</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

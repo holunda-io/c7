@@ -11,9 +11,9 @@
   </parent>
 
   <groupId>io.holunda.c7</groupId>
-  <artifactId>c7-process-test-coverage-engine-platform-7</artifactId>
+  <artifactId>c7-process-test-coverage-engine</artifactId>
 
-  <name>Camunda Process Test Coverage Engine Platform 7</name>
+  <name>testing: c7-process-test-coverage - engine</name>
 
 
   <dependencies>
@@ -42,11 +42,6 @@
     <dependency>
       <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
     </dependency>
 
   </dependencies>

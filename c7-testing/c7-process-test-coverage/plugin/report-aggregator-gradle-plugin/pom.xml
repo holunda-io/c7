@@ -13,7 +13,7 @@
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-process-test-coverage-report-aggregator-gradle-plugin</artifactId>
 
-  <name>Camunda Process Test Coverage Report Aggregator Gradle Plugin</name>
+  <name>testing - process-test-coverage - aggregator-gradle-plugin</name>
 
   <!--
       This subproject is built by Gradle as the Gradle plugin API requires a Gradle build. This POM

@@ -1,7 +1,11 @@
 package org.camunda.community.process_test_coverage.report;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.File;
 import java.net.URL;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Martin Schimak <martin.schimak@plexiti.com>
@@ -11,15 +15,15 @@ public class ClassLocationURLTest {
   @Test
   public void test_urlFromCodeSource_JavaLangStringClass() {
     URL url = ClassLocationURL.urlFromCodeSource(String.class);
-    Assert.assertNull(url);
+    assertThat(url).isNull();
   }
 
   @Test
   public void test_urlFromCodeSource_OrgJunitTestClass() {
     URL url = ClassLocationURL.urlFromCodeSource(Test.class);
-    Assert.assertNotNull(url);
-    Assert.assertTrue(url.toExternalForm().startsWith("file:"));
-    Assert.assertTrue(url.toExternalForm().endsWith(".jar"));
+    assertThat(url).isNotNull();
+    assertThat(url.toExternalForm()).startsWith("file:");
+    assertThat(url.toExternalForm()).endsWith(".jar");
   }
 
   @Test

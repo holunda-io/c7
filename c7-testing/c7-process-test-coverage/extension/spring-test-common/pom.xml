@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-process-test-coverage-spring-test-common</artifactId>
-  <name>Camunda Process Test Coverage Spring-Testing Common</name>
+  <name>testing: c7-process-test-coverage - spring-test-common</name>
 
 
   <dependencies>
@@ -38,10 +38,6 @@
     <dependency>
       <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
     </dependency>
 
   </dependencies>

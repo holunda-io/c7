@@ -21,7 +21,7 @@
 
     <dependency>
       <groupId>io.holunda.c7</groupId>
-      <artifactId>c7-process-test-coverage-starter-platform-7</artifactId>
+      <artifactId>c7-process-test-coverage-spring-test-starter</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
