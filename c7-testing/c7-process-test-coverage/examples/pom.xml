@@ -25,9 +25,9 @@
   </properties>
 
   <modules>
-    <module>junit5-platform-7</module>
+    <!-- TODO: #268 include   <module>junit5-platform-7</module>-->
     <module>jgiven-platform-7</module>
-    <module>spring-test-platform-7</module>
+    <!-- TODO: #268  include       <module>spring-test-platform-7</module> -->
     <module>spring-starter-platform-7</module>
   </modules>
 

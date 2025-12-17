@@ -154,8 +154,8 @@
       </activation>
       <modules>
         <module>plugin/report-aggregator-maven-plugin</module>
-        <module>plugin/report-aggregator-gradle-plugin</module>
-        <module>plugin/sonar-process-test-coverage-plugin</module>
+<!-- TODO: #268 include      <module>plugin/report-aggregator-gradle-plugin</module>-->
+<!-- TODO: #268 include       <module>plugin/sonar-process-test-coverage-plugin</module>-->
       </modules>
     </profile>
     <profile>
