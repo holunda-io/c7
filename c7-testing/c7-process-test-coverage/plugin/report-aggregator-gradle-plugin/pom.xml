@@ -35,6 +35,11 @@
       <artifactId>c7-process-test-coverage-report-generator</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -63,6 +68,10 @@
           </execution>
           <execution>
             <id>test-compile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>integration-test-compile</id>
             <phase>none</phase>
           </execution>
         </executions>
@@ -181,6 +190,7 @@
                   <includes>
                     <include>${project.artifactId}-${project.version}.jar</include>
                     <include>${project.artifactId}-${project.version}-sources.jar</include>
+                    <include>${project.artifactId}-${project.version}-javadoc.jar</include>
                   </includes>
                 </resource>
               </resources>

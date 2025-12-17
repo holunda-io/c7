@@ -171,7 +171,7 @@
     </profile>
 
     <profile>
-      <id>regression-test</id>
+      <id>regression-tests</id>
       <modules>
         <module>regression-tests</module>
       </modules>

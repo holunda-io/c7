@@ -9,6 +9,7 @@ import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
@@ -30,33 +31,38 @@ class ReportAggregatorPluginTest {
     private lateinit var settingsFile: File
     private lateinit var gradleRunner: GradleRunner
 
-    @Test
+    companion object {
+      const val PLUGIN = "io.holunda.c7.c7-process-test-coverage-report-aggregator"
+    }
+
+  @BeforeEach
+  fun setup() {
+    settingsFile = File(testProjectDir, "settings.gradle")
+    buildFile = File(testProjectDir, "build.gradle")
+    Files.write(settingsFile.toPath(), "rootProject.name = 'process-coverage-gradle-plugin-test'".toByteArray())
+    val buildFileContent = """
+            plugins {
+                id '$PLUGIN'
+            }
+        """
+    Files.write(buildFile.toPath(), buildFileContent.toByteArray())
+    gradleRunner = GradleRunner.create()
+      .withProjectDir(testProjectDir)
+      .withPluginClasspath()
+      .forwardOutput()
+      .withArguments("aggregateProcessTestCoverage")
+  }
+
+  @Test
     fun reportAggregatorPluginTest() {
         val project: Project = ProjectBuilder.builder().build()
-        project.pluginManager.apply("org.camunda.community.process_test_coverage.report-aggregator")
+        project.pluginManager.apply(PLUGIN)
         assertTrue(
-            project.pluginManager.hasPlugin("org.camunda.community.process_test_coverage.report-aggregator")
+            project.pluginManager.hasPlugin(PLUGIN)
         )
         assertNotNull(project.tasks.getByName("aggregateProcessTestCoverage"))
     }
 
-    @BeforeEach
-    fun setup() {
-        settingsFile = File(testProjectDir, "settings.gradle")
-        buildFile = File(testProjectDir, "build.gradle")
-        Files.write(settingsFile.toPath(), "rootProject.name = 'process-coverage-gradle-plugin-test'".toByteArray())
-        val buildFileContent = """
-            plugins {
-                id 'org.camunda.community.process_test_coverage.report-aggregator'
-            }
-        """
-        Files.write(buildFile.toPath(), buildFileContent.toByteArray())
-        gradleRunner = GradleRunner.create()
-            .withProjectDir(testProjectDir)
-            .withPluginClasspath()
-            .forwardOutput()
-            .withArguments("aggregateProcessTestCoverage")
-    }
 
     @Test
     fun should_not_create_any_file_when_run_on_empty_dir() {
@@ -91,7 +97,7 @@ class ReportAggregatorPluginTest {
             include("module2")
         """
         Files.write(settingsFile.toPath(), settingsFileContent.toByteArray())
-        val result = gradleRunner.build()
+       val result = gradleRunner.build()
         assertEquals(TaskOutcome.SUCCESS, result.task(":aggregateProcessTestCoverage")?.outcome)
         assertResult()
     }
@@ -101,7 +107,7 @@ class ReportAggregatorPluginTest {
         copyDirectory(Paths.get("src/test/resources/different_report_directory/"), testProjectDir.toPath())
         val buildFileContent = """
             plugins {
-                id 'org.camunda.community.process_test_coverage.report-aggregator'
+                id '$PLUGIN'
             }
 
             aggregateProcessTestCoverage {

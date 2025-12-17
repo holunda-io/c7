@@ -25,7 +25,7 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>c7-process-test-coverage-starter-platform-7</artifactId>
+      <artifactId>c7-process-test-coverage-spring-test-starter</artifactId>
       <scope>test</scope>
     </dependency>
 

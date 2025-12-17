@@ -1,15 +1,15 @@
 /*-
  * #%L
- * Camunda Process Test Coverage Report Generator
+ * Camunda Process Test Coverage Sonar Plugin
  * %%
  * Copyright (C) 2019 - 2024 Camunda
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,5 +17,17 @@
  * limitations under the License.
  * #L%
  */
-body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body,html{height:100vh}body{overflow-y:scroll}.tjs-container{margin-top:2em;justify-content:center}
-/*# sourceMappingURL=main.b2b50cfd.chunk.css.map */
+import { Model, Suite } from "../api/api";
+
+declare global {
+    interface Window {
+        COVERAGE_DATA: {
+            suites: Suite[];
+            models: Model[];
+        };
+        COLORS: {
+            green: number,
+            yellow: number
+        };
+    }
+}

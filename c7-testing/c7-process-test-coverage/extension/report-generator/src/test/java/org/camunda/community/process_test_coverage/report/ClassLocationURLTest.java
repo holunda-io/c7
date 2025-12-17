@@ -1,5 +1,6 @@
 package org.camunda.community.process_test_coverage.report;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -29,16 +30,16 @@ public class ClassLocationURLTest {
   @Test
   public void test_urlFromCodeSource_ThisClass() {
     URL url = ClassLocationURL.urlFromCodeSource(ClassLocationURLTest.class);
-    Assert.assertNotNull(url);
-    Assert.assertTrue(url.toExternalForm().startsWith("file:"));
-    Assert.assertFalse(url.toExternalForm().endsWith(".jar"));
-    Assert.assertTrue(url.toExternalForm().endsWith("/"));
+    assertThat(url).isNotNull();
+    assertThat(url.toExternalForm().startsWith("file:")).isTrue();
+    assertThat(url.toExternalForm().endsWith(".jar")).isFalse();
+    assertThat(url.toExternalForm().endsWith("/")).isTrue();
   }
 
   @Test
   public void test_urlFromResource_JavaLangStringClass() {
     URL url = ClassLocationURL.urlFromResource(String.class);
-    Assert.assertNotNull(url);
+    assertThat(url).isNotNull();
 //    doesn't work in Java 11: Assert.assertTrue(url.toExternalForm().startsWith("file:"));
 //    doesn't work in Java 11: Assert.assertTrue(url.toExternalForm().endsWith(".jar"));
   }
@@ -46,24 +47,24 @@ public class ClassLocationURLTest {
   @Test
   public void test_urlFromResource_OrgJunitTestClass() {
     URL url = ClassLocationURL.urlFromResource(Test.class);
-    Assert.assertNotNull(url);
-    Assert.assertTrue(url.toExternalForm().startsWith("file:"));
-    Assert.assertTrue(url.toExternalForm().endsWith(".jar"));
+    assertThat(url).isNotNull();
+    assertThat(url.toExternalForm().startsWith("file:")).isTrue();
+    assertThat(url.toExternalForm().endsWith(".jar")).isTrue();
   }
 
   @Test
   public void test_urlFromResource_ThisClass() {
     URL url = ClassLocationURL.urlFromResource(ClassLocationURLTest.class);
-    Assert.assertNotNull(url);
-    Assert.assertTrue(url.toExternalForm().startsWith("file:"));
-    Assert.assertFalse(url.toExternalForm().endsWith(".jar"));
-    Assert.assertTrue(url.toExternalForm().endsWith("/"));
+    assertThat(url).isNotNull();
+    assertThat(url.toExternalForm().startsWith("file:")).isTrue();
+    assertThat(url.toExternalForm().endsWith(".jar")).isFalse();
+    assertThat(url.toExternalForm().endsWith("/")).isTrue();
   }
 
   @Test
   public void test_locationFor_JavaLangStringClass() {
     URL url = ClassLocationURL.locationFor(String.class);
-    Assert.assertNotNull(url);
+    assertThat(url).isNotNull();
 //    doesn't work in Java 11: Assert.assertTrue(url.toExternalForm().startsWith("file:"));
 //    doesn't work in Java 11: Assert.assertTrue(url.toExternalForm().endsWith(".jar"));
   }
@@ -71,43 +72,43 @@ public class ClassLocationURLTest {
   @Test
   public void test_locationFor_OrgJunitTestClass() {
     URL url = ClassLocationURL.locationFor(Test.class);
-    Assert.assertNotNull(url);
-    Assert.assertTrue(url.toExternalForm().startsWith("file:"));
-    Assert.assertTrue(url.toExternalForm().endsWith(".jar"));
+    assertThat(url).isNotNull();
+    assertThat(url.toExternalForm().startsWith("file:")).isTrue();
+    assertThat(url.toExternalForm().endsWith(".jar")).isTrue();
   }
 
   @Test
   public void test_locationFor_ThisClass() {
     URL url = ClassLocationURL.locationFor(ClassLocationURLTest.class);
-    Assert.assertNotNull(url);
-    Assert.assertTrue(url.toExternalForm().startsWith("file:"));
-    Assert.assertFalse(url.toExternalForm().endsWith(".jar"));
-    Assert.assertTrue(url.toExternalForm().endsWith("/"));
+    assertThat(url).isNotNull();
+    assertThat(url.toExternalForm().startsWith("file:")).isTrue();
+    assertThat(url.toExternalForm().endsWith(".jar")).isFalse();
+    assertThat(url.toExternalForm().endsWith("/")).isTrue();
   }
 
   @Test
-  @Ignore // doesn't work in Java 11
+  @Disabled // doesn't work in Java 11
   public void test_fileFor_JavaLangStringClass() {
     File file  = ClassLocationURL.fileFor(String.class);
-    Assert.assertNotNull(file);
-    Assert.assertTrue(file.getAbsolutePath().endsWith(".jar"));
-    Assert.assertTrue(file.isFile());
+    assertThat(file).isNotNull();
+    assertThat(file.getAbsolutePath().endsWith(".jar")).isTrue();
+    assertThat(file.isFile()).isTrue();
   }
 
   @Test
   public void test_fileFor_OrgJunitTestClass() {
     File file = ClassLocationURL.fileFor(Test.class);
-    Assert.assertNotNull(file);
-    Assert.assertTrue(file.getAbsolutePath().endsWith(".jar"));
-    Assert.assertTrue(file.isFile());
+    assertThat(file).isNotNull();
+    assertThat(file.getAbsolutePath().endsWith(".jar")).isTrue();
+    assertThat(file.isFile()).isTrue();
   }
 
   @Test
   public void test_fileFor_ThisClass() {
     File file = ClassLocationURL.fileFor(ClassLocationURLTest.class);
-    Assert.assertNotNull(file);
-    Assert.assertFalse(file.getAbsolutePath().endsWith(".jar"));
-    Assert.assertTrue(file.isDirectory());
+    assertThat(file).isNotNull();
+    assertThat(file.getAbsolutePath().endsWith(".jar")).isFalse();
+    assertThat(file.isDirectory()).isTrue();
   }
 
 }

@@ -66,6 +66,7 @@
       <plugin>
         <groupId>io.holunda.c7</groupId>
         <artifactId>c7-process-test-coverage-report-aggregator-maven-plugin</artifactId>
+        <version>${project.version}</version>
         <executions>
           <execution>
             <id>aggregate-reports</id>

@@ -46,5 +46,21 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     [:octicons-arrow-right-24: Reference](c7-rest-client-spring-boot/index.md)
 
+-   :material-clock-fast:{ .lg .middle } __camunda-api__
+
+    ---
+
+    API layer of Camunda 7 Java API
+
+    [:octicons-arrow-right-24: Reference](c7-api/index.md)
+
+-   :fontawesome-brands-markdown:{ .lg .middle } __c7-commons-immutables__
+
+    ---
+
+    Immutables implementation of Camunda 7 Java data objects
+
+    [:octicons-arrow-right-24: Reference](c7-immutables/index.md)
+
 
 </div>

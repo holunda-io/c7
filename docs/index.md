@@ -34,7 +34,7 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     Solution for correlation of messages with processes running in Camunda 7
 
-    [:octicons-arrow-right-24: Reference](camunda-bpm-correlate/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/camunda-bpm-correlate/index.md)
 
 -   :fontawesome-brands-markdown:{ .lg .middle } __camunda-bpm-data__
 
@@ -42,7 +42,7 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     Beautiful process data handling for Camunda 7.
 
-    [:octicons-arrow-right-24: Reference](camunda-bpm-data/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/camunda-bpm-data/index.md)
 
 -   :material-format-font:{ .lg .middle } __camunda-bpm-spring-boot-deployment__
 
@@ -50,7 +50,7 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     Take back control on artifact deployment in Camunda 7
 
-    [:octicons-arrow-right-24: Reference](c7-deployment/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-deployment/index.md)
 
 -   :material-scale-balance:{ .lg .middle } __camunda-platform-7-custom-batch__
 
@@ -66,7 +66,23 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     Full-featured client for Camunda 7 REST API providing implementation of Camunda Java API
 
-    [:octicons-arrow-right-24: Reference](c7-rest-client-spring-boot/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-rest-client-spring-boot/index.md)
+
+-   :material-clock-fast:{ .lg .middle } __camunda-api__
+
+    ---
+
+    API layer of Camunda 7 Java API
+
+    [:octicons-arrow-right-24: Reference](user-guide/c7-api/index.md)
+
+-   :fontawesome-brands-markdown:{ .lg .middle } __c7-commons-immutables__
+
+    ---
+
+    Immutables implementation of Camunda 7 Java data objects
+
+    [:octicons-arrow-right-24: Reference](user-guide/c7-immutables/index.md)
 
 
 </div>
@@ -78,29 +94,13 @@ Includes extensions used for improved operations of Camunda 7.
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __camunda-api__
-
-    ---
-
-    API layer of Camunda 7 Java API
-
-    [:octicons-arrow-right-24: Reference](c7-api/index.md)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __c7-commons-immutables__
-
-    ---
-
-    Immutables implementation of Camunda 7 Java data objects
-
-    [:octicons-arrow-right-24: Reference](c7-immutables/index.md)
-
 -   :material-format-font:{ .lg .middle } __camunda-platform-7-autologin__
 
     ---
 
     Camunda 7 WebApp Autologin
 
-    [:octicons-arrow-right-24: Reference](c7-webapp-autologin/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-webapp-autologin/index.md)
 
 -   :material-scale-balance:{ .lg .middle } __camunda-admin-process-registry__
 
@@ -108,7 +108,7 @@ Includes extensions used for improved operations of Camunda 7.
 
     Process Registry for inline-defined one-function adin processes
 
-    [:octicons-arrow-right-24: Reference](c7-admin-process-registry/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-admin-process-registry/index.md)
 
 </div>
 
@@ -124,7 +124,7 @@ Includes features for testing.
 
     Solution for correlation of messages with processes running in Camunda 7
 
-    [:octicons-arrow-right-24: Reference](c7-jgiven/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-jgiven/index.md)
 
 -   :fontawesome-brands-markdown:{ .lg .middle } __c7-mockito__
 
@@ -132,7 +132,7 @@ Includes features for testing.
 
     Simplify mocking and stubbung for process testing in Camunda 7
 
-    [:octicons-arrow-right-24: Reference](c7-mockito/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-mockito/index.md)
 
 -   :material-format-font:{ .lg .middle } __c7-process-test-coverage__
 
@@ -140,7 +140,7 @@ Includes features for testing.
 
     Visualise test process paths and ensure your process model coverage ratio
 
-    [:octicons-arrow-right-24: Reference](c7-process-test-coverage/index.md)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-process-test-coverage/index.md)
 
 
 </div>

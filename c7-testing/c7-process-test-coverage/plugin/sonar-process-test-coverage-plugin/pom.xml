@@ -48,15 +48,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.8.1</version>
         <configuration>
           <artifactItems>
             <artifactItem>
-              <groupId>${project.groupId}</groupId>
+              <groupId>io.holunda.c7</groupId>
               <artifactId>c7-process-test-coverage-report-generator</artifactId>
               <version>${project.version}</version>
-              <outputDirectory>target/classes</outputDirectory>
-              <includes>**/*.js,**/*.css,**/*.html</includes>
+              <outputDirectory>target/coverage-viewer</outputDirectory>
+              <includes>**/*.js</includes>
             </artifactItem>
           </artifactItems>
         </configuration>
@@ -86,11 +85,10 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.15.1</version>
         <executions>
           <execution>
-            <phase>initialize</phase>
             <id>install node and npm</id>
+            <phase>initialize</phase>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
@@ -109,8 +107,8 @@
             </configuration>
           </execution>
           <execution>
-            <phase>initialize</phase>
             <id>npm version</id>
+            <phase>initialize</phase>
             <goals>
               <goal>npm</goal>
             </goals>
@@ -119,8 +117,8 @@
             </configuration>
           </execution>
           <execution>
-            <phase>compile</phase>
             <id>npm run script</id>
+            <phase>compile</phase>
             <goals>
               <goal>npm</goal>
             </goals>
