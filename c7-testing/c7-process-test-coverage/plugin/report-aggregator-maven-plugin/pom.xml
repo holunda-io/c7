@@ -12,7 +12,7 @@
   <groupId>io.holunda.c7</groupId>
 
   <artifactId>c7-process-test-coverage-report-aggregator-maven-plugin</artifactId>
-  <name>testing - process-test-coverage - aggregator-maven-plugin</name>
+  <name>testing: c7-process-test-coverage - aggregator-maven-plugin</name>
   <packaging>maven-plugin</packaging>
 
   <prerequisites>

@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-process-test-coverage-examples-parent</artifactId>
@@ -9,9 +10,9 @@
   </parent>
 
   <groupId>io.holunda.c7</groupId>
-
-  <name>Camunda Process Test Coverage Example JGiven Platform 7</name>
   <artifactId>c7-process-test-coverage-examples-jgiven-platform-7</artifactId>
+
+  <name>examples: c7-process-test-coverage - jgiven</name>
 
   <properties>
     <jgiven.version>2.0.3</jgiven.version>
@@ -21,6 +22,14 @@
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine-spring</artifactId>
     </dependency>
 
     <dependency>
@@ -32,14 +41,6 @@
       <groupId>io.holunda.c7</groupId>
       <artifactId>c7-process-test-coverage-spring-test</artifactId>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine-spring</artifactId>
     </dependency>
 
     <!-- Test Dependencies -->

@@ -11,7 +11,7 @@
   </parent>
 
 
-  <name>Camunda Process Test Coverage Examples Parent</name>
+  <name>examples: c7-process-test-coverage - parent-pom</name>
   <artifactId>c7-process-test-coverage-examples-parent</artifactId>
   <packaging>pom</packaging>
 
@@ -25,9 +25,9 @@
   </properties>
 
   <modules>
-    <!-- TODO: #268 include   <module>junit5-platform-7</module>-->
+    <module>junit5-platform-7</module>
     <module>jgiven-platform-7</module>
-    <!-- TODO: #268  include       <module>spring-test-platform-7</module> -->
+    <module>spring-test-platform-7</module>
     <module>spring-starter-platform-7</module>
   </modules>
 
