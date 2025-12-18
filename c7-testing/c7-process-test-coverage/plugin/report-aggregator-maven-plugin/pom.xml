@@ -115,40 +115,57 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>com.soebes.itf.jupiter.extension</groupId>
-        <artifactId>itf-maven-plugin</artifactId>
-        <version>${itf.version}</version>
-        <executions>
-          <execution>
-            <id>installing</id>
-            <phase>pre-integration-test</phase>
-            <goals>
-              <goal>install</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>integration-tests</id>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-            <configuration>
-              <systemPropertyVariables>
-                <maven.version>${maven.version}</maven.version>
-                <maven.home>${maven.home}</maven.home>
-              </systemPropertyVariables>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>itest</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.soebes.itf.jupiter.extension</groupId>
+            <artifactId>itf-maven-plugin</artifactId>
+            <version>${itf.version}</version>
+            <executions>
+              <execution>
+                <id>installing</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>install</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>integration-test-compile</id>
+                <phase>integration-test</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>integration-tests</id>
+                <phase>integration-test</phase>
+                <configuration>
+                  <systemPropertyVariables>
+                    <maven.version>${maven.version}</maven.version>
+                    <maven.home>${maven.home}</maven.home>
+                  </systemPropertyVariables>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
