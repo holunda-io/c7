@@ -39,14 +39,17 @@ jobs:
     - name: Run integration tests and generate coverage reports
       run: ./mvnw -Pitest -ntp integration-test
 
-    - name: Upload artifacts
+    - name: Print directory structure
+      run: tree c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/ > c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/target/tree.log
+
+    - name: Upload test artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Mojo ITest Reports
         path: |
-          c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/target/maven-it/**.log
+          c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/target/**/**.log
 
-    - name: Run integration tests and generate coverage reports
+    - name: Verify integration test execution
       run: ./mvnw -ntp -Pitest failsafe:verify
 
     - name: Upload coverage to Codecov
