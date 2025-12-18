@@ -37,7 +37,7 @@ jobs:
       run: ./mvnw -ntp clean package
 
     - name: Run integration tests and generate coverage reports
-      run: ./mvnw -Pitest -ntp verify failsafe:verify
+      run: ./mvnw -Pitest -ntp integration-test
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
@@ -45,6 +45,9 @@ jobs:
         name: Mojo ITest Reports
         path: |
           c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/target/maven-it/**.log
+
+    - name: Run integration tests and generate coverage reports
+      run: ./mvnw -ntp -Pitest failsafe:verify
 
     - name: Upload coverage to Codecov
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
