@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CorrelateMessagesView from "./correlate-messages-view";
 import { Plugin } from './lib/camunda-plugin';
+import {CookiesProvider} from "react-cookie";
 
 let container: HTMLElement;
 
@@ -16,7 +17,9 @@ const correlateView: Plugin = {
     container = node;
     const urlPrefix = `${api.cockpitApi}/plugin/correlate-cockpit-plugin/${api.engine}`;
     ReactDOM.render(
-      <CorrelateMessagesView camundaRestPrefix={urlPrefix} />,
+      <CookiesProvider>
+      <CorrelateMessagesView camundaRestPrefix={urlPrefix} />
+      </CookiesProvider>,
       container
     );
   },
