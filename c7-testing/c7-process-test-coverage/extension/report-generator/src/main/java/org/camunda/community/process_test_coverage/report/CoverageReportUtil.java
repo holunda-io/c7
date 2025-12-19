@@ -106,10 +106,8 @@ public class CoverageReportUtil {
                 coverageJar.close();
             } else {
                 // Tests executed in the IDE use directories
-                URL reportResources = CoverageReportUtil.class.getResource("/");
-                Objects.requireNonNull(reportResources);
-                final File reportResourcesSrc = new File(reportResources.toURI());
-                for (File file : reportResourcesSrc.listFiles()) {
+                Objects.requireNonNull(resourcesRoot);
+                for (File file : resourcesRoot.listFiles()) {
                     if (file.getName().matches(REPORT_RESOURCES)) {
                         final File resource = new File(reportDirectory, file.getName());
                         Files.copy(file.toPath(), resource.toPath(), StandardCopyOption.REPLACE_EXISTING);

@@ -11,7 +11,7 @@
         "dev": "vite",
         "build:standalone": "vite build --config vite.singlefile.config.js",
         "build:lib": "vite build --config vite.lib.config.js",
-        "build": "npm run build:standalone && npm run build:lib",
+        "build": "yarn run build:standalone && yarn run build:lib",
         "preview": "vite preview",
         "lint": "npx eslint src/main/frontend --ext .js,.jsx,.ts,.tsx"
     },
