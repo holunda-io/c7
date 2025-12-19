@@ -61,8 +61,19 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.camunda.bpm.</groupId>
+      <artifactId>camunda-bpm-junit5</artifactId>
+      <version>${camunda.compile.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-junit</artifactId>
+      <artifactId>jgiven-junit5</artifactId>
+      <version>${jgiven.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-spring-junit5</artifactId>
       <version>${jgiven.version}</version>
     </dependency>
     <dependency>
