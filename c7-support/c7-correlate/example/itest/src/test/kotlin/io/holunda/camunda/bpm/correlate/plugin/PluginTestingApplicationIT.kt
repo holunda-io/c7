@@ -2,6 +2,8 @@ package io.holunda.camunda.bpm.correlate.plugin
 
 import com.microsoft.playwright.Page
 import com.microsoft.playwright.Playwright
+import com.microsoft.playwright.Tracing.StartOptions
+import com.microsoft.playwright.Tracing.StopOptions
 import com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat
 import com.microsoft.playwright.options.WaitUntilState
 import io.holunda.camunda.bpm.correlate.correlation.BatchCorrelationSchedulerConfiguration
@@ -62,16 +64,29 @@ class PluginTestingApplicationIT {
   fun `should access message by id inside the cockpit`() {
     Playwright.create().use { playwright ->
       val browser = playwright.chromium().launch()
-      val page: Page = browser.newPage()
-      page.navigate(
-        "http://localhost:${serverPort}/camunda/app/cockpit/default/#/correlation",
-        Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE)
+      val context = browser.newContext()
+      context.tracing().start(
+        StartOptions()
+          .setScreenshots(true)
+          .setSnapshots(true)
       )
-      page.screenshot(
-        Page.ScreenshotOptions()
-          .setPath(Paths.get("target/cockpit-test-screenshot.png"))
-      )
-      assertThat(page.getByText(messageId)).hasCount(1)
+      val page: Page = context.newPage()
+      try {
+        page.navigate(
+          "http://localhost:${serverPort}/camunda/app/cockpit/default/#/correlation",
+          Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE)
+        )
+        page.screenshot(
+          Page.ScreenshotOptions()
+            .setPath(Paths.get("target/cockpit-test-screenshot.png"))
+        )
+        assertThat(page.getByText(messageId)).hasCount(1)
+      } finally {
+        context.tracing().stop(
+          StopOptions()
+            .setPath(Paths.get("target/trace.zip"))
+        )
+      }
     }
   }
 
