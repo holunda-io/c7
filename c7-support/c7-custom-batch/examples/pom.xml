@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-custom-batch-parent</artifactId>
+    <version>2025.12.2-SNAPSHOT</version>
+  </parent>
+
+  <name>examples: c7-custom-batch - parent-pom</name>
+  <artifactId>c7-custom-batch-example-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>example-simple</module>
+    <module>example-simple-spring-boot</module>
+  </modules>
+
+  <profiles>
+    <profile>
+      <id>camunda-ee</id>
+      <activation>
+        <property>
+          <name>camunda-ee</name>
+        </property>
+      </activation>
+      <modules>
+        <module>example-simple-spring-boot-webapp-ee</module>
+      </modules>
+    </profile>
+  </profiles>
+
+</project>
