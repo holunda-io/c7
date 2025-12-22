@@ -33,6 +33,7 @@
     <module>c7-support/c7-api</module>
     <module>c7-support/c7-commons-immutables</module>
     <module>c7-support/c7-correlate</module>
+    <module>c7-support/c7-custom-batch</module>
     <module>c7-support/c7-data</module>
     <module>c7-support/c7-deployment</module>
     <module>c7-support/c7-rest-client-spring-boot</module>
