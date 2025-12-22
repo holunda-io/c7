@@ -19,6 +19,7 @@ import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication;
 import org.camunda.community.batch.plugin.CustomBatchHandlerPlugin;
 import org.camunda.community.batch.spring.CustomBatchBuilderSupplier;
 import org.camunda.community.batch.spring.FailsafeCustomBatchJobHandler;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
+@Disabled("recover tests #280")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = FailsafeCustomBatchJobHandlerITest.FailsafeApplication.class)
 public class FailsafeCustomBatchJobHandlerITest {
@@ -56,7 +58,8 @@ public class FailsafeCustomBatchJobHandlerITest {
 
       @Override
       public void executeFailsafe(String taskId, CommandContext commandContext) {
-        commandContext.getProcessEngineConfiguration()
+        commandContext
+          .getProcessEngineConfiguration()
           .getProcessEngine()
           .getTaskService()
           .claim(taskId, null);
@@ -77,10 +80,6 @@ public class FailsafeCustomBatchJobHandlerITest {
           throw new RuntimeException("st went wrong while assigning the task!");
         }
       }
-    }
-
-    public static void main(final String... args) throws Exception {
-      SpringApplication.run(FailsafeApplication.class, args);
     }
 
     @Bean

@@ -20,11 +20,7 @@ body:
     attributes:
       label: Camunda Version
       options:
-        - "7.23 (Default)"
-        - "7.22"
-        - "7.21"
-        - "7.20"
-        - "older 7.20"
+        - "7.24 (Default)"
         - "any"
       default: 0
     validations:
@@ -35,6 +31,10 @@ body:
       label: Component
       options:
         - c7-commons-immutables
+        - c7-custom-batch
+        - c7-rest-client-spring-boot
+        - c7-process-test-coverage
+        - c7-mockito
         - camunda-admin-process-registry
         - camunda-api
         - camunda-bpm-correlate
