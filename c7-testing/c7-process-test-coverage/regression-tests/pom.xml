@@ -62,8 +62,8 @@
 
       <!-- Own BOM -->
       <dependency>
-        <groupId>org.camunda.community.process_test_coverage</groupId>
-        <artifactId>camunda-process-test-coverage-bom</artifactId>
+        <groupId>io.holunda.c7</groupId>
+        <artifactId>c7-process-test-coverage-bom</artifactId>
         <version>${project.version}</version>
         <scope>import</scope>
         <type>pom</type>

@@ -13,7 +13,7 @@
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-process-test-coverage-report-aggregator-gradle-plugin</artifactId>
 
-  <name>Camunda Process Test Coverage Report Aggregator Gradle Plugin</name>
+  <name>testing: c7-process-test-coverage - aggregator-gradle-plugin</name>
 
   <!--
       This subproject is built by Gradle as the Gradle plugin API requires a Gradle build. This POM
@@ -34,6 +34,11 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>c7-process-test-coverage-report-generator</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -63,6 +68,10 @@
           </execution>
           <execution>
             <id>test-compile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>integration-test-compile</id>
             <phase>none</phase>
           </execution>
         </executions>
@@ -181,6 +190,7 @@
                   <includes>
                     <include>${project.artifactId}-${project.version}.jar</include>
                     <include>${project.artifactId}-${project.version}-sources.jar</include>
+                    <include>${project.artifactId}-${project.version}-javadoc.jar</include>
                   </includes>
                 </resource>
               </resources>

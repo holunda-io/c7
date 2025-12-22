@@ -1,5 +1,6 @@
 package org.camunda.community.process_test_coverage.report.aggregator
 
+import org.apache.maven.doxia.sink.Sink
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugins.annotations.LifecyclePhase
 import org.apache.maven.plugins.annotations.Mojo
@@ -13,6 +14,9 @@ import org.camunda.community.process_test_coverage.report.CoverageReportUtil
 import java.io.File
 import java.util.*
 
+/**
+ * MOJO to generate aggregate coverage report.
+ */
 @Mojo(name = "aggregate", aggregator = true, threadSafe = true, defaultPhase = LifecyclePhase.PREPARE_PACKAGE)
 class ReportAggregatorMojo : AbstractMojo(), MavenReport {
 
@@ -44,11 +48,14 @@ class ReportAggregatorMojo : AbstractMojo(), MavenReport {
     @Parameter(property = "process-test-coverage.skip", defaultValue = "false")
     private var skip = false
 
-    override fun generate(sink: org.codehaus.doxia.sink.Sink?, locale: Locale) {
-        executeReport(locale)
+    override fun generate(sink: Sink?, locale: Locale) {
+      executeReport()
     }
 
-    override fun getOutputName() = "process-test-coverage/all/report"
+    override fun getOutputPath(): String = "process-test-coverage/all/report"
+
+    @Deprecated("Deprecated in Java", replaceWith = ReplaceWith("getOutputPath"))
+    override fun getOutputName() = getOutputPath()
 
     override fun getCategoryName() = MavenReport.CATEGORY_PROJECT_REPORTS
 
@@ -73,10 +80,10 @@ class ReportAggregatorMojo : AbstractMojo(), MavenReport {
     }
 
     override fun execute() {
-        executeReport(Locale.getDefault())
+        executeReport()
     }
 
-    private fun executeReport(locale: Locale) {
+    private fun executeReport() {
         if (!canGenerateReport()) {
             return
         }

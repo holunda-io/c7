@@ -1,30 +1,27 @@
 package org.camunda.community.process_test_coverage.examples.jgiven.platform7;
 
 import com.tngtech.jgiven.annotation.ScenarioState;
-import com.tngtech.jgiven.junit.ScenarioTest;
+import com.tngtech.jgiven.junit5.ScenarioTest;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
 import org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions;
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.camunda.community.process_test_coverage.junit4.platform7.rules.TestCoverageProcessEngineRuleBuilder;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import org.camunda.community.process_test_coverage.junit5.platform7.ProcessEngineCoverageExtension;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 @Deployment(resources = "order-process.bpmn")
 public class OrderProcessJGivenTest extends ScenarioTest<OrderProcessStage, OrderProcessStage, OrderProcessStage> {
 
-    @Rule
-    @ClassRule
-    public static final ProcessEngineRule processEngineRule = TestCoverageProcessEngineRuleBuilder.create().build();
+    @RegisterExtension
+    private static final ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension.Companion.builder().build();
 
     @ScenarioState
-    private final ProcessEngine camunda = processEngineRule.getProcessEngine();
+    private final ProcessEngine processEngine = extension.getProcessEngine();
 
-    @BeforeClass
+    @BeforeAll
     public static void reset() {
         // Process engine is cached in the thread and therefore the engine from earlier tests would be used
         AbstractAssertions.reset();

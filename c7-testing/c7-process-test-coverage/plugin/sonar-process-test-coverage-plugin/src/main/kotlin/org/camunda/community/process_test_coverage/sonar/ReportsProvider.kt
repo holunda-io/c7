@@ -9,40 +9,40 @@ import kotlin.streams.toList as streamToList
 
 
 class ReportsProvider(
-    private val context: SensorContext
+  private val context: SensorContext
 ) {
 
-    companion object {
-        private val LOG = LoggerFactory.getLogger(ReportsProvider::class.java)
-        private val DEFAULT_PATHS = arrayOf("target/process-test-coverage/**/report.json")
-        const val REPORT_PATHS_PROPERTY_KEY = "sonar.process-test-coverage.jsonReportPaths"
-    }
+  companion object {
+    private val LOG = LoggerFactory.getLogger(ReportsProvider::class.java)
+    private val DEFAULT_PATHS = arrayOf("target/process-test-coverage/**/report.json")
+    const val REPORT_PATHS_PROPERTY_KEY = "sonar.process-test-coverage.jsonReportPaths"
+  }
 
-    fun getProjectReports(): Collection<Path> {
-        val pathPattern = getPathPattern("**/")
-        val matcher = FileSystems.getDefault().getPathMatcher("glob:$pathPattern")
-        return Files.find(context.fileSystem().baseDir().toPath(), Int.MAX_VALUE, { path, _ ->
-            matcher.matches(path)
-        }).streamToList()
-    }
+  fun getProjectReports(): Collection<Path> {
+    val pathPattern = getPathPattern("**/")
+    val matcher = FileSystems.getDefault().getPathMatcher("glob:$pathPattern")
+    return Files.find(context.fileSystem().baseDir().toPath(), Int.MAX_VALUE, { path, _ ->
+      matcher.matches(path)
+    }).streamToList()
+  }
 
-    fun getModuleReports(): Collection<Path> {
-        val pathPattern = getPathPattern("")
-        val matcher = FileSystems.getDefault().getPathMatcher("glob:$pathPattern")
-        return Files.find(context.fileSystem().baseDir().toPath(), Int.MAX_VALUE, { path, _ ->
-            val relativePath = context.fileSystem().baseDir().toPath().relativize(path)
-            matcher.matches(relativePath)
-        }).streamToList()
-    }
+  fun getModuleReports(): Collection<Path> {
+    val pathPattern = getPathPattern("")
+    val matcher = FileSystems.getDefault().getPathMatcher("glob:$pathPattern")
+    return Files.find(context.fileSystem().baseDir().toPath(), Int.MAX_VALUE, { path, _ ->
+      val relativePath = context.fileSystem().baseDir().toPath().relativize(path)
+      matcher.matches(relativePath)
+    }).streamToList()
+  }
 
-    private fun getPathPattern(prefix: String): String  {
-        val paths = context.config().getStringArray(REPORT_PATHS_PROPERTY_KEY)
-                .filter { it.isNotEmpty() }
-                .plus(DEFAULT_PATHS)
-        LOG.info("Configured paths are $paths")
-        val pattern = paths.joinToString(prefix = "{", postfix = "}", separator = ",") { "$prefix$it" }
-        LOG.info("Using pattern $pattern for reports")
-        return pattern
-    }
+  private fun getPathPattern(prefix: String): String {
+    val paths = context.config().getStringArray(REPORT_PATHS_PROPERTY_KEY)
+      .filter { it.isNotEmpty() }
+      .plus(DEFAULT_PATHS)
+    LOG.info("Configured paths are $paths")
+    val pattern = paths.joinToString(prefix = "{", postfix = "}", separator = ",") { "$prefix$it" }
+    LOG.info("Using pattern $pattern for reports")
+    return pattern
+  }
 
 }

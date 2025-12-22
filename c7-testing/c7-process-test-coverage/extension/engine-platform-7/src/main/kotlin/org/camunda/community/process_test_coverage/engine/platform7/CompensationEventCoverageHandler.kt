@@ -26,11 +26,11 @@ class CompensationEventCoverageHandler : CompensationEventHandler() {
     }
 
     override fun handleEvent(
-        eventSubscription: EventSubscriptionEntity, payload: Any?, localPayload: Any?,
+        eventSubscription: EventSubscriptionEntity, payload: Any?, localPayload: Any?, payloadToTriggeredScope: Any?,
         businessKey: String?, commandContext: CommandContext
     ) {
         addCompensationEventCoverage(eventSubscription)
-        super.handleEvent(eventSubscription, payload, localPayload, businessKey, commandContext)
+        super.handleEvent(eventSubscription, payload, localPayload, payloadToTriggeredScope, businessKey, commandContext)
     }
 
     private fun addCompensationEventCoverage(eventSubscription: EventSubscriptionEntity) {

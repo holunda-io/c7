@@ -11,7 +11,7 @@
 
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-process-test-coverage-junit5-common</artifactId>
-  <name>Camunda Process Test Coverage JUnit5 Common</name>
+  <name>testing: c7-process-test-coverage - junit5-common</name>
 
   <dependencies>
     <dependency>
@@ -30,16 +30,18 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>io.github.oshai</groupId>
-      <artifactId>kotlin-logging-jvm</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.oshai</groupId>
+      <artifactId>kotlin-logging-jvm</artifactId>
     </dependency>
 
   </dependencies>

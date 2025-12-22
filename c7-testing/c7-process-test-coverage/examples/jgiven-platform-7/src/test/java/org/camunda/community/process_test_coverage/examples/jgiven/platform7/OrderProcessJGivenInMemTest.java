@@ -1,39 +1,43 @@
 package org.camunda.community.process_test_coverage.examples.jgiven.platform7;
 
 import com.tngtech.jgiven.annotation.ScenarioState;
-import com.tngtech.jgiven.junit.ScenarioTest;
+import com.tngtech.jgiven.integration.spring.EnableJGiven;
+import com.tngtech.jgiven.integration.spring.junit5.SpringScenarioTest;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
 import org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions;
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests;
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
+import org.camunda.community.process_test_coverage.junit5.platform7.ProcessEngineCoverageExtension;
 import org.camunda.community.process_test_coverage.spring_test.platform7.ProcessEngineCoverageTestExecutionListener;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 // needed to shut down the spring context after the test, so that it doesn't interfere with the other tests
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @Import({CoverageTestConfiguration.class, ProcessEngineConfiguration.class})
 @TestExecutionListeners(value = ProcessEngineCoverageTestExecutionListener.class,
         mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 @Deployment(resources = "order-process.bpmn")
-public class OrderProcessJGivenInMemTest extends ScenarioTest<OrderProcessStage, OrderProcessStage, OrderProcessStage> {
+@EnableJGiven
+public class OrderProcessJGivenInMemTest extends SpringScenarioTest<OrderProcessStage, OrderProcessStage, OrderProcessStage> {
 
-    @Rule
-    public final ProcessEngineRule processEngineRule = new ProcessEngineRule(ProcessEngineConfiguration.getProcessEngine());
+    @RegisterExtension
+    public static final ProcessEngineExtension extension = ProcessEngineExtension.builder().useProcessEngine(ProcessEngineConfiguration.getProcessEngine()).build();
 
     @ScenarioState
-    private final ProcessEngine camunda = ProcessEngineConfiguration.getProcessEngine();
+    private final ProcessEngine processEngine = ProcessEngineConfiguration.getProcessEngine();
 
-    @BeforeClass
+    @BeforeAll
     public static void reset() {
         // Process engine is cached in the thread and therefore the engine from earlier tests would be used
         AbstractAssertions.reset();

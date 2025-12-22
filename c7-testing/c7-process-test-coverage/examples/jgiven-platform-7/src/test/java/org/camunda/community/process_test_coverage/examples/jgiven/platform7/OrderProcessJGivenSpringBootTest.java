@@ -1,37 +1,39 @@
 package org.camunda.community.process_test_coverage.examples.jgiven.platform7;
 
 import com.tngtech.jgiven.annotation.ScenarioState;
-import com.tngtech.jgiven.junit.ScenarioTest;
+import com.tngtech.jgiven.integration.spring.EnableJGiven;
+import com.tngtech.jgiven.integration.spring.junit5.SpringScenarioTest;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions;
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
 import org.camunda.community.process_test_coverage.spring_test.platform7.ProcessEngineCoverageConfiguration;
 import org.camunda.community.process_test_coverage.spring_test.platform7.ProcessEngineCoverageTestExecutionListener;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 // needed to shut down the spring context after the test, so that it doesn't interfere with the other tests
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @Import({CoverageTestConfiguration.class, ProcessEngineCoverageConfiguration.class})
 @TestExecutionListeners(value = ProcessEngineCoverageTestExecutionListener.class,
         mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
-public class OrderProcessJGivenSpringBootTest extends ScenarioTest<OrderProcessStage, OrderProcessStage, OrderProcessStage> {
+@EnableJGiven
+public class OrderProcessJGivenSpringBootTest extends SpringScenarioTest<OrderProcessStage, OrderProcessStage, OrderProcessStage> {
 
     @Autowired
-    @ScenarioState
+    @ScenarioState(required = true)
     private ProcessEngine processEngine;
 
-    @BeforeClass
+    @BeforeAll
     public static void reset() {
         // Process engine is cached in the thread and therefore the engine from earlier tests would be used
         AbstractAssertions.reset();
