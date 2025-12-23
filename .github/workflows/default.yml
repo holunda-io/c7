@@ -43,7 +43,7 @@ jobs:
       run: tree c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/ > c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/target/tree.log
 
     - name: Upload test artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: Mojo ITest Reports
         path: |

@@ -19,15 +19,15 @@
   </modules>
 
   <properties>
-    <slf4j.version>2.0.16</slf4j.version>
+    <slf4j.version>2.0.17</slf4j.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
-    <gson.version>2.11.0</gson.version>
+    <gson.version>2.13.2</gson.version>
     <camunda-spring-boot.version>${camunda.version}</camunda-spring-boot.version>
     <spring-boot.version>3.5.8</spring-boot.version>
     <h2.version>2.4.240</h2.version>
     <mockito.version>5.21.0</mockito.version>
-    <assertj-core.version>3.27.2</assertj-core.version>
-    <awaitility.version>4.2.2</awaitility.version>
+    <assertj-core.version>3.27.6</assertj-core.version>
+    <awaitility.version>4.3.0</awaitility.version>
   </properties>
 
   <dependencyManagement>
