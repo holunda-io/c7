@@ -52,9 +52,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.camunda.community.process_test_coverage</groupId>
-      <artifactId>camunda-process-test-coverage-junit5-platform-7</artifactId>
-      <version>${camunda-process-test-coverage.version}</version>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-process-test-coverage-junit5</artifactId>
+      <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
