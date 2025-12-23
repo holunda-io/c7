@@ -27,7 +27,7 @@
     <h2.version>2.4.240</h2.version>
     <mockito.version>5.14.2</mockito.version>
     <assertj-core.version>3.27.2</assertj-core.version>
-    <awaitility.version>4.2.2</awaitility.version>
+    <awaitility.version>4.3.0</awaitility.version>
   </properties>
 
   <dependencyManagement>
