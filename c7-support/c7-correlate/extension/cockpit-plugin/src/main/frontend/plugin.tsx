@@ -1,9 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import CorrelateMessagesView from "./correlate-messages-view";
-import { Plugin } from './lib/camunda-plugin';
+import {Plugin} from './lib/camunda-plugin';
+import {CookiesProvider} from "react-cookie";
+import {createRoot, Root} from "react-dom/client";
 
-let container: HTMLElement;
+let container: Root;
 
 const correlateView: Plugin = {
   id: 'correlate-cockpit-plugin-route',
@@ -13,15 +14,16 @@ const correlateView: Plugin = {
     path: '/correlation'
   },
   render: (node: HTMLElement, { api }) => {
-    container = node;
+    container = createRoot(node);
     const urlPrefix = `${api.cockpitApi}/plugin/correlate-cockpit-plugin/${api.engine}`;
-    ReactDOM.render(
-      <CorrelateMessagesView camundaRestPrefix={urlPrefix} />,
-      container
+    container.render(
+      <CookiesProvider>
+      <CorrelateMessagesView camundaRestPrefix={urlPrefix} />
+      </CookiesProvider>
     );
   },
   unmount: () => {
-    ReactDOM.unmountComponentAtNode(container);
+    container.unmount();
   }
 };
 

@@ -3,6 +3,7 @@ package io.holunda.camunda.bpm.data.factory
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -68,6 +69,15 @@ interface VariableFactory<T> {
    * @return read adapter.
    */
   fun from(runtimeService: RuntimeService, executionId: String): ReadAdapter<T>
+
+  /**
+   * Creates a read adapter on historic execution
+   *
+   * @param historyService underlying history service to work on.
+   * @param executionId    id identifying execution.
+   * @return read adapter.
+   */
+  fun from(historyService: HistoryService, executionId: String): ReadAdapter<T>
 
   /**
    * Creates a write adapter on task.

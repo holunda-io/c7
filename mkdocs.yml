@@ -11,7 +11,7 @@ site_name: Holunda C7
 site_url: https://www.holunda.io/c7/
 site_author: Holisticon BPM Craftsman
 site_description: >-
- Holunda C7 is a collection of open-source Camunda Platform 7 tools and extensions.
+  Holunda C7 is a collection of open-source Camunda Platform 7 tools and extensions.
 
 copyright: Copyright &copy; 2025, Holisticon AG
 
@@ -23,19 +23,19 @@ repo_url: https://github.com/holunda-io/c7/
 edit_uri: edit/develop/docs/
 
 markdown_extensions:
-    - admonition
-    - attr_list
-    - md_in_html
-    - pymdownx.details
-    - pymdownx.emoji:
-        emoji_index: !!python/name:material.extensions.emoji.twemoji
-        emoji_generator: !!python/name:material.extensions.emoji.to_svg
-    - pymdownx.highlight
-    - pymdownx.superfences
-    - pymdownx.tabbed:
-        alternate_style: true
-    - toc:
-        permalink: "#"
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: "#"
 
 theme:
   name: material
@@ -81,17 +81,17 @@ extra:
 
 plugins:
   - search
-#  - git-committers:
-#      repository: holunda-io/camunda-bpm-taskpool
-#      branch: master
-#      token: !!python/object/apply:os.getenv ["MKDOCS_GIT_COMMITTERS_APIKEY"]
+  #  - git-committers:
+  #      repository: holunda-io/camunda-bpm-taskpool
+  #      branch: master
+  #      token: !!python/object/apply:os.getenv ["MKDOCS_GIT_COMMITTERS_APIKEY"]
   - mike:
       # these fields are all optional; the defaults are as below...
       version_selector: true   # set to false to leave out the version selector
       css_dir: css                    # the directory to put the version selector's CSS
       javascript_dir: js            # the directory to put the version selector's JS
       canonical_version: null  # the version for <link rel="canonical">; `null`
-                                            # uses the version specified via `mike deploy`
+      # uses the version specified via `mike deploy`
   - git-revision-date-localized:
       type: date
       fallback_to_build_date: true
@@ -104,11 +104,9 @@ nav:
       - Data: getting-started/camunda-bpm-data.md
       - Deployment: getting-started/c7-deployment.md
       - JGiven: getting-started/c7-jgiven.md
+      - Process Test Coverage: getting-started/c7-process-test-coverage.md
+      - REST Client Spring Boot: getting-started/c7-rest-client-spring-boot.md
       - Webapp Auto Login: getting-started/c7-webapp-autologin.md
-  - User Guide:
-      - Overview: user-guide/index.md
-      - Modules: user-guide/modules.md
-      - Architecture: user-guide/architecture.md
   - Support Libraries:
       - Overview: user-guide/libraries-support.md
       - Correlate:
@@ -133,6 +131,17 @@ nav:
               - Examples without engine: user-guide/camunda-bpm-data/examples-no-engine.md
       - Deployment:
           - Overview: user-guide/c7-deployment/index.md
+      - REST Client Spring Boot:
+          - Overview: user-guide/c7-rest-client-spring-boot/index.md
+          - Motivation: user-guide/c7-rest-client-spring-boot/motivation.md
+          - Solution: user-guide/c7-rest-client-spring-boot/solution.md
+          - Features: user-guide/c7-rest-client-spring-boot/features.md
+          - Configuration:
+              - Overview: user-guide/c7-rest-client-spring-boot/configuration.md
+              - Logging: user-guide/c7-rest-client-spring-boot/logging.md
+              - Error Decoding: user-guide/c7-rest-client-spring-boot/error-decoding.md
+              - Support Matrix: user-guide/c7-rest-client-spring-boot/support-matrix.md
+          - Examples: user-guide/c7-rest-client-spring-boot/examples.md
 
   - Operations Libraries:
       - Overview: user-guide/libraries-operations.md
@@ -143,8 +152,6 @@ nav:
           - Overview: user-guide/c7-api/index.md
       - Immutables:
           - Overview: user-guide/c7-immutables/index.md
-      - REST Client Spring Boot:
-          - Overview: user-guide/camunda-platform-7-rest-client-spring-boot/index.md
       - Webapp Auto Login:
           - Overview: user-guide/c7-webapp-autologin/index.md
           - Example: user-guide/c7-webapp-autologin/examples.md
@@ -156,8 +163,9 @@ nav:
       - Mockito:
           - Overview: user-guide/c7-mockito/index.md
       - Test Coverage:
-          - Overview: user-guide/camunda-process-test-coverage/index.md
-
+          - Overview: user-guide/c7-process-test-coverage/index.md
+          - Configuration: user-guide/c7-process-test-coverage/configuration.md
+          - Sonarqube: user-guide/c7-process-test-coverage/sonarqube.md
 
   - Developer Guide:
       - Contributing: developer-guide/contribution.md

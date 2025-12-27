@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data
 
 import io.holunda.camunda.bpm.data.reader.*
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -31,7 +32,7 @@ object Readers {
     }
 
     /**
-     * Creates a new execution variable reader.
+     * Creates a new runtime execution variable reader.
      *
      * @param runtimeService the Camunda runtime service
      * @param executionId    the executionId to use
@@ -43,7 +44,19 @@ object Readers {
     }
 
     /**
-     * Creates a new execution variable reader.
+     * Creates a new history execution variable reader.
+     *
+     * @param historyService the Camunda history service
+     * @param executionId    the executionId to use
+     * @return variable reader working on execution
+     */
+    @JvmStatic
+    fun reader(historyService: HistoryService, executionId: String): VariableReader {
+      return HistoryServiceVariableReader(historyService, executionId)
+    }
+
+    /**
+     * Creates a new case execution variable reader.
      *
      * @param caseService     the Camunda case service
      * @param caseExecutionId the caseExecutionId to use

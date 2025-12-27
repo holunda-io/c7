@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter
 import io.holunda.camunda.bpm.data.adapter.set.*
 import org.camunda.bpm.engine.CaseService
+import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -50,6 +51,18 @@ class SetVariableFactory<T>(override val name: String, val memberClass: Class<T>
   override fun from(runtimeService: RuntimeService, executionId: String): ReadAdapter<Set<T>> {
     return SetReadWriteAdapterRuntimeService(
       runtimeService,
+      executionId,
+      name,
+      memberClass
+    )
+  }
+
+  override fun from(
+    historyService: HistoryService,
+    executionId: String
+  ): ReadAdapter<Set<T>> {
+    return SetReadAdapterHistoryService(
+      historyService,
       executionId,
       name,
       memberClass
@@ -103,8 +116,8 @@ class SetVariableFactory<T>(override val name: String, val memberClass: Class<T>
 
   override fun toString(): String {
     return "SetVariableFactory{" +
-      "name='" + name + '\'' +
-      ", memberClazz=" + memberClass +
-      '}'
+            "name='" + name + '\'' +
+            ", memberClazz=" + memberClass +
+            '}'
   }
 }

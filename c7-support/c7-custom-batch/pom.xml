@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2025.12.2</version>
+    <relativePath>../../_build/parent/pom.xml</relativePath>
+  </parent>
+
+  <name>pom: c7-custom-batch - parent</name>
+  <artifactId>c7-custom-batch-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>extension/core</module>
+    <module>extension/spring</module>
+  </modules>
+
+  <properties>
+    <slf4j.version>2.0.17</slf4j.version>
+    <commons-lang3.version>3.20.0</commons-lang3.version>
+    <gson.version>2.13.2</gson.version>
+    <camunda-spring-boot.version>${camunda.version}</camunda-spring-boot.version>
+    <spring-boot.version>3.5.8</spring-boot.version>
+    <h2.version>2.4.240</h2.version>
+    <mockito.version>5.21.0</mockito.version>
+    <assertj-core.version>3.27.6</assertj-core.version>
+    <awaitility.version>4.3.0</awaitility.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.camunda.bpm</groupId>
+        <artifactId>camunda-bom</artifactId>
+        <version>${camunda.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${h2.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <developers>
+    <developer>
+      <name>Patrick Schalk</name>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+  </developers>
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+  </build>
+
+  <profiles>
+    <profile>
+      <!--
+      Profile for building examples and metering coverage
+      -->
+      <id>examples</id>
+      <activation>
+        <property>
+          <name>!skipExamples</name>
+        </property>
+      </activation>
+      <modules>
+        <module>examples</module>
+      </modules>
+    </profile>
+  </profiles>
+
+
+</project>

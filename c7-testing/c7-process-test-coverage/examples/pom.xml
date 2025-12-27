@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-process-test-coverage-parent</artifactId>
+    <version>2025.12.2</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+
+  <name>examples: c7-process-test-coverage - parent-pom</name>
+  <artifactId>c7-process-test-coverage-examples-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <properties>
+    <jacoco.skip>true</jacoco.skip>
+    <dokka.skip>true</dokka.skip>
+    <maven.javadoc.skip>true</maven.javadoc.skip>
+    <maven.source.skip>true</maven.source.skip>
+    <maven.install.skip>true</maven.install.skip>
+    <gpg.skip>true</gpg.skip>
+  </properties>
+
+  <modules>
+    <module>junit5-platform-7</module>
+    <module>jgiven-platform-7</module>
+    <module>spring-test-platform-7</module>
+    <module>spring-starter-platform-7</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Own BOM -->
+      <dependency>
+        <groupId>io.holunda.c7</groupId>
+        <artifactId>c7-process-test-coverage-bom</artifactId>
+        <version>${project.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <!-- java compiler -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-compile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>java-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>java-test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+

@@ -12,6 +12,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 .mvn/maven.config
 .mvn/settings.xml
+.gradle/
 target/
 
 ### STS ###
@@ -47,4 +48,5 @@ node/
 node_modules/
 jgiven-reports/
 site/
-/openbpm-studio.xml
+openbpm-studio.xml
+flowset-studio.xml
