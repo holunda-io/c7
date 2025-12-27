@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-custom-batch-example-parent</artifactId>
-    <version>2025.12.2-SNAPSHOT</version>
+    <version>2025.12.2</version>
   </parent>
 
   <name>examples: c7-custom-batch - simple-spring-boot</name>
