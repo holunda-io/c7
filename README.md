@@ -19,6 +19,10 @@ and is the new source for all those libraries. The old repositories are already 
 will be continued from this repository. We will support these libraries further but will release them using a single version from this 
 repository.
 
+## Where are the docs?
+
+Looking for documentation, please check the following website: [http://www.holunda.io/c7/snapshot/](http://www.holunda.io/c7/snapshot/) for the latest documentation. We don't believe on short README files, but rather rely on comprehensive detailed user guide.
+
 ## Modules
 
 ### Support
