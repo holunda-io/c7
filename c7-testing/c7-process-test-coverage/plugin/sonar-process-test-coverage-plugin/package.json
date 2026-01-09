@@ -1,7 +1,7 @@
 {
   "name": "sonar-process-test-coverage-plugin",
   "license": "LGPL-3.0",
-  "version": "2025.12.2-SNAPSHOT",
+  "version": "2025.12.3-SNAPSHOT",
   "devDependencies": {
     "@babel/core": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
@@ -14,7 +14,7 @@
     "react": "19.2.0",
     "react-dev-utils": "12.0.1",
     "react-dom": "19.2.0",
-    "react-router": "7.9.4",
+    "react-router": "7.12.0",
     "react-transform-hmr": "1.0.4",
     "style-loader": "^4.0.0",
     "webpack": "^5.91.0",
