@@ -10,26 +10,24 @@
   </parent>
 
   <groupId>io.holunda.c7</groupId>
-  <artifactId>c7-rest-client-spring-boot-starter-provided</artifactId>
+  <artifactId>c7-rest-client-spring-boot-starter-4</artifactId>
 
+  <name>support: c7-rest-client-spring-boot - starter (spring-boot 4)</name>
 
-  <name>support: c7-rest-client-spring-boot - starter-provided</name>
-  <packaging>jar</packaging>
+  <properties>
+    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-cloud.version>2025.1.0</spring-cloud.version>
+  </properties>
 
   <dependencies>
-
-    <!-- Extension -->
     <dependency>
       <groupId>io.holunda.c7</groupId>
-      <artifactId>c7-rest-client-spring-boot</artifactId>
+      <artifactId>c7-rest-client-spring-boot-starter-provided-4</artifactId>
       <version>${project.version}</version>
     </dependency>
-
-    <!-- Feign -->
     <dependency>
-      <groupId>io.holunda.c7</groupId>
-      <artifactId>c7-rest-client-spring-boot-starter-feign</artifactId>
-      <version>${project.version}</version>
+      <groupId>io.holunda.camunda-api</groupId>
+      <artifactId>camunda-bpm-engine-api</artifactId>
     </dependency>
   </dependencies>
 </project>

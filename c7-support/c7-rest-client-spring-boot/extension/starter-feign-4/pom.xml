@@ -9,11 +9,15 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-
   <groupId>io.holunda.c7</groupId>
-  <artifactId>c7-rest-client-spring-boot-starter-feign</artifactId>
+  <artifactId>c7-rest-client-spring-boot-starter-feign-4</artifactId>
 
-  <name>support: c7-rest-client-spring-boot - starter-feign</name>
+  <name>support: c7-rest-client-spring-boot - starter-feign (spring-boot 4)</name>
+
+  <properties>
+    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-cloud.version>2025.1.0</spring-cloud.version>
+  </properties>
 
   <dependencies>
     <!-- Extension -->

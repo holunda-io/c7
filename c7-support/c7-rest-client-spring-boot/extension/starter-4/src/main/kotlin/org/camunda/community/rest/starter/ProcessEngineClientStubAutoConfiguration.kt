@@ -38,7 +38,7 @@ class ProcessEngineClientStubAutoConfiguration {
     repositoryService: RepositoryService,
     runtimeService: RuntimeService,
     taskService: TaskService,
-    managementService: ManagementService,
+    managementService: ManagementService
   ): ProcessEngine {
     logger.info { "CAMUNDA-REST-STARTER-001: No existing process engine bean has been found. Providing a client-only stub." }
     return ProcessEngineConfigurationClientStub(

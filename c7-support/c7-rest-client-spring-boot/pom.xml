@@ -15,10 +15,8 @@
   <description>Camunda Platform 7 REST Client Spring-Boot</description>
 
   <properties>
-
     <spin.version>7.24.0</spin.version>
     <spring-cloud.version>2025.0.0</spring-cloud.version>
-
   </properties>
 
   <modules>
@@ -28,6 +26,9 @@
     <module>extension/starter</module>
     <module>extension/starter-provided</module>
     <module>extension/starter-feign</module>
+    <module>extension/starter-4</module>
+    <module>extension/starter-provided-4</module>
+    <module>extension/starter-feign-4</module>
   </modules>
 
   <dependencyManagement>

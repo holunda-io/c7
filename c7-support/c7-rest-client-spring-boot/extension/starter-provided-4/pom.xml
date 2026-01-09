@@ -10,11 +10,14 @@
   </parent>
 
   <groupId>io.holunda.c7</groupId>
-  <artifactId>c7-rest-client-spring-boot-starter-provided</artifactId>
+  <artifactId>c7-rest-client-spring-boot-starter-provided-4</artifactId>
 
+  <name>support: c7-rest-client-spring-boot - starter-provided (spring-boot 4)</name>
 
-  <name>support: c7-rest-client-spring-boot - starter-provided</name>
-  <packaging>jar</packaging>
+  <properties>
+    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-cloud.version>2025.1.0</spring-cloud.version>
+  </properties>
 
   <dependencies>
 
@@ -28,7 +31,7 @@
     <!-- Feign -->
     <dependency>
       <groupId>io.holunda.c7</groupId>
-      <artifactId>c7-rest-client-spring-boot-starter-feign</artifactId>
+      <artifactId>c7-rest-client-spring-boot-starter-feign-4</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
