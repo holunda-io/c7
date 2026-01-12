@@ -19,8 +19,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  * #L%
- */
-package org.camunda.community.rest.itest.stages
+ */package org.camunda.community.rest.itest.stages
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState
 import com.tngtech.jgiven.annotation.ScenarioState

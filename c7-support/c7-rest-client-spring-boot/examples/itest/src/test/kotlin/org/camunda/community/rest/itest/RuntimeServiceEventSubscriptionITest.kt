@@ -19,8 +19,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  * #L%
- */
-package org.camunda.community.rest.itest
+ */package org.camunda.community.rest.itest
 
 import com.tngtech.jgiven.annotation.As
 import io.toolisticon.testing.jgiven.AND
