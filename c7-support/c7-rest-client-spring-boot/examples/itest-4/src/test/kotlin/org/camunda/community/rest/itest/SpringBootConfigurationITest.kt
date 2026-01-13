@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.test.context.FilteredClassLoader
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.context.runner.ApplicationContextRunner
 import org.springframework.boot.test.context.runner.WebApplicationContextRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -48,7 +49,6 @@ internal class SpringBootConfigurationITest {
 
   @Nested
   @SpringBootTest(
-    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
     classes = [TestApplication::class],
   )
   @ActiveProfiles("itest")
@@ -79,7 +79,6 @@ internal class SpringBootConfigurationITest {
 
   @Nested
   @SpringBootTest(
-    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
     classes = [CustomValueMapperConfiguration::class, TestApplication::class],
   )
   @ActiveProfiles("itest")
@@ -106,7 +105,6 @@ internal class SpringBootConfigurationITest {
 
   @Nested
   @SpringBootTest(
-    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
     classes = [TestApplication::class],
     properties = ["camunda.rest.client.enabled=false"]
   )
@@ -137,7 +135,7 @@ internal class SpringBootConfigurationITest {
 
     @Test
     fun `components are initialized without spin`() {
-      WebApplicationContextRunner()
+      ApplicationContextRunner()
         .withInitializer { it.environment.setActiveProfiles("itest") }
         .withPropertyValues("camunda.bpm.generic-properties.properties.historyTimeToLive=P1D")
         .withUserConfiguration(TestApplication::class.java)

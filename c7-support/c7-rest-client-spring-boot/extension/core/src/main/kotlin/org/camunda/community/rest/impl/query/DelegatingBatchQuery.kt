@@ -8,6 +8,9 @@ import org.camunda.community.rest.client.api.BatchApiClient
 import org.springframework.web.bind.annotation.RequestParam
 import kotlin.reflect.KParameter
 
+/**
+ * Implementation of the batch query.
+ */
 class DelegatingBatchQuery(
   private val batchApiClient: BatchApiClient,
   var batchId: String? = null,
