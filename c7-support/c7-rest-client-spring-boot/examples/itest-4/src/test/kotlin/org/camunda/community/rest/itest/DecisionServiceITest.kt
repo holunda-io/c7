@@ -10,7 +10,7 @@ import org.camunda.community.rest.itest.stages.DecisionServiceActionStage
 import org.camunda.community.rest.itest.stages.DecisionServiceAssertStage
 import org.junit.jupiter.api.Test
 
-@As("Incident")
+@As("Decision")
 class DecisionServiceITest : CamundaRestClientITestBase<DecisionService, DecisionServiceActionStage, DecisionServiceAssertStage>() {
 
   @Test

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="test" name="Test" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.14.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
-  <decision id="table1" name="Table 1" camunda:versionTag="1">
+  <decision id="table1" name="Table 1" camunda:versionTag="1" camunda:historyTimeToLive="P1D">
     <decisionTable id="DecisionTable_0pwcv54">
       <input id="Input_1" label="Input 1" camunda:inputVariable="input1">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -18,7 +18,7 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="table2" name="Table 2" camunda:versionTag="1">
+  <decision id="table2" name="Table 2" camunda:versionTag="1" camunda:historyTimeToLive="P1D">
     <informationRequirement id="InformationRequirement_1nhgmin">
       <requiredDecision href="#table1" />
     </informationRequirement>

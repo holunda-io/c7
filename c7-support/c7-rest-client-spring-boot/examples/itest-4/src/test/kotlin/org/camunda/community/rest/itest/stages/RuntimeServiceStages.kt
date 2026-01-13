@@ -48,7 +48,7 @@ class RuntimeServiceActionStage : ActionStage<RuntimeServiceActionStage, Runtime
   lateinit var batch: Batch
 
   fun no_deployment_exists() = step {
-    repositoryService.createDeploymentQuery().list().map {
+    repositoryService.createDeploymentQuery().list().forEach {
       repositoryService.deleteDeployment(it.id, true)
     }
   }

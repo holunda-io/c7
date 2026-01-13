@@ -39,7 +39,7 @@ class DecisionServiceActionStage : ActionStage<DecisionServiceActionStage, Decis
   lateinit var decisionTableResult: DmnDecisionTableResult
 
   fun no_deployment_exists() = step {
-    repositoryService.createDeploymentQuery().list().map {
+    repositoryService.createDeploymentQuery().list().forEach {
       repositoryService.deleteDeployment(it.id, true)
     }
   }

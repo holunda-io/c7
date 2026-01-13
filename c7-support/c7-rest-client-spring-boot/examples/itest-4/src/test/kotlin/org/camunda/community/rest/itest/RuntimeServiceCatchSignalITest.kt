@@ -79,6 +79,8 @@ class RuntimeServiceCatchSignalITest : CamundaRestClientITestBase<RuntimeService
     val signalName = "mySignal3"
     val userTaskId = "user-task"
     GIVEN
+      .no_deployment_exists()
+      .AND
       .process_with_intermediate_signal_catch_event_is_deployed(processDefinitionKey, userTaskId, signalName)
       .AND
       .process_is_started_by_key(processDefinitionKey, "my-business-key1", "caseInstanceId1", createVariables().putValue("VAR1", "VAL1"))
@@ -111,6 +113,8 @@ class RuntimeServiceCatchSignalITest : CamundaRestClientITestBase<RuntimeService
     val signalName = "mySignal4"
     val userTaskId = "user-task"
     GIVEN
+      .no_deployment_exists()
+      .AND
       .process_with_intermediate_signal_catch_event_is_deployed(processDefinitionKey, userTaskId, signalName)
       .AND
       .process_is_started_by_key(processDefinitionKey, "my-business-key1", "caseInstanceId1", createVariables().putValue("VAR1", "VAL1"))
@@ -143,6 +147,8 @@ class RuntimeServiceCatchSignalITest : CamundaRestClientITestBase<RuntimeService
     val signalName = "mySignal7"
     val userTaskId = "user-task"
     GIVEN
+      .no_deployment_exists()
+      .AND
       .process_with_intermediate_signal_catch_event_is_deployed(processDefinitionKey, userTaskId, signalName)
       .AND
       .process_is_started_by_key(processDefinitionKey, "my-business-key1", "caseInstanceId1", createVariables().putValue("VAR1", "VAL1"))

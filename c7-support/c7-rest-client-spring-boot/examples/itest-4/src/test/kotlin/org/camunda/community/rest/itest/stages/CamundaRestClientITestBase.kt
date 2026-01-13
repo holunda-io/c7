@@ -39,22 +39,14 @@ abstract class CamundaRestClientITestBase<SERVICE : Any, ACTION : ActionStage<AC
     private val camundaContainer = GenericContainer("camunda/camunda-bpm-platform:run-latest")
       .withExposedPorts(8080)
 
-    @JvmStatic
-    @DynamicPropertySource
-    fun redisProperties(registry: DynamicPropertyRegistry) {
-      registry.add("feign.client.config.default.url") { "http://${camundaContainer.host}:${camundaContainer.firstMappedPort}/engine-rest/" }
-    }
-
-    @JvmStatic
-    @BeforeAll
-    fun startCamunda(): Unit {
+    init {
       camundaContainer.start()
     }
 
     @JvmStatic
-    @AfterAll
-    fun stopCamunda() {
-      camundaContainer.stop()
+    @DynamicPropertySource
+    fun camundaProperties(registry: DynamicPropertyRegistry) {
+      registry.add("feign.client.config.default.url") { "http://${camundaContainer.host}:${camundaContainer.firstMappedPort}/engine-rest/" }
     }
 
   }

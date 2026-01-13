@@ -2,6 +2,7 @@
 
 package org.camunda.community.rest.impl
 
+import org.camunda.bpm.engine.repository.DecisionDefinitionQuery
 import org.camunda.bpm.engine.repository.DeploymentQuery
 import org.camunda.bpm.engine.repository.ProcessDefinitionQuery
 import org.camunda.bpm.model.bpmn.Bpmn
@@ -14,6 +15,7 @@ import org.camunda.community.rest.client.model.HistoryTimeToLiveDto
 import org.camunda.community.rest.client.model.ProcessDefinitionSuspensionStateDto
 import org.camunda.community.rest.impl.builder.DelegatingDeploymentBuilder
 import org.camunda.community.rest.impl.builder.RemoteUpdateProcessDefinitionSuspensionStateSelectBuilder
+import org.camunda.community.rest.impl.query.DelegatingDecisionDefinitionQuery
 import org.camunda.community.rest.impl.query.DelegatingDeploymentQuery
 import org.camunda.community.rest.impl.query.DelegatingProcessDefinitionQuery
 import org.springframework.beans.factory.annotation.Qualifier
@@ -159,4 +161,7 @@ class RemoteRepositoryService(
     val diagramDto = processDefinitionApiClient.getProcessDefinitionBpmn20Xml(processDefinitionId).body!!
     return Bpmn.readModelFromStream(ByteArrayInputStream(diagramDto.bpmn20Xml.toByteArray(UTF_8)))
   }
+
+  override fun createDecisionDefinitionQuery() =  DelegatingDecisionDefinitionQuery(decisionDefinitionApiClient)
+
 }

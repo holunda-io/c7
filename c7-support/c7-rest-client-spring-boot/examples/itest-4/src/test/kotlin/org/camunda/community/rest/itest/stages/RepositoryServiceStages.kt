@@ -33,8 +33,8 @@ class RepositoryServiceActionStage : ActionStage<RepositoryServiceActionStage, R
   lateinit var processDefinition: ProcessDefinition
 
   fun no_deployment_exists() = step {
-    remoteService.createDeploymentQuery().list().map {
-      remoteService.deleteDeployment(it.id)
+    remoteService.createDeploymentQuery().list().forEach {
+      remoteService.deleteDeployment(it.id, true)
     }
   }
 

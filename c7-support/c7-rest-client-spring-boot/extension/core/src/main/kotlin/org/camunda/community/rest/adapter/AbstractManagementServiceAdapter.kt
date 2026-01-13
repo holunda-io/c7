@@ -28,6 +28,9 @@ import org.camunda.community.rest.impl.implementedBy
 import java.sql.Connection
 import java.util.Date
 
+/**
+ * Adapter for implementing management service.
+ */
 abstract class AbstractManagementServiceAdapter : ManagementService {
 
   override fun registerProcessApplication(

@@ -65,8 +65,8 @@ class HistoryServiceActionStage : ActionStage<HistoryServiceActionStage, History
   lateinit var processInstance: ProcessInstance
 
   fun no_deployment_exists() = step {
-    repositoryService.createDeploymentQuery().list().map {
-      repositoryService.deleteDeployment(it.id)
+    repositoryService.createDeploymentQuery().list().forEach {
+      repositoryService.deleteDeployment(it.id, true)
     }
     remoteService.createHistoricProcessInstanceQuery().list().forEach {
       remoteService.deleteHistoricProcessInstance(it.id)

@@ -149,7 +149,7 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
   }
 
   override fun createDecisionDefinitionQuery(): DecisionDefinitionQuery {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    implementedBy(RemoteRepositoryService::class)
   }
 
   override fun getDecisionRequirementsDiagram(decisionRequirementsDefinitionId: String?): InputStream {
