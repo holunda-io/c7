@@ -66,7 +66,6 @@ class DelegatingBatchQuery(
       "tenantIdIn" -> tenantIds?.joinToString(",")
       "withoutTenantId" -> tenantIdsSet && tenantIds == null
       "suspended" -> suspensionState?.let { it == SuspensionState.SUSPENDED }
-      "active" -> suspensionState?.let { it == SuspensionState.ACTIVE }
       "sortBy" -> sortProperty()?.property
       "sortOrder" -> sortProperty()?.direction?.let { if (it == SortDirection.DESC) "desc" else "asc" }
       "createdBy", "startedBefore", "startedAfter", "withFailures", "withoutFailures" -> null
