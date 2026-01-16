@@ -30,6 +30,7 @@ class DelegatingProcessDefinitionQueryTest {
     this.deployedAfter(Date())
     this.deployedAt(Date())
     this.processDefinitionKey("key")
+    @Suppress("DEPRECATION")
     this.processDefinitionKeysIn("keys")
     this.processDefinitionKeyLike("keyLike")
     this.processDefinitionResourceName("resourceName")

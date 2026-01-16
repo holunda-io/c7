@@ -31,6 +31,7 @@ class DelegatingDeploymentBuilderTest {
       this.name("deploymentName")
       this.tenantId("tenantId")
       this.source("deploymentSource")
+      @Suppress("DEPRECATION")
       this.enableDuplicateFiltering()
       this.enableDuplicateFiltering(true)
       this.activateProcessDefinitionsOn(Date())

@@ -24,10 +24,12 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
     implementedBy(RemoteRepositoryService::class)
   }
 
+  @Deprecated("Use authorization mechanism instead")
   override fun addCandidateStarterUser(processDefinitionId: String?, userId: String?) {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
 
+  @Deprecated("Use authorization mechanism instead")
   override fun deleteCandidateStarterUser(processDefinitionId: String?, userId: String?) {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
@@ -40,6 +42,7 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
 
+  @Deprecated("Use {@link #deleteDeployment(String, boolean)}. This methods may be deleted from 5.3.")
   override fun deleteDeploymentCascade(deploymentId: String?) {
     implementedBy(RemoteRepositoryService::class)
   }
@@ -100,6 +103,7 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
 
+  @Deprecated("Use authorization mechanism instead.")
   override fun addCandidateStarterGroup(processDefinitionId: String?, groupId: String?) {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
@@ -164,6 +168,7 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
     implementedBy(RemoteRepositoryService::class)
   }
 
+  @Deprecated("Use authorization mechanism instead.")
   override fun getIdentityLinksForProcessDefinition(processDefinitionId: String?): MutableList<IdentityLink> {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
@@ -196,6 +201,7 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
     implementedBy(RemoteRepositoryService::class)
   }
 
+  @Deprecated("Use authorization mechanism instead.")
   override fun deleteCandidateStarterGroup(processDefinitionId: String?, groupId: String?) {
     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }

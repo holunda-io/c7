@@ -234,6 +234,7 @@ abstract class AbstractTaskServiceAdapter : TaskService {
     implementedBy(RemoteTaskService::class)
   }
 
+  @Deprecated("Use {@link #createComment(String, String, String)} instead")
   override fun addComment(taskId: String, processInstanceId: String?, message: String?) {
     TODO("Not yet implemented")
   }
@@ -250,7 +251,8 @@ abstract class AbstractTaskServiceAdapter : TaskService {
     TODO("Not yet implemented")
   }
 
-  @Suppress("DEPRECATION")
+  @Deprecated("This method has been deprecated as of Camunda Platform 7.1. It has been replaced with\n" +
+    " the operation log. See {@link UserOperationLogEntry} and {@link UserOperationLogQuery}.")
   override fun getTaskEvents(taskId: String): MutableList<Event> {
     TODO("Not yet implemented")
   }

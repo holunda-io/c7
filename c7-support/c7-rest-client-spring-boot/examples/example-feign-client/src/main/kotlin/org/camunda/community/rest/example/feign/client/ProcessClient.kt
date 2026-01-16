@@ -43,23 +43,23 @@ class ProcessClient
   @Scheduled(initialDelay = 8000, fixedRate = Int.MAX_VALUE.toLong())
   fun retrieveProcessDefinition() {
     LOGGER.info("CLIENT-90: Retrieving process definition")
-    val count = processDefinitionApiClient.getProcessDefinitionsCount(
+    val count = requireNotNull(processDefinitionApiClient.getProcessDefinitionsCount(
       null, null, null, null,
       null, null, null, null, null, null,
       null, null, null, null, null, null, null,
       null, null, null, null, null, null, null,
       null, null, null, null, null,
       null, null, null
-    ).body.count
+    ).body).count
     LOGGER.info("CLIENT-91: Found {} deployed processes", count)
-    val processDefinitions = processDefinitionApiClient.getProcessDefinitions(
+    val processDefinitions = requireNotNull(processDefinitionApiClient.getProcessDefinitions(
       null, null, null, null,
       null, null, null, null, null, null,
       null, null, null, null, null, null, null,
       null, null, null, null, null, null, null,
       null, null, null, null, null,
       null, null, null, null, null, null, null
-    ).body
+    ).body)
     LOGGER.info(
       "CLIENT-92: Deployed process definition are {}",
       processDefinitions.stream().map { o: ProcessDefinitionDto? -> Objects.toString(o) }
@@ -74,12 +74,12 @@ class ProcessClient
   @Scheduled(initialDelay = 10000, fixedDelay = 5000)
   fun startProcess() {
     LOGGER.trace("CLIENT-100: Starting a process instance remote")
-    val instance = processDefinitionApiClient.startProcessInstanceByKey(
+    val instance = requireNotNull(processDefinitionApiClient.startProcessInstanceByKey(
       "process_messaging",
       StartProcessInstanceDto()
         .businessKey("WAIT_FOR_MESSAGE" + UUID.randomUUID())
         .putVariablesItem("ID", stringValue("MESSAGING-" + UUID.randomUUID()))
-    ).body
+    ).body)
     LOGGER.trace("CLIENT-101: Started instance {} - {}", instance.id, instance.businessKey)
     instances[instance.id] = instance.businessKey
   }
@@ -116,7 +116,7 @@ class ProcessClient
     if (instanceIterator.hasNext()) {
       val (key, value) = instanceIterator.next()
       LOGGER.debug("Trying to message remote process instance {}", key)
-      val result = messageApiClient
+      val result = requireNotNull(messageApiClient
         .deliverMessage(
           CorrelationMessageDto()
             .messageName("message_received")
@@ -124,7 +124,7 @@ class ProcessClient
             .processVariables(variables)
             .all(true)
             .resultEnabled(true)
-        ).body
+        ).body)
       result.forEach {
         LOGGER.info(
           "CLIENT-301: {}",

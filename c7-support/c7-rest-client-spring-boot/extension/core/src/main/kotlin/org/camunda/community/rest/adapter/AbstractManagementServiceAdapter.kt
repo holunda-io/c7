@@ -401,10 +401,14 @@ abstract class AbstractManagementServiceAdapter : ManagementService {
     TODO("Not yet implemented")
   }
 
+  @Deprecated("The sending telemetry feature is removed.\n" +
+    "Please remove the method references as they are no longer needed.")
   override fun toggleTelemetry(enabled: Boolean) {
     TODO("Not yet implemented")
   }
 
+  @Deprecated("The sending telemetry feature is removed.\n" +
+    "Please remove the method references as they are no longer needed.")
   override fun isTelemetryEnabled(): Boolean? {
     TODO("Not yet implemented")
   }

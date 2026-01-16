@@ -68,7 +68,7 @@ class ProcessEngineCoverageExtensionHelper(
             } else {
 
                 // Log coverage percentage
-                logger.info("${suite.name} test class coverage is: $suiteCoveragePercentage")
+                logger.info { "${suite.name} test class coverage is: $suiteCoveragePercentage" }
                 logCoverageDetail(suite)
 
                 // Create graphical report
@@ -130,8 +130,8 @@ class ProcessEngineCoverageExtensionHelper(
      * Logs the string representation of the passed suite object.
      */
     private fun logCoverageDetail(suite: Suite) {
-        if (logger.isDebugEnabled && detailedCoverageLogging) {
-            logger.debug(suite.toString())
+        if (logger.isDebugEnabled() && detailedCoverageLogging) {
+            logger.debug { suite.toString() }
         }
     }
 
@@ -139,8 +139,8 @@ class ProcessEngineCoverageExtensionHelper(
      * Logs the string representation of the passed run object.
      */
     private fun logCoverageDetail(run: Run) {
-        if (logger.isDebugEnabled && detailedCoverageLogging) {
-            logger.debug(run.toString())
+        if (logger.isDebugEnabled() && detailedCoverageLogging) {
+            logger.debug { run.toString() }
         }
     }
 
@@ -162,7 +162,7 @@ class ProcessEngineCoverageExtensionHelper(
             logger.warn { "${run.name} test method coverage could not be calculated, check configuration" }
         } else {
             // Log coverage percentage
-            logger.info("${run.name} test method coverage is $coveragePercentage")
+            logger.info { "${run.name} test method coverage is $coveragePercentage" }
             logCoverageDetail(run)
 
             testMethodNameToCoverageConditions[run.name]?.let {

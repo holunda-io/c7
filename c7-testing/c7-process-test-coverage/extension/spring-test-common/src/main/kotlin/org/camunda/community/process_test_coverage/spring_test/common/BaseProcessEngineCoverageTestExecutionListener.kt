@@ -17,142 +17,142 @@ private val logger = KotlinLogging.logger {}
 
 abstract class BaseProcessEngineCoverageTestExecutionListener : TestExecutionListener, Ordered {
 
-    private lateinit var processEngineCoverageProperties: ProcessEngineCoverageProperties
+  private lateinit var processEngineCoverageProperties: ProcessEngineCoverageProperties
 
-    private var suiteInitialized = false
+  private var suiteInitialized = false
 
-    private fun loadConfiguration(testContext: TestContext) {
-        processEngineCoverageProperties = try {
-            testContext.applicationContext.getBean(ProcessEngineCoverageProperties::class.java)
-        } catch (ex: NoSuchBeanDefinitionException) {
-            ProcessEngineCoverageProperties()
-        }
+  private fun loadConfiguration(testContext: TestContext) {
+    processEngineCoverageProperties = try {
+      testContext.applicationContext.getBean(ProcessEngineCoverageProperties::class.java)
+    } catch (_: NoSuchBeanDefinitionException) {
+      ProcessEngineCoverageProperties()
     }
+  }
 
-    protected abstract fun getCoverageCollector(): DefaultCollector
+  protected abstract fun getCoverageCollector(): DefaultCollector
 
-    override fun getOrder() = Integer.MAX_VALUE
+  override fun getOrder() = Integer.MAX_VALUE
 
-    /**
-     * Handles creating the run if a relevant test method is called.
-     */
-    override fun beforeTestMethod(testContext: TestContext) {
-        if (!isTestMethodExcluded(testContext)) {
-            if (!suiteInitialized) {
-                initializeSuite(testContext)
-            }
-            // method name is set only on test methods (not on classes or suites)
-            val runId: String = testContext.testMethod.name
-            getCoverageCollector().createRun(Run(runId, testContext.testMethod.name), getCoverageCollector().activeSuite.id)
-            getCoverageCollector().activateRun(runId)
-        }
+  /**
+   * Handles creating the run if a relevant test method is called.
+   */
+  override fun beforeTestMethod(testContext: TestContext) {
+    if (!isTestMethodExcluded(testContext)) {
+      if (!suiteInitialized) {
+        initializeSuite(testContext)
+      }
+      // method name is set only on test methods (not on classes or suites)
+      val runId: String = testContext.testMethod.name
+      getCoverageCollector().createRun(Run(runId, testContext.testMethod.name), getCoverageCollector().activeSuite.id)
+      getCoverageCollector().activateRun(runId)
     }
+  }
 
-    /**
-     * Handles evaluating the test method coverage after a relevant test method is finished.
-     */
-    override fun afterTestMethod(testContext: TestContext) {
-        if (!isTestMethodExcluded(testContext) && processEngineCoverageProperties.handleTestMethodCoverage) {
-            handleTestMethodCoverage(testContext)
-        }
+  /**
+   * Handles evaluating the test method coverage after a relevant test method is finished.
+   */
+  override fun afterTestMethod(testContext: TestContext) {
+    if (!isTestMethodExcluded(testContext) && processEngineCoverageProperties.handleTestMethodCoverage) {
+      handleTestMethodCoverage(testContext)
     }
+  }
 
-    protected open fun isTestClassExcluded(testContext: TestContext) =
-        testContext.testClass.isExcluded(processEngineCoverageProperties.inclusionPatternsForTestClasses)
+  protected open fun isTestClassExcluded(testContext: TestContext) =
+    testContext.testClass.isExcluded(processEngineCoverageProperties.inclusionPatternsForTestClasses)
 
-    protected fun isTestMethodExcluded(testContext: TestContext) =
-        isTestClassExcluded(testContext) || testContext.testMethod.isExcluded()
+  protected fun isTestMethodExcluded(testContext: TestContext) =
+    isTestClassExcluded(testContext) || testContext.testMethod.isExcluded()
 
-    /**
-     * Initializes the suite for all upcoming tests.
-     */
-    override fun beforeTestClass(testContext: TestContext) {
-        loadConfiguration(testContext)
-        if (!isTestClassExcluded(testContext)) {
-            initializeSuite(testContext)
-        }
+  /**
+   * Initializes the suite for all upcoming tests.
+   */
+  override fun beforeTestClass(testContext: TestContext) {
+    loadConfiguration(testContext)
+    if (!isTestClassExcluded(testContext)) {
+      initializeSuite(testContext)
     }
+  }
 
-    private fun initializeSuite(testContext: TestContext) {
-        val suiteId: String = testContext.testClass.name
-        getCoverageCollector().createSuite(Suite(suiteId, testContext.testClass.name))
-        getCoverageCollector().setExcludedProcessDefinitionKeys(processEngineCoverageProperties.excludedProcessDefinitionKeys)
-        getCoverageCollector().activateSuite(suiteId)
-        suiteInitialized = true
+  private fun initializeSuite(testContext: TestContext) {
+    val suiteId: String = testContext.testClass.name
+    getCoverageCollector().createSuite(Suite(suiteId, testContext.testClass.name))
+    getCoverageCollector().setExcludedProcessDefinitionKeys(processEngineCoverageProperties.excludedProcessDefinitionKeys)
+    getCoverageCollector().activateSuite(suiteId)
+    suiteInitialized = true
+  }
+
+  /**
+   * Handles the coverage report after the test class was executed.
+   */
+  override fun afterTestClass(testContext: TestContext) {
+    if (suiteInitialized) {
+      val suite = getCoverageCollector().activeSuite
+
+      val suiteCoveragePercentage = suite.calculateCoverage(getCoverageCollector().getModels())
+
+      if (suiteCoveragePercentage.isNaN()) {
+        logger.warn { "${suite.name} test class coverage could not be calculated, check configuration" }
+      } else {
+        // Log coverage percentage
+        logger.info { "${suite.name} test class coverage is: $suiteCoveragePercentage" }
+        logCoverageDetail(suite)
+
+        // Create graphical report
+        CoverageReportUtil.createReport(getCoverageCollector(), processEngineCoverageProperties.reportDirectory)
+        CoverageReportUtil.createJsonReport(getCoverageCollector(), processEngineCoverageProperties.reportDirectory)
+
+        assertCoverage(
+          suiteCoveragePercentage,
+          processEngineCoverageProperties.classCoverageAssertionConditions
+        )
+      }
     }
+  }
 
-    /**
-     * Handles the coverage report after the test class was executed.
-     */
-    override fun afterTestClass(testContext: TestContext) {
-        if (suiteInitialized) {
-            val suite = getCoverageCollector().activeSuite
+  /**
+   * Logs and asserts the test method coverage and creates a graphical report.
+   *
+   * @param testContext test context
+   */
+  private fun handleTestMethodCoverage(testContext: TestContext) {
+    val suite = getCoverageCollector().activeSuite
+    val run = suite.getRun(testContext.testMethod.name) ?: return
+    val coveragePercentage = run.calculateCoverage(getCoverageCollector().getModels())
 
-            val suiteCoveragePercentage = suite.calculateCoverage(getCoverageCollector().getModels())
+    if (coveragePercentage.isNaN()) {
+      logger.warn { "${run.name} test method coverage could not be calculated, check configuration" }
+    } else {
+      // Log coverage percentage
+      logger.info { "${run.name} test method coverage is $coveragePercentage" }
+      logCoverageDetail(run)
 
-            if (suiteCoveragePercentage.isNaN()) {
-                logger.warn { "${suite.name} test class coverage could not be calculated, check configuration" }
-            } else {
-                // Log coverage percentage
-                logger.info("${suite.name} test class coverage is: $suiteCoveragePercentage")
-                logCoverageDetail(suite)
-
-                // Create graphical report
-                CoverageReportUtil.createReport(getCoverageCollector(), processEngineCoverageProperties.reportDirectory)
-                CoverageReportUtil.createJsonReport(getCoverageCollector(), processEngineCoverageProperties.reportDirectory)
-
-                assertCoverage(
-                    suiteCoveragePercentage,
-                    processEngineCoverageProperties.classCoverageAssertionConditions
-                )
-            }
-        }
+      processEngineCoverageProperties.testMethodCoverageConditions[run.name]?.let {
+        assertCoverage(coveragePercentage, it)
+      }
     }
+  }
 
-    /**
-     * Logs and asserts the test method coverage and creates a graphical report.
-     *
-     * @param testContext test context
-     */
-    private fun handleTestMethodCoverage(testContext: TestContext) {
-        val suite = getCoverageCollector().activeSuite
-        val run = suite.getRun(testContext.testMethod.name) ?: return
-        val coveragePercentage = run.calculateCoverage(getCoverageCollector().getModels())
-
-        if (coveragePercentage.isNaN()) {
-            logger.warn { "${run.name} test method coverage could not be calculated, check configuration" }
-        } else {
-            // Log coverage percentage
-            logger.info("${run.name} test method coverage is $coveragePercentage")
-            logCoverageDetail(run)
-
-            processEngineCoverageProperties.testMethodCoverageConditions[run.name]?.let {
-                assertCoverage(coveragePercentage, it)
-            }
-        }
+  /**
+   * Logs the string representation of the passed suite object.
+   */
+  private fun logCoverageDetail(suite: Suite) {
+    if (logger.isDebugEnabled() && processEngineCoverageProperties.detailedCoverageLogging) {
+      logger.debug { suite.toString() }
     }
+  }
 
-    /**
-     * Logs the string representation of the passed suite object.
-     */
-    private fun logCoverageDetail(suite: Suite) {
-        if (logger.isDebugEnabled && processEngineCoverageProperties.detailedCoverageLogging) {
-            logger.debug(suite.toString())
-        }
+  /**
+   * Logs the string representation of the passed run object.
+   */
+  private fun logCoverageDetail(run: Run) {
+    if (logger.isDebugEnabled() && processEngineCoverageProperties.detailedCoverageLogging) {
+      logger.debug{ run.toString() }
     }
+  }
 
-    /**
-     * Logs the string representation of the passed run object.
-     */
-    private fun logCoverageDetail(run: Run) {
-        if (logger.isDebugEnabled && processEngineCoverageProperties.detailedCoverageLogging) {
-            logger.debug(run.toString())
-        }
-    }
-
-    private fun assertCoverage(coverage: Double, conditions: List<Condition<Double>>) {
-        conditions.forEach { Assertions.assertThat(coverage).satisfies(it) }
-    }
+  private fun assertCoverage(coverage: Double, conditions: List<Condition<Double>>) {
+    conditions.forEach { Assertions.assertThat(coverage).satisfies(it) }
+  }
 
 
 }

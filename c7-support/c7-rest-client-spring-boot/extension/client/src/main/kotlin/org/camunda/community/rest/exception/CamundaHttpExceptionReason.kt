@@ -11,11 +11,11 @@ private val logger = KotlinLogging.logger {}
  * @param message text.
  */
 internal data class CamundaHttpExceptionReason(
-  @JsonProperty("type")
+  @field: JsonProperty("type")
   val clazz: String,
-  @JsonProperty("message")
+  @field: JsonProperty("message")
   val message: String,
-  @JsonProperty("code")
+  @field: JsonProperty("code")
   val code: String?
 ) {
   companion object {

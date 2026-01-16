@@ -64,6 +64,7 @@ class FeignClientConfiguration {
   /**
    * Create an object factory for the message converter with the customized object mapper.
    */
+  @Suppress("DEPRECATION")
   @Bean
   fun camunda7feignHttpMessageConverter(): HttpMessageConverter<*> {
     val builder = Jackson2ObjectMapperBuilder

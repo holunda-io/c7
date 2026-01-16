@@ -62,8 +62,9 @@ data class InstanceBean(
   companion object {
     /**
      * Factory method to construct the bean from DTO.
-     * @param dto: REST representation of process instance.
+     * @param processInstance: REST representation of process instance.
      */
+    @Suppress("DEPRECATION")
     @JvmStatic
     fun fromProcessInstanceDto(processInstance: ProcessInstanceDto) =
       InstanceBean(
@@ -77,20 +78,17 @@ data class InstanceBean(
         } else {
           InstanceType.PROCESS
         },
-        instanceId = if (processInstance.caseInstanceId != null) {
-          processInstance.caseInstanceId
-        } else {
-          processInstance.id
-        },
+        instanceId = processInstance.caseInstanceId ?: processInstance.id,
         processDefinitionId = processInstance.definitionId,
         processDefinitionKey = processInstance.definitionKey
       )
 
     /**
      * Factory method to construct the bean from DTO.
-     * @param dto: REST representation of process instance.
+     * @param processInstance: REST representation of process instance.
      */
     @JvmStatic
+    @Suppress("DEPRECATION")
     fun fromProcessInstanceDto(processInstance: ProcessInstanceWithVariablesDto) =
       InstanceBean(
         id = processInstance.id,
@@ -103,11 +101,7 @@ data class InstanceBean(
         } else {
           InstanceType.PROCESS
         },
-        instanceId = if (processInstance.caseInstanceId != null) {
-          processInstance.caseInstanceId
-        } else {
-          processInstance.id
-        },
+        instanceId = processInstance.caseInstanceId ?: processInstance.id,
         processDefinitionId = processInstance.definitionId
       )
   }
