@@ -163,17 +163,15 @@ class RuntimeServiceActionStage : ActionStage<RuntimeServiceActionStage, Runtime
     processDefinitionKey: String,
     businessKey: String? = null,
     caseInstanceId: String? = null,
-    variables: Map<String, Any>? = null
+    variables: Map<String, Any> = emptyMap()
   ): RuntimeServiceActionStage = step {
 
-    processInstance = if (variables != null && businessKey != null && caseInstanceId != null) {
+    processInstance = if (businessKey != null && caseInstanceId != null) {
       remoteService.startProcessInstanceByKey(processDefinitionKey, businessKey, caseInstanceId, variables)
-    } else if (businessKey != null && caseInstanceId != null) {
-      remoteService.startProcessInstanceByKey(processDefinitionKey, businessKey, caseInstanceId)
     } else if (businessKey != null) {
-      remoteService.startProcessInstanceByKey(processDefinitionKey, businessKey)
+      remoteService.startProcessInstanceByKey(processDefinitionKey, businessKey, variables)
     } else {
-      remoteService.startProcessInstanceByKey(processDefinitionKey)
+      remoteService.startProcessInstanceByKey(processDefinitionKey, variables)
     }
 
     // started instance
