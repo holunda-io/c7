@@ -50,9 +50,12 @@ class RuntimeServiceExecutionQueryITest :
             .count()
         ).isEqualTo(1)
 
+        val execution = query.processInstanceBusinessKey(key1)
+          .singleResult()
+
         assertThat(
           query
-            .executionId(THEN.processInstance!!.id)
+            .executionId(execution.id)
             .count()
         ).isEqualTo(1)
 
