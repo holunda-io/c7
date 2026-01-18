@@ -3,9 +3,11 @@ engines:
   exclude_paths:
     - "**/*.js"        # Ignore all JavaScript files
     - "**/test/**"     # Ignore tests
+    - "**/itest/**"    # Ignore tests
   detekt:  # Kotlin static analysis tool
     exclude_paths:
       - "**/test/**"        # Ignore test folders
+      - "**/itest/**"       # Ignore test folders
       - "**/*Test.kt"       # Ignore Kotlin test files
       - "**/*Test.java"     # Ignore Java test files
       - "**/*Tests.kt"      # Ignore Kotlin test files with plural naming
@@ -13,6 +15,7 @@ engines:
   duplications:
     exclude_paths:
       - "**/src/test/kotlin/**"
+      - "**/itest/**"
   markdownlint:
     exclude_paths:
       - ".github/**/*.md"  # No corrections of GitHub markdown files

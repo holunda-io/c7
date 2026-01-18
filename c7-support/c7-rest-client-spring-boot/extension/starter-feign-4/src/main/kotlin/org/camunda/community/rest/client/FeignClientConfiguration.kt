@@ -33,6 +33,9 @@ import java.time.format.DateTimeFormatter
 @EnableFeignClients
 class FeignClientConfiguration {
 
+  /**
+   * Configure feign spring encoder for Camunda.
+   */
   @Bean
   @ConditionalOnMissingBean
   fun camundaFeignEncoder(
@@ -42,6 +45,9 @@ class FeignClientConfiguration {
     return SpringEncoder(camundaMultipartFormEncoder(), feignEncoderProperties, converters)
   }
 
+  /**
+   * Define a retryer for feign HTTP calls.
+   */
   @Bean
   fun camundaRetryer() = Retryer.Default()
 
@@ -53,6 +59,9 @@ class FeignClientConfiguration {
   fun feignLoggerLevel(@Value("\${feign.client.config.default.loggerLevel}") defaultLogLevel: String) =
     Logger.Level.valueOf(defaultLogLevel)
 
+  /**
+   * Configures the Feign HTTP message converters using the provided converters and customizers.
+   */
   @Bean
   fun feignHttpMessageConverts(
     converters: ObjectProvider<HttpMessageConverter<*>>,

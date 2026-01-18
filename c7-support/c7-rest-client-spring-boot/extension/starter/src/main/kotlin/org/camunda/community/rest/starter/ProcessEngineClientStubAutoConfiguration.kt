@@ -24,8 +24,6 @@ private val logger = KotlinLogging.logger {}
 @ConditionalOnProperty(prefix = "camunda.rest.client", name = ["enabled"], havingValue = "true", matchIfMissing = true)
 class ProcessEngineClientStubAutoConfiguration {
 
-  companion object
-
   /**
    * Sets up a fake engine if no engine is provided.
    */

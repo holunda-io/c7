@@ -43,9 +43,12 @@ data class DecisionDefinitionBean(
   val decisionRequirementsDefinitionId: String?,
   val decisionRequirementsDefinitionKey: String?
 ) {
+  /**
+   * Factory methods.
+   */
   companion object {
     /**
-     * Factory method to create bean from REST represenation.
+     * Factory method to create bean from REST representation.
      */
     @JvmStatic
     fun fromDto(dto: DecisionDefinitionDto) = DecisionDefinitionBean(

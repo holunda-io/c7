@@ -55,6 +55,9 @@ import java.time.format.DateTimeFormatter
 @EnableFeignClients
 class FeignClientConfiguration {
 
+  /**
+   * Configure feign spring encoder for Camunda.
+   */
   @Bean
   @ConditionalOnMissingBean
   fun camundaFeignEncoder(
@@ -65,6 +68,9 @@ class FeignClientConfiguration {
     return SpringEncoder(camundaMultipartFormEncoder(), myConverters, feignEncoderProperties, customizers)
   }
 
+  /**
+   * Define a retryer for feign HTTP calls.
+   */
   @Bean
   fun camundaRetryer() = Retryer.Default()
 

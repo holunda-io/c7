@@ -32,10 +32,9 @@ class RuntimeServiceExecutionQueryITest :
       .process_with_user_task_is_deployed(processDefinitionKey)
 
     WHEN
-      .apply {
-        remoteService.startProcessInstanceById(GIVEN.processDefinition.id, key1, vars1)
-        remoteService.startProcessInstanceById(GIVEN.processDefinition.id, key2, vars2)
-      }
+      .process_is_started_by_key(processDefinitionKey, key1, null, vars1)
+      .and()
+      .process_is_started_by_key(processDefinitionKey, key2, null, vars2)
 
     THEN
       .execution_query_succeeds { query, _ ->
@@ -48,6 +47,12 @@ class RuntimeServiceExecutionQueryITest :
         assertThat(
           query
             .processInstanceBusinessKey(key1)
+            .count()
+        ).isEqualTo(1)
+
+        assertThat(
+          query
+            .executionId(THEN.processInstance!!.id)
             .count()
         ).isEqualTo(1)
 
