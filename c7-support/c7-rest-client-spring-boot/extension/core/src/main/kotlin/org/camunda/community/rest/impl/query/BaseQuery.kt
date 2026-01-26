@@ -47,6 +47,7 @@ abstract class BaseQuery<T : Query<*, *>, U>(
    * Only select those results where the tenant id is in the list of supplied ids.
    * @param tenantIds ids to check for
    */
+  @Suppress("UNCHECKED_CAST")
   fun tenantIdIn(vararg tenantIds: String) = this.apply {
     if (tenantIdsSet && this.tenantIds == null) {
       throw ProcessEngineException("Invalid query usage: cannot set both tenantIdIn and withoutTenantId filters.")
@@ -58,6 +59,7 @@ abstract class BaseQuery<T : Query<*, *>, U>(
   /**
    * Only select those results that have no tenant set.
    */
+  @Suppress("UNCHECKED_CAST")
   fun withoutTenantId() = this.apply {
     if (!tenantIds.isNullOrEmpty()) {
       throw ProcessEngineException("Invalid query usage: cannot set both tenantIdIn and withoutTenantId filters.")
@@ -79,12 +81,14 @@ abstract class BaseQuery<T : Query<*, *>, U>(
    * Sets the sorting direction to ascending for the current ordering property.
    * [orderBy] has to be called before calling this method.
    */
+  @Suppress("UNCHECKED_CAST")
   override fun asc(): T = this.apply { direction(SortDirection.ASC) } as T
 
   /**
    * Sets the sorting direction to descending for the current ordering property.
    * [orderBy] has to be called before calling this method.
    */
+  @Suppress("UNCHECKED_CAST")
   override fun desc():T = this.apply { direction(SortDirection.DESC) } as T
 
   /**
@@ -101,6 +105,7 @@ abstract class BaseQuery<T : Query<*, *>, U>(
   /**
    * Order the results by tenant id.
    */
+  @Suppress("UNCHECKED_CAST")
   fun orderByTenantId() = this.apply { orderBy("tenantId") } as T
 
   /**

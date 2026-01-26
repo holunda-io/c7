@@ -43,6 +43,10 @@ class ValueMapperConfiguration {
     return SpinJsonValueSerializer(valueTypeResolver = valueTypeResolver, valueTypeRegistration = valueTypeRegistration)
   }
 
+  /**
+   * Default value mapper bean, supporting new and deprecated way of configuration via Adapter.
+   */
+  @Suppress("DEPRECATION")
   @Bean
   @ConditionalOnMissingBean(ValueMapper::class)
   fun defaultValueMapper(

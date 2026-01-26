@@ -40,8 +40,8 @@ private val logger = KotlinLogging.logger {}
  * class [ProcessClientConfiguration] in order to control its activation via property.
  */
 class ProcessClient(
-  @Qualifier("remote") private val runtimeService: RuntimeService,
-  @Qualifier("remote") private val repositoryService: RepositoryService
+  @param: Qualifier("remote") private val runtimeService: RuntimeService,
+  @param: Qualifier("remote") private val repositoryService: RepositoryService
 ) {
 
   companion object {

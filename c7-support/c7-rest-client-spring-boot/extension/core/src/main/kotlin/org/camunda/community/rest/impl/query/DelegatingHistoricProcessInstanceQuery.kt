@@ -185,7 +185,9 @@ class DelegatingHistoricProcessInstanceQuery(
   @Deprecated("Deprecated in Java")
   override fun startDateOn(startDateOn: Date?) = this.apply {
     this.startDateOn = requireNotNull(startDateOn)
+    @Suppress("DEPRECATION")
     this.startDateOnBegin = this.calculateMidnight(startDateOn)
+    @Suppress("DEPRECATION")
     this.startDateOnEnd = this.calculateBeforeMidnight(startDateOn)
   }
 
@@ -197,7 +199,9 @@ class DelegatingHistoricProcessInstanceQuery(
   @Deprecated("Deprecated in Java")
   override fun finishDateOn(finishDateOn: Date?) = this.apply {
     this.finishDateOn = requireNotNull(finishDateOn)
+    @Suppress("DEPRECATION")
     this.finishDateOnBegin = this.calculateMidnight(finishDateOn)
+    @Suppress("DEPRECATION")
     this.finishDateOnEnd = this.calculateBeforeMidnight(finishDateOn)
   }
 
@@ -271,7 +275,7 @@ class DelegatingHistoricProcessInstanceQuery(
     }
   }
 
-  @Deprecated("")
+  @Deprecated("Deprecated in Java")
   private fun calculateBeforeMidnight(date: Date): Date {
     val cal = Calendar.getInstance()
     cal.setTime(date)
@@ -280,7 +284,7 @@ class DelegatingHistoricProcessInstanceQuery(
     return cal.time
   }
 
-  @Deprecated("")
+  @Deprecated("Deprecated in Java")
   private fun calculateMidnight(date: Date): Date {
     val cal = Calendar.getInstance()
     cal.setTime(date)

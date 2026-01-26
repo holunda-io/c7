@@ -18,6 +18,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the equals operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueEquals(name: String, value: Any?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.EQUALS))
   } as T
@@ -25,6 +26,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the not equals operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueNotEquals(name: String, value: Any?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.NOT_EQUALS))
   } as T
@@ -32,6 +34,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the greater than operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueGreaterThan(name: String, value: Any?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.GREATER_THAN))
   } as T
@@ -39,6 +42,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the greater than or equal operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueGreaterThanOrEqual(name: String, value: Any?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.GREATER_THAN_OR_EQUAL))
   } as T
@@ -46,6 +50,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the less than operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueLessThan(name: String, value: Any?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.LESS_THAN))
   } as T
@@ -53,6 +58,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the less than or equal operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueLessThanOrEqual(name: String, value: Any?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.LESS_THAN_OR_EQUAL))
   } as T
@@ -60,6 +66,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the like operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueLike(name: String, value: String?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.LIKE))
   } as T
@@ -67,6 +74,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Adds a variable query for the not like operator.
    */
+  @Suppress("UNCHECKED_CAST")
   fun variableValueNotLike(name: String, value: String?) = this.apply {
     queryVariableValues.add(QueryVariableValue(name = name, value = value, operator = QueryOperator.NOT_LIKE))
   } as T
@@ -74,6 +82,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Specifies that the case of the variable name should be ignored in the query.
    */
+  @Suppress("UNCHECKED_CAST")
   fun matchVariableNamesIgnoreCase() = this.apply {
     variableNamesIgnoreCase = true
   } as T
@@ -81,6 +90,7 @@ abstract class BaseVariableQuery<T : Query<*, *>, U>(
   /**
    * Specifies that the case of the variable values should be ignored in the query.
    */
+  @Suppress("UNCHECKED_CAST")
   fun matchVariableValuesIgnoreCase() = this.apply {
     variableValuesIgnoreCase = true
   } as T

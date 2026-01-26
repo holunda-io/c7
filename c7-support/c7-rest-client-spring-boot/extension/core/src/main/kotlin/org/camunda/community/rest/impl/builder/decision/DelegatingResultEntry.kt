@@ -39,31 +39,37 @@ sealed class DelegatingResultEntry(
   /**
    * Get the first entry of null if empty.
    */
+  @Suppress("UNCHECKED_CAST")
   fun <T : Any> getFirstEntry(): T? = values.firstOrNull() as T?
 
   /**
    * Get the first entry as a [TypedValue] or null if empty.
    */
+  @Suppress("UNCHECKED_CAST")
   fun <T : TypedValue> getFirstEntryTyped(): T? = resultMap.values.firstOrNull() as T?
 
   /**
    * Gets a single entry or null if empty. Throws an exception if more than on entry.
    */
+  @Suppress("UNCHECKED_CAST")
   fun <T : Any> getSingleEntry(): T? = if (isEmpty()) null else values.single() as T
 
   /**
    * Gets a single entry as a [TypedValue] or null if empty. Throws an exception if more than on entry.
    */
+  @Suppress("UNCHECKED_CAST")
   fun <T : TypedValue> getSingleEntryTyped(): T? = if (isEmpty()) null else resultMap.values.firstOrNull() as T?
 
   /**
    * Gets the entry for the specified name of null if none found.
    */
+  @Suppress("UNCHECKED_CAST")
   fun <T : Any> getEntry(key: String): T? = resultMap[key]?.value as T?
 
   /**
    * Gets the entry for the specified name as a [TypedValue] of null if none found.
    */
+  @Suppress("UNCHECKED_CAST")
   fun <T : TypedValue> getEntryTyped(key: String): T? = resultMap[key] as T?
 
   /**

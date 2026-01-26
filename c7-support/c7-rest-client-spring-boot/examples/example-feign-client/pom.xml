@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>c7-rest-client-spring-boot-example-feign-client</artifactId>
-  <name>examples: c7-rest-client-spring-boot - client</name>
+  <name>examples: c7-rest-client-spring-boot - feign client</name>
   <description>This example demonstrates how to use the generated feign clients without the Camunda services.
   </description>
   <packaging>jar</packaging>
