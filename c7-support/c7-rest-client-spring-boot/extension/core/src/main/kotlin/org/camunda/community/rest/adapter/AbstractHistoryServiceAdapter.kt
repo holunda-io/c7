@@ -97,6 +97,7 @@ abstract class AbstractHistoryServiceAdapter : HistoryService {
     TODO("Not yet implemented")
   }
 
+  @Deprecated("As of v. 7.9.0, because there can be more than one history cleanup job at once, use {@link #findHistoryCleanupJobs} instead.")
   override fun findHistoryCleanupJob(): Job {
     TODO("Not yet implemented")
   }
@@ -129,6 +130,9 @@ abstract class AbstractHistoryServiceAdapter : HistoryService {
     TODO("Not yet implemented")
   }
 
+  @Deprecated("Note that this method name is not expressive enough, because it is also possible to delete the historic\n" +
+    "decision instance by the instance id. Therefore use {@link #deleteHistoricDecisionInstanceByDefinitionId} instead\n" +
+    "to delete the historic decision instance by the definition id.")
   override fun deleteHistoricDecisionInstance(p0: String?) {
     TODO("Not yet implemented")
   }

@@ -22,7 +22,7 @@ class DelegatingExecutionQueryTest {
     this.processDefinitionKey("processDefinitionKey")
     this.processInstanceBusinessKey("businessKey")
     this.activityId("activityId")
-    this.executionId("executionId")
+    //this.executionId("executionId")
     this.processInstanceId("processInstanceId")
     this.suspended()
     this.incidentType("incidentType")

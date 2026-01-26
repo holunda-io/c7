@@ -45,6 +45,10 @@ interface CustomValueMapper {
 
 }
 
+/**
+ * Backward-compatibility adapter to support deprecated custom value mapper.
+ */
+@Suppress("DEPRECATION")
 class CustomValueMapperAdapter(private val customValueMapper: CustomValueMapper) : CustomValueSerializer {
 
   // custom value mappers probably only were JSON related

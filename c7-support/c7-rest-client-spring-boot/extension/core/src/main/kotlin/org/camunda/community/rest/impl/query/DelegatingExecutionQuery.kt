@@ -87,9 +87,17 @@ class DelegatingExecutionQuery(
   override fun listPage(firstResult: Int, maxResults: Int): List<Execution> =
     executionApiClient.queryExecutions(firstResult, maxResults, fillQueryDto()).body!!.map {
       ExecutionAdapter(ExecutionBean.fromExecutionDto(it))
+    }.filter {
+      // execution id cannot be filtered in the query, needs to be filtered afterward
+      executionId == null || executionId == it.id
     }
 
-  override fun count() = executionApiClient.queryExecutionsCount(fillQueryDto()).body!!.count!!
+  override fun count() = if (executionId != null) {
+    // execution id cannot be filtered in the query, needs to be filtered afterward so use list().size
+    list().size.toLong()
+  } else {
+    executionApiClient.queryExecutionsCount(fillQueryDto()).body!!.count!!
+  }
 
   fun fillQueryDto() = ExecutionQueryDto().apply {
     validate()
