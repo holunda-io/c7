@@ -22,7 +22,7 @@
     <!-- Global versions that are crucial for all submodules. -->
     <camunda-ee.version>7.24.2-ee</camunda-ee.version>
     <camunda-ce.version>7.24.0</camunda-ce.version>
-    <spring-boot.version>3.5.9</spring-boot.version>
+    <spring-boot.version>3.5.10</spring-boot.version>
   </properties>
 
   <modules>
