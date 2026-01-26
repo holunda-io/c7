@@ -22,7 +22,7 @@
 
   <properties>
     <jgiven.version>2.0.3</jgiven.version>
-    <assertj.version>3.27.6</assertj.version>
+    <assertj.version>3.27.7</assertj.version>
     <jgiven-kotlin.version>2.0.2.1</jgiven-kotlin.version>
 
     <jgiven.report.dir>target/jgiven-reports</jgiven.report.dir>

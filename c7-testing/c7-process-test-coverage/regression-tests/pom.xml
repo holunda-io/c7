@@ -14,7 +14,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <graalvm.version>25.0.1</graalvm.version>
+    <graalvm.version>25.0.2</graalvm.version>
     <camunda.version>${camunda.compile.version}</camunda.version>
 
     <jacoco.skip>true</jacoco.skip>
@@ -120,7 +120,7 @@
       <id>camunda-bpm-engine-7.21</id>
       <properties>
         <camunda.version>7.21.0</camunda.version>
-        <spring-boot.version>3.5.9</spring-boot.version>
+        <spring-boot.version>3.5.10</spring-boot.version>
       </properties>
     </profile>
 
