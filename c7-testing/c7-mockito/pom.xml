@@ -22,7 +22,6 @@
     <spring.version>6.2.15</spring.version>
 
     <!-- test tools -->
-    <assertj.version>3.27.7</assertj.version>
     <mockito.version>5.21.0</mockito.version>
     <hamcrest.version>3.0</hamcrest.version>
 
@@ -73,7 +72,6 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
 

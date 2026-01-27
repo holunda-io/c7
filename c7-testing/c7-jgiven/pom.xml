@@ -12,7 +12,6 @@
 
   <groupId>io.holunda.testing</groupId>
   <artifactId>camunda-bpm-jgiven-parent</artifactId>
-  <version>2025.12.3-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
@@ -22,7 +21,6 @@
 
   <properties>
     <jgiven.version>2.0.3</jgiven.version>
-    <assertj.version>3.27.7</assertj.version>
     <jgiven-kotlin.version>2.0.2.1</jgiven-kotlin.version>
 
     <jgiven.report.dir>target/jgiven-reports</jgiven.report.dir>
@@ -52,11 +50,6 @@
         <groupId>com.tngtech.jgiven</groupId>
         <artifactId>jgiven-junit5</artifactId>
         <version>${jgiven.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.assertj</groupId>
-        <artifactId>assertj-core</artifactId>
-        <version>${assertj.version}</version>
       </dependency>
       <dependency>
         <groupId>io.toolisticon.testing</groupId>

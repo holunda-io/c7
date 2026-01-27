@@ -16,7 +16,6 @@
 
   <properties>
     <!-- TEST -->
-    <assertj.version>3.27.7</assertj.version>
     <junit5.version>5.11.0</junit5.version>
     <mockk.version>1.14.7</mockk.version>
   </properties>
@@ -90,7 +89,6 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
