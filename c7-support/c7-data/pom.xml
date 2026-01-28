@@ -20,7 +20,6 @@
 
     <camunda-assert.version>${camunda-ce.version}</camunda-assert.version>
     <jgiven.version>2.0.3</jgiven.version>
-    <mockito-kotlin.version>6.2.2</mockito-kotlin.version>
 
     <!-- Skip instrumentalization by default -->
     <jacoco.skip>true</jacoco.skip>
@@ -47,12 +46,6 @@
         <groupId>org.camunda.bpm.springboot</groupId>
         <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
         <version>${camunda-ce.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.mockito.kotlin</groupId>
-        <artifactId>mockito-kotlin</artifactId>
-        <version>${mockito-kotlin.version}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
