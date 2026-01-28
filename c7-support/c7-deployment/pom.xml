@@ -17,7 +17,7 @@
   <properties>
     <!-- TEST -->
     <junit5.version>5.11.0</junit5.version>
-    <mockk.version>1.14.7</mockk.version>
+    <mockk.version>1.14.9</mockk.version>
   </properties>
 
   <dependencyManagement>
