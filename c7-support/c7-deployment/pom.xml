@@ -17,7 +17,6 @@
   <properties>
     <!-- TEST -->
     <junit5.version>5.11.0</junit5.version>
-    <mockk.version>1.14.9</mockk.version>
   </properties>
 
   <dependencyManagement>
@@ -71,12 +70,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.mockk</groupId>
-      <artifactId>mockk-jvm</artifactId>
-      <version>${mockk.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
@@ -94,6 +87,11 @@
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito.kotlin</groupId>
+      <artifactId>mockito-kotlin</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

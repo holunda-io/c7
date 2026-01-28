@@ -1,8 +1,5 @@
 package io.holunda.deployment
 
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.repository.Deployment
@@ -14,6 +11,13 @@ import org.camunda.bpm.model.dmn.DmnModelInstance
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.never
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
 import org.springframework.core.io.Resource
 import org.springframework.core.io.ResourceLoader
 import java.io.ByteArrayInputStream
@@ -23,14 +27,14 @@ import java.util.zip.ZipInputStream
 
 internal class DeployOnApplicationStartTest {
 
-  private val repositoryService: RepositoryService = mockk()
-  private val resourceLoader: ResourceLoader = mockk()
+  private val repositoryService: RepositoryService = mock()
+  private val resourceLoader: ResourceLoader = mock()
 
   @BeforeEach
   fun setUp() {
-    val resource = mockk<Resource>()
-    every { resourceLoader.getResource(any()) } returns resource
-    every { resource.inputStream } returns ByteArrayInputStream("some bpmn content".toByteArray(Charsets.UTF_8))
+    val resource = mock<Resource>()
+    whenever { resourceLoader.getResource(any()) } doReturn  resource
+    whenever { resource.inputStream } doReturn ByteArrayInputStream("some bpmn content".toByteArray(Charsets.UTF_8))
   }
 
   @Test
@@ -40,11 +44,11 @@ internal class DeployOnApplicationStartTest {
     val deployOnApplicationStart = DeployOnApplicationStart(properties, repositoryService, resourceLoader)
 
     val deploymentBuilder = DeploymentBuilderFake()
-    every { repositoryService.createDeployment() } returns deploymentBuilder
+    whenever { repositoryService.createDeployment() } doReturn  deploymentBuilder
 
-    deployOnApplicationStart.accept(PostDeployEvent(mockk()))
+    deployOnApplicationStart.accept(PostDeployEvent(mock()))
 
-    verify(exactly = 1) { repositoryService.createDeployment() }
+    verify(repositoryService, times(1)).createDeployment()
     assertThat(deploymentBuilder.deployed).isTrue
     assertThat(deploymentBuilder.resourceNames).hasSize(1)
     assertThat(deploymentBuilder.resourceNames[0]).isEqualTo("dummyProcess.bpmn")
@@ -56,9 +60,9 @@ internal class DeployOnApplicationStartTest {
   internal fun `deploy nothing if no ProcessArchives are specified`() {
     val deployOnApplicationStart = DeployOnApplicationStart(CamundaDeploymentProperties(archives = emptyList()), repositoryService, resourceLoader)
 
-    deployOnApplicationStart.accept(PostDeployEvent(mockk()))
+    deployOnApplicationStart.accept(PostDeployEvent(mock()))
 
-    verify(exactly = 0) { repositoryService.createDeployment() }
+    verify(repositoryService, never()).createDeployment()
   }
 
   @Test
@@ -73,9 +77,9 @@ internal class DeployOnApplicationStartTest {
       resourceLoader
     )
 
-    deployOnApplicationStart.accept(PostDeployEvent(mockk()))
+    deployOnApplicationStart.accept(PostDeployEvent(mock()))
 
-    verify(exactly = 0) { repositoryService.createDeployment() }
+    verify(repositoryService,never()).createDeployment()
   }
 }
 
