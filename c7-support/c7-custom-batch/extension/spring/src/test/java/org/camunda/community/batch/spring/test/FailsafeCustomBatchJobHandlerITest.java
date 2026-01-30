@@ -38,7 +38,6 @@ import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
-@Disabled("recover tests #280")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = FailsafeCustomBatchJobHandlerITest.FailsafeApplication.class)
 public class FailsafeCustomBatchJobHandlerITest {
