@@ -97,10 +97,8 @@
             </goals>
             <inherited>false</inherited>
             <configuration>
-              <useBaseVersion>true</useBaseVersion>
-              <addParentPoms>true</addParentPoms>
-              <copyPom>true</copyPom>
-              <useRepositoryLayout>true</useRepositoryLayout>
+              <includeScope>compile</includeScope>
+              <excludeGroupIds>io.holunda.c7</excludeGroupIds>
               <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
             </configuration>
           </execution>
@@ -125,6 +123,8 @@
                 <argument>-PprojectName=${project.artifactId}</argument>
                 <argument>-Pversion=${project.version}</argument>
                 <argument>-PkotlinVersion=${kotlin.version}</argument>
+                <argument>-PreportGeneratorClasses=${project.parent.basedir}/extension/report-generator/target/classes</argument>
+                <argument>-PcoreClasses=${project.parent.basedir}/extension/core/target/classes</argument>
               </arguments>
             </configuration>
           </execution>
@@ -142,6 +142,8 @@
                 <argument>-PprojectName=${project.artifactId}</argument>
                 <argument>-Pversion=${project.version}</argument>
                 <argument>-PkotlinVersion=${kotlin.version}</argument>
+                <argument>-PreportGeneratorClasses=${project.parent.basedir}/extension/report-generator/target/classes</argument>
+                <argument>-PcoreClasses=${project.parent.basedir}/extension/core/target/classes</argument>
                 <argument>-S</argument>
               </arguments>
             </configuration>
