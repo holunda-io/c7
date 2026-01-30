@@ -46,26 +46,25 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <configuration>
-          <artifactItems>
-            <artifactItem>
-              <groupId>io.holunda.c7</groupId>
-              <artifactId>c7-process-test-coverage-report-generator</artifactId>
-              <version>${project.version}</version>
-              <outputDirectory>target/coverage-viewer</outputDirectory>
-              <includes>**/*.js</includes>
-            </artifactItem>
-          </artifactItems>
-        </configuration>
+        <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
-            <id>unpack</id>
-            <phase>process-sources</phase>
+            <id>copy-js-from-report-generator</id>
+            <phase>generate-resources</phase>
             <goals>
-              <goal>unpack</goal>
+              <goal>copy-resources</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/coverage-viewer</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.parent.basedir}/extension/report-generator/target/classes</directory>
+                  <includes>
+                    <include>**/*.js</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
           </execution>
         </executions>
       </plugin>

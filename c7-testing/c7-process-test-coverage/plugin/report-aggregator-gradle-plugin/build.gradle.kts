@@ -6,18 +6,20 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("file://${projectDir}/target/dependencies")
-    }
 }
+
+val coreClasses: String = findProperty("coreClasses") as String? ?: error("Property 'coreClasses' was not set")
+val reportGeneratorClasses: String = findProperty("reportGeneratorClasses") as String? ?: error("Property 'reportGeneratorClasses' was not set")
 
 dependencies {
     implementation(gradleApi())
-    implementation(group = "io.holunda.c7", name = "c7-process-test-coverage-report-generator", version = "$version")
+    implementation(files(coreClasses))
+    implementation(files(reportGeneratorClasses))
+    implementation(fileTree("target/dependencies") { include("*.jar") })
     testImplementation(gradleTestKit())
-    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "6.0.0")
-    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-    testImplementation(group = "org.assertj", name = "assertj-core", version = "3.27.6")
+    testImplementation("org.junit.jupiter:junit-jupiter:6.0.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.assertj:assertj-core:3.27.6")
 }
 
 tasks.test {
