@@ -12,7 +12,7 @@
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-process-test-coverage-bom</artifactId>
   <packaging>pom</packaging>
-  <name>bom: c7-process-test-coverage</name>
+  <name>testing: c7-process-test-coverage - bom</name>
 
   <dependencyManagement>
     <dependencies>

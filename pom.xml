@@ -58,6 +58,12 @@
         </property>
       </activation>
       <modules>
+        <module>_examples/c7-correlate</module>
+        <module>_examples/c7-custom-batch</module>
+        <module>_examples/c7-data</module>
+        <module>_examples/c7-jgiven</module>
+        <module>_examples/c7-process-test-coverage</module>
+        <module>_examples/c7-rest-client-spring-boot</module>
         <!-- Must be defined as last module -->
         <module>_build/coverage-aggregator</module>
       </modules>
