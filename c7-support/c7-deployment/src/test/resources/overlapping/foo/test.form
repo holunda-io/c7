@@ -1,0 +1,59 @@
+{
+  "components": [
+    {
+      "label": "Text field",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0qp61ku",
+        "columns": null
+      },
+      "id": "Field_1vdzfnr",
+      "key": "textfield_ms98y"
+    },
+    {
+      "label": "Text area",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1uumn1c",
+        "columns": null
+      },
+      "id": "Field_0gzw13m",
+      "key": "textarea_4cbg4q"
+    },
+    {
+      "label": "Text area",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1cyz93l",
+        "columns": null
+      },
+      "id": "Field_1u78w7n",
+      "key": "textarea_6zfsui"
+    },
+    {
+      "label": "Checkbox group",
+      "values": [
+        {
+          "label": "Value",
+          "value": "value"
+        }
+      ],
+      "type": "checklist",
+      "layout": {
+        "row": "Row_1ltksx3",
+        "columns": null
+      },
+      "id": "Field_157gtv7",
+      "key": "checklist_hzvr4a"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1txp2jr",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.22.0",
+  "schemaVersion": 18
+}

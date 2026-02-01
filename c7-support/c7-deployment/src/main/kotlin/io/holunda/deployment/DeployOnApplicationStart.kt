@@ -25,6 +25,7 @@ open class DeployOnApplicationStart(
       addAll(CamundaBpmProperties.DEFAULT_BPMN_RESOURCE_SUFFIXES)
       addAll(CamundaBpmProperties.DEFAULT_CMMN_RESOURCE_SUFFIXES)
       addAll(CamundaBpmProperties.DEFAULT_DMN_RESOURCE_SUFFIXES)
+      add("form")
     }
   }
 
