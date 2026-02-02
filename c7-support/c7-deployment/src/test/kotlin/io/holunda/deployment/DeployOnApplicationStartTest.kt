@@ -33,7 +33,8 @@ internal class DeployOnApplicationStartTest {
   @BeforeEach
   fun setUp() {
     val resource = mock<Resource>()
-    whenever { resourceLoader.getResource(any()) } doReturn  resource
+    whenever { resource.exists() } doReturn true
+    whenever { resourceLoader.getResource(any()) } doReturn resource
     whenever { resource.inputStream } doReturn ByteArrayInputStream("some bpmn content".toByteArray(Charsets.UTF_8))
   }
 

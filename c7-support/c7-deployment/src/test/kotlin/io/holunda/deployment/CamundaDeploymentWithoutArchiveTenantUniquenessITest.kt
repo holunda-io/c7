@@ -8,7 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 
-@SpringBootTest(classes = [CamundaDeploymentTestApplication::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = [CamundaDeploymentTestApplication::class],
+  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("itest-without-archive-tenant-uniqueness")
 @DirtiesContext
 internal class CamundaDeploymentWithoutArchiveTenantUniquenessITest {
