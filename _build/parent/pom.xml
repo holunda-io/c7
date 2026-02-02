@@ -61,6 +61,7 @@
               <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
               <option>all-open:annotation=io.toolisticon.testing.jgiven.JGivenKotlinStage</option>
               <option>all-open:annotation=io.holunda.camunda.bpm.correlate.util.ComponentLike</option>
+              <option>all-open:annotation=io.holunda.camunda.bpm.extension.jgiven.JGivenProcessStage</option>
             </pluginOptions>
           </configuration>
         </plugin>
