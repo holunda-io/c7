@@ -100,12 +100,13 @@ open class DeployOnApplicationStart(
       logger.warn { "Resource ${resource.uri} not found, since its path was resolved to $path. Nested directories are not supported." }
     }
   }
-}
 
-fun String.sanitizePath(fragment: String): String {
-  return if (fragment.isEmpty()) {
-    this.substring(this.lastIndexOf("/"))
-  } else {
-    this.substring(this.lastIndexOf(fragment))
+  private fun String.sanitizePath(fragment: String): String {
+    return if (fragment.isEmpty()) {
+      this.substring(this.lastIndexOf("/"))
+    } else {
+      this.substring(this.lastIndexOf(fragment))
+    }
   }
 }
+
