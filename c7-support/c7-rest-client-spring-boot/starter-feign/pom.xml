@@ -6,7 +6,6 @@
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-rest-client-spring-boot-parent</artifactId>
     <version>2025.12.3-SNAPSHOT</version>
-    <relativePath>../../pom.xml</relativePath>
   </parent>
 
 
