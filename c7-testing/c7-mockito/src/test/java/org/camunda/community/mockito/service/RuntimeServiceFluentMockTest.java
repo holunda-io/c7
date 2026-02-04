@@ -6,15 +6,15 @@ import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.variable.Variables;
 import org.camunda.bpm.engine.variable.value.StringValue;
 import org.camunda.community.mockito.task.TaskFake;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 public class RuntimeServiceFluentMockTest {
 
-  private RuntimeService runtimeService = mock(RuntimeService.class);
-  private Task task = TaskFake.builder().executionId("4711").build();
+  private final RuntimeService runtimeService = mock(RuntimeService.class);
+  private final Task task = TaskFake.builder().executionId("4711").build();
 
   @Test
   public void testSetVariableBehavior() {

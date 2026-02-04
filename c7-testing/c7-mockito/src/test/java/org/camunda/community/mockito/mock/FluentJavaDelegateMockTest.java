@@ -5,7 +5,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.delegate.BpmnError;
 import org.camunda.community.mockito.DelegateExpressions;
 import org.camunda.community.mockito.delegate.DelegateExecutionFake;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 

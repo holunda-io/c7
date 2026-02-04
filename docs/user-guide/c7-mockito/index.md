@@ -100,7 +100,7 @@ DelegateExpressions.registerJavaDelegateMock(BEAN_NAME/BEAN_CLASS)
   .onExecutionSetVariable("key", "value");
 ```
 
-* Set multiple varibales
+* Set multiple variables
 
 You can set multiple variables on execution with:
 
@@ -246,7 +246,7 @@ Sometimes you have services or delegates responsible for the execution of messag
 with your process engine. Camunda provides a fluent builder API for creation a message correlation
 and running it.
 
-``` java
+```java
 class MyCorrelator {
 
   private final RuntimeService runtimeService;
@@ -278,7 +278,7 @@ package org.camunda.community.mockito;
 
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.MessageCorrelationBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
@@ -323,7 +323,7 @@ package org.camunda.community.mockito;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.community.mockito.ServiceExpressions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
@@ -376,8 +376,6 @@ public class RuntimeServiceAwareServiceTest {
   }
 }
 ```
-
-
 
 ## Limitations
 

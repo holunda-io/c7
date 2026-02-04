@@ -44,6 +44,36 @@
   </dependencyManagement>
 
   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>${java.version}</version>
+                </requireJavaVersion>
+                <requireMavenVersion>
+                  <version>3.9.12</version>
+                </requireMavenVersion>
+                <bannedDependencies>
+                  <excludes>
+                    <exclude>junit:junit</exclude>
+                  </excludes>
+                  <message>JUnit 4 is not allowed. Use JUnit 5 (org.junit.jupiter) instead.</message>
+                </bannedDependencies>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -79,6 +109,34 @@
           <groupId>com.github.eirslett</groupId>
           <artifactId>frontend-maven-plugin</artifactId>
           <version>2.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireJavaVersion>
+                    <version>${java.version}</version>
+                  </requireJavaVersion>
+                  <requireMavenVersion>
+                    <version>3.9.12</version>
+                  </requireMavenVersion>
+                  <bannedDependencies>
+                    <excludes>
+                      <exclude>junit:junit</exclude>
+                    </excludes>
+                    <message>JUnit 4 is not allowed. Use JUnit 5 (org.junit.jupiter) instead.</message>
+                  </bannedDependencies>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>

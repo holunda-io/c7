@@ -6,7 +6,7 @@ import org.camunda.bpm.engine.variable.impl.value.AbstractTypedValue;
 import org.camunda.bpm.engine.variable.type.ValueType;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.camunda.community.mockito.CamundaMockito;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

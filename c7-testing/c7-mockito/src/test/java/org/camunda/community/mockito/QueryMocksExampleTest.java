@@ -3,15 +3,15 @@ package org.camunda.community.mockito;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.task.TaskQuery;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-@Ignore
-public class QueryMocksExample {
+@Disabled
+public class QueryMocksExampleTest {
 
   private final TaskService taskService = mock(TaskService.class);
   private final Task task = mock(Task.class);

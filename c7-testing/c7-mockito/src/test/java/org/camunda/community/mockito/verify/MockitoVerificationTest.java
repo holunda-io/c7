@@ -1,15 +1,16 @@
 package org.camunda.community.mockito.verify;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.MockitoAnnotations.initMocks;
-
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.community.mockito.DelegateExpressions;
 import org.camunda.community.mockito.mock.FluentJavaDelegateMock;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.mockito.Mockito.times;
+
+@ExtendWith(MockitoExtension.class)
 public class MockitoVerificationTest {
 
   private static final String JAVA_DELEGATE = "javaDelegate";
@@ -18,11 +19,6 @@ public class MockitoVerificationTest {
 
   @Mock
   private DelegateExecution delegateExecution;
-
-  @Before
-  public void setUp() throws Exception {
-    initMocks(this);
-  }
 
   @Test
   public void shouldVerifyExecuteCalled() throws Exception {

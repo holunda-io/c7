@@ -39,7 +39,7 @@ public class MostUsefulProcessEngineConfiguration extends StandaloneInMemProcess
     this.setCustomJobHandlers(new ArrayList<>());
   }
 
-  public void addCustomJobHandler(final JobHandler jobHandler) {
+  public void addCustomJobHandler(final JobHandler<?> jobHandler) {
     getCustomJobHandlers().add(Objects.requireNonNull(jobHandler));
   }
 

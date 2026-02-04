@@ -128,7 +128,7 @@ open class ValueMapper(
         value
       )
     } else {
-      when (val valueType = valueTypeResolver.typeForName(fromRestApiTypeName(type))) {
+      when (val valueType = valueTypeResolver.typeForName(fromRestApiTypeName(type!!))) {
         is PrimitiveValueType -> {
           val javaType = valueType.javaType
           var mappedValue: Any? = null
@@ -172,7 +172,7 @@ open class ValueMapper(
    * We want to make use of type information provided by and therefore restore the original JSON.
    */
   private fun restoreObjectJsonIfNeeded(dto: VariableValueDto): VariableValueDto {
-    val valueType: ValueType? = valueTypeResolver.typeForName(fromRestApiTypeName(dto.type))
+    val valueType: ValueType? = valueTypeResolver.typeForName(fromRestApiTypeName(dto.type!!))
 
     if (valueType is SerializableValueType) {
       if (dto.value != null && dto.value !is String && dto.value is Map<*, *>) {

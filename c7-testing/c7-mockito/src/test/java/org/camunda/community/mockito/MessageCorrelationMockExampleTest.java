@@ -2,12 +2,11 @@ package org.camunda.community.mockito;
 
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.MessageCorrelationBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
-public class MessageCorrelationMockExample {
-
+public class MessageCorrelationMockExampleTest {
 
   @Test
   public void mock_messageCorrelation() {

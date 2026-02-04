@@ -3,7 +3,7 @@ package org.camunda.community.mockito.service;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.community.mockito.ServiceExpressions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
