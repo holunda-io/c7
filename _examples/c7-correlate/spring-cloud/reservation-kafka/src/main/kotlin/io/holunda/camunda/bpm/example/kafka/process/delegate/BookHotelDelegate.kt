@@ -1,9 +1,9 @@
 package io.holunda.camunda.bpm.example.kafka.process.delegate
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.reader
 import io.holunda.camunda.bpm.example.common.domain.hotel.BookHotelCommand
 import io.holunda.camunda.bpm.example.kafka.ReservationProcessing
 import io.github.oshai.kotlinlogging.KotlinLogging
+import io.holunda.camunda.bpm.data.Readers.C7
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.springframework.stereotype.Component
@@ -19,7 +19,7 @@ class BookHotelDelegate(
 ) : JavaDelegate {
 
   override fun execute(execution: DelegateExecution) {
-    val reader = reader(execution)
+    val reader = C7.reader(execution)
     val command = BookHotelCommand(
       guestName = reader.get(ReservationProcessing.Variables.CUSTOMER_NAME),
       checkin = reader.get(ReservationProcessing.Variables.DESTINATION_ARRIVAL_DATE),

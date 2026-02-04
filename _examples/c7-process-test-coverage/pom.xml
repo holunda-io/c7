@@ -5,23 +5,14 @@
 
   <parent>
     <groupId>io.holunda.c7._</groupId>
-    <artifactId>c7-parent</artifactId>
+    <artifactId>c7-example-parent</artifactId>
     <version>2025.12.3-SNAPSHOT</version>
-    <relativePath>../../_build/parent</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <name>examples: c7-process-test-coverage - parent-pom</name>
   <artifactId>c7-process-test-coverage-examples-parent</artifactId>
   <packaging>pom</packaging>
-
-  <properties>
-    <jacoco.skip>true</jacoco.skip>
-    <dokka.skip>true</dokka.skip>
-    <maven.javadoc.skip>true</maven.javadoc.skip>
-    <maven.source.skip>true</maven.source.skip>
-    <maven.install.skip>true</maven.install.skip>
-    <gpg.skip>true</gpg.skip>
-  </properties>
 
   <modules>
     <module>junit5-platform-7</module>

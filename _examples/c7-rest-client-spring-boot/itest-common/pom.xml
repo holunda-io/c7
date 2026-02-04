@@ -13,11 +13,6 @@
   <description>Integration tests of the client.</description>
 
   <properties>
-    <!-- Skip publication of the example to Maven Central -->
-    <maven.deploy.skip>true</maven.deploy.skip>
-    <!-- Do meter coverage -->
-    <jacoco.skip>false</jacoco.skip>
-    <jgiven.version>2.0.2</jgiven.version>
     <byte-buddy.version>1.18.4</byte-buddy.version>
   </properties>
 
@@ -85,7 +80,11 @@
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
       <artifactId>jgiven-spring-junit5</artifactId>
-      <version>${jgiven.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-spring</artifactId>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -106,4 +105,7 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <sourceDirectory>src/main/kotlin</sourceDirectory>
+  </build>
 </project>

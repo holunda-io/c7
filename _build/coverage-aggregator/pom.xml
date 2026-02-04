@@ -102,6 +102,16 @@
       <artifactId>c7-rest-client-variables</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>io.holunda.c7._</groupId>
+      <artifactId>c7-rest-client-spring-boot-itest-3</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.c7._</groupId>
+      <artifactId>c7-rest-client-spring-boot-itest-4</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
 
   </dependencies>

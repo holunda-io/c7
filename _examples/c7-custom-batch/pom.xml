@@ -5,9 +5,9 @@
 
   <parent>
     <groupId>io.holunda.c7._</groupId>
-    <artifactId>c7-parent</artifactId>
+    <artifactId>c7-example-parent</artifactId>
     <version>2025.12.3-SNAPSHOT</version>
-    <relativePath>../../_build/parent</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <name>examples: c7-custom-batch - parent-pom</name>

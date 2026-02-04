@@ -4,9 +4,9 @@
 
   <parent>
     <groupId>io.holunda.c7._</groupId>
-    <artifactId>c7-parent</artifactId>
+    <artifactId>c7-example-parent</artifactId>
     <version>2025.12.3-SNAPSHOT</version>
-    <relativePath>../../_build/parent</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <!--
@@ -17,8 +17,6 @@
   <packaging>pom</packaging>
 
   <properties>
-    <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.1</spring-cloud.version>
     <axon.framework.version>4.12.3</axon.framework.version>
   </properties>
 
@@ -185,7 +183,6 @@
             <plugin>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-maven-plugin</artifactId>
-              <version>${spring-boot.version}</version>
               <configuration>
                 <finalName>${final-artifact-name}</finalName>
               </configuration>
@@ -200,7 +197,6 @@
             <plugin>
               <groupId>io.fabric8</groupId>
               <artifactId>docker-maven-plugin</artifactId>
-              <version>0.48.0</version>
               <extensions>true</extensions>
               <executions>
                 <execution>

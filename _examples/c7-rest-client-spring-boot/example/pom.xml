@@ -15,11 +15,6 @@
   </description>
   <packaging>jar</packaging>
 
-  <properties>
-    <!-- Skip publication of the example to Maven Central -->
-    <maven.deploy.skip>true</maven.deploy.skip>
-  </properties>
-
   <dependencies>
 
     <!-- Include extension starter -->
@@ -58,24 +53,8 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring-boot.version}</version>
       </plugin>
     </plugins>
   </build>
-
-
-  <profiles>
-    <profile>
-      <id>license</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>license-maven-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
 </project>

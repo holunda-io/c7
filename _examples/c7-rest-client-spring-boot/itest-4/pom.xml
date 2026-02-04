@@ -13,10 +13,6 @@
   <description>Spring Boot 4 starter for integration tests of the client.</description>
 
   <properties>
-    <!-- Skip publication of the example to Maven Central -->
-    <maven.deploy.skip>true</maven.deploy.skip>
-    <!-- Do meter coverage -->
-    <jacoco.skip>false</jacoco.skip>
     <spring-boot.version>4.0.1</spring-boot.version>
     <spring-cloud.version>2025.1.0</spring-cloud.version>
     <testcontainers.version>2.0.3</testcontainers.version>
@@ -103,23 +99,12 @@
   </dependencies>
 
   <build>
+    <testSourceDirectory>src/test/kotlin</testSourceDirectory>
     <plugins>
-
       <!-- JGiven Reports -->
       <plugin>
         <groupId>com.tngtech.jgiven</groupId>
         <artifactId>jgiven-maven-plugin</artifactId>
-        <version>2.0.2</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>report</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <format>html</format>
-        </configuration>
       </plugin>
     </plugins>
   </build>

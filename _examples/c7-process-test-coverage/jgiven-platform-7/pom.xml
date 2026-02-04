@@ -14,10 +14,6 @@
 
   <name>examples: c7-process-test-coverage - jgiven</name>
 
-  <properties>
-    <jgiven.version>2.0.3</jgiven.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
@@ -69,12 +65,10 @@
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
       <artifactId>jgiven-junit5</artifactId>
-      <version>${jgiven.version}</version>
     </dependency>
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
       <artifactId>jgiven-spring-junit5</artifactId>
-      <version>${jgiven.version}</version>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>

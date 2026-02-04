@@ -7,14 +7,11 @@
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-data-example-parent</artifactId>
     <version>2025.12.3-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>c7-data-example-no-engine</artifactId>
   <name>examples: c7-data - no engine</name>
-
-  <properties>
-    <jacoco.skip>false</jacoco.skip>
-  </properties>
 
   <dependencies>
     <dependency>
@@ -61,19 +58,6 @@
       <artifactId>jackson-module-kotlin</artifactId>
     </dependency>
 
-    <!-- Kotlin -->
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-common</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-reflect</artifactId>
-    </dependency>
     <dependency>
       <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
@@ -91,10 +75,6 @@
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
-      <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>

@@ -7,14 +7,11 @@
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-data-example-parent</artifactId>
     <version>2025.12.3-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>c7-data-example-java</artifactId>
   <name>examples: c7-data - java</name>
-
-  <properties>
-    <jacoco.skip>true</jacoco.skip>
-  </properties>
 
   <dependencies>
     <dependency>
@@ -93,12 +90,6 @@
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -113,6 +104,7 @@
   </dependencies>
 
   <build>
+    <!-- JAVA EXAMPLE -->
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>

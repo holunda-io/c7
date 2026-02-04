@@ -10,19 +10,6 @@
   <name>examples: c7-custom-batch - simple-spring-boot-ee</name>
   <artifactId>c7-custom-batch-example-simple-spring-boot-webapp-ee</artifactId>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <!-- Import dependency management from Spring Boot -->
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
@@ -47,7 +34,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring-boot.version}</version>
         <executions>
           <execution>
             <goals>
