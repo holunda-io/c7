@@ -75,8 +75,8 @@ class ProcessInstanceAdapterTest {
     assertThat(dto.id).isEqualTo(bean.id)
     assertThat(dto.tenantId).isEqualTo(bean.tenantId)
     @Suppress("DEPRECATION")
-    assertThat(dto.ended).isEqualTo(bean.ended)
-    assertThat(dto.suspended).isEqualTo(bean.suspended)
+    assertThat(dto.ended!!).isEqualTo(bean.ended)
+    assertThat(dto.suspended!!).isEqualTo(bean.suspended)
     assertThat(dto.caseInstanceId).isNull()
   }
 }

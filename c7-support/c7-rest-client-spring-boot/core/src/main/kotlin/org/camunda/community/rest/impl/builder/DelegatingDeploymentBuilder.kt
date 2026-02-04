@@ -117,7 +117,7 @@ class DelegatingDeploymentBuilder(
 
   override fun addDeploymentResources(deploymentId: String): DeploymentBuilder {
     deploymentApiClient.getDeploymentResources(deploymentId).body!!.forEach {
-      addDeploymentResourcesById(deploymentId, listOf(it.id))
+      addDeploymentResourcesById(deploymentId, listOf(it.id!!))
     }
     return this
   }
@@ -125,7 +125,7 @@ class DelegatingDeploymentBuilder(
   override fun addDeploymentResourceById(deploymentId: String, resourceId: String): DeploymentBuilder {
     val resourceName = deploymentApiClient.getDeploymentResource(deploymentId, resourceId).body!!.name
     val resource = deploymentApiClient.getDeploymentResourceData(deploymentId, resourceId).body!!
-    addInputStream(resourceName, resource.inputStream)
+    addInputStream(resourceName!!, resource.inputStream)
     return this
   }
 
@@ -138,14 +138,14 @@ class DelegatingDeploymentBuilder(
 
   override fun addDeploymentResourceByName(deploymentId: String, resourceName: String): DeploymentBuilder {
     deploymentApiClient.getDeploymentResources(deploymentId).body!!.filter { it.name == resourceName }.forEach {
-      addDeploymentResourceById(deploymentId, it.id)
+      addDeploymentResourceById(deploymentId, it.id!!)
     }
     return this
   }
 
   override fun addDeploymentResourcesByName(deploymentId: String, resourceNames: List<String>): DeploymentBuilder {
-    deploymentApiClient.getDeploymentResources(deploymentId).body!!.filter { resourceNames.contains(it.name) }.forEach {
-      addDeploymentResourceById(deploymentId, it.id)
+    deploymentApiClient.getDeploymentResources(deploymentId).body!!.filter { resourceNames.contains(it.name!!) }.forEach {
+      addDeploymentResourceById(deploymentId, it.id!!)
     }
     return this
   }

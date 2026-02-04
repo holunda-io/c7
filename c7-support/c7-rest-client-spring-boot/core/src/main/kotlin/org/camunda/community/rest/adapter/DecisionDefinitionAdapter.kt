@@ -61,7 +61,7 @@ data class DecisionDefinitionBean(
       historyTimeToLive = dto.historyTimeToLive,
       resourceName = dto.resource,
       tenantId = dto.tenantId,
-      version = dto.version,
+      version = dto.version!!,
       decisionRequirementsDefinitionId = dto.decisionRequirementsDefinitionId,
       decisionRequirementsDefinitionKey = dto.decisionRequirementsDefinitionKey,
     )

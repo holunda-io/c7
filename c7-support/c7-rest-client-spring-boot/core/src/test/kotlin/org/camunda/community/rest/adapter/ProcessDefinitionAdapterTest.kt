@@ -34,6 +34,6 @@ class ProcessDefinitionAdapterTest {
   fun `should construct from dto`() {
     val bean = ProcessDefinitionBean.fromDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("resourceName", "diagramResourceName", "startableInTaskList", "hasStartFormKey").isEqualTo(dto)
-    Assertions.assertThat(bean.startableInTaskList).isEqualTo(dto.startableInTasklist)
+    Assertions.assertThat(bean.startableInTaskList).isEqualTo(dto.startableInTasklist!!)
   }
 }

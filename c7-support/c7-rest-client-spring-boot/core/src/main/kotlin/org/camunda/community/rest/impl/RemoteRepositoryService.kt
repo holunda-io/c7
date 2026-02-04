@@ -159,7 +159,7 @@ class RemoteRepositoryService(
   override fun getBpmnModelInstance(processDefinitionId: String?): BpmnModelInstance {
     requireNotNull(processDefinitionId)
     val diagramDto = processDefinitionApiClient.getProcessDefinitionBpmn20Xml(processDefinitionId).body!!
-    return Bpmn.readModelFromStream(ByteArrayInputStream(diagramDto.bpmn20Xml.toByteArray(UTF_8)))
+    return Bpmn.readModelFromStream(ByteArrayInputStream(diagramDto.bpmn20Xml!!.toByteArray(UTF_8)))
   }
 
   override fun createDecisionDefinitionQuery() =  DelegatingDecisionDefinitionQuery(decisionDefinitionApiClient)

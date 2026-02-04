@@ -65,7 +65,7 @@ class DelegatingEventSubscriptionQuery(
           else -> this@DelegatingEventSubscriptionQuery.getQueryParam(parameter)
         }
       })
-      return result.body!!.count
+      return result.body!!.count!!
     }
   }
 

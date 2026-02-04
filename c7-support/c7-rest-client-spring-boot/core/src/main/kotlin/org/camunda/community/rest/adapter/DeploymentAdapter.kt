@@ -46,7 +46,7 @@ data class DeploymentBean(
      */
     @JvmStatic
     fun fromDto(dto: DeploymentWithDefinitionsDto) = DeploymentBean(
-      id = dto.id,
+      id = dto.id!!,
       name = dto.name,
       deploymentTime = dto.deploymentTime.toDate(),
       source = dto.source,
@@ -61,7 +61,7 @@ data class DeploymentBean(
      */
     @JvmStatic
     fun fromDto(dto: DeploymentDto) = DeploymentBean(
-      id = dto.id,
+      id = dto.id!!,
       name = dto.name,
       deploymentTime = dto.deploymentTime.toDate(),
       source = dto.source,

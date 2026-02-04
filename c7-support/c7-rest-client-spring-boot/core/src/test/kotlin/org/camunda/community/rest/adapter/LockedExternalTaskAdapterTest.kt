@@ -62,7 +62,7 @@ class LockedExternalTaskAdapterTest {
   fun `should construct from dto`() {
     val bean = LockedExternalTaskBean.fromDto(dto = dto, valueMapper = valueMapper)
     assertThat(bean).usingRecursiveComparison().ignoringFields("lockExpirationTime", "variables", "createTime").isEqualTo(dto)
-    assertThat(bean.lockExpirationTime).isEqualTo(dto.lockExpirationTime.toInstant())
+    assertThat(bean.lockExpirationTime).isEqualTo(dto.lockExpirationTime!!.toInstant())
     assertThat(bean.variables).containsEntry("var1", 1)
     assertThat(bean.createTime).isEqualTo(dto.createTime.toRequiredDate())
   }

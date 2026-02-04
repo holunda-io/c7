@@ -68,9 +68,9 @@ data class InstanceBean(
     @JvmStatic
     fun fromProcessInstanceDto(processInstance: ProcessInstanceDto) =
       InstanceBean(
-        id = processInstance.id,
-        ended = processInstance.ended,
-        suspended = processInstance.suspended,
+        id = processInstance.id!!,
+        ended = processInstance.ended!!,
+        suspended = processInstance.suspended!!,
         businessKey = processInstance.businessKey,
         tenantId = processInstance.tenantId,
         type = if (processInstance.caseInstanceId != null) {
@@ -91,9 +91,9 @@ data class InstanceBean(
     @Suppress("DEPRECATION")
     fun fromProcessInstanceDto(processInstance: ProcessInstanceWithVariablesDto) =
       InstanceBean(
-        id = processInstance.id,
-        ended = processInstance.ended,
-        suspended = processInstance.suspended,
+        id = processInstance.id!!,
+        ended = processInstance.ended!!,
+        suspended = processInstance.suspended!!,
         businessKey = processInstance.businessKey,
         tenantId = processInstance.tenantId,
         type = if (processInstance.caseInstanceId != null) {

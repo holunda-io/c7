@@ -35,6 +35,6 @@ class IncidentAdapterTest {
   fun `should construct from dto`() {
     val bean = IncidentBean.fromDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("incidentTimestamp", "configuration", "historyConfiguration").isEqualTo(dto)
-    Assertions.assertThat(bean.incidentTimestamp).isEqualTo(dto.incidentTimestamp.toInstant())
+    Assertions.assertThat(bean.incidentTimestamp).isEqualTo(dto.incidentTimestamp!!.toInstant())
   }
 }

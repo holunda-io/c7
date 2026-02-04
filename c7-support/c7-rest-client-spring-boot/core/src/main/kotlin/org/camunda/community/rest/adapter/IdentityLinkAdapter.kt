@@ -51,12 +51,12 @@ abstract class IdentityLinkBean(
         "candidate" -> {
           if (dto.groupId != null) {
             GroupLinkBean(
-              groupId = dto.groupId,
+              groupId = dto.groupId!!,
               taskId = taskId,
             )
           } else if (dto.userId != null) {
             CandidateUserLinkBean(
-              userId = dto.userId,
+              userId = dto.userId!!,
               taskId = taskId,
             )
           } else {
@@ -65,13 +65,13 @@ abstract class IdentityLinkBean(
         }
         "assignee" -> {
           AssigneeLinkBean(
-            userId = dto.userId,
+            userId = dto.userId!!,
             taskId = taskId
           )
         }
         "owner" -> {
           OwnerLinkBean(
-            userId = dto.userId,
+            userId = dto.userId!!,
             taskId = taskId
           )
         }

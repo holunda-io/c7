@@ -34,7 +34,7 @@ class RemoteExternalTaskQueryBuilder(
 
   override fun topic(topicName: String, lockDuration: Long): ExternalTaskQueryTopicBuilder {
     currentTopic = FetchExternalTaskTopicDto(topicName, lockDuration)
-    fetchExternalTasksDto.topics.add(currentTopic)
+    fetchExternalTasksDto.topics!!.add(currentTopic)
     return this
   }
 

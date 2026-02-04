@@ -49,27 +49,27 @@ class DelegatingMessageCorrelationBuilder(
    * @return modified fluent builder.
    */
   fun setCorrelationKeys(correlationKeys: MutableMap<String, Any>): MessageCorrelationBuilder {
-    correlationMessageDto.correlationKeys.putAll(valueMapper.mapValues(correlationKeys))
+    correlationMessageDto.correlationKeys!!.putAll(valueMapper.mapValues(correlationKeys))
     return this
   }
 
   override fun setVariable(variableName: String, variableValue: Any?): MessageCorrelationBuilder {
-    correlationMessageDto.processVariables[variableName] = valueMapper.mapValue(variableValue)
+    correlationMessageDto.processVariables!![variableName] = valueMapper.mapValue(variableValue)
     return this
   }
 
   override fun setVariables(variables: MutableMap<String, Any>): MessageCorrelationBuilder {
-    correlationMessageDto.processVariables.putAll(valueMapper.mapValues(variables))
+    correlationMessageDto.processVariables!!.putAll(valueMapper.mapValues(variables))
     return this
   }
 
   override fun setVariableLocal(variableName: String, variableValue: Any?): MessageCorrelationBuilder {
-    correlationMessageDto.processVariablesLocal[variableName] = valueMapper.mapValue(variableValue)
+    correlationMessageDto.processVariablesLocal!![variableName] = valueMapper.mapValue(variableValue)
     return this
   }
 
   override fun setVariablesLocal(variables: MutableMap<String, Any>): MessageCorrelationBuilder {
-    correlationMessageDto.processVariablesLocal.putAll(valueMapper.mapValues(variables))
+    correlationMessageDto.processVariablesLocal!!.putAll(valueMapper.mapValues(variables))
     return this
   }
 
@@ -90,26 +90,26 @@ class DelegatingMessageCorrelationBuilder(
   }
 
   override fun processInstanceVariableEquals(variableName: String, variableValue: Any): MessageCorrelationBuilder {
-    correlationMessageDto.correlationKeys[variableName] = valueMapper.mapValue(variableValue)
+    correlationMessageDto.correlationKeys!![variableName] = valueMapper.mapValue(variableValue)
     return this
   }
 
   override fun processInstanceVariablesEqual(variables: MutableMap<String, Any>): MessageCorrelationBuilder {
     variables.forEach {
-      correlationMessageDto.correlationKeys[it.key] = valueMapper.mapValue(it.value)
+      correlationMessageDto.correlationKeys!![it.key] = valueMapper.mapValue(it.value)
     }
     return this
   }
 
   override fun localVariablesEqual(variables: MutableMap<String, Any>): MessageCorrelationBuilder {
     variables.forEach {
-      correlationMessageDto.localCorrelationKeys[it.key] = valueMapper.mapValue(it.value)
+      correlationMessageDto.localCorrelationKeys!![it.key] = valueMapper.mapValue(it.value)
     }
     return this
   }
 
   override fun localVariableEquals(variableName: String, variableValue: Any): MessageCorrelationBuilder {
-    correlationMessageDto.localCorrelationKeys[variableName] = valueMapper.mapValue(variableValue)
+    correlationMessageDto.localCorrelationKeys!![variableName] = valueMapper.mapValue(variableValue)
     return this
   }
 
@@ -194,12 +194,12 @@ class DelegatingMessageCorrelationBuilder(
    * @since 7.21
    */
   override fun setVariablesToTriggeredScope(variables: MutableMap<String, Any>): MessageCorrelationBuilder {
-    correlationMessageDto.processVariablesToTriggeredScope.putAll(valueMapper.mapValues(variables))
+    correlationMessageDto.processVariablesToTriggeredScope!!.putAll(valueMapper.mapValues(variables))
     return this
   }
 
   override fun setVariableToTriggeredScope(variableName: String, variableValue: Any): MessageCorrelationBuilder {
-    correlationMessageDto.processVariablesToTriggeredScope[variableName] = valueMapper.mapValue(variableValue)
+    correlationMessageDto.processVariablesToTriggeredScope!![variableName] = valueMapper.mapValue(variableValue)
     return this
   }
 

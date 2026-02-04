@@ -102,9 +102,9 @@ data class ExternalTaskBean(
         lockExpirationTime = dto.lockExpirationTime.toDate(),
         errorMessage = dto.errorMessage,
         retries = dto.retries,
-        priority = dto.priority,
+        priority = dto.priority!!,
         businessKey = dto.businessKey,
-        suspended = dto.suspended
+        suspended = dto.suspended!!
       )
   }
 

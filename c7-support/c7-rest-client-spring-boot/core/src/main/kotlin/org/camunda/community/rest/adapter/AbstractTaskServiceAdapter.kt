@@ -251,6 +251,7 @@ abstract class AbstractTaskServiceAdapter : TaskService {
     TODO("Not yet implemented")
   }
 
+  @Suppress("DEPRECATION")
   @Deprecated("This method has been deprecated as of Camunda Platform 7.1. It has been replaced with\n" +
     " the operation log. See {@link UserOperationLogEntry} and {@link UserOperationLogQuery}.")
   override fun getTaskEvents(taskId: String): MutableList<Event> {

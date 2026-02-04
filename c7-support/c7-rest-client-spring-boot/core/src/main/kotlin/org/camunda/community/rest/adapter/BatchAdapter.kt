@@ -49,18 +49,18 @@ data class BatchBean(
      */
     @JvmStatic
     fun fromDto(dto: BatchDto) = BatchBean(
-      id = dto.id,
-      type = dto.type,
-      totalJobs = dto.totalJobs,
-      jobsCreated = dto.jobsCreated,
-      batchJobsPerSeed = dto.batchJobsPerSeed,
-      invocationsPerBatchJob = dto.invocationsPerBatchJob,
+      id = dto.id!!,
+      type = dto.type!!,
+      totalJobs = dto.totalJobs!!,
+      jobsCreated = dto.jobsCreated!!,
+      batchJobsPerSeed = dto.batchJobsPerSeed!!,
+      invocationsPerBatchJob = dto.invocationsPerBatchJob!!,
       seedJobDefinitionId = dto.seedJobDefinitionId,
       monitorJobDefinitionId = dto.monitorJobDefinitionId,
       batchJobDefinitionId = dto.batchJobDefinitionId,
       tenantId = dto.tenantId,
       createUserId = dto.createUserId,
-      suspended = dto.suspended,
+      suspended = dto.suspended!!,
       startTime = dto.startTime.toDate(),
       executionStartTime = dto.executionStartTime.toDate()
     )

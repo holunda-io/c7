@@ -33,7 +33,7 @@ class BatchAdapterTest {
   fun `should construct from dto`() {
     val bean = BatchBean.fromDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("startTime", "executionStartTime").isEqualTo(dto)
-    Assertions.assertThat(bean.startTime).isEqualTo(dto.startTime.toInstant())
-    Assertions.assertThat(bean.executionStartTime).isEqualTo(dto.executionStartTime.toInstant())
+    Assertions.assertThat(bean.startTime).isEqualTo(dto.startTime!!.toInstant())
+    Assertions.assertThat(bean.executionStartTime).isEqualTo(dto.executionStartTime!!.toInstant())
   }
 }

@@ -68,12 +68,12 @@ data class HistoricInstanceBean(
     @JvmStatic
     fun fromHistoricProcessInstanceDto(processInstance: HistoricProcessInstanceDto) =
       HistoricInstanceBean(
-        id = processInstance.id,
+        id = processInstance.id!!,
         businessKey = processInstance.businessKey,
         processDefinitionKey = processInstance.processDefinitionKey,
-        processDefinitionId = processInstance.processDefinitionId,
+        processDefinitionId = processInstance.processDefinitionId!!,
         processDefinitionName = processInstance.processDefinitionName,
-        processDefinitionVersion = processInstance.processDefinitionVersion,
+        processDefinitionVersion = processInstance.processDefinitionVersion!!,
         startTime = processInstance.startTime.toDate()!!,
         endTime = processInstance.endTime.toDate(),
         removalTime = processInstance.removalTime.toDate(),

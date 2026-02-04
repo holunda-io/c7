@@ -594,7 +594,7 @@ class DelegatingTaskQuery(
     taskApiClient.queryTasks(firstResult, maxResults, fillQueryDto()).body!!.map { TaskAdapter(TaskBean.fromDto(it)) }
 
   override fun count(): Long =
-    taskApiClient.queryTasksCount(fillQueryDto()).body!!.count
+    taskApiClient.queryTasksCount(fillQueryDto()).body!!.count!!
 
   private fun fillQueryDto() = TaskQueryDto().apply {
     validate()

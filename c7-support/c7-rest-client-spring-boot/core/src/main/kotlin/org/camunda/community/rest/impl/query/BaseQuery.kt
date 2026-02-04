@@ -132,12 +132,14 @@ abstract class BaseQuery<T : Query<*, *>, U>(
     } else if (property.returnType.isSubtypeOf(Date::class.starProjectedType.withNullability(true))
         && expectedType.isSubtypeOf(OffsetDateTime::class.starProjectedType)) {
       property.isAccessible = true
+      @Suppress("UNCHECKED_CAST")
       val propValue = (property as KProperty1<Q, *>).get(query) as Date?
       return propValue?.toOffsetDateTime()
     } else if (!property.returnType.isSubtypeOf(expectedType)) {
       throw IllegalArgumentException("${property.returnType} is not assignable to $expectedType for $name")
     } else {
       property.isAccessible = true
+      @Suppress("UNCHECKED_CAST")
       val propValue = (property as KProperty1<Q, *>).get(query)
       return if (propValue is Collection<*>) propValue.joinToString(",") else propValue
     }

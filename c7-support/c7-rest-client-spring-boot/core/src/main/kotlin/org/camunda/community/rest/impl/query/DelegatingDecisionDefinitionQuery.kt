@@ -131,7 +131,7 @@ class DelegatingDecisionDefinitionQuery(
           else -> this@DelegatingDecisionDefinitionQuery.getQueryParam(parameter)
         }
       })
-      return result.body!!.count
+      return result.body!!.count!!
     }
   }
 

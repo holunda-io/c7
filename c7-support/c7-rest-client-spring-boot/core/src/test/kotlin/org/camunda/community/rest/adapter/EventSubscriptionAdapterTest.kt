@@ -27,6 +27,6 @@ class EventSubscriptionAdapterTest {
   fun `should construct from dto`() {
     val bean = EventSubscriptionBean.fromDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("createdDate").isEqualTo(dto)
-    Assertions.assertThat(bean.createdDate).isEqualTo(dto.createdDate.toInstant())
+    Assertions.assertThat(bean.createdDate).isEqualTo(dto.createdDate!!.toInstant())
   }
 }

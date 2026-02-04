@@ -39,9 +39,9 @@ class HistoricProcessInstanceAdapterTest {
   fun `should construct from dto`() {
     val bean = HistoricInstanceBean.fromHistoricProcessInstanceDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("startTime", "endTime", "removalTime", "endActivityId", "state").isEqualTo(dto)
-    Assertions.assertThat(bean.startTime).isEqualTo(dto.startTime.toInstant())
-    Assertions.assertThat(bean.endTime).isEqualTo(dto.endTime.toInstant())
-    Assertions.assertThat(bean.removalTime).isEqualTo(dto.removalTime.toInstant())
-    Assertions.assertThat(bean.state).isEqualTo(dto.state.name)
+    Assertions.assertThat(bean.startTime).isEqualTo(dto.startTime!!.toInstant())
+    Assertions.assertThat(bean.endTime).isEqualTo(dto.endTime!!.toInstant())
+    Assertions.assertThat(bean.removalTime).isEqualTo(dto.removalTime!!.toInstant())
+    Assertions.assertThat(bean.state).isEqualTo(dto.state!!.name)
   }
 }

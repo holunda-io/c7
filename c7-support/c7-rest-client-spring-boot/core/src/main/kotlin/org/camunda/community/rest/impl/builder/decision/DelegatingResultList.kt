@@ -96,7 +96,10 @@ sealed class DelegatingResultList<T>(
   fun <T> collectEntries(outputName: String) = resultList
     .map { it as DelegatingResultEntry }
     .filter { it.containsKey(outputName) }
-    .map { it[outputName] as T }
+    .map {
+      @Suppress("UNCHECKED_CAST")
+      it[outputName] as T
+    }
 
   /**
    * Gets the result list of all entries as a [Map].

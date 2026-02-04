@@ -27,6 +27,6 @@ class DeploymentAdapterTest {
     val bean = DeploymentBean.fromDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("deploymentTime", "deployedProcessDefinitions",
       "deployedCaseDefinitions", "deployedDecisionDefinitions", "deployedDecisionRequirementsDefinitions").isEqualTo(dto)
-    Assertions.assertThat(bean.deploymentTime).isEqualTo(dto.deploymentTime.toInstant())
+    Assertions.assertThat(bean.deploymentTime).isEqualTo(dto.deploymentTime!!.toInstant())
   }
 }

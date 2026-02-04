@@ -104,7 +104,7 @@ data class LockedExternalTaskBean(
         errorMessage = dto.errorMessage,
         errorDetails = dto.errorDetails,
         retries = dto.retries,
-        priority = dto.priority,
+        priority = dto.priority!!,
         businessKey = dto.businessKey,
         variables = dto.variables?.let { valueMapper.mapDtos(it) },
         extensionProperties = dto.extensionProperties,

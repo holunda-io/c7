@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test
  *
  * @see [io.holunda.camunda.bpm.data.adapter.ValueWrapperUtilTest]
  */
+@Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
 class KotlinValueWrapperUtilTest {
   @Test
   fun shouldReturnDoubleValue() {

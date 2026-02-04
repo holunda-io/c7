@@ -47,11 +47,11 @@ class TaskAdapterTest {
   fun `should construct from dto`() {
     val bean = TaskBean.fromDto(dto)
     Assertions.assertThat(bean).usingRecursiveComparison().ignoringFields("created", "lastUpdated", "due", "followUp", "processExecutionId", "hasAttachments", "hasComments").isEqualTo(dto)
-    Assertions.assertThat(bean.created).isEqualTo(dto.created.toInstant())
-    Assertions.assertThat(bean.lastUpdated).isEqualTo(dto.lastUpdated.toInstant())
-    Assertions.assertThat(bean.due).isEqualTo(dto.due.toInstant())
-    Assertions.assertThat(bean.followUp).isEqualTo(dto.followUp.toInstant())
-    Assertions.assertThat(bean.hasComments).isEqualTo(dto.comment)
-    Assertions.assertThat(bean.hasAttachments).isEqualTo(dto.attachment)
+    Assertions.assertThat(bean.created).isEqualTo(dto.created!!.toInstant())
+    Assertions.assertThat(bean.lastUpdated).isEqualTo(dto.lastUpdated!!.toInstant())
+    Assertions.assertThat(bean.due).isEqualTo(dto.due!!.toInstant())
+    Assertions.assertThat(bean.followUp).isEqualTo(dto.followUp!!.toInstant())
+    Assertions.assertThat(bean.hasComments).isEqualTo(dto.comment!!)
+    Assertions.assertThat(bean.hasAttachments).isEqualTo(dto.attachment!!)
   }
 }

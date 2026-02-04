@@ -29,7 +29,7 @@ class ExecutionAdapterTest {
     val bean = ExecutionBean.fromExecutionDto(dto)
 
     assertThat(dto.id).isEqualTo(bean.id)
-    assertThat(dto.ended).isEqualTo(bean.ended)
+    assertThat(dto.ended!!).isEqualTo(bean.ended)
     assertThat(dto.processInstanceId).isEqualTo(bean.processInstanceId)
     assertThat(dto.tenantId).isEqualTo(bean.tenantId)
 

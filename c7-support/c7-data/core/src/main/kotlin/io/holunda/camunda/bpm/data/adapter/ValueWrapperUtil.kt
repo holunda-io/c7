@@ -24,6 +24,7 @@ object ValueWrapperUtil {
    * @return typed value.
    * @throws IllegalArgumentException if value and clazz are incompatible.
    */
+  @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
   @JvmStatic
   fun <T> getTypedValue(clazz: Class<T>, value: Any?, isTransient: Boolean): TypedValue {
     require(

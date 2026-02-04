@@ -37,7 +37,7 @@ class DelegatingBatchQuery(
           else -> this@DelegatingBatchQuery.getQueryParam(parameter)
         }
       })
-      return result.body!!.count
+      return result.body!!.count!!
     }
   }
 

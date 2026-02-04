@@ -37,6 +37,6 @@ class ExternalTaskAdapterTest {
   fun `should construct from dto`() {
     val bean = ExternalTaskBean.fromDto(dto)
     assertThat(bean).usingRecursiveComparison().ignoringFields("lockExpirationTime").isEqualTo(dto)
-    assertThat(bean.lockExpirationTime).isEqualTo(dto.lockExpirationTime.toInstant())
+    assertThat(bean.lockExpirationTime).isEqualTo(dto.lockExpirationTime!!.toInstant())
   }
 }

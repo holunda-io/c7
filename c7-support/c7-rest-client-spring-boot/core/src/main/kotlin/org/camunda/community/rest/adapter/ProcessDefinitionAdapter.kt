@@ -58,15 +58,15 @@ data class ProcessDefinitionBean(
       key = dto.key,
       category = dto.category,
       deploymentId = dto.deploymentId,
-      suspended = dto.suspended,
+      suspended = dto.suspended!!,
       historyTimeToLive = dto.historyTimeToLive,
-      startableInTaskList = dto.startableInTasklist,
+      startableInTaskList = dto.startableInTasklist!!,
       hasStartFormKey = false, // FIXME
       resourceName = dto.resource,
       diagramResourceName = dto.diagram,
       tenantId = dto.tenantId,
       description = dto.description,
-      version = dto.version
+      version = dto.version!!
     )
   }
 }

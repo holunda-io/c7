@@ -35,9 +35,9 @@ data class ExecutionBean(
     @JvmStatic
     fun fromExecutionDto(dto: ExecutionDto) =
       ExecutionBean(
-        id = dto.id,
-        processInstanceId = dto.processInstanceId,
-        ended = dto.ended,
+        id = dto.id!!,
+        processInstanceId = dto.processInstanceId!!,
+        ended = dto.ended!!,
         suspended = false,
         tenantId = dto.tenantId
       )

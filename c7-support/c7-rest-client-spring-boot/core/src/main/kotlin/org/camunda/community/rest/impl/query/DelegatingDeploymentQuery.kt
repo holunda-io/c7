@@ -78,7 +78,7 @@ class DelegatingDeploymentQuery(
           else -> this@DelegatingDeploymentQuery.getQueryParam(parameter)
         }
       })
-      return result.body!!.count
+      return result.body!!.count!!
     }
   }
 

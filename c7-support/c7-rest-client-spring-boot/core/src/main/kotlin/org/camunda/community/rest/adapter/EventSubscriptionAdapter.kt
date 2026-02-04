@@ -42,9 +42,9 @@ data class EventSubscriptionBean(
      */
     @JvmStatic
     fun fromDto(dto: EventSubscriptionDto) = EventSubscriptionBean(
-      id = dto.id,
+      id = dto.id!!,
       eventName = dto.eventName,
-      eventType = dto.eventType,
+      eventType = dto.eventType!!,
       createdDate = dto.createdDate.toDate()!!,
       tenantId = dto.tenantId,
       executionId = dto.executionId,
