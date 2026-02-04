@@ -58,6 +58,7 @@
         </property>
       </activation>
       <modules>
+        <module>_examples</module>
         <!-- Must be defined as last module -->
         <module>_build/coverage-aggregator</module>
       </modules>

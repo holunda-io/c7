@@ -11,7 +11,7 @@
 
   <artifactId>c7-rest-client-spring-boot-parent</artifactId>
   <packaging>pom</packaging>
-  <name>pom: c7-rest-client-spring-boot - parent</name>
+  <name>support: c7-rest-client-spring-boot - parent pom</name>
   <description>Camunda Platform 7 REST Client Spring-Boot</description>
 
   <properties>
@@ -20,15 +20,15 @@
   </properties>
 
   <modules>
-    <module>extension/client</module>
-    <module>extension/variables</module>
-    <module>extension/core</module>
-    <module>extension/starter</module>
-    <module>extension/starter-provided</module>
-    <module>extension/starter-feign</module>
-    <module>extension/starter-4</module>
-    <module>extension/starter-provided-4</module>
-    <module>extension/starter-feign-4</module>
+    <module>client</module>
+    <module>variables</module>
+    <module>core</module>
+    <module>starter</module>
+    <module>starter-provided</module>
+    <module>starter-feign</module>
+    <module>starter-4</module>
+    <module>starter-provided-4</module>
+    <module>starter-feign-4</module>
   </modules>
 
   <dependencyManagement>
@@ -204,23 +204,5 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <!--
-    Profile to skip example publish
-    -->
-    <profile>
-      <id>examples</id>
-      <activation>
-        <property>
-          <name>!skipExamples</name>
-        </property>
-      </activation>
-      <modules>
-        <module>examples</module>
-      </modules>
-    </profile>
-
-  </profiles>
 
 </project>

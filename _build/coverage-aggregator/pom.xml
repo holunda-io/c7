@@ -41,8 +41,8 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.holunda</groupId>
-      <artifactId>camunda-bpm-correlate-integration-test</artifactId>
+      <groupId>io.holunda.c7._</groupId>
+      <artifactId>c7-correlate-integration-test</artifactId>
       <version>${project.version}</version>
     </dependency>
 
@@ -52,8 +52,8 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.holunda.data.example</groupId>
-      <artifactId>camunda-bpm-data-integration-test</artifactId>
+      <groupId>io.holunda.c7._</groupId>
+      <artifactId>c7-data-integration-test</artifactId>
       <version>${project.version}</version>
     </dependency>
 
@@ -100,6 +100,16 @@
     <dependency>
       <groupId>io.holunda.c7</groupId>
       <artifactId>c7-rest-client-variables</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.c7._</groupId>
+      <artifactId>c7-rest-client-spring-boot-itest-3</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.c7._</groupId>
+      <artifactId>c7-rest-client-spring-boot-itest-4</artifactId>
       <version>${project.version}</version>
     </dependency>
 
