@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-example-parent</artifactId>
-    <version>2025.12.3-SNAPSHOT</version>
+    <version>2026.02.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
