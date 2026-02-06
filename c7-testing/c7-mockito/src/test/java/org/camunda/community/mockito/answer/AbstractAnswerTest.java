@@ -1,19 +1,18 @@
 package org.camunda.community.mockito.answer;
 
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
-
 import org.camunda.bpm.engine.delegate.VariableScope;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
 public class AbstractAnswerTest {
 
-  private AbstractAnswer<VariableScope> answer = spy(new AbstractAnswer<VariableScope>() {
+  private final AbstractAnswer<VariableScope> answer = spy(new AbstractAnswer<VariableScope>() {
 
     @Override
     protected void answer(final VariableScope parameter) {
@@ -27,14 +26,9 @@ public class AbstractAnswerTest {
   @Mock
   private InvocationOnMock invocationOnMock;
 
-  @Before
-  public void setUp() throws Exception {
-    initMocks(this);
-  }
-
   @Test
   public void shouldDelegateToGenericAnswer() throws Throwable {
-    when(invocationOnMock.getArguments()).thenReturn(new Object[] { variableScope });
+    when(invocationOnMock.getArguments()).thenReturn(new Object[]{variableScope});
     answer.answer(invocationOnMock);
     verify(answer).answer(variableScope);
   }

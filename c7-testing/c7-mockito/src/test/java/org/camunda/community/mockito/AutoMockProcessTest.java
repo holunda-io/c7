@@ -1,20 +1,17 @@
 package org.camunda.community.mockito;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.camunda.community.mockito.DelegateExpressions.autoMock;
-import static org.camunda.community.mockito.DelegateExpressions.verifyExecutionListenerMock;
-import static org.camunda.community.mockito.DelegateExpressions.verifyJavaDelegateMock;
-import static org.camunda.community.mockito.DelegateExpressions.verifyTaskListenerMock;
-import static org.camunda.community.mockito.MostUsefulProcessEngineConfiguration.mostUsefulProcessEngineConfiguration;
-
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.engine.test.mock.Mocks;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.camunda.community.mockito.DelegateExpressions.*;
+import static org.camunda.community.mockito.MostUsefulProcessEngineConfiguration.mostUsefulProcessEngineConfiguration;
 
 /**
  * If everything works as expected, the process can be deployed and executed
@@ -25,14 +22,16 @@ import org.junit.Test;
  */
 public class AutoMockProcessTest {
 
-  @Rule
-  public final ProcessEngineRule processEngineRule = new ProcessEngineRule(mostUsefulProcessEngineConfiguration().buildProcessEngine());
+  @RegisterExtension
+  public static final ProcessEngineExtension processEngineRule = ProcessEngineExtension.builder()
+    .useProcessEngine(mostUsefulProcessEngineConfiguration().buildProcessEngine())
+    .build();
 
   private TaskService taskService;
 
-  @Before
+  @BeforeEach
   public void setUp() {
-    taskService = processEngineRule.getTaskService();
+    taskService = processEngineRule.getProcessEngine().getTaskService();
   }
 
   @Test
@@ -44,9 +43,9 @@ public class AutoMockProcessTest {
     assertThat(Mocks.get("saveData")).isNotNull();
     assertThat(Mocks.get("report")).isNotNull();
 
-    final ProcessInstance processInstance = processEngineRule.getRuntimeService().startProcessInstanceByKey("process_mock_dummy");
+    final ProcessInstance processInstance = processEngineRule.getProcessEngine().getRuntimeService().startProcessInstanceByKey("process_mock_dummy");
 
-    assertThat(processEngineRule.getTaskService().createTaskQuery().processInstanceId(processInstance.getId()).singleResult()).isNotNull();
+    assertThat(processEngineRule.getProcessEngine().getTaskService().createTaskQuery().processInstanceId(processInstance.getId()).singleResult()).isNotNull();
 
     completeTask();
 
@@ -61,9 +60,9 @@ public class AutoMockProcessTest {
     assertThat(Mocks.get("loadData")).isNotNull();
     assertThat(Mocks.get("saveData")).isNotNull();
 
-    final ProcessInstance processInstance = processEngineRule.getRuntimeService().startProcessInstanceByKey("process_mock_dummy");
+    final ProcessInstance processInstance = processEngineRule.getProcessEngine().getRuntimeService().startProcessInstanceByKey("process_mock_dummy");
 
-    assertThat(processEngineRule.getTaskService().createTaskQuery().processInstanceId(processInstance.getId()).singleResult()).isNotNull();
+    assertThat(processEngineRule.getProcessEngine().getTaskService().createTaskQuery().processInstanceId(processInstance.getId()).singleResult()).isNotNull();
 
     completeTask();
 

@@ -3,29 +3,29 @@ package org.camunda.community.mockito;
 import org.camunda.bpm.engine.history.HistoricProcessInstance;
 import org.camunda.bpm.engine.impl.persistence.entity.ProcessInstanceWithVariablesImpl;
 import org.camunda.bpm.engine.impl.persistence.entity.TimerEntity;
+import org.camunda.bpm.engine.repository.Deployment;
 import org.camunda.bpm.engine.runtime.EventSubscription;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.JobQuery;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.model.bpmn.Bpmn;
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 import org.camunda.community.mockito.function.DeployProcess;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.time.Instant;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static org.camunda.bpm.engine.variable.Variables.createVariables;
 import static org.camunda.bpm.model.xml.test.assertions.ModelAssertions.assertThat;
 import static org.camunda.community.mockito.MostUsefulProcessEngineConfiguration.mostUsefulProcessEngineConfiguration;
 import static org.camunda.community.mockito.ProcessExpressions.registerCallActivityMock;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CallActivityMockExampleTest {
 
@@ -36,80 +36,102 @@ public class CallActivityMockExampleTest {
   private static final String SIGNAL_ALLDOIT = "ALLDOIT";
   private static final String TASK_USERTASK = "user_task";
 
-  @Rule
-  public final ProcessEngineRule camunda = new ProcessEngineRule(mostUsefulProcessEngineConfiguration().buildProcessEngine());
+  @RegisterExtension
+  public static final ProcessEngineExtension camunda = ProcessEngineExtension.builder()
+    .useProcessEngine(mostUsefulProcessEngineConfiguration().buildProcessEngine())
+    .build();
 
-  @Before
+  private final List<String> deploymentIds = new ArrayList<>();
+
+  private void manageDeployment(Deployment deployment) {
+    if (deployment != null) {
+      deploymentIds.add(deployment.getId());
+    }
+  }
+
+  @AfterEach
+  void tearDown() {
+    final var repositoryService = camunda.getProcessEngine().getRepositoryService();
+    for (String id : deploymentIds) {
+      try {
+        repositoryService.deleteDeployment(id, true);
+      } catch (Exception ignored) {
+      }
+    }
+    deploymentIds.clear();
+  }
+
+  @BeforeEach
   public void setUp() {
     prepareProcessWithOneSubprocess();
   }
 
   @Test
   public void register_subprocess_mock_addVar() {
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionAddVariable("foo", "bar")
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     final ProcessInstance processInstance = startProcess(PROCESS_ID);
     isWaitingAt(processInstance, TASK_USERTASK);
 
     //TODO doesn't work with current camunda-bpm-assert version (1.*) and our assertj version (3.*)
     //assertThat(processInstance).hasVariables("foo", "bar");
-    final Map<String, Object> variables = camunda.getRuntimeService().getVariables(processInstance.getId());
+    final Map<String, Object> variables = camunda.getProcessEngine().getRuntimeService().getVariables(processInstance.getId());
     assertThat(variables).hasSize(1);
     assertThat(variables).containsEntry("foo", "bar");
   }
 
   @Test
   public void register_subprocess_mock_withOwnConsumer() {
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionDo(execution -> {
         execution.setVariable("foo", "barbar");
       })
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     final ProcessInstance processInstance = startProcess(PROCESS_ID);
     isWaitingAt(processInstance, TASK_USERTASK);
 
     //TODO doesn't work with current camunda-bpm-assert version (1.*) and our assertj version (3.*)
     //assertThat(processInstance).hasVariables("foo", "bar");
-    final Map<String, Object> variables = camunda.getRuntimeService().getVariables(processInstance.getId());
+    final Map<String, Object> variables = camunda.getProcessEngine().getRuntimeService().getVariables(processInstance.getId());
     assertThat(variables).hasSize(1);
     assertThat(variables).containsEntry("foo", "barbar");
   }
 
   @Test
   public void register_subprocess_mock_withReceiveMessage() {
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionWaitForMessage(MESSAGE_DOIT)
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     final ProcessInstance processInstance = startProcess(PROCESS_ID);
     assertThatProcessIsWaitingForMessage(MESSAGE_DOIT);
 
-    camunda.getRuntimeService().correlateMessage(MESSAGE_DOIT);
+    camunda.getProcessEngine().getRuntimeService().correlateMessage(MESSAGE_DOIT);
     isWaitingAt(processInstance, TASK_USERTASK);
   }
 
   @Test
   public void register_subprocess_mock_withReceiveSignal() {
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionWaitForSignal(SIGNAL_ALLDOIT)
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     final ProcessInstance processInstance = startProcess(PROCESS_ID);
     assertThatProcessIsWaitingForSignal(SIGNAL_ALLDOIT);
 
-    camunda.getRuntimeService().createSignalEvent(SIGNAL_ALLDOIT).send();
+    camunda.getProcessEngine().getRuntimeService().createSignalEvent(SIGNAL_ALLDOIT).send();
     isWaitingAt(processInstance, TASK_USERTASK);
   }
 
   @Test
   public void register_subprocess_mock_withSendMessage() {
-    camunda.manageDeployment(
+    manageDeployment(
       registerCallActivityMock(SUB_PROCESS_ID)
         .onExecutionSendMessage(MESSAGE_DOIT)
-        .deploy(camunda)
+        .deploy(camunda.getProcessEngine())
     );
 
     final String waitForMessageId = "waitForMessage";
@@ -121,7 +143,7 @@ public class CallActivityMockExampleTest {
       .endEvent("end")
       .done();
 
-    camunda.manageDeployment(new DeployProcess(camunda).apply(waitForMessageId, waitForMessage));
+    manageDeployment(new DeployProcess(camunda.getProcessEngine()).apply(waitForMessageId, waitForMessage));
 
     //Start monitoring process for testing
     final ProcessInstance waitingProcessInstance = startProcess(waitForMessageId);
@@ -138,9 +160,9 @@ public class CallActivityMockExampleTest {
   public void register_subprocess_mock_withTimerDate() {
     final Date date = Date.from(Instant.now().plusSeconds(60));
 
-    registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionWaitForTimerWithDate(date)
-      .deploy(camunda);
+      .deploy(camunda.getProcessEngine()));
 
     startProcess(PROCESS_ID);
 
@@ -149,22 +171,22 @@ public class CallActivityMockExampleTest {
 
   @Test
   public void register_subprocess_mock_withTimerDuration() {
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionWaitForTimerWithDuration("PT60S")
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     startProcess(PROCESS_ID);
 
     assertThatTimerIsWaitingUntil(Date.from(Instant.now().plusSeconds(60)));
   }
 
-  @Test(expected = RuntimeException.class)
+  @Test
   public void register_subprocess_mock_withException() {
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionRunIntoError(new Exception("No"))
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
-    startProcess(PROCESS_ID);
+    assertThrows(RuntimeException.class, () -> startProcess(PROCESS_ID));
   }
 
   @Test
@@ -182,21 +204,21 @@ public class CallActivityMockExampleTest {
       .endEvent("end")
       .done();
 
-    camunda.manageDeployment(new DeployProcess(camunda).apply(PROCESS_ID, processWithSubProcess));
+    manageDeployment(new DeployProcess(camunda.getProcessEngine()).apply(PROCESS_ID, processWithSubProcess));
 
-    registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionSetVariables(createVariables().putValue("foo", "bar"))
-      .deploy(camunda);
-    registerCallActivityMock(SUB_PROCESS2_ID)
+      .deploy(camunda.getProcessEngine()));
+    manageDeployment(registerCallActivityMock(SUB_PROCESS2_ID)
       .onExecutionSetVariables(createVariables().putValue("bar", "foo"))
-      .deploy(camunda);
+      .deploy(camunda.getProcessEngine()));
 
     final ProcessInstance processInstance = startProcess(PROCESS_ID);
     isWaitingAt(processInstance, TASK_USERTASK);
 
     //TODO doesn't work with current camunda-bpm-assert version (1.*) and our assertj version (3.*)
     //assertThat(processInstance).hasVariables("foo", "bar");
-    final Map<String, Object> variables = camunda.getRuntimeService().getVariables(processInstance.getId());
+    final Map<String, Object> variables = camunda.getProcessEngine().getRuntimeService().getVariables(processInstance.getId());
     assertThat(variables).hasSize(2);
     assertThat(variables).containsEntry("foo", "bar");
     assertThat(variables).containsEntry("bar", "foo");
@@ -207,17 +229,17 @@ public class CallActivityMockExampleTest {
     prepareProcessWithOneSubprocess();
 
     final Date waitUntil = Date.from(Instant.now().plusSeconds(60));
-    registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionWaitForMessage(MESSAGE_DOIT)
       .onExecutionWaitForTimerWithDate(waitUntil)
       .onExecutionSetVariables(createVariables().putValue("foo", "bar"))
-      .deploy(camunda);
+      .deploy(camunda.getProcessEngine()));
 
     final ProcessInstance processInstance = startProcess(PROCESS_ID);
 
     //Message should wait for message
     assertThatProcessIsWaitingForMessage(MESSAGE_DOIT);
-    camunda.getRuntimeService().correlateMessage(MESSAGE_DOIT);
+    camunda.getProcessEngine().getRuntimeService().correlateMessage(MESSAGE_DOIT);
 
     //Message should wait for date
     Job job = assertThatTimerIsWaitingUntil(waitUntil);
@@ -228,7 +250,7 @@ public class CallActivityMockExampleTest {
 
     //TODO doesn't work with current camunda-bpm-assert version (1.*) and our assertj version (3.*)
     //assertThat(processInstance).hasVariables("foo", "bar");
-    final Map<String, Object> variables = camunda.getRuntimeService().getVariables(processInstance.getId());
+    final Map<String, Object> variables = camunda.getProcessEngine().getRuntimeService().getVariables(processInstance.getId());
     assertThat(variables).hasSize(1);
     assertThat(variables).containsEntry("foo", "bar");
   }
@@ -252,11 +274,11 @@ public class CallActivityMockExampleTest {
       .endEvent("end")
       .done();
 
-    camunda.manageDeployment(new DeployProcess(camunda).apply(PROCESS_ID, processWithSubProcess));
+    manageDeployment(new DeployProcess(camunda.getProcessEngine()).apply(PROCESS_ID, processWithSubProcess));
 
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionThrowEscalation(escalationCode)
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     ProcessInstance processInstance = startProcess(PROCESS_ID);
 
@@ -283,11 +305,11 @@ public class CallActivityMockExampleTest {
       .endEvent("end")
       .done();
 
-    camunda.manageDeployment(new DeployProcess(camunda).apply(PROCESS_ID, processWithSubProcess));
+    manageDeployment(new DeployProcess(camunda.getProcessEngine()).apply(PROCESS_ID, processWithSubProcess));
 
-    camunda.manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
+    manageDeployment(registerCallActivityMock(SUB_PROCESS_ID)
       .onExecutionThrowError(errorCode)
-      .deploy(camunda));
+      .deploy(camunda.getProcessEngine()));
 
     ProcessInstance processInstance = startProcess(PROCESS_ID);
 
@@ -306,17 +328,17 @@ public class CallActivityMockExampleTest {
       .endEvent("end")
       .done();
 
-    camunda.manageDeployment(new DeployProcess(camunda).apply(PROCESS_ID, processWithSubProcess));
+    manageDeployment(new DeployProcess(camunda.getProcessEngine()).apply(PROCESS_ID, processWithSubProcess));
   }
 
   private void assertThatProcessIsWaitingForMessage(String message) {
-    final EventSubscription eventSubscription = camunda.getRuntimeService().createEventSubscriptionQuery().singleResult();
+    final EventSubscription eventSubscription = camunda.getProcessEngine().getRuntimeService().createEventSubscriptionQuery().singleResult();
     assertThat(eventSubscription).isNotNull();
     assertThat(eventSubscription.getEventName()).isEqualTo(message);
   }
 
   private void assertThatProcessIsWaitingForSignal(String signalName) {
-    final EventSubscription eventSubscription = camunda.getRuntimeService().createEventSubscriptionQuery().singleResult();
+    final EventSubscription eventSubscription = camunda.getProcessEngine().getRuntimeService().createEventSubscriptionQuery().singleResult();
     assertThat(eventSubscription).isNotNull();
     assertThat(eventSubscription.getEventName()).isEqualTo(signalName);
   }
@@ -331,26 +353,26 @@ public class CallActivityMockExampleTest {
   }
 
   private ProcessInstance startProcess(final String key) {
-    return camunda.getRuntimeService().startProcessInstanceByKey(key);
+    return camunda.getProcessEngine().getRuntimeService().startProcessInstanceByKey(key);
   }
 
 
   private void isWaitingAt(ProcessInstance processInstance, String activityId) {
-    assertThat(camunda.getRuntimeService().createProcessInstanceQuery().processInstanceId(processInstance.getId()).activityIdIn(activityId).active().singleResult()).isNotNull();
+    assertThat(camunda.getProcessEngine().getRuntimeService().createProcessInstanceQuery().processInstanceId(processInstance.getId()).activityIdIn(activityId).active().singleResult()).isNotNull();
   }
 
   private void isEnded(ProcessInstance processInstance) {
-    Optional<HistoricProcessInstance> hi = Optional.ofNullable(camunda.getHistoryService().createHistoricProcessInstanceQuery().processInstanceId(processInstance.getId()).singleResult())
+    Optional<HistoricProcessInstance> hi = Optional.ofNullable(camunda.getProcessEngine().getHistoryService().createHistoricProcessInstanceQuery().processInstanceId(processInstance.getId()).singleResult())
       .filter(h -> h.getEndTime() != null);
 
     assertThat(hi).as("instance not ended").isNotEmpty();
   }
 
   private JobQuery jobQuery() {
-    return camunda.getManagementService().createJobQuery().active();
+    return camunda.getProcessEngine().getManagementService().createJobQuery().active();
   }
 
   private void execute(Job job) {
-    camunda.getManagementService().executeJob(job.getId());
+    camunda.getProcessEngine().getManagementService().executeJob(job.getId());
   }
 }

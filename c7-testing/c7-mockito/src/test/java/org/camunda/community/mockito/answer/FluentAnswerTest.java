@@ -1,33 +1,25 @@
 package org.camunda.community.mockito.answer;
 
 import org.camunda.bpm.engine.query.Query;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.exceptions.misusing.WrongTypeOfReturnValue;
 import org.mockito.invocation.InvocationOnMock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
 
+@ExtendWith(MockitoExtension.class)
 public class FluentAnswerTest {
 
   @Mock
   private InvocationOnMock invocationOnMock;
-
-  @Rule
-  public ExpectedException expected = ExpectedException.none();
-
-  @Before
-  public void setUp() throws Exception {
-    initMocks(this);
-  }
 
   @Test
   public void shouldReturnFluentAnserOrNull() {
@@ -60,11 +52,10 @@ public class FluentAnswerTest {
 
   @Test
   public void shouldThrowClassCastExceptionUsingSubtypes() {
-
-    expected.expect(WrongTypeOfReturnValue.class);
-
     FluentBuilder mock = FluentAnswer.createMock(FluentBuilder.class);
-    when(mock.subType()).thenReturn(new FluentBuilderExtension());
+    assertThrows(WrongTypeOfReturnValue.class, () ->
+      when(mock.subType()).thenReturn(new FluentBuilderExtension())
+    );
   }
 
   interface SomeAspect {

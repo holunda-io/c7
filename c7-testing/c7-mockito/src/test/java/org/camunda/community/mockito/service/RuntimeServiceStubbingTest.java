@@ -4,7 +4,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.community.mockito.ServiceExpressions;
 import org.camunda.community.mockito.verify.RuntimeServiceVerification;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
