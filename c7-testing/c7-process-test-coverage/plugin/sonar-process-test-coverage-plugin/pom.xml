@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-process-test-coverage-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -16,7 +16,7 @@
   <packaging>sonar-plugin</packaging>
   <properties>
     <sonar-plugin-api.version>10.14.0.2599</sonar-plugin-api.version>
-    <sonar.api.impl.version>25.4.0.105899</sonar.api.impl.version>
+    <sonar.api.impl.version>26.2.0.119303</sonar.api.impl.version>
   </properties>
   <dependencies>
     <dependency>
@@ -40,32 +40,37 @@
       <artifactId>sonar-plugin-api-impl</artifactId>
       <version>${sonar.api.impl.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <configuration>
-          <artifactItems>
-            <artifactItem>
-              <groupId>io.holunda.c7</groupId>
-              <artifactId>c7-process-test-coverage-report-generator</artifactId>
-              <version>${project.version}</version>
-              <outputDirectory>target/coverage-viewer</outputDirectory>
-              <includes>**/*.js</includes>
-            </artifactItem>
-          </artifactItems>
-        </configuration>
+        <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
-            <id>unpack</id>
-            <phase>process-sources</phase>
+            <id>copy-js-from-report-generator</id>
+            <phase>generate-resources</phase>
             <goals>
-              <goal>unpack</goal>
+              <goal>copy-resources</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/coverage-viewer</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.parent.basedir}/extension/report-generator/target/classes</directory>
+                  <includes>
+                    <include>**/*.js</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
           </execution>
         </executions>
       </plugin>

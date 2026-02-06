@@ -4,7 +4,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.runtime.Incident;
 import org.camunda.bpm.engine.variable.Variables;
 import org.camunda.community.mockito.CamundaMockito;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static org.assertj.core.api.Assertions.assertThat;

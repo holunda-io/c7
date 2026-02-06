@@ -19,6 +19,10 @@ and is the new source for all those libraries. The old repositories are already 
 will be continued from this repository. We will support these libraries further but will release them using a single version from this 
 repository.
 
+## Where are the docs?
+
+Looking for documentation, please check the following website: [http://www.holunda.io/c7/snapshot/](http://www.holunda.io/c7/snapshot/) for the latest documentation. We don't believe on short README files, but rather rely on comprehensive detailed user guide.
+
 ## Modules
 
 ### Support
@@ -28,7 +32,7 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 - camunda-bpm-correlate: [![incubating](https://img.shields.io/badge/lifecycle-INCUBATING-orange.svg)](https://github.com/holisticon#open-source-lifecycle)
 - camunda-bpm-data [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 - camunda-bpm-spring-boot-deployment [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-- _camunda-platform-7-custom-batch (coming soon)_
+- c7-custom-batch [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 
 ### Operations
 
@@ -38,7 +42,7 @@ Includes extensions used for improved operations of Camunda 7.
 - c7-commons-immutables [![incubating](https://img.shields.io/badge/lifecycle-INCUBATING-orange.svg)](https://github.com/holisticon#open-source-lifecycle)
 - camunda-platform-7-autologin [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 - camunda-admin-process-registry [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-- _camunda-platform-7-rest-client-spring-boot (coming soon)_
+- c7-rest-client-spring-boot [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 
 ### Testing
 
@@ -46,7 +50,7 @@ Includes features for testing.
 
 - camunda-bpm-jgiven [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 - c7-mockito [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-- _camunda-process-test-coverage (coming soon)_
+- c7-process-test-coverage [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 
 
 ## Built for Camunda CE and Camunda EE

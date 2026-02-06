@@ -25,6 +25,7 @@ open class DeployOnApplicationStart(
       addAll(CamundaBpmProperties.DEFAULT_BPMN_RESOURCE_SUFFIXES)
       addAll(CamundaBpmProperties.DEFAULT_CMMN_RESOURCE_SUFFIXES)
       addAll(CamundaBpmProperties.DEFAULT_DMN_RESOURCE_SUFFIXES)
+      add("form")
     }
   }
 
@@ -89,16 +90,23 @@ open class DeployOnApplicationStart(
     processArchive: CamundaDeploymentProperties.ProcessArchive,
     deploymentBuilder: DeploymentBuilder,
     resource: Resource
-  ) = sanitizePath(resource.uri.toString(), processArchive.path)
-    .also { logger.info { "Adding resource: [$it]" } }
-    .let {
-      deploymentBuilder.addInputStream(resource.filename, resourceLoader.getResource("classpath:$it").inputStream)
-    }
-
-  private fun sanitizePath(path: String, fragment: String) =
-    if (fragment.isEmpty()) {
-      path.substring(path.lastIndexOf("/"))
+  ) {
+    val path = resource.uri.toString().sanitizePath(processArchive.path)
+    val resourceToDeploy = resourceLoader.getResource("classpath:$path")
+    if (resourceToDeploy.exists()) {
+      logger.info { "Adding resource: [$path]" }
+      deploymentBuilder.addInputStream(resource.filename, resourceToDeploy.inputStream)
     } else {
-      path.substring(path.indexOf(fragment))
+      logger.warn { "Resource ${resource.uri} not found, since its path was resolved to $path. Nested directories are not supported." }
     }
+  }
+
+  private fun String.sanitizePath(fragment: String): String {
+    return if (fragment.isEmpty()) {
+      this.substring(this.lastIndexOf("/"))
+    } else {
+      this.substring(this.lastIndexOf(fragment))
+    }
+  }
 }
+

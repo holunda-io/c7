@@ -4,8 +4,8 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.community.mockito.ServiceExpressions;
 import org.camunda.community.mockito.verify.CaseServiceVerification;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
@@ -18,7 +18,7 @@ public class CaseServiceVerifierTest {
 
   private final CaseService caseService = mock(CaseService.class);
 
-  @Before
+  @BeforeEach
   public void resetMocks() {
     reset(caseService);
   }

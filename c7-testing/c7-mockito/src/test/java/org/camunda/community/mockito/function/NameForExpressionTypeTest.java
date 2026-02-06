@@ -7,7 +7,7 @@ import static org.mockito.Mockito.mock;
 
 import javax.inject.Named;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 

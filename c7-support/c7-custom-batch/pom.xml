@@ -5,11 +5,11 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
-  <name>pom: c7-custom-batch - parent</name>
+  <name>support: c7-custom-batch - parent pom</name>
   <artifactId>c7-custom-batch-parent</artifactId>
   <packaging>pom</packaging>
 
@@ -23,10 +23,9 @@
     <commons-lang3.version>3.20.0</commons-lang3.version>
     <gson.version>2.13.2</gson.version>
     <camunda-spring-boot.version>${camunda.version}</camunda-spring-boot.version>
-    <spring-boot.version>3.5.8</spring-boot.version>
+    <spring-boot.version>3.5.10</spring-boot.version>
     <h2.version>2.4.240</h2.version>
     <mockito.version>5.21.0</mockito.version>
-    <assertj-core.version>3.27.6</assertj-core.version>
     <awaitility.version>4.3.0</awaitility.version>
   </properties>
 
@@ -60,23 +59,5 @@
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
   </build>
-
-  <profiles>
-    <profile>
-      <!--
-      Profile for building examples and metering coverage
-      -->
-      <id>examples</id>
-      <activation>
-        <property>
-          <name>!skipExamples</name>
-        </property>
-      </activation>
-      <modules>
-        <module>examples</module>
-      </modules>
-    </profile>
-  </profiles>
-
 
 </project>

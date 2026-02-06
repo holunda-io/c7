@@ -1,0 +1,154 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-parent</artifactId>
+    <version>2026.02.1</version>
+    <relativePath>../_build/parent</relativePath>
+  </parent>
+
+  <!--
+  Defines a parent for all examples and to avoid large poms.
+  -->
+  <name>examples: c7-example parent pom</name>
+  <artifactId>c7-example-parent</artifactId>
+  <packaging>pom</packaging>
+
+
+  <properties>
+    <dokka.skip>true</dokka.skip>
+    <maven.javadoc.skip>true</maven.javadoc.skip>
+    <maven.source.skip>true</maven.source.skip>
+    <maven.install.skip>true</maven.install.skip>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <gpg.skip>true</gpg.skip>
+
+    <spin.version>7.24.0</spin.version>
+    <spring-cloud.version>2025.0.1</spring-cloud.version>
+    <jgiven.version>2.0.3</jgiven.version>
+    <springdoc.version>1.8.0</springdoc.version>
+  </properties>
+
+
+  <modules>
+    <module>c7-correlate</module>
+    <module>c7-custom-batch</module>
+    <module>c7-data</module>
+    <module>c7-jgiven</module>
+    <module>c7-process-test-coverage</module>
+    <module>c7-rest-client-spring-boot</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-webmvc-core</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-kotlin</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-junit5</artifactId>
+        <version>${jgiven.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-spring-junit5</artifactId>
+        <version>${jgiven.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-spring</artifactId>
+        <version>${jgiven.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-html5-report</artifactId>
+        <version>${jgiven.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- Kotlin -->
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-reflect</artifactId>
+    </dependency>
+  </dependencies>
+
+
+  <build>
+    <!-- Kotlin is default -->
+    <sourceDirectory>src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.5.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>com.tngtech.jgiven</groupId>
+          <artifactId>jgiven-maven-plugin</artifactId>
+          <version>${jgiven.version}</version>
+          <executions>
+            <execution>
+              <id>generate-report</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <format>html</format>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>io.fabric8</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>0.48.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <!-- kotlin compiler -->
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <groupId>org.jetbrains.kotlin</groupId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

@@ -6,13 +6,13 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-process-test-coverage-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
   </parent>
 
   <groupId>io.holunda.c7</groupId>
   <artifactId>c7-process-test-coverage-bom</artifactId>
   <packaging>pom</packaging>
-  <name>bom: c7-process-test-coverage</name>
+  <name>testing: c7-process-test-coverage - bom</name>
 
   <dependencyManagement>
     <dependencies>

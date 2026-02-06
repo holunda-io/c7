@@ -1,10 +1,11 @@
 package org.camunda.community.mockito.task;
 
 import io.holunda.camunda.bpm.data.CamundaBpmData;
+import io.holunda.camunda.bpm.data.Readers;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import io.holunda.camunda.bpm.data.reader.VariableReader;
 import org.camunda.bpm.engine.variable.Variables;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,7 +26,7 @@ public class LockedExternalTaskFakeTest {
     assertThat(fake.getId()).isEqualTo("1");
     assertThat(fake.getActivityId()).isEqualTo("foo");
 
-    final VariableReader reader = CamundaBpmData.reader(fake.getVariables());
+    final VariableReader reader = Readers.C7.reader(fake.getVariables());
 
     assertThat(reader.get(var1)).isEqualTo("hello");
     assertThat(reader.get(var2)).isEqualTo("world");

@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-custom-batch-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -68,7 +68,16 @@
       <version>${camunda.version}</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jdbc</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 

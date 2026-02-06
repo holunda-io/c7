@@ -5,13 +5,13 @@
   <parent>
     <groupId>io.toolisticon.maven.parent</groupId>
     <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2025.11.0</version>
+    <version>2026.01.2</version>
     <relativePath/>
   </parent>
 
   <groupId>io.holunda.c7._</groupId>
   <artifactId>c7-root</artifactId>
-  <version>2025.12.2</version>
+  <version>2026.02.1</version>
 
   <name>pom: ${project.artifactId}</name>
   <description>Root of all holunda/camunda7 libs.</description>
@@ -22,7 +22,7 @@
     <!-- Global versions that are crucial for all submodules. -->
     <camunda-ee.version>7.24.2-ee</camunda-ee.version>
     <camunda-ce.version>7.24.0</camunda-ce.version>
-    <spring-boot.version>3.5.8</spring-boot.version>
+    <spring-boot.version>3.5.10</spring-boot.version>
   </properties>
 
   <modules>
@@ -58,6 +58,7 @@
         </property>
       </activation>
       <modules>
+        <module>_examples</module>
         <!-- Must be defined as last module -->
         <module>_build/coverage-aggregator</module>
       </modules>

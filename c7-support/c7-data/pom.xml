@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
@@ -19,8 +19,6 @@
   <properties>
 
     <camunda-assert.version>${camunda-ce.version}</camunda-assert.version>
-    <jgiven.version>2.0.3</jgiven.version>
-    <mockito-kotlin.version>6.1.0</mockito-kotlin.version>
 
     <!-- Skip instrumentalization by default -->
     <jacoco.skip>true</jacoco.skip>
@@ -29,8 +27,8 @@
   </properties>
 
   <modules>
-    <module>extension/core</module>
-    <module>extension/spin-type-detector</module>
+    <module>core</module>
+    <module>spin-type-detector</module>
   </modules>
 
   <dependencyManagement>
@@ -47,12 +45,6 @@
         <groupId>org.camunda.bpm.springboot</groupId>
         <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
         <version>${camunda-ce.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.mockito.kotlin</groupId>
-        <artifactId>mockito-kotlin</artifactId>
-        <version>${mockito-kotlin.version}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
@@ -128,22 +120,5 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <profiles>
-    <profile>
-      <!--
-      Profile for building examples and metering coverage
-      -->
-      <id>examples</id>
-      <activation>
-        <property>
-          <name>!skipExamples</name>
-        </property>
-      </activation>
-      <modules>
-        <module>example</module>
-      </modules>
-    </profile>
-  </profiles>
 
 </project>

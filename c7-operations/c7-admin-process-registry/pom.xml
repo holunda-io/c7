@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
@@ -64,7 +64,6 @@
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
-      <version>6.1.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -80,7 +79,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.27.6</version>
+      <version>3.27.7</version>
       <scope>test</scope>
     </dependency>
     <dependency>

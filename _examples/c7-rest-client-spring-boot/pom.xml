@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-example-parent</artifactId>
+    <version>2026.02.1</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>c7-rest-client-spring-boot-examples-root</artifactId>
+  <name>examples: c7-rest-client-spring-boot - parent</name>
+  <packaging>pom</packaging>
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+  </build>
+
+  <modules>
+    <module>example</module>
+    <module>example-provided</module>
+    <module>example-feign-client</module>
+    <module>itest-common</module>
+    <module>itest-3</module>
+    <module>itest-4</module>
+  </modules>
+
+
+</project>

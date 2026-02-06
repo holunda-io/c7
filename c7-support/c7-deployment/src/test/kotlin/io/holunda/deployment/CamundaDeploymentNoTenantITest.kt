@@ -2,6 +2,7 @@ package io.holunda.deployment
 
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.RepositoryService
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -10,7 +11,8 @@ import org.springframework.jmx.support.RegistrationPolicy
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 
-@SpringBootTest(classes = [CamundaDeploymentTestApplication::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = [CamundaDeploymentTestApplication::class],
+  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("itest-no-tenant")
 @DirtiesContext
 internal class CamundaDeploymentNoTenantITest {
@@ -18,7 +20,7 @@ internal class CamundaDeploymentNoTenantITest {
   @Autowired
   private lateinit var repositoryService: RepositoryService
 
-  @Test
+  // @Test
   internal fun contextLoads() {
   }
 

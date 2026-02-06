@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
@@ -15,25 +15,8 @@
   <description>Supports various mocking strategies in camunda 7 process tests.</description>
 
   <properties>
-    <camunda-bpm-data.version>${project.version}</camunda-bpm-data.version>
-
-    <commons-lang3.version>3.20.0</commons-lang3.version>
-    <slf4j.version>2.0.17</slf4j.version>
-    <spring.version>6.2.7</spring.version>
-
-    <!-- test tools -->
-    <assertj.version>3.27.6</assertj.version>
-    <mockito.version>5.21.0</mockito.version>
-    <hamcrest.version>3.0</hamcrest.version>
-
     <!-- plugins -->
-    <asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
-    <asciidoctorj.version>2.5.3</asciidoctorj.version>
     <jruby.version>1.7.26</jruby.version>
-
-    <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-    <!-- disable javadoc linter for JDK8 to not fail on incomplete javadoc -->
-    <additionalparam>-Xdoclint:none</additionalparam>
   </properties>
 
   <dependencies>
@@ -46,48 +29,54 @@
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
-      <version>${camunda-bpm-data.version}</version>
+      <version>${project.version}</version>
     </dependency>
 
     <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
-      <version>2.14.0</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>${mockito.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
       <scope>test</scope>
-      <version>4.13.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-bpm-junit5</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-core</artifactId>
-      <version>${hamcrest.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-library</artifactId>
-      <version>${hamcrest.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -107,40 +96,34 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>${commons-lang3.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>${slf4j.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
-      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>${spring.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>${spring.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -148,7 +131,6 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>provided</scope>
-      <version>2.4.240</version>
     </dependency>
   </dependencies>
 

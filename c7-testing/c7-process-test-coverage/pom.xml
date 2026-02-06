@@ -6,14 +6,14 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
   <artifactId>c7-process-test-coverage-parent</artifactId>
   <packaging>pom</packaging>
 
-  <name>testing: c7-process-test-coverage - parent</name>
+  <name>testing: c7-process-test-coverage - parent pom</name>
   <description>Helper library to visualize and assert which parts of a BPMN process have been covered by a test.
   </description>
 
@@ -158,18 +158,6 @@
         <module>plugin/sonar-process-test-coverage-plugin</module>
       </modules>
     </profile>
-    <profile>
-      <id>examples</id>
-      <activation>
-        <property>
-          <name>!skipExamples</name>
-        </property>
-      </activation>
-      <modules>
-        <module>examples</module>
-      </modules>
-    </profile>
-
     <profile>
       <id>regression-tests</id>
       <modules>

@@ -1,6 +1,7 @@
 package io.holunda.deployment
 
 import org.assertj.core.api.Assertions.assertThat
+import org.camunda.bpm.engine.FormService
 import org.camunda.bpm.engine.RepositoryService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,6 +22,9 @@ internal class CamundaDeploymentOverlappingITest {
   @Autowired
   private lateinit var repositoryService: RepositoryService
 
+  @Autowired
+  private lateinit var formService: FormService
+
   @Test
   fun contextLoads() {
   }
@@ -34,6 +38,7 @@ internal class CamundaDeploymentOverlappingITest {
     assertThat(deployments.filter { it.tenantId == "bar" }).hasSize(1)
     assertThat(deployments.filter { it.tenantId == "foo" }).hasSize(1)
 
+    assertThat(repositoryService.getDeploymentResources(deployments.filter { it.tenantId == "foo" }.first().id)).hasSize(2)
     assertThat(repositoryService.createProcessDefinitionQuery().withoutTenantId().count()).isEqualTo(1)
     assertThat(repositoryService.createProcessDefinitionQuery().tenantIdIn("bar").count()).isEqualTo(1)
     assertThat(repositoryService.createProcessDefinitionQuery().tenantIdIn("foo").count()).isEqualTo(1)

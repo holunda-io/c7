@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda</groupId>
     <artifactId>camunda-bpm-correlate-root</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -14,7 +14,7 @@
   <name>camunda-bpm-correlate Extension / Ingress Adapter Axon Framework</name>
 
   <properties>
-    <axon-framework.version>4.12.2</axon-framework.version>
+    <axon-framework.version>4.13.0</axon-framework.version>
   </properties>
 
   <dependencyManagement>

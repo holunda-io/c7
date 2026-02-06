@@ -5,29 +5,30 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2025.12.2</version>
+    <version>2026.02.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
   <artifactId>c7-rest-client-spring-boot-parent</artifactId>
   <packaging>pom</packaging>
-  <name>pom: c7-rest-client-spring-boot - parent</name>
+  <name>support: c7-rest-client-spring-boot - parent pom</name>
   <description>Camunda Platform 7 REST Client Spring-Boot</description>
 
   <properties>
-
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.0</spring-cloud.version>
-
+    <spring-cloud.version>2025.0.1</spring-cloud.version>
   </properties>
 
   <modules>
-    <module>extension/client</module>
-    <module>extension/variables</module>
-    <module>extension/core</module>
-    <module>extension/starter</module>
-    <module>extension/starter-provided</module>
-    <module>extension/starter-feign</module>
+    <module>client</module>
+    <module>variables</module>
+    <module>core</module>
+    <module>starter</module>
+    <module>starter-provided</module>
+    <module>starter-feign</module>
+    <module>starter-4</module>
+    <module>starter-provided-4</module>
+    <module>starter-feign-4</module>
   </modules>
 
   <dependencyManagement>
@@ -66,7 +67,7 @@
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>2.2.41</version>
+        <version>2.2.42</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -203,23 +204,5 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <!--
-    Profile to skip example publish
-    -->
-    <profile>
-      <id>examples</id>
-      <activation>
-        <property>
-          <name>!skipExamples</name>
-        </property>
-      </activation>
-      <modules>
-        <module>examples</module>
-      </modules>
-    </profile>
-
-  </profiles>
 
 </project>

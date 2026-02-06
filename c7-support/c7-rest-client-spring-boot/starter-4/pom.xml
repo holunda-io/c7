@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.c7._</groupId>
+    <artifactId>c7-rest-client-spring-boot-parent</artifactId>
+    <version>2026.02.1</version>
+  </parent>
+
+  <groupId>io.holunda.c7</groupId>
+  <artifactId>c7-rest-client-spring-boot-starter-4</artifactId>
+
+  <name>support: c7-rest-client-spring-boot - starter (spring-boot 4)</name>
+
+  <properties>
+    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-cloud.version>2025.1.0</spring-cloud.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-rest-client-spring-boot-starter-provided-4</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.camunda-api</groupId>
+      <artifactId>camunda-bpm-engine-api</artifactId>
+    </dependency>
+  </dependencies>
+</project>

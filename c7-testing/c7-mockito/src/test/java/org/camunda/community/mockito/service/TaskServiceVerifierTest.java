@@ -6,8 +6,8 @@ import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.community.mockito.ServiceExpressions;
 import org.camunda.community.mockito.verify.TaskServiceVerification;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ public class TaskServiceVerifierTest {
 
   private final TaskService taskService = mock(TaskService.class);
 
-  @Before
+  @BeforeEach
   public void resetMocks() {
     reset(taskService);
   }
