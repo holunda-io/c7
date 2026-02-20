@@ -72,7 +72,7 @@ class ProcessEngineCoverageExtension(
         detailedCoverageLogging, handleTestMethodCoverage, excludedProcessDefinitionKeys,
         classCoverageAssertionConditions, testMethodNameToCoverageConditions, reportDirectory)
 
-    override fun postProcessTestInstance(testInstance: Any?, context: ExtensionContext) {
+    override fun postProcessTestInstance(testInstance: Any, context: ExtensionContext) {
         super.postProcessTestInstance(testInstance, context)
         initializeServices()
         ProcessEngineAdapter(processEngine, coverageCollector).initializeListeners()

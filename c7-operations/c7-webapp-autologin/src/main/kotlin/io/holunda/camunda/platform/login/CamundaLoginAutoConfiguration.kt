@@ -33,7 +33,7 @@ class CamundaLoginAutoConfiguration {
   @Bean
   fun containerBasedAuthenticationFilterRegistrationBean(camundaLoginProperties: CamundaLoginProperties): FilterRegistrationBean<ContainerBasedAuthenticationFilter> {
     return FilterRegistrationBean<ContainerBasedAuthenticationFilter>().apply {
-      this.filter = ExtendedContainerBasedAuthenticationFilter(provider = SessionBasedAuthenticationProvider(userId = camundaLoginProperties.userId))
+      this.setFilter(ExtendedContainerBasedAuthenticationFilter(provider = SessionBasedAuthenticationProvider(userId = camundaLoginProperties.userId)))
       this.initParameters = mapOf(ProcessEngineAuthenticationFilter.AUTHENTICATION_PROVIDER_PARAM to SessionBasedAuthenticationProvider.FQN)
       this.addUrlPatterns("${camundaLoginProperties.camundaContextPath}/app/*", "${camundaLoginProperties.camundaContextPath}/api/*")
       this.setDispatcherTypes(EnumSet.of(DispatcherType.REQUEST))

@@ -35,7 +35,7 @@
     <dependency>
       <!-- process engine, needs to be provided -->
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-4</artifactId>
       <scope>provided</scope>
     </dependency>
 
@@ -45,7 +45,7 @@
       <artifactId>camunda-webapp</artifactId>
       <classifier>classes</classifier>
       <!-- not part of camunda bom -->
-      <version>${camunda-ce.version}</version>
+      <version>${camunda.version}</version>
       <scope>provided</scope>
     </dependency>
 

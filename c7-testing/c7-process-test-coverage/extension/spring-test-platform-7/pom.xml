@@ -51,7 +51,7 @@
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-4-test</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -67,7 +67,7 @@
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-4-rest</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

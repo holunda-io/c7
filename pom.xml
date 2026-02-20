@@ -20,9 +20,8 @@
 
   <properties>
     <!-- Global versions that are crucial for all submodules. -->
-    <camunda-ee.version>7.24.2-ee</camunda-ee.version>
-    <camunda-ce.version>7.24.0</camunda-ce.version>
-    <spring-boot.version>3.5.10</spring-boot.version>
+    <camunda.version>7.24.3-ee</camunda.version>
+    <spring-boot.version>4.0.2</spring-boot.version>
   </properties>
 
   <modules>
@@ -62,58 +61,6 @@
         <!-- Must be defined as last module -->
         <module>_build/coverage-aggregator</module>
       </modules>
-    </profile>
-    <!--
-    Profile for selecting the Camunda BPM Engine version.
-    CE stands for Community Edition
-    EE stands for Enterprise Edition
-  -->
-    <profile>
-      <id>camunda-ce</id>
-      <activation>
-        <property>
-          <name>!camunda-ee</name>
-        </property>
-      </activation>
-      <properties>
-        <camunda.version>${camunda-ce.version}</camunda.version>
-      </properties>
-      <dependencyManagement>
-        <dependencies>
-          <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${camunda-ce.version}</version>
-          </dependency>
-        </dependencies>
-      </dependencyManagement>
-    </profile>
-    <profile>
-      <id>camunda-ee</id>
-      <activation>
-        <property>
-          <name>camunda-ee</name>
-        </property>
-      </activation>
-      <properties>
-        <camunda.version>${camunda-ee.version}</camunda.version>
-      </properties>
-      <repositories>
-        <repository>
-          <id>camunda-bpm-ee</id>
-          <name>camunda-bpm-ee</name>
-          <url>https://artifacts.camunda.com/artifactory/private/</url>
-        </repository>
-      </repositories>
-      <dependencyManagement>
-        <dependencies>
-          <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-            <version>${camunda-ee.version}</version>
-          </dependency>
-        </dependencies>
-      </dependencyManagement>
     </profile>
   </profiles>
 

@@ -16,7 +16,7 @@
 
   <properties>
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.1</spring-cloud.version>
+    <spring-cloud.version>2025.1.0</spring-cloud.version>
   </properties>
 
   <modules>
@@ -26,9 +26,6 @@
     <module>starter</module>
     <module>starter-provided</module>
     <module>starter-feign</module>
-    <module>starter-4</module>
-    <module>starter-provided-4</module>
-    <module>starter-feign-4</module>
   </modules>
 
   <dependencyManagement>
@@ -58,11 +55,6 @@
         <groupId>io.holunda.camunda-api</groupId>
         <artifactId>camunda-bpm-engine-api</artifactId>
         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-engine-rest-openapi</artifactId>
-        <version>${camunda.version}</version>
       </dependency>
       <dependency>
         <groupId>io.swagger.core.v3</groupId>

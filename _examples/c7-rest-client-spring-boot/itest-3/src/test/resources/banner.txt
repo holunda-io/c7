@@ -1,5 +1,0 @@
--------------------------------------------------------------------------------
-Camunda REST Client SpringBoot I-TEST
--------------------------------------------------------------------------------
-SpringBoot: ${spring-boot.version}
-Camunda BPM: ${camunda.bpm.version}

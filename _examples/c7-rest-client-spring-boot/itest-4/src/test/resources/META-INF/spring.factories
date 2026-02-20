@@ -1,2 +1,0 @@
-org.springframework.context.ApplicationContextInitializer=\
-org.camunda.community.rest.itest.boot4.SpringBoot4SuiteITest$CamundaPropertiesInitializer
