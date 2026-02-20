@@ -46,12 +46,12 @@
         </dependency>
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
+            <artifactId>camunda-bpm-spring-boot-starter-4-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+            <artifactId>camunda-bpm-spring-boot-starter-4-rest</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

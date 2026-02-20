@@ -245,4 +245,11 @@ abstract class AbstractRepositoryServiceAdapter : RepositoryService {
     TODO("Not yet implemented")
   }
 
+  /**
+   * @since 7.24.6-ee
+   */
+  override fun createCamundaFormDefinitionQuery(): CamundaFormDefinitionQuery? {
+    TODO("Not yet implemented")
+  }
+
 }

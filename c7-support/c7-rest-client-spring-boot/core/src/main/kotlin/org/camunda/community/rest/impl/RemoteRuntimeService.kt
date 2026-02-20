@@ -340,7 +340,7 @@ class RemoteRuntimeService(
         null, null, camundaRestClientProperties.deserializeVariablesOnServer,
         VariableInstanceQueryDto().executionIdIn(listOf(executionId))
       )
-      .body
+      .body!!
       .associateBy { it.name }
       .mapValues { valueMapper.mapDto<TypedValue>(it.value, true)?.value }
       .toMutableMap()

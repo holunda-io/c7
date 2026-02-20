@@ -22,9 +22,7 @@
     <module>example</module>
     <module>example-provided</module>
     <module>example-feign-client</module>
-    <module>itest-common</module>
-    <module>itest-3</module>
-    <module>itest-4</module>
+    <module>itest</module>
   </modules>
 
 

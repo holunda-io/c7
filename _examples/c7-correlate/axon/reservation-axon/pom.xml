@@ -46,7 +46,7 @@
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-4</artifactId>
     </dependency>
     <dependency>
       <groupId>io.holunda</groupId>
@@ -54,11 +54,11 @@
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-4-rest</artifactId>
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-4-webapp-ee</artifactId>
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm</groupId>

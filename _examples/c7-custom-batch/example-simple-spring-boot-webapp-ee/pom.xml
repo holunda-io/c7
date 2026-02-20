@@ -13,8 +13,7 @@
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-      <version>${camunda-ee.version}</version>
+      <artifactId>camunda-bpm-spring-boot-starter-4-webapp-ee</artifactId>
     </dependency>
 
     <dependency>

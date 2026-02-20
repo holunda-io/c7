@@ -24,18 +24,5 @@
     <testSourceDirectory>src/test/java</testSourceDirectory>
   </build>
 
-  <profiles>
-    <profile>
-      <id>camunda-ee</id>
-      <activation>
-        <property>
-          <name>camunda-ee</name>
-        </property>
-      </activation>
-      <modules>
-        <module>example-simple-spring-boot-webapp-ee</module>
-      </modules>
-    </profile>
-  </profiles>
 
 </project>

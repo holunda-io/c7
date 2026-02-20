@@ -20,36 +20,6 @@
     <module>bpm-engine</module>
   </modules>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.camunda.commons</groupId>
-        <artifactId>camunda-commons-typed-values</artifactId>
-        <version>${camunda.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm.model</groupId>
-        <artifactId>camunda-bpmn-model</artifactId>
-        <version>${camunda.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm.model</groupId>
-        <artifactId>camunda-cmmn-model</artifactId>
-        <version>${camunda.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm.model</groupId>
-        <artifactId>camunda-dmn-model</artifactId>
-        <version>${camunda.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm.juel</groupId>
-        <artifactId>camunda-juel</artifactId>
-        <version>${camunda.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <build>
 
     <pluginManagement>

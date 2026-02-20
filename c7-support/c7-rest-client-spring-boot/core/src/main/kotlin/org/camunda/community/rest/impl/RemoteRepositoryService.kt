@@ -2,7 +2,6 @@
 
 package org.camunda.community.rest.impl
 
-import org.camunda.bpm.engine.repository.DecisionDefinitionQuery
 import org.camunda.bpm.engine.repository.DeploymentQuery
 import org.camunda.bpm.engine.repository.ProcessDefinitionQuery
 import org.camunda.bpm.model.bpmn.Bpmn
