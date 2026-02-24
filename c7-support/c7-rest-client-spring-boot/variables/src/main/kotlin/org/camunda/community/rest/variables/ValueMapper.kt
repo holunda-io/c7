@@ -21,7 +21,7 @@ import java.util.*
  * Class responsible for mapping variables from and to DTO representations.
  */
 open class ValueMapper(
-  private val objectMapper: ObjectMapper,
+  val objectMapper: ObjectMapper,
   private val valueTypeResolver: ValueTypeResolver,
   private val valueTypeRegistration: ValueTypeRegistration,
   private val serializationFormat: SerializationDataFormat,
