@@ -9,9 +9,9 @@ By default, the batch will create 100 jobs, where each job will work on one proc
 After this, it will create another 100 jobs and so on, until the work on all instances is finished.
 Benefit of this is that the migration will not block anything and that there is not just one big transaction.
 
-Additionally, the cockpit already provides a view to monitor batches. (_https://docs.camunda.org/manual/7.20/webapps/cockpit/batch/monitoring/[See also]_)
+Additionally, the cockpit already provides a view to monitor batches. ([Camunda Batch User Guide](https://docs.camunda.org/manual/7.20/webapps/cockpit/batch/monitoring/))
 
-For more information regarding Camunda Batch, visit also Camunda's user guide: _https://docs.camunda.org/manual/7.20/user-guide/process-engine/batch/[User Guide]_
+For more information regarding Camunda Batch, visit also Camunda's user guide: [Camunda Batch User Guide](https://docs.camunda.org/manual/7.20/user-guide/process-engine/batch/)
 
 ## Why This Extension?
 
@@ -47,8 +47,8 @@ In other words, `jobData` will contain a maximum of `invocationsPerBatchJob` num
 
 The name / id of the job handler.
 
-.Example Implementation:
-```
+Example Implementation:
+```java
 @Component
 public class PrintStringBatchJobHandler extends CustomBatchJobHandler<String> {
   @Override
@@ -76,16 +76,16 @@ The abstract `CustomBatchJobHandler` takes care about:
 You have to register the implementation of the job handler during startup of engine.
 This can be done by passing the job handler to the `CustomBatchHandlerPlugin` and adding this plugin to the engine.
 
-.With spring boot it would be enough to provide this as a bean:
-```
+With spring boot it would be enough to provide this as a bean:
+```java
 @Bean
 public ProcessEnginePlugin customBatchHandlerPlugin(PrintStringBatchJobHandler printStringBatchJobHandler) {
   return new CustomBatchHandlerPlugin(Collections.singletonList(printStringBatchJobHandler));
 }
 ```
 
-.If you just use camunda.cfg.xml / applicationContext.xml to configure your engine:
-```
+If you just use camunda.cfg.xml / applicationContext.xml to configure your engine:
+```xml
     <property name="processEnginePlugins">
       <list>
 
@@ -101,9 +101,9 @@ public ProcessEnginePlugin customBatchHandlerPlugin(PrintStringBatchJobHandler p
 
 Examples:
 
-* _https://github.com/camunda/camunda-platform-7-custom-batch/blob/master/examples/example-simple/src/main/webapp/WEB-INF/applicationContext.xml[applicationContext.xml]_
+* [applicationContext.xml](https://github.com/camunda/camunda-platform-7-custom-batch/blob/master/examples/example-simple/src/main/webapp/WEB-INF/applicationContext.xml)
 
-* _https://github.com/camunda/camunda-platform-7-custom-batch/blob/master/extension/core/src/test/resources/camunda.cfg.xml[camunda.cfg.xml]_
+* [camunda.cfg.xml](https://github.com/camunda/camunda-platform-7-custom-batch/blob/master/extension/core/src/test/resources/camunda.cfg.xml)
 
 ### Create the Batch
 
@@ -111,8 +111,8 @@ For creating the batch, you have to use the `CustomBatchBuilder`.
 
 In the minimum setting (with default batch values and configuration from Context) this looks like:
 
-```
- final Batch batch = CustomBatchBuilder.of(data) #List of Objects which should be processed
+```java
+ final Batch batch = CustomBatchBuilder.of(data) //List of Objects which should be processed
         .jobHandler(printStringBatchJobHandler)
         .create();
 ```
@@ -133,7 +133,7 @@ The builder takes care about:
 
 The batch could be configured during building it with CustomBatchBuilder:
 
-```
+```java
  final Batch batch = CustomBatchBuilder.of(data)
         .configuration(configuration)
         .jobHandler(printStringBatchJobHandler)
@@ -148,22 +148,22 @@ The batch could be configured during building it with CustomBatchBuilder:
 
 Per default, the builder tries to get the process engine configuration from context.
 
-```
-Context.getProcessEngineConfiguration()
+```java
+Context.getProcessEngineConfiguration();
 ```
 
 Custom Configuration could be set with:
 
-```
-CustomBatchBuilder.of().configuration(configuration)
+```java
+CustomBatchBuilder.of().configuration(configuration);
 ```
 
 #### Property `jobHandler`
 
 Here you have to provide the batch job handler which should be used by the batch.
 
-```
-CustomBatchBuilder.of().jobHandler(printStringBatchJobHandler)
+```java
+CustomBatchBuilder.of().jobHandler(printStringBatchJobHandler);
 ```
 
 #### Property  `jobsPerSeed`
@@ -171,8 +171,8 @@ CustomBatchBuilder.of().jobHandler(printStringBatchJobHandler)
 Number of batch execution jobs created per seed job invocation.
 The batch seed job is invoked until it has created all batch execution jobs required by the batch.
 
-```
-CustomBatchBuilder.of().jobsPerSeed(10)
+```java
+CustomBatchBuilder.of().jobsPerSeed(10);
 ```
 
 Default is 100
@@ -183,8 +183,8 @@ How many data should be passed to the job handler.
 
 E.g., for the process instance migration batch this specifies the number of process instances which are migrated per batch execution job.
 
-```
-CustomBatchBuilder.of().invocationsPerBatchJob(5)
+```java
+CustomBatchBuilder.of().invocationsPerBatchJob(5);
 ```
 
 Default is 1
@@ -193,12 +193,12 @@ Default is 1
 
 Priority of the seed job + monitoring job + batch jobs.
 
-Note: The batch `jobPriority` is only considered when using Job Executor with the corresponding Acquisition Strategy `jobExecutorAcquireByPriority`. (see _https://docs.camunda.org/manual/latest/user-guide/process-engine/the-job-executor/#job-acquisition[camunda documentation]_)
+Note: The batch `jobPriority` is only considered when using Job Executor with the corresponding Acquisition Strategy `jobExecutorAcquireByPriority`. (see [Camunda Job Acquisition](https://docs.camunda.org/manual/latest/user-guide/process-engine/the-job-executor/#job-acquisition))
 
 Default is 0l
 
-```
-CustomBatchBuilder.of().jobPriority(5L)
+```java
+CustomBatchBuilder.of().jobPriority(5L);
 ```
 
 Default is 1
@@ -206,10 +206,10 @@ Default is 1
 ### Property `exclusive`
 
 Should a batch job be handled exclusive, take care when setting this to false!
-(See _https://docs.camunda.org/manual/7.9/user-guide/process-engine/the-job-executor/#exclusive-jobs[Camunda Job Docs]_)
+(See [Camunda Job Docs](https://docs.camunda.org/manual/7.9/user-guide/process-engine/the-job-executor/#exclusive-jobs))
 
-```
-CustomBatchBuilder.of().exclusive(false)
+```java
+CustomBatchBuilder.of().exclusive(false);
 ```
 
 Default is true
