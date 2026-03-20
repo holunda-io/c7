@@ -15,11 +15,15 @@ import org.camunda.community.rest.itest.stages.CamundaRestClientITestBase
 import org.camunda.community.rest.itest.stages.RuntimeServiceActionStage
 import org.camunda.community.rest.itest.stages.RuntimeServiceAssertStage
 import org.junit.jupiter.api.Test
-import java.io.Serializable
+import org.springframework.test.context.TestPropertySource
 import java.math.BigDecimal
 
-@As("Variables")
-class RuntimeServiceVariablesITest : CamundaRestClientITestBase<RuntimeService, RuntimeServiceActionStage, RuntimeServiceAssertStage>() {
+@As("Variables Java Serialization")
+@TestPropertySource(properties = [
+  "camunda.rest.client.variables.default-serialization-format=JAVA",
+  "camunda.bpm.generic-properties.properties.javaSerializationFormatEnabled=true"
+])
+class RuntimeServiceVariablesJavaSerializationITest : CamundaRestClientITestBase<RuntimeService, RuntimeServiceActionStage, RuntimeServiceAssertStage>() {
 
   @Test
   fun `should add new, update and delete existing variables`() {
@@ -107,7 +111,7 @@ class RuntimeServiceVariablesITest : CamundaRestClientITestBase<RuntimeService, 
   }
 
   @Test
-  fun `serialize and deserialize bigdecimal as json`() {
+  fun `serialize and deserialize bigdecimal as java serialization`() {
     val processDefinitionKey = processDefinitionKey()
     val signalName = "var_process_blocker_1"
     val userTaskId = "user-task"
@@ -130,5 +134,3 @@ class RuntimeServiceVariablesITest : CamundaRestClientITestBase<RuntimeService, 
   }
 
 }
-
-data class ComplexDataStructure(val string: String, val integer: Int) : Serializable

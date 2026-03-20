@@ -9,6 +9,7 @@ import org.camunda.community.rest.variables.ValueTypeResolverImpl;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -32,11 +33,11 @@ public class JavaSerializationValueSerializerTest {
 
     @Test
     void serializeAndDeserializesMapWithPrimitivesAndObjects() {
-      var orig = Map.of("foo", 1L, "bar", List.of(2L, 3L));
+      var orig = Map.of("foo", 1L, "bar", List.of(2L, 3L), "one", BigDecimal.ONE);
 
       var mapped = valueMapper.mapValues(orig);
 
-      assertThat(mapped).hasSize(2);
+      assertThat(mapped).hasSize(3);
 
       var foo = mapped.get("foo");
       var bar = mapped.get("bar");
@@ -52,9 +53,10 @@ public class JavaSerializationValueSerializerTest {
 
       var deserialized = valueMapper.mapDtos(mapped);
 
-      assertThat(deserialized).hasSize(2);
+      assertThat(deserialized).hasSize(3);
       assertThat(deserialized.get("foo")).isEqualTo(1L);
       assertThat(deserialized.get("bar")).isEqualTo(List.of(2L, 3L));
+      assertThat(deserialized.get("one")).isEqualTo(BigDecimal.ONE);
     }
   }
 }
