@@ -22,6 +22,7 @@ class SpringBoot4SuiteITest {
   companion object {
 
     private val camundaContainer = GenericContainer("camunda/camunda-bpm-platform:run-latest")
+      .withEnv("JAVA_OPTS", "-Dcamunda.bpm.generic-properties.properties.javaSerializationFormatEnabled=true")
       .withExposedPorts(8080)
 
     @BeforeSuite

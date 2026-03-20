@@ -19,7 +19,6 @@ class ValueTypeRegistration {
     Pair(Short::class, ValueType.SHORT::toTypedValue),
     Pair(String::class, ValueType.STRING::toTypedValue),
     Pair(ByteArray::class, ValueType.BYTES::toTypedValue),
-    Pair(Number::class, ValueType.NUMBER::toTypedValue),
     Pair(Object::class, ValueType.OBJECT::toTypedValue),
   )
 

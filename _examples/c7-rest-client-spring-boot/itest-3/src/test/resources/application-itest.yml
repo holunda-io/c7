@@ -16,6 +16,7 @@ camunda:
     generic-properties:
       properties:
         historyTimeToLive: P1D
+        javaSerializationFormatEnabled: true
 server:
   port: 8085
 
