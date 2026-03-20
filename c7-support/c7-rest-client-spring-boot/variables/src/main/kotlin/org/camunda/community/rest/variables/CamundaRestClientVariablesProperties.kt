@@ -13,7 +13,7 @@ data class CamundaRestClientVariablesProperties(
    *
    * Note: XML serialization format is not supported.
    */
-  val defaultSerializationFormat: SerializationDataFormat = SerializationDataFormats.JSON,
+  val defaultSerializationFormat: SerializationDataFormats = SerializationDataFormats.JSON,
 ) {
   init {
     require(SerializationDataFormats.XML != defaultSerializationFormat) {
