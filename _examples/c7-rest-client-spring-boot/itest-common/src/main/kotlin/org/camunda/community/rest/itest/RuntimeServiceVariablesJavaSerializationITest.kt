@@ -19,10 +19,7 @@ import org.springframework.test.context.TestPropertySource
 import java.math.BigDecimal
 
 @As("Variables Java Serialization")
-@TestPropertySource(properties = [
-  "camunda.rest.client.variables.default-serialization-format=JAVA",
-  "camunda.bpm.generic-properties.properties.javaSerializationFormatEnabled=true"
-])
+@TestPropertySource(properties = ["camunda.rest.client.variables.default-serialization-format=JAVA"])
 class RuntimeServiceVariablesJavaSerializationITest : CamundaRestClientITestBase<RuntimeService, RuntimeServiceActionStage, RuntimeServiceAssertStage>() {
 
   @Test
@@ -47,7 +44,7 @@ class RuntimeServiceVariablesJavaSerializationITest : CamundaRestClientITestBase
           .putValueTyped(
             "VAR7",
             objectValue(structure)
-              .serializationDataFormat("application/json")
+              .serializationDataFormat("application/x-java-serialized-object")
               .create()
           )
       )
