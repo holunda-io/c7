@@ -16,7 +16,7 @@
 
   <properties>
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.1</spring-cloud.version>
+    <spring-cloud.version>2025.0.2</spring-cloud.version>
   </properties>
 
   <modules>
