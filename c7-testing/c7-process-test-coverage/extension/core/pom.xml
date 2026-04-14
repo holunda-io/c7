@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-process-test-coverage-parent</artifactId>
-    <version>2026.04.1-SNAPSHOT</version>
+    <version>2026.04.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 

@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.camunda-api</groupId>
     <artifactId>camunda-api-parent</artifactId>
-    <version>2026.04.1-SNAPSHOT</version>
+    <version>2026.04.1</version>
   </parent>
 
   <artifactId>camunda-bpm-engine-api</artifactId>
