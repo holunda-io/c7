@@ -9,6 +9,7 @@ import org.camunda.community.rest.variables.ValueMapper
 import org.camunda.community.rest.variables.ValueTypeRegistration
 import org.camunda.community.rest.variables.ValueTypeResolverImpl
 import org.junit.jupiter.api.Test
+import java.math.BigDecimal
 
 class JsonValueSerializerTest {
   private val objectMapper = jacksonObjectMapper().apply { findAndRegisterModules() }
@@ -31,12 +32,13 @@ class JsonValueSerializerTest {
     "bar" to 1L,
     "foo" to Foo("Foo", 1),
     "baz" to listOf(1L, 2L, 3L),
+    "one" to BigDecimal.ONE,
   )
 
   @Test
   fun `can serialize complex map`() {
     val dtos = valueMapper.mapValues(orig)
-    assertThat(dtos).hasSize(3)
+    assertThat(dtos).hasSize(4)
 
     val foo: VariableValueDto = dtos["foo"]!!
     val bar: VariableValueDto = dtos["bar"]!!
@@ -48,7 +50,7 @@ class JsonValueSerializerTest {
 
     assertThat<Any?>(foo.valueInfo[SerializableValueType.VALUE_INFO_SERIALIZATION_DATA_FORMAT])
       .isEqualTo(SerializationDataFormats.JSON.getName())
-    assertThat<Any?>(foo.value)
+    assertThat(foo.value)
       .isNotNull()
       .isInstanceOf(String::class.java)
 
@@ -60,9 +62,10 @@ class JsonValueSerializerTest {
 
     val deserialized = valueMapper.mapDtos(dtos)
 
-    assertThat(deserialized).hasSize(3)
+    assertThat(deserialized).hasSize(4)
     assertThat(deserialized["foo"]).isInstanceOf(Foo::class.java)
       .extracting("name", "age")
       .containsExactly("Foo", 1)
+    assertThat(deserialized["one"]).isInstanceOf(BigDecimal::class.java)
   }
 }

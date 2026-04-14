@@ -35,10 +35,9 @@ class ProcessEngineAdapter(
         if (compensationEventHandler is CompensationEventCoverageHandler) {
             compensationEventHandler.setCoverageState(this.coverageCollector)
         } else {
-            logger.warn(
-                "CompensationEventCoverageHandler not registered with process engine configuration!"
-                        + " Compensation boundary events coverage will not be registered."
-            )
+            logger.warn {
+              "CompensationEventCoverageHandler not registered with process engine configuration! Compensation boundary events coverage will not be registered."
+            }
         }
     }
 

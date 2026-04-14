@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2026.02.1</version>
+    <version>2026.04.1</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
@@ -16,7 +16,7 @@
 
   <properties>
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.1</spring-cloud.version>
+    <spring-cloud.version>2025.0.2</spring-cloud.version>
   </properties>
 
   <modules>
@@ -67,7 +67,7 @@
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>2.2.42</version>
+        <version>2.2.48</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

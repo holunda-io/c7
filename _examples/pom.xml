@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2026.02.1</version>
+    <version>2026.04.1</version>
     <relativePath>../_build/parent</relativePath>
   </parent>
 
@@ -26,7 +26,7 @@
     <gpg.skip>true</gpg.skip>
 
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.1</spring-cloud.version>
+    <spring-cloud.version>2025.0.2</spring-cloud.version>
     <jgiven.version>2.0.3</jgiven.version>
     <springdoc.version>1.8.0</springdoc.version>
   </properties>
@@ -138,7 +138,7 @@
         <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
-          <version>0.48.0</version>
+          <version>0.48.1</version>
         </plugin>
       </plugins>
     </pluginManagement>

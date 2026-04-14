@@ -58,7 +58,7 @@ Includes libraries built as improvements to Camunda 7 engine itself.
 
     Perform custom batch operations on the shoulders of the Camunda 7 Job executor
 
-    [:octicons-arrow-right-24: Reference](#)
+    [:octicons-arrow-right-24: Reference](user-guide/c7-custom-batch/index.md)
 
 -   :material-scale-balance:{ .lg .middle } __c7-rest-client-spring-boot__
 

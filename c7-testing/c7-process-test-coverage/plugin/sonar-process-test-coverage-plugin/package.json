@@ -1,7 +1,7 @@
 {
   "name": "sonar-process-test-coverage-plugin",
   "license": "LGPL-3.0",
-  "version": "2026.2.1-SNAPSHOT",
+  "version": "2026.4.1-SNAPSHOT",
   "devDependencies": {
     "@babel/core": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
@@ -34,6 +34,6 @@
   "dependencies": {
     "backbone": "^1.6.0",
     "jquery": "^3.7.1",
-    "underscore": "^1.13.6"
+    "underscore": "^1.13.8"
   }
 }

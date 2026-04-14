@@ -43,7 +43,7 @@ jobs:
       run: tree c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/ > c7-testing/c7-process-test-coverage/plugin/report-aggregator-maven-plugin/target/tree.log
 
     - name: Upload test artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: Mojo ITest Reports
         path: |
@@ -54,7 +54,7 @@ jobs:
 
     - name: Upload coverage to Codecov
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v6
       with:
         token: ${{secrets.CODECOV_TOKEN}}
 

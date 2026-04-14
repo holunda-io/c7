@@ -101,6 +101,7 @@ nav:
   - Quick Start:
       - Admin Process Registry: getting-started/c7-admin-process-registry.md
       - Correlate: getting-started/camunda-bpm-correlate.md
+      - Custom Batch: getting-started/c7-custom-batch.md
       - Data: getting-started/camunda-bpm-data.md
       - Deployment: getting-started/c7-deployment.md
       - JGiven: getting-started/c7-jgiven.md
@@ -122,6 +123,8 @@ nav:
               - Cockpit Plugin: user-guide/camunda-bpm-correlate/cockpit-plugin.md
               - Metrics: user-guide/camunda-bpm-correlate/metrics.md
           - Examples: user-guide/camunda-bpm-correlate/examples.md
+      - Custom Batch:
+          - Overview: user-guide/c7-custom-batch/index.md
       - Data:
           - Overview: user-guide/camunda-bpm-data/index.md
           - Features: user-guide/camunda-bpm-data/features.md
