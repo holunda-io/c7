@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-process-test-coverage-parent</artifactId>
-    <version>2026.04.1</version>
+    <version>2026.04.2</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -20,7 +20,7 @@
   </prerequisites>
 
   <properties>
-    <maven.version>3.9.14</maven.version>
+    <maven.version>3.9.15</maven.version>
     <maven-plugin-tools.version>3.15.2</maven-plugin-tools.version>
     <maven-reporting.version>4.0.0</maven-reporting.version>
     <itf.version>0.13.1</itf.version>

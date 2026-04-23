@@ -139,6 +139,7 @@ nav:
           - Motivation: user-guide/c7-rest-client-spring-boot/motivation.md
           - Solution: user-guide/c7-rest-client-spring-boot/solution.md
           - Features: user-guide/c7-rest-client-spring-boot/features.md
+          - Installation: user-guide/c7-rest-client-spring-boot/installation.md
           - Configuration:
               - Overview: user-guide/c7-rest-client-spring-boot/configuration.md
               - Logging: user-guide/c7-rest-client-spring-boot/logging.md

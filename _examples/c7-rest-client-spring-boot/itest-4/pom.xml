@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-rest-client-spring-boot-examples-root</artifactId>
-    <version>2026.04.1</version>
+    <version>2026.04.2</version>
   </parent>
 
   <artifactId>c7-rest-client-spring-boot-itest-4</artifactId>
@@ -13,9 +13,9 @@
   <description>Spring Boot 4 starter for integration tests of the client.</description>
 
   <properties>
-    <spring-boot.version>4.0.1</spring-boot.version>
-    <spring-cloud.version>2025.1.0</spring-cloud.version>
-    <testcontainers.version>2.0.4</testcontainers.version>
+    <spring-boot.version>4.0.5</spring-boot.version>
+    <spring-cloud.version>2025.1.1</spring-cloud.version>
+    <testcontainers.version>2.0.5</testcontainers.version>
   </properties>
 
   <dependencyManagement>
