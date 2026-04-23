@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.boot.http.converter.autoconfigure.ClientHttpMessageConvertersCustomizer
 import org.springframework.cloud.openfeign.EnableFeignClients
 import org.springframework.cloud.openfeign.support.FeignEncoderProperties
 import org.springframework.cloud.openfeign.support.FeignHttpMessageConverters
@@ -41,9 +42,7 @@ class FeignClientConfiguration {
   fun camundaFeignEncoder(
     feignEncoderProperties: FeignEncoderProperties,
     converters: ObjectProvider<FeignHttpMessageConverters>
-  ): Encoder {
-    return SpringEncoder(camundaMultipartFormEncoder(), feignEncoderProperties, converters)
-  }
+  ): Encoder = SpringEncoder(camundaMultipartFormEncoder(), feignEncoderProperties, converters)
 
   /**
    * Define a retryer for feign HTTP calls.
@@ -63,19 +62,21 @@ class FeignClientConfiguration {
    * Configures the Feign HTTP message converters using the provided converters and customizers.
    */
   @Bean
-  fun feignHttpMessageConverts(
-    converters: ObjectProvider<HttpMessageConverter<*>>,
-    customizers: ObjectProvider<HttpMessageConverterCustomizer>
-  ): FeignHttpMessageConverters {
-    return FeignHttpMessageConverters(converters, customizers)
-  }
+  fun feignHttpMessageConverters(
+    customizers: ObjectProvider<ClientHttpMessageConvertersCustomizer>,
+    cloudCustomizers: ObjectProvider<HttpMessageConverterCustomizer>
+  ) = FeignHttpMessageConverters(customizers, cloudCustomizers)
+
+  @Bean
+  fun camunda7ClientHttpMessageConvertersCustomizer() =
+    ClientHttpMessageConvertersCustomizer {
+      it.addCustomConverter(camunda7HttpMessageConverter())
+    }
 
   /**
    * Create an object factory for the message converter with the customized object mapper.
    */
-  @Suppress("DEPRECATION")
-  @Bean
-  fun camunda7feignHttpMessageConverter(): HttpMessageConverter<*> {
+  private fun camunda7HttpMessageConverter(): HttpMessageConverter<*> {
     val builder = Jackson2ObjectMapperBuilder
       .json()
       .featuresToDisable(
