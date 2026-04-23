@@ -67,6 +67,11 @@ class FeignClientConfiguration {
     cloudCustomizers: ObjectProvider<HttpMessageConverterCustomizer>
   ) = FeignHttpMessageConverters(customizers, cloudCustomizers)
 
+/**
+ * Configures http message converters customizer.
+ * 
+ * @return customizer.
+ */
   @Bean
   fun camunda7ClientHttpMessageConvertersCustomizer() =
     ClientHttpMessageConvertersCustomizer {
