@@ -125,7 +125,7 @@
                     <version>${java.version}</version>
                   </requireJavaVersion>
                   <requireMavenVersion>
-                    <version>3.9.12</version>
+                    <version>3.9.15</version>
                   </requireMavenVersion>
                   <bannedDependencies>
                     <excludes>
