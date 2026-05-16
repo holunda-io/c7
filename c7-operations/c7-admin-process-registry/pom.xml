@@ -17,7 +17,7 @@
 
   <properties>
     <!-- required for camunda with jdk >= 9 -->
-    <jaxb-impl.version>4.0.7</jaxb-impl.version>
+    <jaxb-impl.version>4.0.8</jaxb-impl.version>
   </properties>
 
   <dependencyManagement>
