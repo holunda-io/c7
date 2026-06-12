@@ -26,7 +26,7 @@
     <gpg.skip>true</gpg.skip>
 
     <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.2</spring-cloud.version>
+    <spring-cloud.version>2025.0.3</spring-cloud.version>
     <jgiven.version>2.0.3</jgiven.version>
     <springdoc.version>1.8.0</springdoc.version>
   </properties>
