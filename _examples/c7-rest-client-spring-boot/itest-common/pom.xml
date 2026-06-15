@@ -13,7 +13,7 @@
   <description>Integration tests of the client.</description>
 
   <properties>
-    <byte-buddy.version>1.18.8</byte-buddy.version>
+    <byte-buddy.version>1.18.10</byte-buddy.version>
   </properties>
 
   <dependencies>
