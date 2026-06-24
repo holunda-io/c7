@@ -17,7 +17,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <axon.framework.version>4.13.1</axon.framework.version>
+    <axon.framework.version>4.13.2</axon.framework.version>
   </properties>
 
   <modules>
