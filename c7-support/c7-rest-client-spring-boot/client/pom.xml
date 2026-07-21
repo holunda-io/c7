@@ -14,7 +14,7 @@
   <name>support: c7-rest-client-spring-boot - openapi-client</name>
 
   <properties>
-    <openapi-generator-version>7.23.0</openapi-generator-version>
+    <openapi-generator-version>7.24.0</openapi-generator-version>
     <camunda.openapi.package>org.camunda.community.rest.client</camunda.openapi.package>
   </properties>
 
