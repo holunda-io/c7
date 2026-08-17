@@ -3255,12 +3255,12 @@ In other words, <code>jobData</code> will contain a maximum of <code>invocations
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PrintStringBatchJobHandler</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CustomBatchJobHandler</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nd">@Override</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jobData</span><span class="p">,</span><span class="w"> </span><span class="n">CommandContext</span><span class="w"> </span><span class="n">commandContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">data</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">dataEntry</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Work on data entry: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataEntry</span><span class="p">));</span>
+<span class="w">      </span><span class="n">data</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">dataEntry</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Work on data entry: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataEntry</span><span class="p">));</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nd">@Override</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getType</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;print-string-batch-handler&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">"print-string-batch-handler"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
@@ -3286,12 +3286,12 @@ This can be done by passing the job handler to the <code>CustomBatchHandlerPlugi
 <span class="p">}</span>
 </code></pre></div></p>
 <p>If you just use camunda.cfg.xml / applicationContext.xml to configure your engine:
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;processEnginePlugins&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"processEnginePlugins"</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;list&gt;</span>
 
-<span class="w">        </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;org.camunda.community.batch.plugin.CustomBatchHandlerPlugin&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">class=</span><span class="s">"org.camunda.community.batch.plugin.CustomBatchHandlerPlugin"</span><span class="nt">&gt;</span>
 <span class="w">          </span><span class="nt">&lt;constructor-arg&gt;</span>
-<span class="w">            </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;org.camunda.community.batch.example.simple.PrintStringBatchJobHandler&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">class=</span><span class="s">"org.camunda.community.batch.example.simple.PrintStringBatchJobHandler"</span><span class="nt">/&gt;</span>
 <span class="w">          </span><span class="nt">&lt;/constructor-arg&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/bean&gt;</span>
 

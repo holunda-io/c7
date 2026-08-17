@@ -3368,11 +3368,11 @@ both marked with the <code>@Qualifier("remote")</code> annotation. This annotati
 remote version of the Camunda API services are used.</p>
 <p>In order to configure the library, a block of properties e.g. in <code>application.yml</code> is required.
 The values specify the location of the remote process engine:</p>
-<div class="highlight"><pre><span></span><code>feign:
-  client:
-    config:
-      default:
-        url: &quot;http://localhost:8083/engine-rest/&quot;
+<div class="highlight"><pre><span></span><code><span class="nt">feign</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">client</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"http://localhost:8083/engine-rest/"</span>
 </code></pre></div>
 <p>To run this example, you will need the server part from the next example. To activate the server part only, please
 run from command line:</p>
@@ -3434,11 +3434,11 @@ This Spring Component has several methods marked with <code>@Scheduled</code> an
 of desired functionality. To do so, the component has two injected resources, both marked with the <code>@Qualifier("remote")</code>
 annotation. This annotation indicates that the remote version of the Camunda API services are used.</p>
 <p>In order to configure the library, a block of properties e.g. in <code>application.yml</code> is required:</p>
-<div class="highlight"><pre><span></span><code>feign:
-  client:
-    config:
-      default:
-        url: &quot;http://localhost:8083/engine-rest/&quot;
+<div class="highlight"><pre><span></span><code><span class="nt">feign</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">client</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"http://localhost:8083/engine-rest/"</span>
 </code></pre></div>
 <h3 id="usage-of-feign-clients">Usage of feign clients<a class="headerlink" href="#usage-of-feign-clients" title="Permanent link">#</a></h3>
 <p>The example demonstrates the usage of the library for accessing the REST from a Camunda Platform 7 process application using the generated feign clients.
@@ -3455,10 +3455,10 @@ on the configuration class of the application. The interesting part is now the <
 This Spring Component has several methods marked with <code>@Scheduled</code> annotation to demonstrate the time-based execution
 of desired functionality. To do so, the component has injected the needed Feign clients as resources.</p>
 <p>In order to configure the library, the same block of properties e.g. in <code>application.yml</code> as before is required:</p>
-<div class="highlight"><pre><span></span><code>feign:
-  client:
-    config:
-      ...
+<div class="highlight"><pre><span></span><code><span class="nt">feign</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">client</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>You will need a Camunda Engine with deployed process to play with this client.</p>
 

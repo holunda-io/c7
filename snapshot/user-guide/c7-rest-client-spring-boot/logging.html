@@ -3157,11 +3157,11 @@
 
 <p>OpenFeign library used in the <code>camunda-platform-7-rest-client-spring-boot</code> has a high-configurable logging facility.
 In order to configure it, a block of properties e.g. in <code>application.yml</code> is required:</p>
-<div class="highlight"><pre><span></span><code>logging:
-  level:
-    org.camunda.community.rest.client.RuntimeServiceClient: DEBUG
-    org.camunda.community.rest.client.RepositoryServiceClient: DEBUG
-    org.camunda.community.rest.client.ExternalTaskServiceClient: DEBUG
+<div class="highlight"><pre><span></span><code><span class="nt">logging</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">level</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">org.camunda.community.rest.client.RuntimeServiceClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+<span class="w">    </span><span class="nt">org.camunda.community.rest.client.RepositoryServiceClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+<span class="w">    </span><span class="nt">org.camunda.community.rest.client.ExternalTaskServiceClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
 </code></pre></div>
 <p>In order to enable Request/Response logging, you need to configure additional Feign logging
 by providing a factory bean:</p>

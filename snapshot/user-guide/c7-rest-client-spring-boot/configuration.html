@@ -3233,14 +3233,14 @@
 <p>By default, the extension will provide you with the remote implementations of Camunda Java API (see <a href="support-matrix.html">Support Matrix</a>).
 To use them, you can inject them into your code by:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Autowired</span>
-<span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&quot;remote&quot;</span><span class="p">)</span>
+<span class="nd">@Qualifier</span><span class="p">(</span><span class="s">"remote"</span><span class="p">)</span>
 <span class="kd">private</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">;</span>
 </code></pre></div>
 <p>In addition, there are beans responsible for variable mapping: <code>ValueMapper</code>, <code>SpinValueMapper</code> and <code>ValueTypeResolver</code> which will be 
 constructed if missing. Since the <code>ValueMapper</code> requires a Jackson ObjectMapper to operate, you may want to provide your own by putting
 this code into your configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Bean</span>
-<span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&quot;customCamundaRestClientObjectMapper&quot;</span><span class="p">)</span>
+<span class="nd">@Qualifier</span><span class="p">(</span><span class="s">"customCamundaRestClientObjectMapper"</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="nf">myCustomObjectMapper</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="n">om</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="p">();</span>
 <span class="w">  </span><span class="c1">// custom setup of your object mapper</span>
@@ -3251,7 +3251,7 @@ this code into your configuration:</p>
 
 <span class="nd">@Bean</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">ValueMapper</span><span class="w"> </span><span class="nf">myCustomValueMapper</span><span class="p">(</span>
-<span class="w">  </span><span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&quot;customCamundaRestClientObjectMapper&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nd">@Qualifier</span><span class="p">(</span><span class="s">"customCamundaRestClientObjectMapper"</span><span class="p">)</span>
 <span class="w">  </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="n">myCustomObjectMapper</span><span class="p">,</span>
 <span class="w">  </span><span class="n">ValueTypeResolver</span><span class="w"> </span><span class="n">valueTypeResolver</span><span class="p">,</span>
 <span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CustomValueMapper</span><span class="o">&gt;</span><span class="w"> </span><span class="n">customValueMappers</span>

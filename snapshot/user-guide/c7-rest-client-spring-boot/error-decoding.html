@@ -3220,13 +3220,13 @@ the REST call. If the error decoding is deactivated, <code>FeignException</code>
 <p>By default, the HTTP error decoding is switched on and the library reacts on HTTP codes 400 and 500. Also by default all exceptions will be wrapped in a RemoteProcessEngineException. Those defaults can be
 changed by setting the following properties.</p>
 <p>In order to configure it, a block of properties e.g. in <code>application.yml</code> is required. Here are the defaults:</p>
-<div class="highlight"><pre><span></span><code>camunda:
-  rest:
-    client:
-      error-decoding:
-        enabled: true
-        http-codes: 400, 500
-        wrap-exceptions: true
+<div class="highlight"><pre><span></span><code><span class="nt">camunda</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rest</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">client</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">error-decoding</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">http-codes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400, 500</span>
+<span class="w">        </span><span class="nt">wrap-exceptions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>

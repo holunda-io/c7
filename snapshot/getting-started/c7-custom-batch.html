@@ -3232,19 +3232,19 @@ With this extension, we want to open the camunda batch functionality to everyone
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
 <p>Gradle Users:</p>
-<div class="highlight"><pre><span></span><code><span class="n">compile</span><span class="p">(</span><span class="s">&quot;io.holunda.c7:c7-custom-batch-core&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">compile</span><span class="p">(</span><span class="s">"io.holunda.c7:c7-custom-batch-core"</span><span class="p">)</span>
 </code></pre></div>
 <p>First you have to define an own job handler for working on the single batch data:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PrintStringBatchJobHandler</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CustomBatchJobHandler</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nd">@Override</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">CommandContext</span><span class="w"> </span><span class="n">commandContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">data</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">dataEntry</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Work on data entry: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataEntry</span><span class="p">));</span>
+<span class="w">      </span><span class="n">data</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">dataEntry</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Work on data entry: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataEntry</span><span class="p">));</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nd">@Override</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getType</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;print-string-batch-handler&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">"print-string-batch-handler"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

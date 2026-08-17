@@ -3264,7 +3264,7 @@ This consists of:</p>
 Here is a usage example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">processInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">OrderPosition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderPositions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderPosition</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="n">runtimeService</span>
-<span class="w">  </span><span class="p">.</span><span class="na">getVariable</span><span class="p">(</span><span class="n">processInstance</span><span class="p">.</span><span class="na">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;orderPositions&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">.</span><span class="na">getVariable</span><span class="p">(</span><span class="n">processInstance</span><span class="p">.</span><span class="na">id</span><span class="p">,</span><span class="w"> </span><span class="s">"orderPositions"</span><span class="p">);</span>
 </code></pre></div>
 <p>This leads to problems during refactoring and makes variable access more complicated than it is. This library addresses
 this issue and allows for more convenient type-safe process variable access.</p>
@@ -3330,7 +3330,7 @@ and finally pass over to the <code>VariableMapTransformer</code> to map from ext
 <span class="kd">class</span> <span class="nc">SomeService</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">AntiCorruptionLayer</span><span class="w"> </span><span class="n">MY_ACL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CamundaBpmDataACL</span><span class="p">.</span><span class="na">guardTransformingReplace</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;__transient&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// name of the transient variable for wrapping</span>
+<span class="w">        </span><span class="s">"__transient"</span><span class="p">,</span><span class="w"> </span><span class="c1">// name of the transient variable for wrapping</span>
 <span class="w">        </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// if passes the guard, write to local scope</span>
 <span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">VariablesGuard</span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">)),</span><span class="w"> </span><span class="c1">// guard defining condition on ORDER_ID</span>
 <span class="w">        </span><span class="n">IdentityVariableMapTransformer</span><span class="p">.</span><span class="na">INSTANCE</span><span class="w"> </span><span class="c1">// use 1:1 transformer</span>
@@ -3339,10 +3339,10 @@ and finally pass over to the <code>VariableMapTransformer</code> to map from ext
 
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">correlate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">VariableMap</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CamundaBpmData</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">          </span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;4711&quot;</span><span class="p">)</span>
+<span class="w">          </span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="s">"4711"</span><span class="p">)</span>
 <span class="w">          </span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">ORDER_APPROVED</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
 <span class="w">          </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">        </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">correlateMessage</span><span class="p">(</span><span class="s">&quot;message_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESSAGE_ACL</span><span class="p">.</span><span class="na">checkAndWrap</span><span class="p">(</span><span class="n">variables</span><span class="p">));</span>
+<span class="w">        </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">correlateMessage</span><span class="p">(</span><span class="s">"message_1"</span><span class="p">,</span><span class="w"> </span><span class="n">MESSAGE_ACL</span><span class="p">.</span><span class="na">checkAndWrap</span><span class="p">(</span><span class="n">variables</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3352,14 +3352,14 @@ implemented as a Spring Bean bounded via delegate expression <code>${messageAclL
 <span class="kd">class</span> <span class="nc">SomeConfiguration</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">AntiCorruptionLayer</span><span class="w"> </span><span class="n">MY_ACL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CamundaBpmDataACL</span><span class="p">.</span><span class="na">guardTransformingReplace</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;__transient&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// name of the transient variable for wrapping</span>
+<span class="w">        </span><span class="s">"__transient"</span><span class="p">,</span><span class="w"> </span><span class="c1">// name of the transient variable for wrapping</span>
 <span class="w">        </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// if passes the guard, write to local scope</span>
 <span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">VariablesGuard</span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">)),</span><span class="w"> </span><span class="c1">// guard defining condition on ORDER_ID</span>
 <span class="w">        </span><span class="n">IdentityVariableMapTransformer</span><span class="p">.</span><span class="na">INSTANCE</span><span class="w"> </span><span class="c1">// use 1:1 transformer</span>
 <span class="w">                                                </span><span class="c1">// write the variables without modifications</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="nd">@Bean</span><span class="p">(</span><span class="s">&quot;messageAclListener&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Bean</span><span class="p">(</span><span class="s">"messageAclListener"</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ExecutionListener</span><span class="w"> </span><span class="nf">messageAclListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MY_ACL</span><span class="p">.</span><span class="na">getExecutionListener</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>

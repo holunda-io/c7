@@ -3356,12 +3356,12 @@ automate mocking of process applications.</p>
 <span class="w">        </span><span class="c1">// bind query-mock to service-mock and set result to task.</span>
 <span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">TaskQuery</span><span class="w"> </span><span class="n">taskQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QueryMocks</span><span class="p">.</span><span class="na">mockTaskQuery</span><span class="p">(</span><span class="n">taskService</span><span class="p">).</span><span class="na">singleResult</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
 
-<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskService</span><span class="p">.</span><span class="na">createTaskQuery</span><span class="p">().</span><span class="na">active</span><span class="p">().</span><span class="na">activityInstanceIdIn</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">).</span><span class="na">excludeSubtasks</span><span class="p">().</span><span class="na">singleResult</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskService</span><span class="p">.</span><span class="na">createTaskQuery</span><span class="p">().</span><span class="na">active</span><span class="p">().</span><span class="na">activityInstanceIdIn</span><span class="p">(</span><span class="s">"foo"</span><span class="p">).</span><span class="na">excludeSubtasks</span><span class="p">().</span><span class="na">singleResult</span><span class="p">();</span>
 
 <span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
 
 <span class="w">        </span><span class="n">verify</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">).</span><span class="na">active</span><span class="p">();</span>
-<span class="w">        </span><span class="n">verify</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">).</span><span class="na">activityInstanceIdIn</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">verify</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">).</span><span class="na">activityInstanceIdIn</span><span class="p">(</span><span class="s">"foo"</span><span class="p">);</span>
 <span class="w">        </span><span class="n">verify</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">).</span><span class="na">excludeSubtasks</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3375,8 +3375,8 @@ point of interaction between the process execution: modify process variables and
 <p>We can use this to test bpmn-processes without relying on the delegate implementation.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FluentJavaDelegateMockTest</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">BEAN_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">MESSAGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">BEAN_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"foo"</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">MESSAGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"message"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="nd">@Rule</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ExpectedException</span><span class="w"> </span><span class="n">thrown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExpectedException</span><span class="p">.</span><span class="na">none</span><span class="p">();</span>
@@ -3388,7 +3388,7 @@ point of interaction between the process execution: modify process variables and
 <span class="w">    </span><span class="n">thrown</span><span class="p">.</span><span class="na">expect</span><span class="p">(</span><span class="n">BpmnError</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 <span class="w">    </span><span class="n">thrown</span><span class="p">.</span><span class="na">expectMessage</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">registerJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="p">).</span><span class="na">onExecutionThrowBpmnError</span><span class="p">(</span><span class="s">&quot;code&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESSAGE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">registerJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="p">).</span><span class="na">onExecutionThrowBpmnError</span><span class="p">(</span><span class="s">"code"</span><span class="p">,</span><span class="w"> </span><span class="n">MESSAGE</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="n">registeredDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">getJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="p">);</span>
 
@@ -3403,7 +3403,7 @@ point of interaction between the process execution: modify process variables and
 </ul>
 <p>You can set a single variable on execution with:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">registerJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="o">/</span><span class="n">BEAN_CLASS</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariable</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariable</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span><span class="w"> </span><span class="s">"value"</span><span class="p">);</span>
 </code></pre></div>
 <ul>
 <li>Set multiple variables</li>
@@ -3411,8 +3411,8 @@ point of interaction between the process execution: modify process variables and
 <p>You can set multiple variables on execution with:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">registerJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="o">/</span><span class="n">BEAN_CLASS</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariables</span><span class="p">(</span><span class="n">createVariables</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">&quot;foo2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar2&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">"foo2"</span><span class="p">,</span><span class="w"> </span><span class="s">"bar2"</span><span class="p">)</span>
 <span class="w">  </span><span class="p">);</span>
 </code></pre></div>
 <ul>
@@ -3420,14 +3420,14 @@ point of interaction between the process execution: modify process variables and
 </ul>
 <p>You can throw an error on execution with:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">registerJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="o">/</span><span class="n">BEAN_CLASS</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">onExecutionThrowBpmnError</span><span class="p">(</span><span class="s">&quot;code&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESSAGE</span><span class="p">);</span>
+<span class="w">  </span><span class="p">.</span><span class="na">onExecutionThrowBpmnError</span><span class="p">(</span><span class="s">"code"</span><span class="p">,</span><span class="w"> </span><span class="n">MESSAGE</span><span class="p">);</span>
 </code></pre></div>
 <ul>
 <li>Consecutive set variables for multiple delegate executions</li>
 </ul>
 <p>You can set different variables on consecutive executions with:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DelegateExpressions</span><span class="p">.</span><span class="na">registerJavaDelegateMock</span><span class="p">(</span><span class="n">BEAN_NAME</span><span class="o">/</span><span class="n">BEAN_CLASS</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariables</span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Map</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariables</span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p">),</span><span class="w"> </span><span class="n">Map</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s">"foo"</span><span class="p">));</span>
 </code></pre></div>
 <ol>
 <li>invocation of the delegate the variable "foo" with the value "bar" is set</li>
@@ -3435,30 +3435,30 @@ point of interaction between the process execution: modify process variables and
 </ol>
 <h3 id="easy-register-and-verify-mocks">Easy register and verify mocks<a class="headerlink" href="#easy-register-and-verify-mocks" title="Permanent link">#</a></h3>
 <p>In addition to the well-known "Mocks.register()" hook, you now have the possibility to register fluent mocks directly:</p>
-<div class="highlight"><pre><span></span><code> registerJavaDelegateMock(&quot;name&quot;)
+<div class="highlight"><pre><span></span><code> registerJavaDelegateMock("name")
  registerMockInstance(YourDelegate.class)
 </code></pre></div>
 <p>In the latter case, "YourDelegate" has to be annotated with @Named, @Component or @Service, depending on the injection framework you are using.</p>
 <p>To verify the Mock execution, you can use</p>
-<div class="highlight"><pre><span></span><code>verifyJavaDelegateMock(&quot;name&quot;).executed(times(2));
+<div class="highlight"><pre><span></span><code>verifyJavaDelegateMock("name").executed(times(2));
 </code></pre></div>
 <h3 id="auto-mock-all-delegates-and-listeners">Auto mock all delegates and listeners<a class="headerlink" href="#auto-mock-all-delegates-and-listeners" title="Permanent link">#</a></h3>
 <p>With the autoMock() feature, you can register all Delegates and Listeners at once, without explicitly adding "register"-statements to your testcase.
 If you do need to specify behaviour for the mocks, you can still get the mock via <code>getJavaDelegateMock</code> for delegates.
 And <code>getExecutionListenerMock</code> / <code>getTaskListenerMock</code> for listeners.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
-<span class="nd">@Deployment</span><span class="p">(</span><span class="n">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MockProcess.bpmn&quot;</span><span class="p">)</span>
+<span class="nd">@Deployment</span><span class="p">(</span><span class="n">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"MockProcess.bpmn"</span><span class="p">)</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">register_mocks_for_all_listeners_and_delegates</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">autoMock</span><span class="p">(</span><span class="s">&quot;MockProcess.bpmn&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">autoMock</span><span class="p">(</span><span class="s">"MockProcess.bpmn"</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">processInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngineRule</span><span class="p">.</span><span class="na">getRuntimeService</span><span class="p">().</span><span class="na">startProcessInstanceByKey</span><span class="p">(</span><span class="s">&quot;process_mock_dummy&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">processInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngineRule</span><span class="p">.</span><span class="na">getRuntimeService</span><span class="p">().</span><span class="na">startProcessInstanceByKey</span><span class="p">(</span><span class="s">"process_mock_dummy"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">processEngineRule</span><span class="p">.</span><span class="na">getTaskService</span><span class="p">().</span><span class="na">createTaskQuery</span><span class="p">().</span><span class="na">processInstanceId</span><span class="p">(</span><span class="n">processInstance</span><span class="p">.</span><span class="na">getId</span><span class="p">()).</span><span class="na">singleResult</span><span class="p">()).</span><span class="na">isNotNull</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">verifyTaskListenerMock</span><span class="p">(</span><span class="s">&quot;verifyData&quot;</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
-<span class="w">    </span><span class="n">verifyExecutionListenerMock</span><span class="p">(</span><span class="s">&quot;startProcess&quot;</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
-<span class="w">    </span><span class="n">verifyJavaDelegateMock</span><span class="p">(</span><span class="s">&quot;loadData&quot;</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
-<span class="w">    </span><span class="n">verifyExecutionListenerMock</span><span class="p">(</span><span class="s">&quot;beforeLoadData&quot;</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
+<span class="w">    </span><span class="n">verifyTaskListenerMock</span><span class="p">(</span><span class="s">"verifyData"</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
+<span class="w">    </span><span class="n">verifyExecutionListenerMock</span><span class="p">(</span><span class="s">"startProcess"</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
+<span class="w">    </span><span class="n">verifyJavaDelegateMock</span><span class="p">(</span><span class="s">"loadData"</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
+<span class="w">    </span><span class="n">verifyExecutionListenerMock</span><span class="p">(</span><span class="s">"beforeLoadData"</span><span class="p">).</span><span class="na">executed</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 <h2 id="delegatetaskexecutionfake">Delegate[Task|Execution]Fake<a class="headerlink" href="#delegatetaskexecutionfake" title="Permanent link">#</a></h2>
@@ -3469,8 +3469,8 @@ confirm that a certain variable was set (or a dueDate, a candidate, ...).</p>
 but are implemented as plain, fluent-styled Pojos.</p>
 <p>So to test if your TaskListener</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">TaskListener</span><span class="w"> </span><span class="n">taskListener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EVENTNAME_CREATE</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="na">getEventName</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s">&quot;the_task&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="na">getTaskDefinitionKey</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">task</span><span class="p">.</span><span class="na">addCandidateGroup</span><span class="p">((</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">task</span><span class="p">.</span><span class="na">getVariableLocal</span><span class="p">(</span><span class="s">&quot;nextGroup&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EVENTNAME_CREATE</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="na">getEventName</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s">"the_task"</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="na">getTaskDefinitionKey</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">task</span><span class="p">.</span><span class="na">addCandidateGroup</span><span class="p">((</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">task</span><span class="p">.</span><span class="na">getVariableLocal</span><span class="p">(</span><span class="s">"nextGroup"</span><span class="p">));</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -3479,15 +3479,15 @@ actually adds a candidateGroup that is read from a taskLocal variable on create,
 <span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">taskListenerSetsCandidateGroup</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// given a delegateTask </span>
 <span class="w">  </span><span class="n">DelegateTask</span><span class="w"> </span><span class="n">delegateTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delegateTaskFake</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">withTaskDefinitionKey</span><span class="p">(</span><span class="s">&quot;the_task&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">withTaskDefinitionKey</span><span class="p">(</span><span class="s">"the_task"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">withEventName</span><span class="p">(</span><span class="n">EVENTNAME_CREATE</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">withVariableLocal</span><span class="p">(</span><span class="s">&quot;nextGroup&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">.</span><span class="na">withVariableLocal</span><span class="p">(</span><span class="s">"nextGroup"</span><span class="p">,</span><span class="w"> </span><span class="s">"foo"</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// when</span>
 <span class="w">  </span><span class="n">taskListener</span><span class="p">.</span><span class="na">notify</span><span class="p">(</span><span class="n">delegateTask</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// then the candidate group was set</span>
-<span class="w">  </span><span class="n">assertThat</span><span class="p">(</span><span class="n">candidateGroupIds</span><span class="p">(</span><span class="n">delegateTask</span><span class="p">)).</span><span class="na">containsOnly</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">assertThat</span><span class="p">(</span><span class="n">candidateGroupIds</span><span class="p">(</span><span class="n">delegateTask</span><span class="p">)).</span><span class="na">containsOnly</span><span class="p">(</span><span class="s">"foo"</span><span class="p">);</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -3510,9 +3510,9 @@ actually adds a candidateGroup that is read from a taskLocal variable on create,
 3) After this, a process variable <code>foo</code> is set with a value of `bar</p>
 <div class="highlight"><pre><span></span><code><span class="n">ProcessExpressions</span>
 <span class="w">  </span><span class="p">.</span><span class="na">registerSubProcessMock</span><span class="p">(</span><span class="n">SUB_PROCESS_ID</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">onExecutionWaitForMessage</span><span class="p">(</span><span class="s">&quot;SomeMessage&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">onExecutionWaitForMessage</span><span class="p">(</span><span class="s">"SomeMessage"</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">onExecutionWaitForTimerWithDate</span><span class="p">(</span><span class="n">waitUntilDate</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariables</span><span class="p">(</span><span class="n">createVariables</span><span class="p">().</span><span class="na">putValue</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="na">onExecutionSetVariables</span><span class="p">(</span><span class="n">createVariables</span><span class="p">().</span><span class="na">putValue</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">deploy</span><span class="p">(</span><span class="n">rule</span><span class="p">);</span>
 </code></pre></div>
 <p>More examples could be found in the following class <a href="src/test/java/org/camunda/community/mockito/CallActivityMockExampleTest.java"><code>CallActivityMockExampleTest</code></a>.</p>
@@ -3534,10 +3534,10 @@ and running it.</p>
 
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">correlate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">runtimeService</span>
-<span class="w">      </span><span class="p">.</span><span class="na">createMessageCorrelation</span><span class="p">(</span><span class="s">&quot;MESSAGE_NAME&quot;</span><span class="p">)</span>
-<span class="w">      </span><span class="p">.</span><span class="na">processDefinitionId</span><span class="p">(</span><span class="s">&quot;some_process_id&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">createMessageCorrelation</span><span class="p">(</span><span class="s">"MESSAGE_NAME"</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">processDefinitionId</span><span class="p">(</span><span class="s">"some_process_id"</span><span class="p">)</span>
 <span class="w">      </span><span class="p">.</span><span class="na">processInstanceBusinessKey</span><span class="p">(</span><span class="n">businessKey</span><span class="p">)</span>
-<span class="w">      </span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="s">&quot;myVar1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="s">"myVar1"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
 <span class="w">      </span><span class="p">.</span><span class="na">correlate</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3559,19 +3559,19 @@ and running it.</p>
 
 <span class="w">    </span><span class="c1">// setup mock</span>
 <span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mock</span><span class="p">(</span><span class="n">RuntimeService</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">MessageCorrelationBuilder</span><span class="w"> </span><span class="n">correlation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessExpressions</span><span class="p">.</span><span class="na">mockMessageCorrelation</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MESSAGE_NAME&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">MyCorrelator</span><span class="w"> </span><span class="n">serviceUnderTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyCorrelator</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my-business-key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value-1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">MessageCorrelationBuilder</span><span class="w"> </span><span class="n">correlation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessExpressions</span><span class="p">.</span><span class="na">mockMessageCorrelation</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">,</span><span class="w"> </span><span class="s">"MESSAGE_NAME"</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">MyCorrelator</span><span class="w"> </span><span class="n">serviceUnderTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyCorrelator</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">,</span><span class="w"> </span><span class="s">"my-business-key"</span><span class="p">,</span><span class="w"> </span><span class="s">"value-1"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// execute correlation, e.g. in a class under test (service, delegate, whatever)</span>
 <span class="w">    </span><span class="n">serviceUnderTest</span><span class="p">.</span><span class="na">correlate</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// verify</span>
 <span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">correlate</span><span class="p">();</span>
-<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">processDefinitionId</span><span class="p">(</span><span class="s">&quot;some_process_id&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">processInstanceBusinessKey</span><span class="p">(</span><span class="s">&quot;my-business-key&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">setVariable</span><span class="p">(</span><span class="s">&quot;myVar1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value-1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">processDefinitionId</span><span class="p">(</span><span class="s">"some_process_id"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">processInstanceBusinessKey</span><span class="p">(</span><span class="s">"my-business-key"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">correlation</span><span class="p">).</span><span class="na">setVariable</span><span class="p">(</span><span class="s">"myVar1"</span><span class="p">,</span><span class="w"> </span><span class="s">"value-1"</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">).</span><span class="na">createMessageCorrelation</span><span class="p">(</span><span class="s">&quot;MESSAGE_NAME&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">).</span><span class="na">createMessageCorrelation</span><span class="p">(</span><span class="s">"MESSAGE_NAME"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">verifyNoMoreInteractions</span><span class="p">(</span><span class="n">correlation</span><span class="p">);</span>
 <span class="w">    </span><span class="n">verifyNoMoreInteractions</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">);</span>
@@ -3599,8 +3599,8 @@ possibilities to do so. If your code relies on direct access to Camunda Java API
 
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RuntimeServiceAwareServiceTest</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringVariable</span><span class="p">(</span><span class="s">&quot;orderId&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_FLAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">booleanVariable</span><span class="p">(</span><span class="s">&quot;orderFlag&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringVariable</span><span class="p">(</span><span class="s">"orderId"</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">VariableFactory</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ORDER_FLAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">booleanVariable</span><span class="p">(</span><span class="s">"orderFlag"</span><span class="p">);</span>
 
 <span class="w">  </span><span class="nd">@Test</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">check_stubbed_access</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -3609,7 +3609,7 @@ possibilities to do so. If your code relies on direct access to Camunda Java API
 <span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mock</span><span class="p">(</span><span class="n">RuntimeService</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// stub access</span>
 <span class="w">    </span><span class="n">ServiceExpressions</span><span class="p">.</span><span class="na">runtimeServiceVariableStubBuilder</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">)</span>
-<span class="w">                      </span><span class="p">.</span><span class="na">defineAndInitializeLocal</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;initial-Value&quot;</span><span class="p">)</span>
+<span class="w">                      </span><span class="p">.</span><span class="na">defineAndInitializeLocal</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="s">"initial-Value"</span><span class="p">)</span>
 <span class="w">                      </span><span class="p">.</span><span class="na">define</span><span class="p">(</span><span class="n">ORDER_FLAG</span><span class="p">)</span>
 <span class="w">                      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="w">    </span><span class="c1">// setup service</span>
@@ -3620,9 +3620,9 @@ possibilities to do so. If your code relies on direct access to Camunda Java API
 <span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">executionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// execute service calls and check results</span>
-<span class="w">    </span><span class="n">serviceUnderTest</span><span class="p">.</span><span class="na">writeLocalId</span><span class="p">(</span><span class="n">executionId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;4712&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">serviceUnderTest</span><span class="p">.</span><span class="na">writeLocalId</span><span class="p">(</span><span class="n">executionId</span><span class="p">,</span><span class="w"> </span><span class="s">"4712"</span><span class="p">);</span>
 <span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">orderId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serviceUnderTest</span><span class="p">.</span><span class="na">readLocalId</span><span class="p">(</span><span class="n">executionId</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">orderId</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;4712&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">orderId</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">"4712"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">serviceUnderTest</span><span class="p">.</span><span class="na">flagExists</span><span class="p">(</span><span class="n">executionId</span><span class="p">)).</span><span class="na">isFalse</span><span class="p">();</span>
 <span class="w">    </span><span class="n">serviceUnderTest</span><span class="p">.</span><span class="na">writeFlag</span><span class="p">(</span><span class="n">executionId</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
@@ -3631,7 +3631,7 @@ possibilities to do so. If your code relies on direct access to Camunda Java API
 <span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">orderFlag</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// verify service access</span>
-<span class="w">    </span><span class="n">verifier</span><span class="p">.</span><span class="na">verifySetLocal</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;4712&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">executionId</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="n">verifier</span><span class="p">.</span><span class="na">verifySetLocal</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="s">"4712"</span><span class="p">,</span><span class="w"> </span><span class="n">executionId</span><span class="w"> </span><span class="p">);</span>
 <span class="w">    </span><span class="n">verifier</span><span class="p">.</span><span class="na">verifyGetLocal</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">,</span><span class="w"> </span><span class="n">executionId</span><span class="p">);</span>
 <span class="w">    </span><span class="n">verifier</span><span class="p">.</span><span class="na">verifyGetVariables</span><span class="p">(</span><span class="n">executionId</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
 <span class="w">    </span><span class="n">verifier</span><span class="p">.</span><span class="na">verifySet</span><span class="p">(</span><span class="n">ORDER_FLAG</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">executionId</span><span class="p">);</span>

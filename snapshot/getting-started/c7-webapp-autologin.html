@@ -3276,11 +3276,11 @@ when developing locally and trying to log-in to local Camunda Webapp.</p>
 </code></pre></div>
 <h3 id="add-some-configuration">Add some configuration<a class="headerlink" href="#add-some-configuration" title="Permanent link">#</a></h3>
 <p>Activate the auto-login in your <code>application.yaml</code>:</p>
-<div class="highlight"><pre><span></span><code>camunda:
-  bpm:
-    login:
-      enabled: true
-      user-id: admin
+<div class="highlight"><pre><span></span><code><span class="nt">camunda</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bpm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">login</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">user-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
 </code></pre></div>
 <h3 id="use-it">Use it<a class="headerlink" href="#use-it" title="Permanent link">#</a></h3>
 <p>Navigate to the URL of Camunda Webapp (Cockpit/Tasklist/Admin) you and will be already logged in.</p>

@@ -3296,7 +3296,7 @@ See the following example, that uses the directory build which will typically be
 <div class="highlight"><pre><span></span><code><span class="nd">@RegisterExtension</span>
 <span class="kd">var</span><span class="w"> </span><span class="nv">extension</span><span class="p">:</span><span class="w"> </span><span class="n">ProcessEngineCoverageExtension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessEngineCoverageExtension</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="na">assertClassCoverageAtLeast</span><span class="p">(</span><span class="m">1.0</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">reportDirectory</span><span class="p">(</span><span class="s">&quot;build/process-test-coverage&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">reportDirectory</span><span class="p">(</span><span class="s">"build/process-test-coverage"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="spring-testing">Spring Testing<a class="headerlink" href="#spring-testing" title="Permanent link">#</a></h3>
@@ -3307,7 +3307,7 @@ and supports changing the report directory.</p>
 <span class="kd">public</span><span class="w"> </span><span class="n">ProcessEngineCoverageProperties</span><span class="w"> </span><span class="nf">processEngineCoverageProperties</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ProcessEngineCoverageProperties</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
 <span class="w">            </span><span class="p">.</span><span class="na">assertClassCoverageAtLeast</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">reportDirectory</span><span class="p">(</span><span class="s">&quot;build/process-test-coverage&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">reportDirectory</span><span class="p">(</span><span class="s">"build/process-test-coverage"</span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3337,12 +3337,12 @@ possible to configure the output directory for the aggregation report inside the
 aggregation report.
 This can be done via an extension setting in the gradle build file.</p>
 <div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;org.camunda.community.process_test_coverage.report-aggregator&#39;</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">'org.camunda.community.process_test_coverage.report-aggregator'</span>
 <span class="o">}</span>
 
 <span class="n">aggregateProcessTestCoverage</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">reportDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;build/camunda-tests&#39;</span>
-<span class="w">    </span><span class="n">outputDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;aggregation&#39;</span>
+<span class="w">    </span><span class="n">reportDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'build/camunda-tests'</span>
+<span class="w">    </span><span class="n">outputDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'aggregation'</span>
 <span class="o">}</span>
 </code></pre></div>
 <h3 id="legacy-way-via-system-property">Legacy way via system property<a class="headerlink" href="#legacy-way-via-system-property" title="Permanent link">#</a></h3>
@@ -3362,7 +3362,7 @@ This can be done via an extension setting in the gradle build file.</p>
 <div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">withType</span><span class="o">&lt;</span><span class="n">Test</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">systemProperties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;camunda-process-test-coverage.target-dir-root&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$</span><span class="n">buildDir</span><span class="s">/my-coverage-reports/&quot;</span>
+<span class="w">            </span><span class="s">"camunda-process-test-coverage.target-dir-root"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">"</span><span class="si">$</span><span class="n">buildDir</span><span class="s">/my-coverage-reports/"</span>
 <span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>

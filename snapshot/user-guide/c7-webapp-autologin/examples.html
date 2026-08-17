@@ -3213,17 +3213,17 @@
   <h1>Example</h1>
 
 <h2 id="all-configuration-parameters">All configuration parameters<a class="headerlink" href="#all-configuration-parameters" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code>camunda:
-  bpm:
-    login:
-      enabled: true                     # enables the feature, disabled by default
-      user-id: admin                    # user id of the user, defaults to &#39;nobody&#39;
-      camunda-context-path: /some-path  # path camunda webapp bound to, defaults to &#39;/camunda&#39;
-      create-if-absent: true            # will create a dummy user using internal 
-                                        # identity service, defaults to &#39;false&#39;
-      random-password: false            # flag to control the password of the auto-generated-user, 
-                                        # defaults to &#39;true&#39;. 
-                                        # If false is selected, the password is equals to user id.             
+<div class="highlight"><pre><span></span><code><span class="nt">camunda</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bpm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">login</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                     </span><span class="c1"># enables the feature, disabled by default</span>
+<span class="w">      </span><span class="nt">user-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span><span class="w">                    </span><span class="c1"># user id of the user, defaults to 'nobody'</span>
+<span class="w">      </span><span class="nt">camunda-context-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/some-path</span><span class="w">  </span><span class="c1"># path camunda webapp bound to, defaults to '/camunda'</span>
+<span class="w">      </span><span class="nt">create-if-absent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">            </span><span class="c1"># will create a dummy user using internal </span>
+<span class="w">                                        </span><span class="c1"># identity service, defaults to 'false'</span>
+<span class="w">      </span><span class="nt">random-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">            </span><span class="c1"># flag to control the password of the auto-generated-user, </span>
+<span class="w">                                        </span><span class="c1"># defaults to 'true'. </span>
+<span class="w">                                        </span><span class="c1"># If false is selected, the password is equals to user id.             </span>
 </code></pre></div>
 <h2 id="typical-configuration">Typical configuration<a class="headerlink" href="#typical-configuration" title="Permanent link">#</a></h2>
 <p>A typical configuration is depicted below. We use the Camunda <code>admin-user</code> feature to create the user and login as such.</p>
