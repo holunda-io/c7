@@ -16,7 +16,7 @@
   <packaging>sonar-plugin</packaging>
   <properties>
     <sonar-plugin-api.version>14.0.0.4498</sonar-plugin-api.version>
-    <sonar.api.impl.version>26.6.0.123539</sonar.api.impl.version>
+    <sonar.api.impl.version>26.8.0.126808</sonar.api.impl.version>
   </properties>
   <dependencies>
     <dependency>
