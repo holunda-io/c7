@@ -16,7 +16,6 @@
   <packaging>sonar-plugin</packaging>
   <properties>
     <sonar-plugin-api.version>14.0.0.4498</sonar-plugin-api.version>
-    <sonar.api.impl.version>26.9.0.129388</sonar.api.impl.version>
   </properties>
   <dependencies>
     <dependency>
@@ -33,19 +32,6 @@
     <dependency>
       <groupId>org.camunda.bpm.model</groupId>
       <artifactId>camunda-bpmn-model</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.sonarsource.sonarqube</groupId>
-      <artifactId>sonar-plugin-api-impl</artifactId>
-      <version>${sonar.api.impl.version}</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
 
