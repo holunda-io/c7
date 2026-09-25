@@ -20,7 +20,7 @@ import java.util.stream.Collectors
 class ReportImporter(private val ctx: SensorContext) {
 
   companion object {
-    private val LOG = LoggerFactory.getLogger(ProcessTestCoverageSensor::class.java)
+    private val LOG = LoggerFactory.getLogger(ReportImporter::class.java)
   }
 
   fun importCoverage(result: CoverageStateResult) {
