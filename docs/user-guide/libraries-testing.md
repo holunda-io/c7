@@ -12,7 +12,7 @@ Includes features for testing.
 
     ---
 
-    Solution for correlation of messages with processes running in Camunda 7
+    Camunda 7 stages and scenarios for behavior-driven process testing with JGiven
 
     [:octicons-arrow-right-24: Reference](c7-jgiven/index.md)
 
@@ -20,7 +20,7 @@ Includes features for testing.
 
     ---
 
-    Simplify mocking and stubbung for process testing in Camunda 7
+    Simplify mocking and stubbing for process testing in Camunda 7
 
     [:octicons-arrow-right-24: Reference](c7-mockito/index.md)
 
