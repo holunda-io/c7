@@ -18,7 +18,7 @@ Includes extensions used for improved operations of Camunda 7.
 
     ---
 
-    Process Registry for inline-defined one-function adin processes
+    Process Registry for inline-defined one-function admin processes
 
     [:octicons-arrow-right-24: Reference](c7-admin-process-registry/index.md)
 
