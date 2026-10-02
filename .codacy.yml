@@ -4,6 +4,7 @@ engines:
     - "**/*.js"        # Ignore all JavaScript files
     - "**/test/**"     # Ignore tests
     - "**/itest/**"    # Ignore tests
+    - "**/pnpm-lock.yaml" # Ignore pnpm lock files
   detekt:  # Kotlin static analysis tool
     exclude_paths:
       - "**/test/**"        # Ignore test folders

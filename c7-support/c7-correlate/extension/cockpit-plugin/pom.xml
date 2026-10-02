@@ -14,9 +14,6 @@
   <packaging>jar</packaging>
 
   <properties>
-    <npm.version>10.9.4</npm.version>
-    <node.version>v22.21.0</node.version>
-
     <camunda.plugin.category>Monitoring</camunda.plugin.category>
     <camunda.plugin.screenshot>screenshot.png</camunda.plugin.screenshot>
     <!-- <camunda.plugin.screenshot.1>screenshot2.png</camunda.plugin.screenshot.1> -->
@@ -124,11 +121,6 @@
             </execution>
           </executions>
         </plugin>
-        <plugin>
-          <groupId>com.github.eirslett</groupId>
-          <artifactId>frontend-maven-plugin</artifactId>
-          <version>2.0.2</version>
-        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -141,10 +133,10 @@
             <id>npm build</id>
             <phase>compile</phase>
             <goals>
-              <goal>npm</goal>
+              <goal>corepack</goal>
             </goals>
             <configuration>
-              <arguments>run build</arguments>
+              <arguments>pnpm run build</arguments>
             </configuration>
           </execution>
         </executions>
@@ -168,15 +160,11 @@
             <artifactId>frontend-maven-plugin</artifactId>
             <executions>
               <execution>
-                <id>install node and npm</id>
+                <id>install node and corepack</id>
                 <goals>
-                  <goal>install-node-and-npm</goal>
+                  <goal>install-node-and-corepack</goal>
                 </goals>
                 <phase>initialize</phase>
-                <configuration>
-                  <npmVersion>${npm.version}</npmVersion>
-                  <nodeVersion>${node.version}</nodeVersion>
-                </configuration>
               </execution>
             </executions>
           </plugin>
@@ -200,11 +188,11 @@
               <execution>
                 <id>npm install</id>
                 <goals>
-                  <goal>npm</goal>
+                  <goal>corepack</goal>
                 </goals>
                 <phase>initialize</phase>
                 <configuration>
-                  <arguments>install</arguments>
+                  <arguments>pnpm install</arguments>
                 </configuration>
               </execution>
             </executions>
