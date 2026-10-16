@@ -1,6 +1,5 @@
 package org.camunda.community.process_test_coverage.core.engine
 
-import org.springframework.util.PatternMatchUtils
 import java.lang.reflect.Method
 
 fun Class<*>.isExcluded(inclusionPatterns: List<String> = emptyList()) =
@@ -9,4 +8,13 @@ fun Class<*>.isExcluded(inclusionPatterns: List<String> = emptyList()) =
 fun Method.isExcluded() = annotations.any { it is ExcludeFromProcessCoverage }
 
 private fun matchesInclusionPattern(testClass: Class<*>, inclusionPatterns: List<String>) =
-    inclusionPatterns.isEmpty() || PatternMatchUtils.simpleMatch(inclusionPatterns.toTypedArray(), testClass.name)
+    inclusionPatterns.isEmpty() || inclusionPatterns.simpleMatch(testClass.name)
+
+private fun Collection<String>.simpleMatch(text: String): Boolean {
+  return this.any { pattern ->
+    val parts = pattern.split("*")
+    val escapedParts = parts.map { Regex.escape(it) }
+    val regexStr = escapedParts.joinToString(".*")
+    text.matches(regexStr.toRegex())
+  }
+}

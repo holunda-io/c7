@@ -121,7 +121,7 @@
               <goal>corepack</goal>
             </goals>
             <configuration>
-              <arguments>pnpm version ${pnpm.compatible.version} --allow-same-version --no-git-tag-version</arguments>
+              <arguments>pnpm version ${pnpm.compatible.version} --allow-same-version --no-git-tag-version --no-git-checks</arguments>
             </configuration>
           </execution>
           <execution>

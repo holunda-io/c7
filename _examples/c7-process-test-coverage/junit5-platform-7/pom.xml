@@ -19,11 +19,6 @@
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine-spring</artifactId>
-    </dependency>
-
 
     <dependency>
       <groupId>io.holunda.c7</groupId>
