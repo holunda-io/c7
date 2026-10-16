@@ -7,6 +7,7 @@ import org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl
 import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension
 import org.camunda.community.process_test_coverage.core.model.DefaultCollector
 import org.camunda.community.process_test_coverage.engine.platform7.ExecutionContextModelProvider
+import org.camunda.community.process_test_coverage.engine.platform7.ProcessCoverageConfigurator
 import org.camunda.community.process_test_coverage.engine.platform7.ProcessEngineAdapter
 import org.camunda.community.process_test_coverage.junit5.common.ProcessEngineCoverageExtensionBuilder
 import org.camunda.community.process_test_coverage.junit5.common.ProcessEngineCoverageExtensionHelper
@@ -156,12 +157,10 @@ class ProcessEngineCoverageExtension(
                 }
                 this@Builder.coverageAtLeast?.let { addClassCoverageAtLeast(it) }
                 this@Builder.configurationResource?.let { this.configurationResource(it) }
-                if (this@Builder.processEngineConfiguration != null) {
-                    processEngine = this@Builder.processEngineConfiguration.buildProcessEngine()
-                    processEngineConfiguration = processEngine.processEngineConfiguration as ProcessEngineConfigurationImpl
-                } else if (processEngine == null) {
-                    initializeProcessEngine()
-                }
+                processEngineConfiguration = (this@Builder.processEngineConfiguration
+                    ?: ProcessEngineConfiguration.createProcessEngineConfigurationFromResource(configurationResource)) as ProcessEngineConfigurationImpl
+                ProcessCoverageConfigurator.initializeProcessCoverageExtensions(processEngineConfiguration)
+                processEngine = processEngineConfiguration.buildProcessEngine()
             }
         }
     }
