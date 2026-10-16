@@ -3352,9 +3352,9 @@ If you're running with a Java version prior to 17 you have to use the old versio
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
-<p>Use the <strong>ProcessCoverageInMemProcessEngineConfiguration</strong>, e.g. in your <code>camunda.cfg.xml</code> (only needed for Platform 7)</p>
+<p>Use the some sublcass of <strong>ProcessEngineConfigurationImpl</strong>, e.g. in your <code>camunda.cfg.xml</code> (only needed for Platform 7)</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">"processEngineConfiguration"</span>
-<span class="w">   </span><span class="na">class=</span><span class="s">"org.camunda.community.process_test_coverage.engine.platform7.ProcessCoverageInMemProcessEngineConfiguration"</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="na">class=</span><span class="s">"org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration"</span><span class="nt">&gt;</span>
 <span class="w">   </span>...
 <span class="nt">&lt;/bean&gt;</span>
 </code></pre></div>
@@ -3371,7 +3371,7 @@ If you're running with a Java version prior to 17 you have to use the old versio
 or <code>@RegisterExtension</code></p>
 <p>If you register the extension on a non-static field, no class coverage and therefore no report will be generated. This is due to the fact, that an instance of the extension will be created per test method.</p>
 <p>The extension provides a Builder for programmatic creation, which takes either a path to a configuration resource, a process engine configuration or if nothing is passed uses the default configuration resources path (<code>camunda.cfg.xml</code>).</p>
-<p>The process engine configuration needs to be configured for test coverage. So use <strong>either</strong> the provided <code>ProcessCoverageInMemProcessEngineConfiguration</code>, <code>SpringProcessWithCoverageEngineConfiguration</code> or initialize the configuration with <code>ProcessCoverageConfigurator.initializeProcessCoverageExtensions(configuration)</code>.</p>
+<p>The process engine configuration will to be configured for test coverage.</p>
 <p>If you use Java:
 <div class="highlight"><pre><span></span><code><span class="nd">@RegisterExtension</span>
 <span class="kd">static</span><span class="w"> </span><span class="n">ProcessEngineCoverageExtension</span><span class="w"> </span><span class="n">extension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessEngineCoverageExtension</span>
@@ -3382,7 +3382,7 @@ or <code>@RegisterExtension</code></p>
 <span class="w">    </span><span class="nd">@JvmField</span>
 <span class="w">    </span><span class="nd">@RegisterExtension</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">extension</span><span class="p">:</span><span class="w"> </span><span class="n">ProcessEngineCoverageExtension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessEngineCoverageExtension</span>
-<span class="w">            </span><span class="p">.</span><span class="na">builder</span><span class="p">(</span><span class="n">ProcessCoverageInMemProcessEngineConfiguration</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="na">builder</span><span class="p">(</span><span class="n">StandaloneInMemProcessEngineConfiguration</span><span class="p">())</span>
 <span class="w">            </span><span class="p">.</span><span class="na">assertClassCoverageAtLeast</span><span class="p">(</span><span class="m">1.0</span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div></p>
@@ -3420,7 +3420,7 @@ or <code>@RegisterExtension</code></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 8, 2025 08:41:09 UTC">April 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 16, 2026 14:49:36 UTC">October 16, 2026</span>
   </span>
 
     
