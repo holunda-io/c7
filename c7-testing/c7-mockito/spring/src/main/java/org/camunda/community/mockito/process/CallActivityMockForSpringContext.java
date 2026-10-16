@@ -1,7 +1,6 @@
 package org.camunda.community.mockito.process;
 
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.camunda.community.mockito.process.CallActivityMock;
 import org.springframework.beans.factory.config.SingletonBeanRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
