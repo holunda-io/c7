@@ -19,7 +19,7 @@
   <url>https://github.com/holunda-io/camunda-bpm-jgiven/</url>
 
   <properties>
-    <jgiven.version>2.0.3</jgiven.version>
+    <jgiven.version>3.0.0</jgiven.version>
     <jgiven-kotlin.version>2.0.2.1</jgiven-kotlin.version>
 
     <jgiven.report.dir>target/jgiven-reports</jgiven.report.dir>
