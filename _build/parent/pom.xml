@@ -16,7 +16,7 @@
 
   <properties>
     <version.java>${java.version}</version.java>
-    <kp.patternClassITest>**/*ITest.java,**/*IT.java</kp.patternClassITest>
+    <kp.patternClassITest>**/*ITest.java,**/*IT.java,**/*ITest.kt,**/*IT.kt</kp.patternClassITest>
   </properties>
 
   <dependencyManagement>
