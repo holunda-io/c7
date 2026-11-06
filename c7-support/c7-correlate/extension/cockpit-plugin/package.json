@@ -1,13 +1,13 @@
 {
   "name": "correlate-cockpit-plugin",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "description": "",
   "main": "plugin.js",
   "scripts": {
     "build": "rollup -c"
   },
   "author": "Holunda.io",
-  "license": "APACHE 2.0",
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.15",
     "classnames": "2.5.1",
@@ -36,6 +36,14 @@
     "eslint-plugin-react": "7.37.5",
     "rollup": "2.80.0",
     "rollup-plugin-scss": "~4.0.1",
+    "tslib": "^2.6.2",
     "typescript": "5.9.3"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11.0.0 <12.0.0",
+      "onFail": "download"
+    }
   }
 }

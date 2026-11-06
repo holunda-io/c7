@@ -62,13 +62,13 @@ that should not be included in the test coverage.
 
 ## Configuration
 
-Use the **ProcessCoverageInMemProcessEngineConfiguration**, e.g. in your `camunda.cfg.xml` (only needed for Platform 7)
+Use the **StandaloneInMemProcessEngineConfiguration** (or any other subclass of **ProcessEngineConfigurationImpl**), e.g. in your `camunda.cfg.xml` (only needed for Platform 7)
 
 ### JUnit4 and JUnit5
 
 ```xml
 <bean id="processEngineConfiguration"
-   class="org.camunda.community.process_test_coverage.engine.platform7.ProcessCoverageInMemProcessEngineConfiguration">
+   class="org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
    ...
 </bean>
 ```
@@ -117,7 +117,7 @@ If you register the extension on a non-static field, no class coverage and there
 
 The extension provides a Builder for programmatic creation, which takes either a path to a configuration resource, a process engine configuration or if nothing is passed uses the default configuration resources path (`camunda.cfg.xml`).
 
-The process engine configuration needs to be configured for test coverage. So use **either** the provided `ProcessCoverageInMemProcessEngineConfiguration`, `SpringProcessWithCoverageEngineConfiguration` or initialize the configuration with `ProcessCoverageConfigurator.initializeProcessCoverageExtensions(configuration)`.
+The process engine configuration will be adjusted for usage of the process test coverage so it needs to be a subclass of **ProcessEngineConfiguationImpl** e.g. **org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration**.
 
 In Java it looks like this:
 ```java
@@ -132,7 +132,7 @@ companion object {
     @JvmField
     @RegisterExtension
     var extension: ProcessEngineCoverageExtension = ProcessEngineCoverageExtension
-            .builder(ProcessCoverageInMemProcessEngineConfiguration())
+            .builder(StandaloneInMemProcessEngineConfiguration())
             .assertClassCoverageAtLeast(1.0).build()
 }
 ```

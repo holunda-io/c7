@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-example-parent</artifactId>
-    <version>2026.04.2</version>
+    <version>2026.11.1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -17,7 +17,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <axon.framework.version>4.13.0</axon.framework.version>
+    <axon.framework.version>4.13.3</axon.framework.version>
   </properties>
 
   <modules>

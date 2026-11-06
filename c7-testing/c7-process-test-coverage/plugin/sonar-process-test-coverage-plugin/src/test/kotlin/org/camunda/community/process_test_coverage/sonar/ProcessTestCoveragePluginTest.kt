@@ -2,20 +2,17 @@ package org.camunda.community.process_test_coverage.sonar
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.sonar.api.SonarEdition
-import org.sonar.api.SonarQubeSide
-import org.sonar.api.internal.PluginContextImpl
-import org.sonar.api.internal.SonarRuntimeImpl
-import org.sonar.api.utils.Version
+import org.mockito.kotlin.mock
+import org.sonar.api.Plugin
+import org.sonar.api.SonarRuntime
 
 
 class ProcessTestCoveragePluginTest {
 
     @Test
     fun testExtensions() {
-        val runtime = SonarRuntimeImpl.forSonarQube(Version.create(7, 9), SonarQubeSide.SCANNER,
-                SonarEdition.COMMUNITY)
-        val context = PluginContextImpl.Builder().setSonarRuntime(runtime).build()
+        val runtime = mock<SonarRuntime> {  }
+        val context = Plugin.Context(runtime)
         val plugin = ProcessTestCoveragePlugin()
         plugin.define(context)
         assertEquals(8, context.extensions.size)

@@ -15,7 +15,7 @@ class ProcessEngineAdapter(
 
     /**
      * Sets the test run state for the coverage listeners. logging.
-     * {@see ProcessCoverageInMemProcessEngineConfiguration}
+     * @see ProcessCoverageConfigurator
      */
     fun initializeListeners() {
         val processEngineConfiguration = processEngine.processEngineConfiguration as ProcessEngineConfigurationImpl

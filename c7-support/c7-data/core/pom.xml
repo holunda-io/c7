@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>2026.04.2</version>
+    <version>2026.11.1</version>
   </parent>
 
   <artifactId>camunda-bpm-data</artifactId>
@@ -87,7 +87,7 @@
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>9.1.0.Final</version>
+      <version>9.1.5.Final</version>
       <scope>test</scope>
     </dependency>
     <dependency>
