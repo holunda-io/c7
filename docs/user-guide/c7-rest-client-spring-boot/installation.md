@@ -47,6 +47,8 @@ If you are interested in providing them, make sure to use BOM imports:
 
 | Version   | Spring Boot | Spring Cloud |
 |-----------|-------------|--------------|
+| 2026.11.1 | 4.x.x       | 2025.1.1     |
+| 2026.11.1 | 3.5.x       | 2025.0.3     |
 | 2026.04.2 | 4.x.x       | 2025.1.1     |
 | 2026.04.2 | 3.5.x       | 2025.0.0     |
 | 2025.12.2 | 4.x.x       | 2025.1.0     |
