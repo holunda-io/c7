@@ -5,13 +5,13 @@
   <parent>
     <groupId>io.toolisticon.maven.parent</groupId>
     <artifactId>maven-parent-kotlin-base</artifactId>
-    <version>2026.09.0</version>
+    <version>2026.11.0</version>
     <relativePath/>
   </parent>
 
   <groupId>io.holunda.c7._</groupId>
   <artifactId>c7-root</artifactId>
-  <version>2026.04.3-SNAPSHOT</version>
+  <version>2026.11.2-SNAPSHOT</version>
 
   <name>pom: ${project.artifactId}</name>
   <description>Root of all holunda/camunda7 libs.</description>

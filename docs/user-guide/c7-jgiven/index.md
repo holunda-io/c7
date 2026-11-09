@@ -166,7 +166,7 @@ and add the following content into your `camunda.cfg.xml`:
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="processEngineConfiguration"
-        class="org.camunda.community.process_test_coverage.engine.platform7.ProcessCoverageInMemProcessEngineConfiguration">
+        class="org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
     <property name="history" value="full"/>
   </bean>
 </beans>
