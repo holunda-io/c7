@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-root</artifactId>
-    <version>2026.04.3-SNAPSHOT</version>
+    <version>2026.11.2-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -16,7 +16,7 @@
 
   <properties>
     <version.java>${java.version}</version.java>
-    <kp.patternClassITest>**/*ITest.java,**/*IT.java</kp.patternClassITest>
+    <kp.patternClassITest>**/*ITest.java,**/*IT.java,**/*ITest.kt,**/*IT.kt</kp.patternClassITest>
   </properties>
 
   <dependencyManagement>

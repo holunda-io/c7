@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.holunda.c7._</groupId>
     <artifactId>c7-parent</artifactId>
-    <version>2026.04.3-SNAPSHOT</version>
+    <version>2026.11.2-SNAPSHOT</version>
     <relativePath>../../_build/parent/pom.xml</relativePath>
   </parent>
 
@@ -67,7 +67,7 @@
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>2.2.55</version>
+        <version>3.0.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
