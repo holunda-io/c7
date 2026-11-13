@@ -49,6 +49,7 @@ Includes extensions used for improved operations of Camunda 7.
 Includes features for testing.
 
 - camunda-bpm-jgiven [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
+- [c7-test-rest-api](docs/getting-started/c7-test-rest-api.md): opt-in REST endpoints for controlling the Camunda engine clock in tests.
 - c7-mockito [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 - c7-process-test-coverage [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 

@@ -38,6 +38,7 @@
     <module>c7-support/c7-deployment</module>
     <module>c7-support/c7-rest-client-spring-boot</module>
 
+    <module>c7-testing/c7-test-rest-api</module>
     <module>c7-testing/c7-jgiven</module>
     <module>c7-testing/c7-mockito</module>
     <module>c7-testing/c7-process-test-coverage</module>
