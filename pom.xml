@@ -29,6 +29,7 @@
     <module>_build/parent</module>
     <module>c7-operations/c7-admin-process-registry</module>
     <module>c7-operations/c7-webapp-autologin</module>
+    <module>c7-operations/c7-rest-clock-util</module>
 
     <module>c7-support/c7-api</module>
     <module>c7-support/c7-commons-immutables</module>

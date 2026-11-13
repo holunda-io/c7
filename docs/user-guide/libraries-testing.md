@@ -32,5 +32,4 @@ Includes features for testing.
 
     [:octicons-arrow-right-24: Reference](c7-process-test-coverage/index.md)
 
-
 </div>
