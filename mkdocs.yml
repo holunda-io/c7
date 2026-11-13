@@ -107,6 +107,7 @@ nav:
       - JGiven: getting-started/c7-jgiven.md
       - Process Test Coverage: getting-started/c7-process-test-coverage.md
       - REST Client Spring Boot: getting-started/c7-rest-client-spring-boot.md
+      - Test REST API: getting-started/c7-test-rest-api.md
       - Webapp Auto Login: getting-started/c7-webapp-autologin.md
   - Support Libraries:
       - Overview: user-guide/libraries-support.md
@@ -166,6 +167,7 @@ nav:
           - Overview: user-guide/c7-jgiven/index.md
       - Mockito:
           - Overview: user-guide/c7-mockito/index.md
+      - Test REST API: getting-started/c7-test-rest-api.md
       - Test Coverage:
           - Overview: user-guide/c7-process-test-coverage/index.md
           - Configuration: user-guide/c7-process-test-coverage/configuration.md

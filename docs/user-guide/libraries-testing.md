@@ -32,5 +32,12 @@ Includes features for testing.
 
     [:octicons-arrow-right-24: Reference](c7-process-test-coverage/index.md)
 
+-   :material-clock-fast:{ .lg .middle } __c7-test-rest-api__
+
+    ---
+
+    Opt-in REST endpoints for controlling the Camunda 7 engine clock in tests
+
+    [:octicons-arrow-right-24: Reference](../getting-started/c7-test-rest-api.md)
 
 </div>

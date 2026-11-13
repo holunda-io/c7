@@ -81,6 +81,12 @@
       <version>${project.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>io.holunda.c7</groupId>
+      <artifactId>c7-test-rest-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <!-- REST Client -->
     <dependency>
       <groupId>io.holunda.c7</groupId>
