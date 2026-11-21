@@ -107,6 +107,7 @@ nav:
       - JGiven: getting-started/c7-jgiven.md
       - Process Test Coverage: getting-started/c7-process-test-coverage.md
       - REST Client Spring Boot: getting-started/c7-rest-client-spring-boot.md
+      - REST Clock Util: getting-started/c7-rest-clock-util.md
       - Webapp Auto Login: getting-started/c7-webapp-autologin.md
   - Support Libraries:
       - Overview: user-guide/libraries-support.md
@@ -149,6 +150,7 @@ nav:
 
   - Operations Libraries:
       - Overview: user-guide/libraries-operations.md
+      - REST Clock Util: getting-started/c7-rest-clock-util.md
       - Admin Process Registry:
           - Overview: user-guide/c7-admin-process-registry/index.md
           - Example: user-guide/c7-admin-process-registry/examples.md
