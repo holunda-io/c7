@@ -17,6 +17,7 @@
   <packaging>pom</packaging>
 
   <properties>
+    <spring-boot.version>3.5.16</spring-boot.version>
     <axon.framework.version>4.13.3</axon.framework.version>
   </properties>
 
@@ -34,6 +35,14 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>io.holunda</groupId>
         <artifactId>camunda-bpm-correlate-bom</artifactId>

@@ -16,6 +16,7 @@
 
   <properties>
     <spin.version>7.24.0</spin.version>
+    <spring-boot.version>3.5.16</spring-boot.version>
     <spring-cloud.version>2025.0.3</spring-cloud.version>
   </properties>
 
@@ -33,6 +34,14 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.camunda.commons</groupId>
         <artifactId>camunda-commons-bom</artifactId>

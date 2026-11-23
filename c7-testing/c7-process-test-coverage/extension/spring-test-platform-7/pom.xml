@@ -15,6 +15,22 @@
   <name>testing: c7-process-test-coverage - spring-test</name>
 
 
+  <properties>
+    <spring-boot.version>3.5.16</spring-boot.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <!-- We intentionally always compile against latest Camunda release,
     but test against many versions *provided* by user projects.

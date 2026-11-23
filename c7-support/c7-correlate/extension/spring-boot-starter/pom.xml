@@ -14,10 +14,19 @@
   <name>camunda-bpm-correlate Extension / Spring Boot Starter</name>
 
   <properties>
+    <spring-boot.version>3.5.16</spring-boot.version>
     <shedlock.version>7.11.0</shedlock.version>
   </properties>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>net.javacrumbs.shedlock</groupId>
         <artifactId>shedlock-spring</artifactId>
