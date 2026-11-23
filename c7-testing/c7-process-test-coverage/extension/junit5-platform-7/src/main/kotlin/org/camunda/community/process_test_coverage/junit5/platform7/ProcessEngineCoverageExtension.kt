@@ -73,6 +73,16 @@ class ProcessEngineCoverageExtension(
         detailedCoverageLogging, handleTestMethodCoverage, excludedProcessDefinitionKeys,
         classCoverageAssertionConditions, testMethodNameToCoverageConditions, reportDirectory)
 
+
+    override fun initializeProcessEngine() {
+        if (processEngineConfiguration == null) {
+            processEngineConfiguration = ProcessEngineConfiguration
+              .createProcessEngineConfigurationFromResource(configurationResource) as ProcessEngineConfigurationImpl
+        }
+        ProcessCoverageConfigurator.initializeProcessCoverageExtensions(processEngineConfiguration)
+        processEngine = processEngineConfiguration.buildProcessEngine()
+    }
+
     override fun postProcessTestInstance(testInstance: Any?, context: ExtensionContext) {
         super.postProcessTestInstance(testInstance, context)
         initializeServices()
@@ -157,10 +167,8 @@ class ProcessEngineCoverageExtension(
                 }
                 this@Builder.coverageAtLeast?.let { addClassCoverageAtLeast(it) }
                 this@Builder.configurationResource?.let { this.configurationResource(it) }
-                processEngineConfiguration = (this@Builder.processEngineConfiguration
-                    ?: ProcessEngineConfiguration.createProcessEngineConfigurationFromResource(configurationResource)) as ProcessEngineConfigurationImpl
-                ProcessCoverageConfigurator.initializeProcessCoverageExtensions(processEngineConfiguration)
-                processEngine = processEngineConfiguration.buildProcessEngine()
+                processEngineConfiguration = this@Builder.processEngineConfiguration as ProcessEngineConfigurationImpl?
+                initializeProcessEngine()
             }
         }
     }
