@@ -149,7 +149,7 @@
       <id>node-and-npm</id>
       <activation>
         <file>
-          <missing>node</missing>
+          <missing>node/node_modules/corepack/dist/corepack.js</missing>
         </file>
       </activation>
 

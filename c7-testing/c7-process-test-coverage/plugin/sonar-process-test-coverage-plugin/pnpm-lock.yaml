@@ -7,46 +7,46 @@ importers:
     configDependencies: {}
     packageManagerDependencies:
       '@pnpm/exe':
-        specifier: 11.28.3
-        version: 11.28.3
+        specifier: '>=11.0.0 <12.0.0'
+        version: 11.28.11
       pnpm:
-        specifier: 11.28.3
-        version: 11.28.3
+        specifier: '>=11.0.0 <12.0.0'
+        version: 11.28.11
 
 packages:
 
-  '@pnpm/exe@11.28.3':
-    resolution: {integrity: sha512-vMUA6tU7hI/jwJLrlBEXaxfkPfC9xADsGR22tdVkCCr6dvMoD+nOPYRTGqucPTI7nAj2Mbmm0JQS+JeWCfW4Ig==}
+  '@pnpm/exe@11.28.11':
+    resolution: {integrity: sha512-jmUeng/xwMPbWxhH8JFsJGVvcK66OEuVMlA37MDGd1vLX+WAn/lzYCZTsECMbn7fPyoJiHZ+Hb7WcN0v49nYew==}
     hasBin: true
 
-  '@pnpm/linux-arm64@11.28.3':
-    resolution: {integrity: sha512-eyYy+XBX3rRorMsd2Uft+hndUnMKFxiZZplufCfG/pET1qg7lj2SPw1PXN6WImvYK3jiM1sVGaI1X6KY+KaPFQ==}
+  '@pnpm/linux-arm64@11.28.11':
+    resolution: {integrity: sha512-XHErk90YCwHGmuR+5TS8lOx5pdFAfGta76IZX3pdoM9c9GE8M2ND0GlqM9GXXwdbwrTTgGOYitWCpvXruLc+DQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@pnpm/linux-x64@11.28.3':
-    resolution: {integrity: sha512-oytLVs0LaKI/UIezJkNT4ifrfWL8Jo1T+Ae2Qi+4ha1Jw/2C2BXNO12KSsZSmdJu5GupCU9ITpi6OfOM+u6QXQ==}
+  '@pnpm/linux-x64@11.28.11':
+    resolution: {integrity: sha512-dLGoSU2YzlgKszrCpLEdQdquk5+Q4a8Bj53Qgdv/zQsf0tdc0iRiShODml9XBOEHNz3y/edH1dQo45ZBcKto1Q==}
     cpu: [x64]
     os: [linux]
 
-  '@pnpm/linuxstatic-x64@11.28.3':
-    resolution: {integrity: sha512-3GY9P+5gGig2w8PePe1yFuT8ETLRHxk2JJAJiCUTMiHKU6YdC+AR50Dx76j2vnI+pM5wLe9KRdyYQwxJd32RAw==}
+  '@pnpm/linuxstatic-x64@11.28.11':
+    resolution: {integrity: sha512-n6TyhLAym3g6FcK7dBHEvTNhVw3n7jd0ltR+BSU/i6dWWp6Ajdnqx4SblFrshG5CV9iOfx9c1Iz6Td3lHmBjHQ==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@pnpm/macos-arm64@11.28.3':
-    resolution: {integrity: sha512-Ltc2ZzjH1fqF8A+rz+qZquXa1rDNxZFVG1lAUkDO31Qlft+8la1kMEE81PxmChS/u/7MgXSYTCk45cBqo2b6MA==}
+  '@pnpm/macos-arm64@11.28.11':
+    resolution: {integrity: sha512-rrO6e7dYcPw8r6Ey0xjx09FMSblJ1KuC/igFJ1lqe3jEwCg7xNN2+EMxStpDAihjg3hKT0tW298qnsa3vhoTpQ==}
     cpu: [arm64]
     os: [darwin]
 
-  '@pnpm/win-arm64@11.28.3':
-    resolution: {integrity: sha512-yJwKKInUOa0jysow6x5gL/+2HQccOmOoyXiHog6DSMvXFWkA6bGC0kMi193HBy3STxqF++RILciInELjG8EH1g==}
+  '@pnpm/win-arm64@11.28.11':
+    resolution: {integrity: sha512-S22r7j87v9+P5MB3mO+BJaDJntPSK8pY5hRyLETYJwK5eSWgXIV7O6Mwtt+HNksuOFaTa1W8fuxVC30ObNSRLA==}
     cpu: [arm64]
     os: [win32]
 
-  '@pnpm/win-x64@11.28.3':
-    resolution: {integrity: sha512-+mNFVqxdUHq3ZdL4q8xnooR5AMGI+mKFL76H/o8Qd1H0g2vPxBkKRTl1IvrSzqJx9C9zqR1opF1vhSKemLrsHA==}
+  '@pnpm/win-x64@11.28.11':
+    resolution: {integrity: sha512-s/TIZearoJMvRBV/kbOU2Z9uhzvFsu+6wB1AqrFyTdV6hj7jwe/Zxe6lAfB7r1Xb7yB2V5VMlns+QHUQPIkBRg==}
     cpu: [x64]
     os: [win32]
 
@@ -110,41 +110,41 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  pnpm@11.28.3:
-    resolution: {integrity: sha512-1JdgoTsXVZSHdaXUyxvEuocf8tyUGt+FFjDQRO1yL5tb6L5XvvkxZgmMgMcGvWEsKC0FUm3R0K5mAYjAhoIPNQ==}
+  pnpm@11.28.11:
+    resolution: {integrity: sha512-dAGE0Q+B9dWxZb6IVg7numJAbEE0iWq8J6WAEJ7sL0fB5B2RJRyUTCyrq8scIkYXmeu3LeLsYlryAwsONsc1ow==}
     engines: {node: '>=22.13'}
     hasBin: true
 
 snapshots:
 
-  '@pnpm/exe@11.28.3':
+  '@pnpm/exe@11.28.11':
     dependencies:
       '@reflink/reflink': 0.1.19
       detect-libc: 2.1.2
     optionalDependencies:
-      '@pnpm/linux-arm64': 11.28.3
-      '@pnpm/linux-x64': 11.28.3
-      '@pnpm/linuxstatic-x64': 11.28.3
-      '@pnpm/macos-arm64': 11.28.3
-      '@pnpm/win-arm64': 11.28.3
-      '@pnpm/win-x64': 11.28.3
+      '@pnpm/linux-arm64': 11.28.11
+      '@pnpm/linux-x64': 11.28.11
+      '@pnpm/linuxstatic-x64': 11.28.11
+      '@pnpm/macos-arm64': 11.28.11
+      '@pnpm/win-arm64': 11.28.11
+      '@pnpm/win-x64': 11.28.11
 
-  '@pnpm/linux-arm64@11.28.3':
+  '@pnpm/linux-arm64@11.28.11':
     optional: true
 
-  '@pnpm/linux-x64@11.28.3':
+  '@pnpm/linux-x64@11.28.11':
     optional: true
 
-  '@pnpm/linuxstatic-x64@11.28.3':
+  '@pnpm/linuxstatic-x64@11.28.11':
     optional: true
 
-  '@pnpm/macos-arm64@11.28.3':
+  '@pnpm/macos-arm64@11.28.11':
     optional: true
 
-  '@pnpm/win-arm64@11.28.3':
+  '@pnpm/win-arm64@11.28.11':
     optional: true
 
-  '@pnpm/win-x64@11.28.3':
+  '@pnpm/win-x64@11.28.11':
     optional: true
 
   '@reflink/reflink-darwin-arm64@0.1.19':
@@ -184,7 +184,7 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  pnpm@11.28.3: {}
+  pnpm@11.28.11: {}
 
 ---
 lockfileVersion: '9.0'
@@ -232,17 +232,17 @@ importers:
         specifier: ^8.1.1
         version: 8.2.1(postcss@8.5.28)(typescript@7.0.2)(webpack@5.111.1)
       react:
-        specifier: 19.2.0
-        version: 19.2.0
+        specifier: 19.2.7
+        version: 19.2.7
       react-dev-utils:
         specifier: 12.0.1
         version: 12.0.1(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.111.1)
       react-dom:
-        specifier: 19.2.0
-        version: 19.2.0(react@19.2.0)
+        specifier: 19.2.7
+        version: 19.2.7(react@19.2.7)
       react-router:
-        specifier: 7.15.1
-        version: 7.15.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 8.3.0
+        version: 8.3.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react-transform-hmr:
         specifier: 1.0.4
         version: 1.0.4
@@ -1068,6 +1068,9 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
+  cookie-es@3.1.1:
+    resolution: {integrity: sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==}
+
   cookie-signature@1.2.2:
     resolution: {integrity: sha512-D76uU73ulSXrD1UXF4KE2TMxVVwhsnCgfAyTg9k8P6KGZjlXKrOLe4dJQKI3Bxi5wjesZoFXJWElNWBjPZMbhg==}
     engines: {node: '>=6.6.0'}
@@ -1075,10 +1078,6 @@ packages:
   cookie@0.7.2:
     resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
-
-  cookie@1.1.1:
-    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
-    engines: {node: '>=18'}
 
   cosmiconfig@6.0.0:
     resolution: {integrity: sha512-xb3ZL6+L8b9JLLCx3ZdoZy4+2ECphCMo2PwqgP1tlfVq6M6YReyzBJtvWWtbDSpNr9hn96pkCiZqUcFEc+54Qg==}
@@ -2032,10 +2031,10 @@ packages:
       typescript:
         optional: true
 
-  react-dom@19.2.0:
-    resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
+  react-dom@19.2.7:
+    resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
-      react: ^19.2.0
+      react: ^19.2.7
 
   react-error-overlay@6.1.0:
     resolution: {integrity: sha512-SN/U6Ytxf1QGkw/9ve5Y+NxBbZM6Ht95tuXNMKs8EJyFa/Vy/+Co3stop3KBHARfn/giv+Lj1uUnTfOJ3moFEQ==}
@@ -2043,12 +2042,12 @@ packages:
   react-proxy@1.1.8:
     resolution: {integrity: sha512-46GkBpZD97R/vV+iw+u6aFACzIHOst9gCl41d5K5vepPBz2i2gqHmXQJWKXsrUsSOdylKahN3sd9taswFN8Wzw==}
 
-  react-router@7.15.1:
-    resolution: {integrity: sha512-R8rl9HhgikFYoPJymnUtPXWbnDb3oget6lQnfIoupbt61aT9aOhRkDsY2XRhZRyX1Z/8a5sL74fXmFNm3NRK5A==}
-    engines: {node: '>=20.0.0'}
+  react-router@8.3.0:
+    resolution: {integrity: sha512-qyPMvW83jGIct3yiieisxdk9M745anqhpIMKN5m1t6yBMfgVPpt77aHOqs5fUlEJRMCGffg9BaQLH9oPVOL7xQ==}
+    engines: {node: '>=22.22.0'}
     peerDependencies:
-      react: '>=18'
-      react-dom: '>=18'
+      react: '>=19.2.7'
+      react-dom: '>=19.2.7'
     peerDependenciesMeta:
       react-dom:
         optional: true
@@ -2056,8 +2055,8 @@ packages:
   react-transform-hmr@1.0.4:
     resolution: {integrity: sha512-8bK1DWUZynE6swD2jNPbzO5mvhB8fs9Ub5GksoVqYkc9i06FdSLC36qQYjaKOW79KBdsROq2cK0tRKITiEzmyg==}
 
-  react@19.2.0:
-    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
+  react@19.2.7:
+    resolution: {integrity: sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ==}
     engines: {node: '>=0.10.0'}
 
   readdirp@3.6.0:
@@ -2160,9 +2159,6 @@ packages:
   serve-static@2.2.1:
     resolution: {integrity: sha512-xRXBn0pPqQTVQiC8wyQrKs2MOlX24zQ0POGaj0kultvoOCstBQM5yvOhAVSUwOMjQtTvsPWoNCHfPGwaaQJhTw==}
     engines: {node: '>= 18'}
-
-  set-cookie-parser@2.7.2:
-    resolution: {integrity: sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw==}
 
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
@@ -3315,11 +3311,11 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
+  cookie-es@3.1.1: {}
+
   cookie-signature@1.2.2: {}
 
   cookie@0.7.2: {}
-
-  cookie@1.1.1: {}
 
   cosmiconfig@6.0.0:
     dependencies:
@@ -4209,9 +4205,9 @@ snapshots:
       - supports-color
       - vue-template-compiler
 
-  react-dom@19.2.0(react@19.2.0):
+  react-dom@19.2.7(react@19.2.7):
     dependencies:
-      react: 19.2.0
+      react: 19.2.7
       scheduler: 0.27.0
 
   react-error-overlay@6.1.0: {}
@@ -4221,20 +4217,19 @@ snapshots:
       lodash: 4.18.1
       react-deep-force-update: 1.1.2
 
-  react-router@7.15.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-router@8.3.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
-      cookie: 1.1.1
-      react: 19.2.0
-      set-cookie-parser: 2.7.2
+      cookie-es: 3.1.1
+      react: 19.2.7
     optionalDependencies:
-      react-dom: 19.2.0(react@19.2.0)
+      react-dom: 19.2.7(react@19.2.7)
 
   react-transform-hmr@1.0.4:
     dependencies:
       global: 4.4.0
       react-proxy: 1.1.8
 
-  react@19.2.0: {}
+  react@19.2.7: {}
 
   readdirp@3.6.0:
     dependencies:
@@ -4353,8 +4348,6 @@ snapshots:
       send: 1.2.1(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
-
-  set-cookie-parser@2.7.2: {}
 
   setprototypeof@1.2.0: {}
 
