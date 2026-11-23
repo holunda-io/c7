@@ -14,8 +14,8 @@
   <name>support: c7-rest-client-spring-boot - starter (spring-boot 4)</name>
 
   <properties>
-    <spring-boot.version>4.0.1</spring-boot.version>
-    <spring-cloud.version>2025.1.0</spring-cloud.version>
+    <spring-boot.version>4.2.0</spring-boot.version>
+    <spring-cloud.version>2026.0.0</spring-cloud.version>
   </properties>
 
   <dependencies>
