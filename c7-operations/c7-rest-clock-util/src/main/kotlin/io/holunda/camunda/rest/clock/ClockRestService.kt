@@ -13,7 +13,7 @@ import org.camunda.bpm.engine.impl.util.ClockUtil
 import java.time.Instant
 import java.util.Date
 
-/** Controls Camunda's JVM-wide clock. Register explicitly in the JAX-RS application. */
+/** Controls Camunda's JVM-wide clock. Auto-discovered by Jersey or registered explicitly in JAX-RS. */
 @Path("/clock")
 @Produces(MediaType.APPLICATION_JSON)
 class ClockRestService {

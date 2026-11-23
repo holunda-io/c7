@@ -26,11 +26,61 @@ Jersey 3), and a Jackson JSON provider. For Camunda's REST application use
 `jakarta.ws.rs`; it cannot be registered unchanged in a legacy `javax.ws.rs` / Jersey 2
 application.
 
-## Register the resource
+## Automatic registration in Jersey
+
+Jersey discovers `ClockAutoDiscoverable` through the JAR's
+`META-INF/services/org.glassfish.jersey.internal.spi.AutoDiscoverable` descriptor.
+It registers `ClockRestService` in server applications, leaving Jersey clients
+unchanged and skipping resources that have already been registered explicitly.
+No Spring Boot configuration or custom `ResourceConfig` is required.
+
+This requires Jersey auto-discovery to be enabled (the default). Setting
+`jersey.config.disableAutoDiscovery` or `jersey.config.server.disableAutoDiscovery`
+to `true` disables automatic registration. Use explicit registration in that case
+or with another Jakarta JAX-RS implementation. Automatic registration applies to
+each Jersey server application that loads the JAR; `/clock` is relative to each
+application's base path.
+
+### Camunda Run Docker image
+
+For a single-file installation, use the artifact with classifier `standalone`.
+It bundles the required Kotlin runtime dependencies; Camunda, Jersey, JAX-RS and
+Jackson are supplied by Camunda Run. The regular JAR remains available for Maven
+applications that resolve their own dependencies. Both artifacts target Java 17.
+
+Build from the repository root:
+
+```sh
+./mvnw -pl c7-operations/c7-rest-clock-util -am -DskipExamples verify
+mkdir -p extensions
+cp c7-operations/c7-rest-clock-util/target/c7-rest-clock-util-*-standalone.jar extensions/
+```
+
+Keep only one version of the extension in the mounted directory. With the
+[BPM Crafters Camunda Run image](https://github.com/bpm-crafters/process-engine-adapters-camunda-7/tree/develop/docker/camunda-bpm-platform),
+mount that directory and enable REST:
+
+```sh
+docker run --rm -p 8080:8080 \
+  -v "$PWD/extensions:/camunda/extensions:ro" \
+  -e CAMUNDA_RUN_REST=true \
+  bpmcrafters/camunda-bpm-platform:run-7.24.0
+```
+
+Once startup finishes:
+
+```sh
+curl --fail http://localhost:8080/engine-rest/clock
+```
+
+The image links mounted JARs into Run's `configuration/userlib` during startup.
+Restart the container after adding or updating the JAR. No hot deployment is
+performed. Mounted files must be readable by the container's UID 1000.
+
+## Explicit registration
 
 Register `io.holunda.camunda.rest.clock.ClockRestService` in the application's
-JAX-RS resource configuration. Adding the dependency alone does not register it
-in Camunda's explicit resource list. No Spring Boot configuration property is required.
+JAX-RS configuration when automatic registration is unavailable or disabled.
 
 For example, a Jersey application can expose Camunda's REST resources and the clock
 resource together:
@@ -57,8 +107,9 @@ configuration instead of creating a second application. In Spring Boot with
 Camunda's REST starter, the same call can be added to a custom
 `CamundaJerseyResourceConfig` subclass. Spring MVC is not required.
 
-The integration tests exercise the resource in Jersey with Camunda's JSON providers
-and without a Spring application context.
+The tests exercise service discovery, disabled discovery, explicit registration,
+and the resource in Jersey with Camunda's JSON providers, without a Spring application
+context. A packaging test also verifies the standalone JAR and its bundled Kotlin runtime.
 
 ## Clock endpoints
 
