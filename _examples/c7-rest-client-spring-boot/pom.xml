@@ -13,12 +13,17 @@
   <name>examples: c7-rest-client-spring-boot - parent</name>
   <packaging>pom</packaging>
 
+  <properties>
+    <!-- Children sharing this import can select the Boot 4 BOM. -->
+    <spring-boot-bom.artifactId>c7-spring-boot-3-bom</spring-boot-bom.artifactId>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
+        <groupId>io.holunda.c7._</groupId>
+        <artifactId>${spring-boot-bom.artifactId}</artifactId>
+        <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

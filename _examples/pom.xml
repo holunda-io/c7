@@ -18,6 +18,8 @@
 
 
   <properties>
+    <!-- Plugin versions are independent of imported dependency BOMs. -->
+    <spring-boot-maven-plugin.version>3.5.16</spring-boot-maven-plugin.version>
     <dokka.skip>true</dokka.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
     <maven.source.skip>true</maven.source.skip>
@@ -113,7 +115,7 @@
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
-          <version>${spring-boot.version}</version>
+          <version>${spring-boot-maven-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>com.tngtech.jgiven</groupId>

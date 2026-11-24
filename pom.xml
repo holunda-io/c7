@@ -26,6 +26,8 @@
 
   <modules>
     <module>_build/parent</module>
+    <module>_build/spring-boot-3</module>
+    <module>_build/spring-boot-4</module>
     <module>c7-operations/c7-admin-process-registry</module>
     <module>c7-operations/c7-webapp-autologin</module>
 

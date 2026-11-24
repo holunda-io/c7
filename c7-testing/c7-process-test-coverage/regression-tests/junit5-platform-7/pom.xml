@@ -21,9 +21,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-framework-bom</artifactId>
-        <version>${spring-framework.version}</version>
+        <groupId>${spring-boot-bom.groupId}</groupId>
+        <artifactId>${spring-boot-bom.artifactId}</artifactId>
+        <version>${spring-boot-bom.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
