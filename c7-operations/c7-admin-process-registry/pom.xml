@@ -16,7 +16,6 @@
   <description>Register and run utility processes</description>
 
   <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
     <!-- required for camunda with jdk >= 9 -->
     <jaxb-impl.version>4.0.9</jaxb-impl.version>
   </properties>

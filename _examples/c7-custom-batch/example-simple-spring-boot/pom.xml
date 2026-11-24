@@ -10,10 +10,6 @@
   <name>examples: c7-custom-batch - simple-spring-boot</name>
   <artifactId>c7-custom-batch-example-simple-spring-boot</artifactId>
 
-  <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>

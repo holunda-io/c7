@@ -22,10 +22,6 @@
     <module>itest</module>
   </modules>
 
-  <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>

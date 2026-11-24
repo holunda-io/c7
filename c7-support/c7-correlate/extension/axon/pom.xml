@@ -14,7 +14,6 @@
   <name>camunda-bpm-correlate Extension / Ingress Adapter Axon Framework</name>
 
   <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
     <axon-framework.version>4.13.3</axon-framework.version>
   </properties>
 

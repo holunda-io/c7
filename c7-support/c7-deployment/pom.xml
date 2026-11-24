@@ -15,7 +15,6 @@
   <description>camunda-bpm-spring-boot-deployment</description>
 
   <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
     <!-- TEST -->
     <junit5.version>5.11.0</junit5.version>
   </properties>

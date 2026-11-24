@@ -13,11 +13,6 @@
   <packaging>jar</packaging>
   <name>camunda-bpm-correlate Extension / Ingress Adapter Spring Cloud Stream</name>
 
-  <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
-    <spring-cloud.version>2025.0.3</spring-cloud.version>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>

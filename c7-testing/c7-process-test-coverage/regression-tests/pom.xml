@@ -14,7 +14,6 @@
   <packaging>pom</packaging>
 
   <properties>
-    <spring-boot.version>3.5.16</spring-boot.version>
     <graalvm.version>25.5.5.0.3</graalvm.version>
     <camunda.version>${camunda.compile.version}</camunda.version>
 

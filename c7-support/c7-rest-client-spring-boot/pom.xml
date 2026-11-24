@@ -14,12 +14,6 @@
   <name>support: c7-rest-client-spring-boot - parent pom</name>
   <description>Camunda Platform 7 REST Client Spring-Boot</description>
 
-  <properties>
-    <spin.version>7.24.0</spin.version>
-    <spring-boot.version>3.5.16</spring-boot.version>
-    <spring-cloud.version>2025.0.3</spring-cloud.version>
-  </properties>
-
   <modules>
     <module>client</module>
     <module>variables</module>
