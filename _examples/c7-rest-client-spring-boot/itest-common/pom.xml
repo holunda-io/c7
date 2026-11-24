@@ -12,10 +12,6 @@
   <name>examples: c7-rest-client-spring-boot - itest</name>
   <description>Integration tests of the client.</description>
 
-  <properties>
-    <byte-buddy.version>1.18.17</byte-buddy.version>
-  </properties>
-
   <dependencies>
 
     <dependency>

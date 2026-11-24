@@ -16,10 +16,6 @@
   <artifactId>c7-correlate-example-parent</artifactId>
   <packaging>pom</packaging>
 
-  <properties>
-    <axon.framework.version>4.13.3</axon.framework.version>
-  </properties>
-
   <modules>
     <module>common</module>
     <module>spring-cloud/flight-kafka</module>
@@ -63,21 +59,12 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!-- FIXME: Remove as soon as spring fixes those issues -->
-      <!-- https://github.com/spring-cloud/spring-cloud-function/issues/925 -->
-      <!--
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-function-context</artifactId>
-        <version>3.2.5</version>
-      </dependency>
-      -->
 
       <!-- Axon Framework -->
       <dependency>
         <groupId>org.axonframework</groupId>
         <artifactId>axon-bom</artifactId>
-        <version>${axon.framework.version}</version>
+        <version>${axon-framework.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

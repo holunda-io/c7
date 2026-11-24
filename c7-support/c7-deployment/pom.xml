@@ -14,11 +14,6 @@
   <name>${project.artifactId} Extension / Core</name>
   <description>camunda-bpm-spring-boot-deployment</description>
 
-  <properties>
-    <!-- TEST -->
-    <junit5.version>5.11.0</junit5.version>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
