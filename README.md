@@ -43,6 +43,7 @@ Includes extensions used for improved operations of Camunda 7.
 - camunda-platform-7-autologin [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 - camunda-admin-process-registry [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 - c7-rest-client-spring-boot [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
+- [c7-rest-clock-util](docs/getting-started/c7-rest-clock-util.md): JAX-RS endpoints for controlling the Camunda engine clock.
 
 ### Testing
 
