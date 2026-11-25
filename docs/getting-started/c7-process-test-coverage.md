@@ -62,7 +62,8 @@ that should not be included in the test coverage.
 
 ## Configuration
 
-Use the **StandaloneInMemProcessEngineConfiguration** (or any other subclass of **ProcessEngineConfigurationImpl**), e.g. in your `camunda.cfg.xml` (only needed for Platform 7)
+For JUnit 5 on Platform 7, no `camunda.cfg.xml` is needed for the default in-memory engine.
+For custom XML configuration, use a subclass of **ProcessEngineConfigurationImpl**, such as **StandaloneInMemProcessEngineConfiguration**:
 
 ### JUnit4 and JUnit5
 
@@ -115,7 +116,10 @@ or `@RegisterExtension`
 
 If you register the extension on a non-static field, no class coverage and therefore no report will be generated. This is due to the fact, that an instance of the extension will be created per test method.
 
-The extension provides a Builder for programmatic creation, which takes either a path to a configuration resource, a process engine configuration or if nothing is passed uses the default configuration resources path (`camunda.cfg.xml`).
+The extension provides a Builder for programmatic creation, which takes either a path to a configuration resource or a process engine configuration.
+With no arguments, it loads `camunda.cfg.xml` if present. Otherwise, it creates an isolated in-memory H2 engine with automatic schema creation,
+the job executor disabled, and a history time to live of one day (`P1D`). Add H2 as a test dependency when using the in-memory engine.
+A missing custom configuration resource still causes an error.
 
 The process engine configuration will be adjusted for usage of the process test coverage so it needs to be a subclass of **ProcessEngineConfiguationImpl** e.g. **org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration**.
 

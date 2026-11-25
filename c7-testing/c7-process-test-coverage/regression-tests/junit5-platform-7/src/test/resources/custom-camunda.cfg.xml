@@ -6,7 +6,8 @@
 
     <bean id="processEngineConfiguration"
           class="org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
-        <property name="historyTimeToLive" value="P1D"/>
+        <property name="historyTimeToLive" value="P2D"/>
+        <property name="jdbcUrl" value="jdbc:h2:mem:custom-coverage"/>
     </bean>
 
 </beans>
