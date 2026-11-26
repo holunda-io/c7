@@ -18,6 +18,18 @@
     All library tests are here in order to allow compiling against Camunda Platform 7 release and regression testing against different versions.
   </description>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${spring-boot-bom.groupId}</groupId>
+        <artifactId>${spring-boot-bom.artifactId}</artifactId>
+        <version>${spring-boot-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>

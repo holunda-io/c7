@@ -14,6 +14,18 @@
 
   <name>examples: c7-process-test-coverage - spring-starter</name>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.holunda.c7._</groupId>
+        <artifactId>c7-spring-boot-3-bom</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>

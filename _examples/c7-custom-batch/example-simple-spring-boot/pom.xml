@@ -10,6 +10,18 @@
   <name>examples: c7-custom-batch - simple-spring-boot</name>
   <artifactId>c7-custom-batch-example-simple-spring-boot</artifactId>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.holunda.c7._</groupId>
+        <artifactId>c7-spring-boot-3-bom</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>

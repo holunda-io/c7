@@ -13,8 +13,8 @@
   <description>Spring Boot 4 starter for integration tests of the client.</description>
 
   <properties>
-    <spring-boot.version>4.0.5</spring-boot.version>
-    <spring-cloud.version>2025.1.1</spring-cloud.version>
+    <spring-boot-maven-plugin.version>4.2.0</spring-boot-maven-plugin.version>
+    <spring-boot-bom.artifactId>c7-spring-boot-4-bom</spring-boot-bom.artifactId>
     <testcontainers.version>2.0.5</testcontainers.version>
   </properties>
 

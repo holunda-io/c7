@@ -20,6 +20,7 @@
     <jetbrains-annotations.version>26.0.2-1</jetbrains-annotations.version>
 
     <assertj.generated.dir>${project.build.directory}/generated-test-sources/assertj</assertj.generated.dir>
+    <jsr250-api.version>1.0</jsr250-api.version>
   </properties>
 
   <dependencies>
@@ -105,7 +106,7 @@
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>jsr250-api</artifactId>
-      <version>1.0</version>
+      <version>${jsr250-api.version}</version>
       <scope>test</scope>
     </dependency>
 

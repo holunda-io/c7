@@ -13,6 +13,10 @@
   <packaging>jar</packaging>
   <name>examples: c7-correlate - integration tests</name>
 
+  <properties>
+    <playwright.version>1.65.1</playwright.version>
+  </properties>
+
   <dependencies>
     <!-- Extension -->
     <dependency>
@@ -114,7 +118,7 @@
     <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
-      <version>1.65.1</version>
+      <version>${playwright.version}</version>
       <scope>test</scope>
     </dependency>
 

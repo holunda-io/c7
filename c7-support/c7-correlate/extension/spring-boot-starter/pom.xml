@@ -19,6 +19,14 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>io.holunda.c7._</groupId>
+        <artifactId>c7-spring-boot-3-bom</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
         <groupId>net.javacrumbs.shedlock</groupId>
         <artifactId>shedlock-spring</artifactId>
         <version>${shedlock.version}</version>
@@ -103,7 +111,6 @@
                 <annotationProcessorPath>
                   <groupId>org.springframework.boot</groupId>
                   <artifactId>spring-boot-configuration-processor</artifactId>
-                  <version>${spring-boot.version}</version>
                 </annotationProcessorPath>
               </annotationProcessorPaths>
             </configuration>

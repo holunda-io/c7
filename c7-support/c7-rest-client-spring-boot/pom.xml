@@ -15,8 +15,9 @@
   <description>Camunda Platform 7 REST Client Spring-Boot</description>
 
   <properties>
-    <spin.version>7.24.0</spin.version>
-    <spring-cloud.version>2025.0.3</spring-cloud.version>
+    <!-- Children sharing this import can select the Boot 4 BOM. -->
+    <spring-boot-bom.artifactId>c7-spring-boot-3-bom</spring-boot-bom.artifactId>
+    <swagger-annotations.version>3.0.0</swagger-annotations.version>
   </properties>
 
   <modules>
@@ -34,6 +35,14 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>io.holunda.c7._</groupId>
+        <artifactId>${spring-boot-bom.artifactId}</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
         <groupId>org.camunda.commons</groupId>
         <artifactId>camunda-commons-bom</artifactId>
         <version>${camunda.version}</version>
@@ -44,13 +53,6 @@
         <groupId>org.camunda.spin</groupId>
         <artifactId>camunda-spin-bom</artifactId>
         <version>${spin.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -67,12 +69,19 @@
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>3.0.0</version>
+        <version>${swagger-annotations.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+    <!-- Kapt resolves the processor version from this BOM-managed dependency. -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
     <!-- Kotlin -->
     <dependency>
       <groupId>io.github.oshai</groupId>
@@ -142,7 +151,6 @@
                   <annotationProcessorPath>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-configuration-processor</artifactId>
-                    <version>${spring-boot.version}</version>
                   </annotationProcessorPath>
                 </annotationProcessorPaths>
               </configuration>

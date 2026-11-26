@@ -16,10 +16,6 @@
   <artifactId>c7-correlate-example-parent</artifactId>
   <packaging>pom</packaging>
 
-  <properties>
-    <axon.framework.version>4.13.3</axon.framework.version>
-  </properties>
-
   <modules>
     <module>common</module>
     <module>spring-cloud/flight-kafka</module>
@@ -35,6 +31,14 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>io.holunda.c7._</groupId>
+        <artifactId>c7-spring-boot-3-bom</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
         <groupId>io.holunda</groupId>
         <artifactId>camunda-bpm-correlate-bom</artifactId>
         <version>${project.parent.version}</version>
@@ -48,28 +52,12 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!-- FIXME: Remove as soon as spring fixes those issues -->
-      <!-- https://github.com/spring-cloud/spring-cloud-function/issues/925 -->
-      <!--
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-function-context</artifactId>
-        <version>3.2.5</version>
-      </dependency>
-      -->
 
       <!-- Axon Framework -->
       <dependency>
         <groupId>org.axonframework</groupId>
         <artifactId>axon-bom</artifactId>
-        <version>${axon.framework.version}</version>
+        <version>${axon-framework.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

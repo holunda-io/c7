@@ -17,6 +17,19 @@
     All library tests are here in order to allow compiling against Camunda Platform 7 release and regression testing against different versions.
   </description>
 
+  <!-- The parent selects the project BOM by default and upstream BOMs for older compatibility profiles. -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${spring-boot-bom.groupId}</groupId>
+        <artifactId>${spring-boot-bom.artifactId}</artifactId>
+        <version>${spring-boot-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -48,6 +61,12 @@
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>

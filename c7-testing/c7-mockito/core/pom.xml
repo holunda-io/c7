@@ -13,6 +13,11 @@
   <name>testing: c7-mockito - core</name>
   <description>Supports various mocking strategies in camunda 7 process tests.</description>
 
+  <properties>
+    <jsr305.version>3.0.2</jsr305.version>
+    <javax-inject.version>1</javax-inject.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm</groupId>
@@ -70,13 +75,13 @@
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
-      <version>3.0.2</version>
+      <version>${jsr305.version}</version>
     </dependency>
 
     <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
-      <version>1</version>
+      <version>${javax-inject.version}</version>
       <scope>test</scope>
     </dependency>
 

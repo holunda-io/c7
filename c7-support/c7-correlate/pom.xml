@@ -18,6 +18,8 @@
   <description>A library for correlation of messages with processes running inside the Camunda 7 platform engine.</description>
 
   <properties>
+    <spring-boot-conditions.version>1.0.1</spring-boot-conditions.version>
+    <micrometer-core.version>1.15.12</micrometer-core.version>
   </properties>
 
   <modules>
@@ -27,6 +29,16 @@
     <module>extension/axon</module>
     <module>bom/bom</module>
   </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.toolisticon.spring</groupId>
+        <artifactId>spring-boot-conditions</artifactId>
+        <version>${spring-boot-conditions.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <profiles>
     <profile>

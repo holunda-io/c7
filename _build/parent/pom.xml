@@ -15,19 +15,70 @@
   <packaging>pom</packaging>
 
   <properties>
+    <!-- Shared libraries are managed without importing Spring Boot. -->
+    <jackson-bom.version>2.21.4</jackson-bom.version>
+    <byte-buddy.version>1.18.17</byte-buddy.version>
+    <mockito.version>5.17.0</mockito.version>
+    <h2.version>2.3.232</h2.version>
+    <hamcrest.version>3.0</hamcrest.version>
+    <commons-lang3.version>3.22.0</commons-lang3.version>
+    <spin.version>7.24.0</spin.version>
+    <jgiven.version>2.0.3</jgiven.version>
+    <axon-framework.version>4.13.3</axon-framework.version>
     <version.java>${java.version}</version.java>
     <kp.patternClassITest>**/*ITest.java,**/*IT.java,**/*ITest.kt,**/*IT.kt</kp.patternClassITest>
+    <gson.version>2.13.2</gson.version>
+    <jakarta-validation-api.version>3.1.1</jakarta-validation-api.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy</artifactId>
+        <version>${byte-buddy.version}</version>
       </dependency>
+      <dependency>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy-agent</artifactId>
+        <version>${byte-buddy.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson</groupId>
+        <artifactId>jackson-bom</artifactId>
+        <version>${jackson-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-bom</artifactId>
+        <version>${mockito.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${h2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-core</artifactId>
+        <version>${hamcrest.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-library</artifactId>
+        <version>${hamcrest.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>org.camunda.bpm</groupId>
         <artifactId>camunda-bom</artifactId>
