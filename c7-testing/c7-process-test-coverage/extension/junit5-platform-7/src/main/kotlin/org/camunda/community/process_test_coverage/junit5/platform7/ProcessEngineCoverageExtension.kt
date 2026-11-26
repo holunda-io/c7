@@ -4,6 +4,8 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import org.assertj.core.api.Condition
 import org.camunda.bpm.engine.ProcessEngineConfiguration
 import org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl
+import org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration
+import org.camunda.bpm.engine.impl.util.ReflectUtil
 import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension
 import org.camunda.community.process_test_coverage.core.model.DefaultCollector
 import org.camunda.community.process_test_coverage.engine.platform7.ExecutionContextModelProvider
@@ -14,6 +16,7 @@ import org.camunda.community.process_test_coverage.junit5.common.ProcessEngineCo
 import org.junit.jupiter.api.extension.AfterAllCallback
 import org.junit.jupiter.api.extension.BeforeAllCallback
 import org.junit.jupiter.api.extension.ExtensionContext
+import java.util.UUID
 
 private val logger = KotlinLogging.logger {}
 
@@ -21,6 +24,8 @@ private val logger = KotlinLogging.logger {}
  * Extension for JUnit 5 which allows the tracking of coverage information for Camunda process tests.
  * Based on the ProcessEngineExtension from the camunda-bpm-junit5 from the camunda community.
  * https://github.com/camunda-community-hub/camunda-bpm-junit5
+ *
+ * Uses camunda.cfg.xml when available, otherwise creates an in-memory H2 engine with a one-day history time to live.
  *
  * @author Jan Rohwer
  */
@@ -46,6 +51,7 @@ class ProcessEngineCoverageExtension(
         ) : ProcessEngineExtension(), BeforeAllCallback, AfterAllCallback {
 
     companion object {
+        const val DEFAULT_CONFIG_RESOURCE = "camunda.cfg.xml"
         @JvmStatic
         fun builder() = Builder()
         @JvmStatic
@@ -76,8 +82,17 @@ class ProcessEngineCoverageExtension(
 
     override fun initializeProcessEngine() {
         if (processEngineConfiguration == null) {
-            processEngineConfiguration = ProcessEngineConfiguration
-              .createProcessEngineConfigurationFromResource(configurationResource) as ProcessEngineConfigurationImpl
+            processEngineConfiguration = if (configurationResource == DEFAULT_CONFIG_RESOURCE
+              && ReflectUtil.getResource(configurationResource) == null) {
+                StandaloneInMemProcessEngineConfiguration().apply {
+                    // each test run gets its own database in memory
+                    jdbcUrl = "jdbc:h2:mem:process-test-coverage-${UUID.randomUUID()}"
+                    historyTimeToLive = "P1D"
+                }
+            } else {
+                ProcessEngineConfiguration
+                    .createProcessEngineConfigurationFromResource(configurationResource) as ProcessEngineConfigurationImpl
+            }
         }
         ProcessCoverageConfigurator.initializeProcessCoverageExtensions(processEngineConfiguration)
         processEngine = processEngineConfiguration.buildProcessEngine()
