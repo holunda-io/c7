@@ -19,6 +19,7 @@
 
   <properties>
     <spring-boot-conditions.version>1.0.1</spring-boot-conditions.version>
+    <micrometer-core.version>1.15.12</micrometer-core.version>
   </properties>
 
   <modules>

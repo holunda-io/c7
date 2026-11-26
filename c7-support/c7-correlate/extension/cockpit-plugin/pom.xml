@@ -20,6 +20,7 @@
     <camunda.plugin.testedOnVersion>${camunda-ce.version}</camunda.plugin.testedOnVersion>
     <!-- <camunda.plugin.exampleProcessApplicationUrl></camunda.plugin.exampleProcessApplicationUrl> -->
     <camunda.plugin.language>EN</camunda.plugin.language>
+    <jakartaee-api.version>11.0.0</jakartaee-api.version>
   </properties>
 
   <dependencies>
@@ -50,7 +51,7 @@
     <dependency>
       <groupId>jakarta.platform</groupId>
       <artifactId>jakarta.jakartaee-api</artifactId>
-      <version>11.0.0</version>
+      <version>${jakartaee-api.version}</version>
       <scope>provided</scope>
     </dependency>
 

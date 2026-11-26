@@ -17,6 +17,7 @@
   <properties>
     <!-- Children sharing this import can select the Boot 4 BOM. -->
     <spring-boot-bom.artifactId>c7-spring-boot-3-bom</spring-boot-bom.artifactId>
+    <swagger-annotations.version>3.0.0</swagger-annotations.version>
   </properties>
 
   <modules>
@@ -68,7 +69,7 @@
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
         <artifactId>swagger-annotations</artifactId>
-        <version>3.0.0</version>
+        <version>${swagger-annotations.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

@@ -15,6 +15,9 @@
   <properties>
     <jacoco.skip>false</jacoco.skip>
     <dokka.skip>false</dokka.skip>
+    <hibernate-validator.version>9.2.0.Final</hibernate-validator.version>
+    <jakarta-el-api.version>6.0.1</jakarta-el-api.version>
+    <jakarta-el.version>4.0.2</jakarta-el.version>
   </properties>
 
   <dependencies>
@@ -32,7 +35,7 @@
     <dependency>
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
-      <version>3.1.1</version>
+      <version>${jakarta-validation-api.version}</version>
     </dependency>
 
     <!-- Engine -->
@@ -87,19 +90,19 @@
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>9.2.0.Final</version>
+      <version>${hibernate-validator.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>jakarta.el</groupId>
       <artifactId>jakarta.el-api</artifactId>
-      <version>6.0.1</version>
+      <version>${jakarta-el-api.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.glassfish</groupId>
       <artifactId>jakarta.el</artifactId>
-      <version>4.0.2</version>
+      <version>${jakarta-el.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- Jackson -->

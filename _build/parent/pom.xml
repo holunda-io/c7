@@ -27,6 +27,8 @@
     <axon-framework.version>4.13.3</axon-framework.version>
     <version.java>${java.version}</version.java>
     <kp.patternClassITest>**/*ITest.java,**/*IT.java,**/*ITest.kt,**/*IT.kt</kp.patternClassITest>
+    <gson.version>2.13.2</gson.version>
+    <jakarta-validation-api.version>3.1.1</jakarta-validation-api.version>
   </properties>
 
   <dependencyManagement>
