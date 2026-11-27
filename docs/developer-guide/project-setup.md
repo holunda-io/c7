@@ -15,9 +15,16 @@ it. Please squash your commits before submitting and use semantic commit message
 
 ## Project Build
 
-Perform the following steps to get a development setup up and running.
+Starting with version **2026.11.2**, building and running C7 libraries requires **Java 21 or newer**.
+Java and Kotlin sources compile to Java 21 bytecode; Java compilation also restricts JDK API usage to Java 21.
+Maven Enforcer rejects build JDKs older than Java 21.
+
+Install JDK 21, select it as specified in `.java-version`, and point `JAVA_HOME` to that installation.
+Both GitHub Actions build workflows read `.java-version` and therefore use JDK 21 as well.
+Use the checked-in Maven wrapper to build the project. Check the selected JDK before building:
 
 ```sh
+./mvnw --version
 ./mvnw clean install
 ```
 

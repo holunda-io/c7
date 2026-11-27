@@ -18,6 +18,12 @@ and extending their Camunda 7 implementations with enterprise-grade reliability 
 
 This user guide gives you insight of features, scenarios and application examples of the included components and libraries.
 
+## Java requirements
+
+Starting with version **2026.11.2**, all C7 libraries require **Java 21 or newer** to build and run.
+When upgrading from a version that supports Java 17, upgrade both your build JDK and runtime to Java 21 or newer first.
+See the [developer setup guide](developer-guide/project-setup.md) for build instructions.
+
 # Modules
 
 Here is the overview of currently supported modules:

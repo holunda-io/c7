@@ -19,6 +19,18 @@ and is the new source for all those libraries. The old repositories are already 
 will be continued from this repository. We will support these libraries further but will release them using a single version from this 
 repository.
 
+## Java requirements
+
+Starting with version **2026.11.2**, all C7 libraries require **Java 21 or newer** to build and run.
+Java 17 applications must upgrade their build JDK and runtime before updating to this version.
+The Java and Kotlin bytecode targets are Java 21.
+
+To build the project, select JDK 21 (see `.java-version`), set `JAVA_HOME` accordingly, and use the Maven wrapper:
+
+```sh
+./mvnw clean install
+```
+
 ## Where are the docs?
 
 Looking for documentation, please check the following website: [http://www.holunda.io/c7/snapshot/](http://www.holunda.io/c7/snapshot/) for the latest documentation. We don't believe on short README files, but rather rely on comprehensive detailed user guide.

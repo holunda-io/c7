@@ -14,13 +14,14 @@ This Camunda Platform 7 and Platform 8 community extension **visualises** test p
 
 * Integrates with all versions of Camunda Platform 7 starting with 7.20.0 and upwards as well as Camunda Platform 8
 * Is continuously checked against the latest Camunda Platform 7 releases (check out our compatibility CI/CD pipeline)
-* Tested with JDKs 17 and 21 and different operating systems (Windows, Mac and Linux).
+* Requires Java 21 or newer starting with C7 version 2026.11.2.
 * Supports **JUnit 4.13.1+** (4.11 does not work) or **JUnit 5** for Camunda 7
 * Supports **JUnit 5** for Camunda 8 (uses Zeebe Process Test)
 * Can be used inside Spring Tests
 
 > [!IMPORTANT]
-> If you're running with a Java version prior to 17 you have to use the old version 2.x (latest 2.8.0)
+> Starting with C7 version 2026.11.2, Java 21 or newer is required. Upgrade your build JDK and test runtime before updating.
+> For Java versions prior to 17, use the legacy standalone version 2.x (latest 2.8.0).
 
 ## Documentation
 
