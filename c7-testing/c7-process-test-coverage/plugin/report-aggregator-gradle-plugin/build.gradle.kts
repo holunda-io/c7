@@ -8,6 +8,17 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
 val coreClasses: String = findProperty("coreClasses") as String? ?: error("Property 'coreClasses' was not set")
 val reportGeneratorClasses: String = findProperty("reportGeneratorClasses") as String? ?: error("Property 'reportGeneratorClasses' was not set")
 

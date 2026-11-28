@@ -20,6 +20,8 @@
 
   <properties>
     <!-- Global versions that are crucial for all submodules. -->
+    <java.version>21</java.version>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
     <camunda-ee.version>7.24.2-ee</camunda-ee.version>
     <camunda-ce.version>7.24.0</camunda-ce.version>
     <spring-boot.version>3.5.16</spring-boot.version>

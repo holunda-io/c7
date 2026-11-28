@@ -1,5 +1,8 @@
 ## Versioning and Regression testing
 
+Starting with C7 version **2026.11.2**, this library requires **Java 21 or newer**, including the JVM running your tests.
+Java 17 is no longer supported by this version.
+
 The library is not including any version of Camunda but defines it as a `provided` dependency.
 This allows you to use the library with any of supported versions.
 
@@ -12,7 +15,6 @@ Regression test versions are:
 
 | JDK \ Camunda Version | 7.20 | 7.21 | 7.22 | 7.23 | 7.24 |
 |-----------------------|------|------|------|------|------|
-| JDK 17 (LTS)          | yes  | yes  | yes  | yes  | yes  |
 | JDK 21 (LTS)          | yes  | yes  | yes  | yes  | yes  |
 |                       |      |      |      |      |      |
 

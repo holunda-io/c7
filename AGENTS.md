@@ -15,7 +15,7 @@ Modules use `src/main/java`, `src/main/kotlin`, and `src/main/resources`, with c
 
 ## Build, Test, and Development Commands
 
-Use JDK 17, as specified in `.java-version`, and the checked-in Maven wrapper. Run commands from the repository root unless noted.
+Use JDK 21, as specified in `.java-version`, and the checked-in Maven wrapper. Run commands from the repository root unless noted.
 
 - `./mvnw clean install`: build all modules, run unit tests, and install artifacts locally.
 - `./mvnw -ntp clean package`: run the CI packaging build.
